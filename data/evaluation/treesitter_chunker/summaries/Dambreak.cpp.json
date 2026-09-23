@@ -1,0 +1,13 @@
+{
+  "file": "repos/SPHinXsys/tests/2d_examples/test_2d_dambreak/Dambreak.cpp",
+  "total_lines": 252,
+  "total_chunks": 3,
+  "chunk_node_types": [
+    "class_specifier",
+    "function_definition"
+  ],
+  "minimum_chunk_size_bytes": 272,
+  "maximum_chunk_size_bytes": 11148,
+  "average_chunk_size_bytes": 3917.0,
+  "parsing_errors_reported": false
+}

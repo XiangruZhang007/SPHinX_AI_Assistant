@@ -1,0 +1,226 @@
+{
+  "policy_notes": {
+    "A": {
+      "advantage": "Retains every structural signal and all parent context.",
+      "disadvantage": "Retains hierarchy-driven duplicates, including small declarations and overlapping parent chunks."
+    },
+    "B": {
+      "advantage": "Excludes fields, namespaces, and type definitions while retaining major structural nodes.",
+      "disadvantage": "Still retains overlapping class/template/function hierarchies and can retain tiny forward declarations."
+    },
+    "C": {
+      "advantage": "Substantially reduces byte-overlap among retained structural candidates.",
+      "disadvantage": "Can discard function/method chunks when a class or template parent is retained, reducing granular retrieval."
+    },
+    "D": {
+      "advantage": "Uses function/method chunks as granular retrieval units while preserving parent structures as context metadata.",
+      "disadvantage": "Leaves long functions unsplit and requires parent-context association outside the retrieval set."
+    }
+  },
+  "per_file": {
+    "repos/SPHinXsys/tests/2d_examples/test_2d_dambreak/Dambreak.cpp": {
+      "Policy_A_keep_all_chunks": {
+        "retrieval_chunk_count": 3,
+        "retrieval_node_types": {
+          "class_specifier": 1,
+          "function_definition": 2
+        }
+      },
+      "Policy_B_structural_types_only": {
+        "retrieval_chunk_count": 3,
+        "retrieval_node_types": {
+          "class_specifier": 1,
+          "function_definition": 2
+        }
+      },
+      "Policy_C_structural_types_deduplicated_by_strict_containment": {
+        "overlap_rule": "process larger candidates first; remove a candidate when a strictly larger retained candidate covers at least 90% of its bytes",
+        "retrieval_chunk_count": 2,
+        "retrieval_node_types": {
+          "class_specifier": 1,
+          "function_definition": 1
+        },
+        "removed_fully_contained_candidate_count": 1,
+        "removed_node_types": {
+          "function_definition": 1
+        }
+      },
+      "Policy_D_function_method_primary_with_context_only_parents": {
+        "retrieval_chunk_count": 2,
+        "retrieval_node_types": {
+          "function_definition": 2
+        },
+        "context_only_chunk_count": 1,
+        "context_only_node_types": {
+          "class_specifier": 1
+        }
+      }
+    },
+    "repos/SPHinXsys/src/shared/bodies/base_body.h": {
+      "Policy_A_keep_all_chunks": {
+        "retrieval_chunk_count": 81,
+        "retrieval_node_types": {
+          "class_specifier": 15,
+          "field_declaration": 25,
+          "function_definition": 13,
+          "method_declaration": 9,
+          "namespace_definition": 1,
+          "template_declaration": 16,
+          "type_definition": 2
+        }
+      },
+      "Policy_B_structural_types_only": {
+        "retrieval_chunk_count": 53,
+        "retrieval_node_types": {
+          "class_specifier": 15,
+          "function_definition": 13,
+          "method_declaration": 9,
+          "template_declaration": 16
+        }
+      },
+      "Policy_C_structural_types_deduplicated_by_strict_containment": {
+        "overlap_rule": "process larger candidates first; remove a candidate when a strictly larger retained candidate covers at least 90% of its bytes",
+        "retrieval_chunk_count": 13,
+        "retrieval_node_types": {
+          "class_specifier": 13
+        },
+        "removed_fully_contained_candidate_count": 40,
+        "removed_node_types": {
+          "class_specifier": 2,
+          "function_definition": 13,
+          "method_declaration": 9,
+          "template_declaration": 16
+        }
+      },
+      "Policy_D_function_method_primary_with_context_only_parents": {
+        "retrieval_chunk_count": 22,
+        "retrieval_node_types": {
+          "function_definition": 13,
+          "method_declaration": 9
+        },
+        "context_only_chunk_count": 31,
+        "context_only_node_types": {
+          "class_specifier": 15,
+          "template_declaration": 16
+        }
+      }
+    },
+    "repos/SPHinXsys/src/shared/common/scalar_functions.cpp": {
+      "Policy_A_keep_all_chunks": {
+        "retrieval_chunk_count": 4,
+        "retrieval_node_types": {
+          "function_definition": 3,
+          "namespace_definition": 1
+        }
+      },
+      "Policy_B_structural_types_only": {
+        "retrieval_chunk_count": 3,
+        "retrieval_node_types": {
+          "function_definition": 3
+        }
+      },
+      "Policy_C_structural_types_deduplicated_by_strict_containment": {
+        "overlap_rule": "process larger candidates first; remove a candidate when a strictly larger retained candidate covers at least 90% of its bytes",
+        "retrieval_chunk_count": 3,
+        "retrieval_node_types": {
+          "function_definition": 3
+        },
+        "removed_fully_contained_candidate_count": 0,
+        "removed_node_types": {}
+      },
+      "Policy_D_function_method_primary_with_context_only_parents": {
+        "retrieval_chunk_count": 3,
+        "retrieval_node_types": {
+          "function_definition": 3
+        },
+        "context_only_chunk_count": 0,
+        "context_only_node_types": {}
+      }
+    },
+    "repos/SPHinXsys/src/shared/common/sphinxsys_variable.h": {
+      "Policy_A_keep_all_chunks": {
+        "retrieval_chunk_count": 121,
+        "retrieval_node_types": {
+          "class_specifier": 10,
+          "field_declaration": 18,
+          "function_definition": 61,
+          "method_declaration": 4,
+          "namespace_definition": 1,
+          "struct_specifier": 1,
+          "template_declaration": 23,
+          "type_definition": 3
+        }
+      },
+      "Policy_B_structural_types_only": {
+        "retrieval_chunk_count": 99,
+        "retrieval_node_types": {
+          "class_specifier": 10,
+          "function_definition": 61,
+          "method_declaration": 4,
+          "struct_specifier": 1,
+          "template_declaration": 23
+        }
+      },
+      "Policy_C_structural_types_deduplicated_by_strict_containment": {
+        "overlap_rule": "process larger candidates first; remove a candidate when a strictly larger retained candidate covers at least 90% of its bytes",
+        "retrieval_chunk_count": 11,
+        "retrieval_node_types": {
+          "class_specifier": 1,
+          "struct_specifier": 1,
+          "template_declaration": 9
+        },
+        "removed_fully_contained_candidate_count": 88,
+        "removed_node_types": {
+          "class_specifier": 9,
+          "function_definition": 61,
+          "method_declaration": 4,
+          "template_declaration": 14
+        }
+      },
+      "Policy_D_function_method_primary_with_context_only_parents": {
+        "retrieval_chunk_count": 65,
+        "retrieval_node_types": {
+          "function_definition": 61,
+          "method_declaration": 4
+        },
+        "context_only_chunk_count": 34,
+        "context_only_node_types": {
+          "class_specifier": 10,
+          "struct_specifier": 1,
+          "template_declaration": 23
+        }
+      }
+    },
+    "repos/SPHinXsys/tests/unit_tests_src/shared/common/test_scalar_functions/test_scalar_functions.cpp": {
+      "Policy_A_keep_all_chunks": {
+        "retrieval_chunk_count": 2,
+        "retrieval_node_types": {
+          "function_definition": 2
+        }
+      },
+      "Policy_B_structural_types_only": {
+        "retrieval_chunk_count": 2,
+        "retrieval_node_types": {
+          "function_definition": 2
+        }
+      },
+      "Policy_C_structural_types_deduplicated_by_strict_containment": {
+        "overlap_rule": "process larger candidates first; remove a candidate when a strictly larger retained candidate covers at least 90% of its bytes",
+        "retrieval_chunk_count": 2,
+        "retrieval_node_types": {
+          "function_definition": 2
+        },
+        "removed_fully_contained_candidate_count": 0,
+        "removed_node_types": {}
+      },
+      "Policy_D_function_method_primary_with_context_only_parents": {
+        "retrieval_chunk_count": 2,
+        "retrieval_node_types": {
+          "function_definition": 2
+        },
+        "context_only_chunk_count": 0,
+        "context_only_node_types": {}
+      }
+    }
+  }
+}

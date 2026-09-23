@@ -1,0 +1,440 @@
+
+==================================================
+QUERY: How is the 2D dambreak case initialized?
+==================================================
+Query: How is the 2D dambreak case initialized?
+
+#1 score=28.740141
+  repository: SPHinXsim
+  source_role: config_or_schema
+  source_path: repos/SPHinXsim/tests/test_simulation/test_2d_simulation/data/dambreak.json
+  chunk_type: config_document
+  symbol/title: dambreak
+  lines: 1-169
+  preview: { "characteristic_dimensions": [ { "value": 1.0, "name": "Length", "hint": "geometries.shapes[name=WaterBody].upper_bound" }, { "value": 1.0, "name": "Gravity", "hint": "gravity" }, { "value": 1.0, "name": "Density", "h…
+  debug: {"final": 28.740141, "lexical": 7.990141, "path_boost": 8.75, "repository_boost": 0.0, "role_boost": 0.0, "symbol_boost": 12.0}
+
+#2 score=27.089971
+  repository: SPHinXsim
+  source_role: config_or_schema
+  source_path: repos/SPHinXsim/tests/test_simulation/test_3d_simulation/data/dambreak.json
+  chunk_type: config_document
+  symbol/title: dambreak
+  lines: 1-142
+  preview: { "simulation_type": "fluid_dynamics", "geometries": { "system_domain": { "upper_bound": [5.366, 2.0, 0.5], "lower_bound": [0.0, 0.0, 0.0] }, "global_resolution": { "particle_spacing": 0.05 }, "shapes": [ { "name": "Wat…
+  debug: {"final": 27.089971, "lexical": 6.339971, "path_boost": 8.75, "repository_boost": 0.0, "role_boost": 0.0, "symbol_boost": 12.0}
+
+#3 score=26.928232
+  repository: SPHinXsys
+  source_role: simulation_case
+  source_path: repos/SPHinXsys/tests/2d_examples/test_2d_dambreak/Dambreak.cpp
+  chunk_type: semantic_section
+  symbol/title: Prepare the simulation with cell linked list, configuration and case specified initial condition if necessary.
+  lines: 120-127
+  preview: //---------------------------------------------------------------------- // Prepare the simulation with cell linked list, configuration // and case specified initial condition if necessary. //---------------------------…
+  debug: {"final": 26.928232, "lexical": 15.678232, "path_boost": 8.75, "repository_boost": 0.0, "role_boost": 2.5, "symbol_boost": 0.0}
+
+#4 score=26.860605
+  repository: SPHinXsys
+  source_role: simulation_case
+  source_path: repos/SPHinXsys/tests/2d_examples/test_2d_two_phase_dambreak/two_phase_dambreak.cpp
+  chunk_type: semantic_section
+  symbol/title: First output before the main loop.
+  lines: 130-133
+  preview: //---------------------------------------------------------------------- // First output before the main loop. //---------------------------------------------------------------------- body_states_recording.writeToFile();
+  debug: {"final": 26.860605, "lexical": 15.610605, "path_boost": 8.75, "repository_boost": 0.0, "role_boost": 2.5, "symbol_boost": 0.0}
+
+#5 score=26.799847
+  repository: SPHinXsys
+  source_role: simulation_case
+  source_path: repos/SPHinXsys/tests/2d_examples/test_2d_dambreak/Dambreak.cpp
+  chunk_type: semantic_section
+  symbol/title: Define the configuration related particles dynamics.
+  lines: 107-110
+  preview: //---------------------------------------------------------------------- // Define the configuration related particles dynamics. //---------------------------------------------------------------------- ParticleSorting p…
+  debug: {"final": 26.799847, "lexical": 15.549847, "path_boost": 8.75, "repository_boost": 0.0, "role_boost": 2.5, "symbol_boost": 0.0}
+
+==================================================
+QUERY: Which dynamics are used in the 2D dambreak example?
+==================================================
+Query: Which dynamics are used in the 2D dambreak example?
+
+#1 score=34.684209
+  repository: SPHinXsys
+  source_role: simulation_case
+  source_path: repos/SPHinXsys/tests/2d_examples/test_2d_dambreak/Dambreak.cpp
+  chunk_type: semantic_section
+  symbol/title: Combined relations built from basic relations which is only used for update configuration.
+  lines: 83-87
+  preview: //---------------------------------------------------------------------- // Combined relations built from basic relations // which is only used for update configuration. //-----------------------------------------------…
+  debug: {"final": 34.684209, "lexical": 23.434209, "path_boost": 8.75, "repository_boost": 0.0, "role_boost": 2.5, "symbol_boost": 0.0}
+
+#2 score=34.453896
+  repository: SPHinXsys
+  source_role: simulation_case
+  source_path: repos/SPHinXsys/tests/3d_examples/test_3d_dambreak/dambreak.cpp
+  chunk_type: semantic_section_tree_sitter_subchunk
+  symbol/title: Combined relations built from basic relations which is only used for update configuration.
+  lines: 97-159
+  preview: //---------------------------------------------------------------------- // Combined relations built from basic relations // which is only used for update configuration. //-----------------------------------------------…
+  debug: {"final": 34.453896, "lexical": 23.203896, "path_boost": 8.75, "repository_boost": 0.0, "role_boost": 2.5, "symbol_boost": 0.0}
+
+#3 score=34.437511
+  repository: SPHinXsys
+  source_role: simulation_case
+  source_path: repos/SPHinXsys/tests/2d_examples/test_2d_dambreak/Dambreak.cpp
+  chunk_type: semantic_section
+  symbol/title: Define the numerical methods used in the simulation. Note that there may be data dependence on the sequence of constructions. Generally, the geometric models or simple objects without data dependencies, such as gravity, should be initiated first. Then the major physical particle dynamics model should be introduced. Finally, the auxiliary models such as time step estimator, initial condition, boundary condition and other constraints should be defined.
+  lines: 88-106
+  preview: //---------------------------------------------------------------------- // Define the numerical methods used in the simulation. // Note that there may be data dependence on the sequence of constructions. // Generally, …
+  debug: {"final": 34.437511, "lexical": 23.187511, "path_boost": 8.75, "repository_boost": 0.0, "role_boost": 2.5, "symbol_boost": 0.0}
+
+#4 score=34.025088
+  repository: SPHinXsys
+  source_role: simulation_case
+  source_path: repos/SPHinXsys/tests/3d_examples/test_3d_dambreak_elastic_plate_shell/test_3d_dambreak_elastic_plate_shell.cpp
+  chunk_type: semantic_section
+  symbol/title: Combined relations built from basic relations which is only used for update configuration.
+  lines: 204-208
+  preview: //---------------------------------------------------------------------- // Combined relations built from basic relations // which is only used for update configuration. //-----------------------------------------------…
+  debug: {"final": 34.025088, "lexical": 22.775088, "path_boost": 8.75, "repository_boost": 0.0, "role_boost": 2.5, "symbol_boost": 0.0}
+
+#5 score=33.596742
+  repository: SPHinXsys
+  source_role: simulation_case
+  source_path: repos/SPHinXsys/tests/2d_examples/test_2d_hydrostatic_fluid_shell/test_2d_hydrostatic_fluid_shell.cpp
+  chunk_type: semantic_section
+  symbol/title: Define fsi methods which are used in this case.
+  lines: 264-270
+  preview: //---------------------------------------------------------------------- // Define fsi methods which are used in this case. //---------------------------------------------------------------------- /** Compute the averag…
+  debug: {"final": 33.596742, "lexical": 31.096742, "path_boost": 0.0, "repository_boost": 0.0, "role_boost": 2.5, "symbol_boost": 0.0}
+
+==================================================
+QUERY: What does WeaklyCompressibleFluid do?
+==================================================
+Query: What does WeaklyCompressibleFluid do?
+
+#1 score=66.926564
+  repository: SPHinXsys
+  source_role: core_library
+  source_path: repos/SPHinXsys/src/shared/materials/weakly_compressible_fluid.cpp
+  chunk_type: method_declaration
+  symbol/title: WeaklyCompressibleFluid
+  lines: 14-15
+  preview: WeaklyCompressibleFluid::WeaklyCompressibleFluid(ConstructArgs<Real, Real> args) : WeaklyCompressibleFluid(std::get<0>(args), std::get<1>(args)) {}
+  debug: {"final": 66.926564, "lexical": 28.676564, "path_boost": 14.25, "repository_boost": 0.0, "role_boost": 0.0, "symbol_boost": 24.0}
+
+#2 score=39.585612
+  repository: SPHinXsys
+  source_role: core_library
+  source_path: repos/SPHinXsys/src/shared/materials/weakly_compressible_fluid.h
+  chunk_type: function_definition
+  symbol/title: None
+  lines: 50-50
+  preview: virtual ~WeaklyCompressibleFluid() {}
+  debug: {"final": 39.585612, "lexical": 25.335612, "path_boost": 14.25, "repository_boost": 0.0, "role_boost": 0.0, "symbol_boost": 0.0}
+
+#3 score=35.683160
+  repository: SPHinXsys
+  source_role: core_library
+  source_path: repos/SPHinXsys/src/shared/materials/weakly_compressible_fluid.h
+  chunk_type: method_declaration
+  symbol/title: getPressure
+  lines: 53-53
+  preview: virtual Real getPressure(Real rho) override;
+  debug: {"final": 35.68316, "lexical": 21.43316, "path_boost": 14.25, "repository_boost": 0.0, "role_boost": 0.0, "symbol_boost": 0.0}
+
+#4 score=35.623424
+  repository: SPHinXsys
+  source_role: core_library
+  source_path: repos/SPHinXsys/src/shared/materials/weakly_compressible_fluid.cpp
+  chunk_type: method_declaration
+  symbol/title: getSoundSpeed
+  lines: 27-30
+  preview: Real WeaklyCompressibleFluid::getSoundSpeed(Real p, Real rho) { return c0_; }
+  debug: {"final": 35.623424, "lexical": 21.373424, "path_boost": 14.25, "repository_boost": 0.0, "role_boost": 0.0, "symbol_boost": 0.0}
+
+#5 score=35.564035
+  repository: SPHinXsys
+  source_role: core_library
+  source_path: repos/SPHinXsys/src/shared/materials/weakly_compressible_fluid.cpp
+  chunk_type: method_declaration
+  symbol/title: getPressure
+  lines: 17-20
+  preview: Real WeaklyCompressibleFluid::getPressure(Real rho) { return p0_ * (rho / rho0_ - 1.0); }
+  debug: {"final": 35.564035, "lexical": 21.314035, "path_boost": 14.25, "repository_boost": 0.0, "role_boost": 0.0, "symbol_boost": 0.0}
+
+==================================================
+QUERY: What does getPressure do in WeaklyCompressibleFluid?
+==================================================
+Query: What does getPressure do in WeaklyCompressibleFluid?
+
+#1 score=80.178202
+  repository: SPHinXsys
+  source_role: core_library
+  source_path: repos/SPHinXsys/src/shared/materials/weakly_compressible_fluid.h
+  chunk_type: method_declaration
+  symbol/title: getPressure
+  lines: 53-53
+  preview: virtual Real getPressure(Real rho) override;
+  debug: {"final": 80.178202, "lexical": 41.928202, "path_boost": 14.25, "repository_boost": 0.0, "role_boost": 0.0, "symbol_boost": 24.0}
+
+#2 score=79.985104
+  repository: SPHinXsys
+  source_role: core_library
+  source_path: repos/SPHinXsys/src/shared/materials/weakly_compressible_fluid.cpp
+  chunk_type: method_declaration
+  symbol/title: getPressure
+  lines: 17-20
+  preview: Real WeaklyCompressibleFluid::getPressure(Real rho) { return p0_ * (rho / rho0_ - 1.0); }
+  debug: {"final": 79.985104, "lexical": 41.735104, "path_boost": 14.25, "repository_boost": 0.0, "role_boost": 0.0, "symbol_boost": 24.0}
+
+#3 score=69.560698
+  repository: SPHinXsys
+  source_role: core_library
+  source_path: repos/SPHinXsys/src/shared/materials/weakly_compressible_fluid.cpp
+  chunk_type: method_declaration
+  symbol/title: WeaklyCompressibleFluid
+  lines: 14-15
+  preview: WeaklyCompressibleFluid::WeaklyCompressibleFluid(ConstructArgs<Real, Real> args) : WeaklyCompressibleFluid(std::get<0>(args), std::get<1>(args)) {}
+  debug: {"final": 69.560698, "lexical": 31.310698, "path_boost": 14.25, "repository_boost": 0.0, "role_boost": 0.0, "symbol_boost": 24.0}
+
+#4 score=64.921910
+  repository: SPHinXsys
+  source_role: core_library
+  source_path: repos/SPHinXsys/src/shared/materials/compressible_fluid.h
+  chunk_type: function_definition
+  symbol/title: getPressure
+  lines: 53-53
+  preview: virtual Real getPressure(Real rho) override { return 0.0; }
+  debug: {"final": 64.92191, "lexical": 29.42191, "path_boost": 11.5, "repository_boost": 0.0, "role_boost": 0.0, "symbol_boost": 24.0}
+
+#5 score=64.863242
+  repository: SPHinXsys
+  source_role: core_library
+  source_path: repos/SPHinXsys/src/shared/materials/compressible_fluid.cpp
+  chunk_type: method_declaration
+  symbol/title: getPressure
+  lines: 13-16
+  preview: Real CompressibleFluid::getPressure(Real rho, Real rho_e) { return rho_e * (gamma_ - 1.0); }
+  debug: {"final": 64.863242, "lexical": 29.363242, "path_boost": 11.5, "repository_boost": 0.0, "role_boost": 0.0, "symbol_boost": 24.0}
+
+==================================================
+QUERY: Find a heat transfer simulation case.
+==================================================
+Query: Find a heat transfer simulation case.
+
+#1 score=35.083652
+  repository: SPHinXsys
+  source_role: simulation_case
+  source_path: repos/SPHinXsys/tests/2d_examples/test_2d_heat_transfer/heat_transfer.cpp
+  chunk_type: semantic_section
+  symbol/title: Function preamble (before first semantic section)
+  lines: 181-182
+  preview: int main(int ac, char *av[]) {
+  debug: {"final": 35.083652, "lexical": 21.083652, "path_boost": 11.5, "repository_boost": 0.0, "role_boost": 2.5, "symbol_boost": 0.0}
+
+#2 score=34.515818
+  repository: SPHinXsys
+  source_role: simulation_case
+  source_path: repos/SPHinXsys/tests/2d_examples/test_2d_heat_transfer/heat_transfer.cpp
+  chunk_type: semantic_section
+  symbol/title: Statistics for CPU time
+  lines: 288-292
+  preview: //---------------------------------------------------------------------- // Statistics for CPU time //---------------------------------------------------------------------- TickCount t1 = TickCount::now(); TimeInterval …
+  debug: {"final": 34.515818, "lexical": 20.515818, "path_boost": 11.5, "repository_boost": 0.0, "role_boost": 2.5, "symbol_boost": 0.0}
+
+#3 score=34.473442
+  repository: SPHinXsys
+  source_role: simulation_case
+  source_path: repos/SPHinXsys/tests/2d_examples/test_2d_heat_transfer/heat_transfer.cpp
+  chunk_type: semantic_section
+  symbol/title: First output before the main loop.
+  lines: 293-296
+  preview: //---------------------------------------------------------------------- // First output before the main loop. //---------------------------------------------------------------------- write_real_body_states.writeToFile(…
+  debug: {"final": 34.473442, "lexical": 20.473442, "path_boost": 11.5, "repository_boost": 0.0, "role_boost": 2.5, "symbol_boost": 0.0}
+
+#4 score=34.222931
+  repository: SPHinXsys
+  source_role: simulation_case
+  source_path: repos/SPHinXsys/tests/2d_examples/test_2d_heat_transfer/heat_transfer.cpp
+  chunk_type: semantic_section
+  symbol/title: Define the configuration related particles dynamics.
+  lines: 253-256
+  preview: //---------------------------------------------------------------------- // Define the configuration related particles dynamics. //---------------------------------------------------------------------- ParticleSorting p…
+  debug: {"final": 34.222931, "lexical": 20.222931, "path_boost": 11.5, "repository_boost": 0.0, "role_boost": 2.5, "symbol_boost": 0.0}
+
+#5 score=33.668443
+  repository: SPHinXsys
+  source_role: simulation_case
+  source_path: repos/SPHinXsys/tests/2d_examples/test_2d_heat_transfer/heat_transfer.cpp
+  chunk_type: semantic_section
+  symbol/title: Build up the environment of a SPHSystem with global controls.
+  lines: 183-187
+  preview: //---------------------------------------------------------------------- // Build up the environment of a SPHSystem with global controls. //---------------------------------------------------------------------- SPHSyste…
+  debug: {"final": 33.668443, "lexical": 19.668443, "path_boost": 11.5, "repository_boost": 0.0, "role_boost": 2.5, "symbol_boost": 0.0}
+
+==================================================
+QUERY: How is a 2D simulation configured in SPHinXsim?
+==================================================
+Query: How is a 2D simulation configured in SPHinXsim?
+
+#1 score=57.540645
+  repository: SPHinXsim
+  source_role: config_or_schema
+  source_path: repos/SPHinXsim/sphinxsim/config/schemas.py
+  chunk_type: class_definition
+  symbol/title: SimulationConfig
+  lines: 925-1248
+  preview: class SimulationConfig(BaseModel): """Top-level JSON payload consumed by SPHSimulation methods: buildGeometries(), generateParticles(), buildSimulation().""" characteristic_dimensions: Optional[List[CharacteristicDimens…
+  debug: {"final": 57.540645, "lexical": 17.790645, "path_boost": 14.25, "repository_boost": 1.5, "role_boost": 14.0, "symbol_boost": 10.0}
+
+#2 score=53.581091
+  repository: SPHinXsim
+  source_role: config_or_schema
+  source_path: repos/SPHinXsim/examples/input/test_simulation_2d/config.json
+  chunk_type: config_document
+  symbol/title: config
+  lines: 1-94
+  preview: { "simulation_type": "fluid_dynamics", "geometries": { "system_domain": { "upper_bound": [5.366, 5.366], "lower_bound": [0.0, 0.0] }, "global_resolution": { "particle_spacing": 0.025 }, "shapes": [ { "name": "WaterBody"…
+  debug: {"final": 53.581091, "lexical": 11.831091, "path_boost": 14.25, "repository_boost": 1.5, "role_boost": 14.0, "symbol_boost": 12.0}
+
+#3 score=51.745681
+  repository: SPHinXsim
+  source_role: config_or_schema
+  source_path: repos/SPHinXsim/sphinxsim/config/schemas.py
+  chunk_type: class_definition
+  symbol/title: TransformConfig
+  lines: 140-150
+  preview: class TransformConfig(BaseModel): translation: List[float] = Field(..., min_length=2, max_length=3) rotation_angle: float rotation_axis: Optional[List[float]] = Field(default=None, min_length=3, max_length=3) @model_val…
+  debug: {"final": 51.745681, "lexical": 21.995681, "path_boost": 14.25, "repository_boost": 1.5, "role_boost": 14.0, "symbol_boost": 0.0}
+
+#4 score=51.184652
+  repository: SPHinXsim
+  source_role: config_or_schema
+  source_path: repos/SPHinXsim/sphinxsim/config/schemas.py
+  chunk_type: function_definition
+  symbol/title: _validate_rotation_axis_requirements
+  lines: 146-150
+  preview: def _validate_rotation_axis_requirements(self) -> "TransformConfig": # 3D transforms require a rotation axis in C++ jsonToTransform(). if len(self.translation) == 3 and self.rotation_axis is None: raise ValueError("3D t…
+  debug: {"final": 51.184652, "lexical": 21.434652, "path_boost": 14.25, "repository_boost": 1.5, "role_boost": 14.0, "symbol_boost": 0.0}
+
+#5 score=49.565475
+  repository: SPHinXsim
+  source_role: config_or_schema
+  source_path: repos/SPHinXsim/sphinxsim/config/schemas.py
+  chunk_type: function_definition
+  symbol/title: _infer_spatial_dim
+  lines: 950-991
+  preview: def _infer_spatial_dim(self) -> int | None: """Infer spatial dimension from available vector-valued config fields.""" if self.geometries.system_domain is not None: return len(self.geometries.system_domain.lower_bound) d…
+  debug: {"final": 49.565475, "lexical": 19.815475, "path_boost": 14.25, "repository_boost": 1.5, "role_boost": 14.0, "symbol_boost": 0.0}
+
+==================================================
+QUERY: Which builder constructs simulations in SPHinXsim?
+==================================================
+Query: Which builder constructs simulations in SPHinXsim?
+
+#1 score=46.651655
+  repository: SPHinXsim
+  source_role: simulator_library
+  source_path: repos/SPHinXsim/sphinxsim/sph_simulation/simulation_builder/base_simulation_builder.cpp
+  chunk_type: method_declaration
+  symbol/title: SimulationBuilder
+  lines: 30-30
+  preview: SimulationBuilder::SimulationBuilder() : material_builder_ptr_(std::make_unique<MaterialBuilder>()) {}
+  debug: {"final": 46.651655, "lexical": 18.401655, "path_boost": 14.25, "repository_boost": 1.5, "role_boost": 2.5, "symbol_boost": 10.0}
+
+#2 score=38.904789
+  repository: SPHinXsim
+  source_role: test
+  source_path: repos/SPHinXsim/tests/test_simulation/test_3d_simulation/simulation.cpp
+  chunk_type: function_definition
+  symbol/title: TEST
+  lines: 117-121
+  preview: TEST(simulations, has_json) { const auto json_files = collectJsonConfigs("./input"); ASSERT_FALSE(json_files.empty()) << "No JSON examples found in ./input"; }
+  debug: {"final": 38.904789, "lexical": 23.154789, "path_boost": 14.25, "repository_boost": 1.5, "role_boost": 0.0, "symbol_boost": 0.0}
+
+#3 score=38.904789
+  repository: SPHinXsim
+  source_role: test
+  source_path: repos/SPHinXsim/tests/test_simulation/test_2d_simulation/simulation.cpp
+  chunk_type: function_definition
+  symbol/title: TEST
+  lines: 115-119
+  preview: TEST(simulations, has_json) { const auto json_files = collectJsonConfigs("./input"); ASSERT_FALSE(json_files.empty()) << "No JSON examples found in ./input"; }
+  debug: {"final": 38.904789, "lexical": 23.154789, "path_boost": 14.25, "repository_boost": 1.5, "role_boost": 0.0, "symbol_boost": 0.0}
+
+#4 score=38.817932
+  repository: SPHinXsim
+  source_role: simulator_library
+  source_path: repos/SPHinXsim/sphinxsim/sph_simulation/common_builder/geometry_builder.h
+  chunk_type: method_declaration
+  symbol/title: resetInOutputRoot
+  lines: 60-60
+  preview: void resetInOutputRoot(const fs::path &output_root);
+  debug: {"final": 38.817932, "lexical": 20.567932, "path_boost": 14.25, "repository_boost": 1.5, "role_boost": 2.5, "symbol_boost": 0.0}
+
+#5 score=37.015160
+  repository: SPHinXsim
+  source_role: simulator_library
+  source_path: repos/SPHinXsim/sphinxsim/sph_simulation/common_builder/geometry_builder.cpp
+  chunk_type: method_declaration
+  symbol/title: resetInOutputRoot
+  lines: 31-40
+  preview: void GeometryBuilder::resetInOutputRoot(const fs::path &output_root) { IOEnvironment &io_env = IO::getEnvironment(); if (!fs::exists(output_root)) { fs::create_directories(output_root); } io_env.resetOutputFolder((outpu…
+  debug: {"final": 37.01516, "lexical": 18.76516, "path_boost": 14.25, "repository_boost": 1.5, "role_boost": 2.5, "symbol_boost": 0.0}
+
+==================================================
+QUERY: What fields are defined in the SPHinXsim SimulationConfig schema?
+==================================================
+Query: What fields are defined in the SPHinXsim SimulationConfig schema?
+
+#1 score=72.532808
+  repository: SPHinXsim
+  source_role: config_or_schema
+  source_path: repos/SPHinXsim/sphinxsim/config/schemas.py
+  chunk_type: class_definition
+  symbol/title: SimulationConfig
+  lines: 925-1248
+  preview: class SimulationConfig(BaseModel): """Top-level JSON payload consumed by SPHSimulation methods: buildGeometries(), generateParticles(), buildSimulation().""" characteristic_dimensions: Optional[List[CharacteristicDimens…
+  debug: {"final": 72.532808, "lexical": 18.782808, "path_boost": 14.25, "repository_boost": 1.5, "role_boost": 14.0, "symbol_boost": 24.0}
+
+#2 score=63.377673
+  repository: SPHinXsim
+  source_role: config_or_schema
+  source_path: repos/SPHinXsim/sphinxsim/config/schemas.py
+  chunk_type: function_definition
+  symbol/title: _warn_unknown_fields
+  lines: 389-398
+  preview: def _warn_unknown_fields(self) -> "RelaxationBodyConfig": extra = getattr(self, "__pydantic_extra__", None) if extra: warnings.warn( "particle_generation.relaxation contains unknown keys that are preserved: " + ", ".joi…
+  debug: {"final": 63.377673, "lexical": 33.627673, "path_boost": 14.25, "repository_boost": 1.5, "role_boost": 14.0, "symbol_boost": 0.0}
+
+#3 score=62.212866
+  repository: SPHinXsim
+  source_role: config_or_schema
+  source_path: repos/SPHinXsim/sphinxsim/config/schemas.py
+  chunk_type: class_definition
+  symbol/title: RelaxationBodyConfig
+  lines: 382-398
+  preview: class RelaxationBodyConfig(BaseModel): model_config = ConfigDict(extra="allow") level_set: Optional[dict] = None dependent_bodies: List[str] = Field(default_factory=list) @model_validator(mode="after") def _warn_unknown…
+  debug: {"final": 62.212866, "lexical": 32.462866, "path_boost": 14.25, "repository_boost": 1.5, "role_boost": 14.0, "symbol_boost": 0.0}
+
+#4 score=62.134686
+  repository: SPHinXsim
+  source_role: config_or_schema
+  source_path: repos/SPHinXsim/sphinxsim/config/schemas.py
+  chunk_type: class_definition
+  symbol/title: ParticleGenerationSettingsConfig
+  lines: 434-451
+  preview: class ParticleGenerationSettingsConfig(BaseModel): model_config = ConfigDict(extra="allow") bodies: List[ParticleGenerationBodyConfig] = Field(..., min_length=1) relaxation_constraints: List[RelaxationConstraintConfig] …
+  debug: {"final": 62.134686, "lexical": 32.384686, "path_boost": 14.25, "repository_boost": 1.5, "role_boost": 14.0, "symbol_boost": 0.0}
+
+#5 score=61.627734
+  repository: SPHinXsim
+  source_role: config_or_schema
+  source_path: repos/SPHinXsim/sphinxsim/config/schemas.py
+  chunk_type: class_definition
+  symbol/title: ParticleGenerationBodyConfig
+  lines: 401-421
+  preview: class ParticleGenerationBodyConfig(BaseModel): model_config = ConfigDict(extra="allow") name: str = Field(..., min_length=1) blockers: List[str] = Field(default_factory=list) box_shape_inserts: List[str] = Field(default…
+  debug: {"final": 61.627734, "lexical": 31.877734, "path_boost": 14.25, "repository_boost": 1.5, "role_boost": 14.0, "symbol_boost": 0.0}

@@ -1,0 +1,155 @@
+{
+  "prototype": "grounded_answer_v1_smoke",
+  "results": [
+    {
+      "query": "What does WeaklyCompressibleFluid do?",
+      "answer": "Based on the repository evidence, **WeaklyCompressibleFluid** is a material model class in SPHinXsys that implements a weakly compressible fluid equation of state. The key behaviors shown in the evidence are:\n\n**Pressure calculation** (`getPressure`):\n```cpp\nReal WeaklyCompressibleFluid::getPressure(Real rho)\n{\n    return p0_ * (rho / rho0_ - 1.0);\n}\n```\nThis implements a linear equation of state: pressure = p₀ × (ρ/ρ₀ - 1), where `p0_` is a reference pressure and `rho0_` is a reference density.\n\n**Sound speed** (`getSoundSpeed`):\n```cpp\nReal WeaklyCompressibleFluid::getSoundSpeed(Real p, Real rho)\n{\n    return c0_;\n}\n```\nReturns a constant sound speed `c0_` (independent of pressure and density).\n\n**Construction**: Takes two `Real` parameters (likely `rho0_` and `c0_` or `p0_` and `c0_`) via a delegating constructor.\n\n**Class structure**: Has a virtual destructor and overrides a virtual `getPressure` method from a base class.\n\nThe evidence shows the implementation of a standard weakly compressible SPH fluid model with constant sound speed and linear pressure-density relationship.",
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "base_url": "https://integrate.api.nvidia.com/v1",
+      "sources": [
+        {
+          "repository": "SPHinXsys",
+          "source_role": "core_library",
+          "source_path": "repos/SPHinXsys/src/shared/materials/weakly_compressible_fluid.cpp",
+          "symbol_or_section_title": "WeaklyCompressibleFluid",
+          "start_line": 14,
+          "end_line": 15
+        },
+        {
+          "repository": "SPHinXsys",
+          "source_role": "core_library",
+          "source_path": "repos/SPHinXsys/src/shared/materials/weakly_compressible_fluid.h",
+          "symbol_or_section_title": null,
+          "start_line": 50,
+          "end_line": 50
+        },
+        {
+          "repository": "SPHinXsys",
+          "source_role": "core_library",
+          "source_path": "repos/SPHinXsys/src/shared/materials/weakly_compressible_fluid.h",
+          "symbol_or_section_title": "getPressure",
+          "start_line": 53,
+          "end_line": 53
+        },
+        {
+          "repository": "SPHinXsys",
+          "source_role": "core_library",
+          "source_path": "repos/SPHinXsys/src/shared/materials/weakly_compressible_fluid.cpp",
+          "symbol_or_section_title": "getSoundSpeed",
+          "start_line": 27,
+          "end_line": 30
+        },
+        {
+          "repository": "SPHinXsys",
+          "source_role": "core_library",
+          "source_path": "repos/SPHinXsys/src/shared/materials/weakly_compressible_fluid.cpp",
+          "symbol_or_section_title": "getPressure",
+          "start_line": 17,
+          "end_line": 20
+        }
+      ],
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "How is the 2D dambreak case initialized?",
+      "answer": "Based on the supplied evidence, the 2D dambreak case initialization is described in both the SPHinXsim configuration and the SPHinXsys C++ test case. They are separate implementations/representations.\n\n## SPHinXsim Configuration (JSON)\n\nThe SPHinXsim configuration file defines the case initialization declaratively:\n\n**Geometry and Domain** (Evidence 1, lines 15-44):\n- **WaterBody**: A `bounding_box` shape from lower bound `[0.0, 0.0]` to upper bound `[2.0, 1.0]`\n- **WallBoundary**: A `multipolygon` container box with inner bounds `[0.0, 0.0]` to `[5.366, 5.366]` and thickness `0.1`\n- Global particle spacing: `0.025`\n\n**Particle Generation** (Evidence 1, lines 46-66):\n- Both `WaterBody` and `WallBoundary` bodies are generated with empty blockers and shape inserts\n- `WallBoundary` marked as `solid_body: {}`\n- Relaxation: 1000 total iterations\n\n**Material and Bodies** (Evidence 1, lines 68-94):\n- `WaterBody`: `fluid_bodies` with `weakly_compressible_fluid` material, density `1.0`\n- `WallBoundary`: `solid_bodies` with `rigid_body` material, `is_moving: false`\n\n**Physics and Solver** (Evidence 1, lines 96-169):\n- Gravity: `[0.0, -1.0]`\n- No explicit `initial_conditions` (empty array)\n- Solver: end time `20.0`, acoustic CFL `0.6`, advection CFL `0.25`, free surface, linear kernel correction\n\n## SPHinXsys C++ Test Case (Dambreak.cpp)\n\nThe C++ test case shows programmatic initialization steps (Evidence 3, lines 120-127):\n\n```cpp\nsph_system.initializeSystemCellLinkedLists();\nsph_system.initializeSystemConfigurations();\nwall_boundary_normal_direction.exec();\nconstant_gravity.exec();\n```\n\nAdditionally, particle sorting is configured for the water block (Evidence 5, lines 107-110):\n```cpp\nParticleSorting particle_sorting(water_block);\n```\n\n## Key Distinction\n\n- **SPHinXsim** uses a JSON configuration that fully describes the initial geometry, materials, particle generation, and solver parameters declaratively.\n- **SPHinXsys** (C++ test) shows the runtime initialization sequence: building cell linked lists, initializing system configurations, executing wall boundary normal direction computation, and applying constant gravity.\n\nThe evidence does not show the complete C++ case setup (e.g., how `water_block`, `wall_boundary_normal_direction`, or `constant_gravity` are constructed), only the initialization calls in the main simulation flow.",
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "base_url": "https://integrate.api.nvidia.com/v1",
+      "sources": [
+        {
+          "repository": "SPHinXsim",
+          "source_role": "config_or_schema",
+          "source_path": "repos/SPHinXsim/tests/test_simulation/test_2d_simulation/data/dambreak.json",
+          "symbol_or_section_title": "dambreak",
+          "start_line": 1,
+          "end_line": 169
+        },
+        {
+          "repository": "SPHinXsim",
+          "source_role": "config_or_schema",
+          "source_path": "repos/SPHinXsim/tests/test_simulation/test_3d_simulation/data/dambreak.json",
+          "symbol_or_section_title": "dambreak",
+          "start_line": 1,
+          "end_line": 142
+        },
+        {
+          "repository": "SPHinXsys",
+          "source_role": "simulation_case",
+          "source_path": "repos/SPHinXsys/tests/2d_examples/test_2d_dambreak/Dambreak.cpp",
+          "symbol_or_section_title": "Prepare the simulation with cell linked list, configuration and case specified initial condition if necessary.",
+          "start_line": 120,
+          "end_line": 127
+        },
+        {
+          "repository": "SPHinXsys",
+          "source_role": "simulation_case",
+          "source_path": "repos/SPHinXsys/tests/2d_examples/test_2d_two_phase_dambreak/two_phase_dambreak.cpp",
+          "symbol_or_section_title": "First output before the main loop.",
+          "start_line": 130,
+          "end_line": 133
+        },
+        {
+          "repository": "SPHinXsys",
+          "source_role": "simulation_case",
+          "source_path": "repos/SPHinXsys/tests/2d_examples/test_2d_dambreak/Dambreak.cpp",
+          "symbol_or_section_title": "Define the configuration related particles dynamics.",
+          "start_line": 107,
+          "end_line": 110
+        }
+      ],
+      "success": true,
+      "error": null
+    },
+    {
+      "query": "How is a 2D simulation configured in SPHinXsim?",
+      "answer": "Based on the SPHinXsim configuration evidence, a 2D simulation is configured by using **2-element vectors** consistently across all spatial fields in the JSON configuration. The spatial dimension is automatically inferred from these vectors.\n\nKey configuration aspects from the 2D example (`test_simulation_2d/config.json`):\n\n1. **System domain bounds** use 2D coordinates:\n   ```json\n   \"system_domain\": {\n     \"upper_bound\": [5.366, 5.366],\n     \"lower_bound\": [0.0, 0.0]\n   }\n   ```\n\n2. **Gravity** is a 2-element vector:\n   ```json\n   \"gravity\": [0.0, -1.0]\n   ```\n\n3. **Shape definitions** (bounding boxes, etc.) use 2D bounds:\n   ```json\n   \"lower_bound\": [0.0, 0.0],\n   \"upper_bound\": [2.0, 1.0]\n   ```\n\n4. **Observer positions** are 2D:\n   ```json\n   \"positions\": [[5.366, 0.2]]\n   ```\n\nThe `SimulationConfig._infer_spatial_dim()` method (Evidence 1, 5) validates this by checking the length of vector fields across the entire configuration (`system_domain.lower_bound`, `gravity`, shape bounds, observer positions, etc.) and raises an error if dimensionality is inconsistent. No explicit \"2D\" flag is needed—the dimension is derived from the vector lengths.",
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "base_url": "https://integrate.api.nvidia.com/v1",
+      "sources": [
+        {
+          "repository": "SPHinXsim",
+          "source_role": "config_or_schema",
+          "source_path": "repos/SPHinXsim/sphinxsim/config/schemas.py",
+          "symbol_or_section_title": "SimulationConfig",
+          "start_line": 925,
+          "end_line": 1248
+        },
+        {
+          "repository": "SPHinXsim",
+          "source_role": "config_or_schema",
+          "source_path": "repos/SPHinXsim/examples/input/test_simulation_2d/config.json",
+          "symbol_or_section_title": "config",
+          "start_line": 1,
+          "end_line": 94
+        },
+        {
+          "repository": "SPHinXsim",
+          "source_role": "config_or_schema",
+          "source_path": "repos/SPHinXsim/sphinxsim/config/schemas.py",
+          "symbol_or_section_title": "TransformConfig",
+          "start_line": 140,
+          "end_line": 150
+        },
+        {
+          "repository": "SPHinXsim",
+          "source_role": "config_or_schema",
+          "source_path": "repos/SPHinXsim/sphinxsim/config/schemas.py",
+          "symbol_or_section_title": "_validate_rotation_axis_requirements",
+          "start_line": 146,
+          "end_line": 150
+        },
+        {
+          "repository": "SPHinXsim",
+          "source_role": "config_or_schema",
+          "source_path": "repos/SPHinXsim/sphinxsim/config/schemas.py",
+          "symbol_or_section_title": "_infer_spatial_dim",
+          "start_line": 950,
+          "end_line": 991
+        }
+      ],
+      "success": true,
+      "error": null
+    }
+  ]
+}

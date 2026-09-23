@@ -1,0 +1,12 @@
+{
+  "file": "repos/SPHinXsys/tests/unit_tests_src/shared/common/test_scalar_functions/test_scalar_functions.cpp",
+  "total_lines": 23,
+  "total_chunks": 2,
+  "chunk_node_types": [
+    "function_definition"
+  ],
+  "minimum_chunk_size_bytes": 106,
+  "maximum_chunk_size_bytes": 302,
+  "average_chunk_size_bytes": 204.0,
+  "parsing_errors_reported": false
+}

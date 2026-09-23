@@ -1,0 +1,506 @@
+{
+  "parameters": {
+    "primary_node_types": [
+      "function_definition",
+      "method_declaration"
+    ],
+    "oversized_threshold_bytes": 5000,
+    "d2_fixed_line_window_size": 50,
+    "d3_boundary_method": "top-level non-comment nodes in the Tree-sitter compound_statement parsed from existing raw function content"
+  },
+  "policies": {
+    "D1": {
+      "aggregate": {
+        "chunk_count": 94,
+        "size_bytes": {
+          "min": 22,
+          "max": 11148,
+          "mean": 247.3404255319149,
+          "median": 71.5
+        },
+        "line_span": {
+          "min": 1,
+          "max": 202,
+          "mean": 5.287234042553192,
+          "median": 1.0
+        },
+        "node_types": {
+          "function_definition": 81,
+          "method_declaration": 13
+        },
+        "oversized_chunks_remaining_gt_5000_bytes": 1,
+        "overlap": {
+          "nested_chunk_count": 0,
+          "total_chunk_bytes_sum": 23250,
+          "unique_covered_bytes": 23250,
+          "redundancy_bytes": 0,
+          "duplication_factor": 1.0
+        }
+      },
+      "per_file": {
+        "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h": {
+          "chunk_count": 22,
+          "size_bytes": {
+            "min": 23,
+            "max": 149,
+            "mean": 52.31818181818182,
+            "median": 45.0
+          },
+          "line_span": {
+            "min": 1,
+            "max": 2,
+            "mean": 1.0454545454545454,
+            "median": 1.0
+          },
+          "node_types": {
+            "function_definition": 13,
+            "method_declaration": 9
+          },
+          "oversized_chunks_remaining_gt_5000_bytes": 0,
+          "overlap": {
+            "nested_chunk_count": 0,
+            "total_chunk_bytes_sum": 1151,
+            "unique_covered_bytes": 1151,
+            "redundancy_bytes": 0,
+            "duplication_factor": 1.0
+          }
+        },
+        "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/scalar_functions.cpp": {
+          "chunk_count": 3,
+          "size_bytes": {
+            "min": 79,
+            "max": 1187,
+            "mean": 816.6666666666666,
+            "median": 1184
+          },
+          "line_span": {
+            "min": 4,
+            "max": 28,
+            "mean": 20.0,
+            "median": 28
+          },
+          "node_types": {
+            "function_definition": 3
+          },
+          "oversized_chunks_remaining_gt_5000_bytes": 0,
+          "overlap": {
+            "nested_chunk_count": 0,
+            "total_chunk_bytes_sum": 2450,
+            "unique_covered_bytes": 2450,
+            "redundancy_bytes": 0,
+            "duplication_factor": 1.0
+          }
+        },
+        "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h": {
+          "chunk_count": 65,
+          "size_bytes": {
+            "min": 22,
+            "max": 533,
+            "mean": 120.32307692307693,
+            "median": 78
+          },
+          "line_span": {
+            "min": 1,
+            "max": 15,
+            "mean": 2.923076923076923,
+            "median": 1
+          },
+          "node_types": {
+            "function_definition": 61,
+            "method_declaration": 4
+          },
+          "oversized_chunks_remaining_gt_5000_bytes": 0,
+          "overlap": {
+            "nested_chunk_count": 0,
+            "total_chunk_bytes_sum": 7821,
+            "unique_covered_bytes": 7821,
+            "redundancy_bytes": 0,
+            "duplication_factor": 1.0
+          }
+        },
+        "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/tests/2d_examples/test_2d_dambreak/Dambreak.cpp": {
+          "chunk_count": 2,
+          "size_bytes": {
+            "min": 272,
+            "max": 11148,
+            "mean": 5710.0,
+            "median": 5710.0
+          },
+          "line_span": {
+            "min": 5,
+            "max": 202,
+            "mean": 103.5,
+            "median": 103.5
+          },
+          "node_types": {
+            "function_definition": 2
+          },
+          "oversized_chunks_remaining_gt_5000_bytes": 1,
+          "overlap": {
+            "nested_chunk_count": 0,
+            "total_chunk_bytes_sum": 11420,
+            "unique_covered_bytes": 11420,
+            "redundancy_bytes": 0,
+            "duplication_factor": 1.0
+          }
+        },
+        "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/tests/unit_tests_src/shared/common/test_scalar_functions/test_scalar_functions.cpp": {
+          "chunk_count": 2,
+          "size_bytes": {
+            "min": 106,
+            "max": 302,
+            "mean": 204.0,
+            "median": 204.0
+          },
+          "line_span": {
+            "min": 5,
+            "max": 12,
+            "mean": 8.5,
+            "median": 8.5
+          },
+          "node_types": {
+            "function_definition": 2
+          },
+          "oversized_chunks_remaining_gt_5000_bytes": 0,
+          "overlap": {
+            "nested_chunk_count": 0,
+            "total_chunk_bytes_sum": 408,
+            "unique_covered_bytes": 408,
+            "redundancy_bytes": 0,
+            "duplication_factor": 1.0
+          }
+        }
+      }
+    },
+    "D2": {
+      "aggregate": {
+        "chunk_count": 98,
+        "size_bytes": {
+          "min": 15,
+          "max": 3248,
+          "mean": 237.24489795918367,
+          "median": 74.5
+        },
+        "line_span": {
+          "min": 1,
+          "max": 50,
+          "mean": 5.071428571428571,
+          "median": 1.0
+        },
+        "node_types": {
+          "function_definition": 80,
+          "line_window_subchunk": 5,
+          "method_declaration": 13
+        },
+        "oversized_chunks_remaining_gt_5000_bytes": 0,
+        "overlap": {
+          "nested_chunk_count": 0,
+          "total_chunk_bytes_sum": 23250,
+          "unique_covered_bytes": 23250,
+          "redundancy_bytes": 0,
+          "duplication_factor": 1.0
+        }
+      },
+      "per_file": {
+        "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h": {
+          "chunk_count": 22,
+          "size_bytes": {
+            "min": 23,
+            "max": 149,
+            "mean": 52.31818181818182,
+            "median": 45.0
+          },
+          "line_span": {
+            "min": 1,
+            "max": 2,
+            "mean": 1.0454545454545454,
+            "median": 1.0
+          },
+          "node_types": {
+            "function_definition": 13,
+            "method_declaration": 9
+          },
+          "oversized_chunks_remaining_gt_5000_bytes": 0,
+          "overlap": {
+            "nested_chunk_count": 0,
+            "total_chunk_bytes_sum": 1151,
+            "unique_covered_bytes": 1151,
+            "redundancy_bytes": 0,
+            "duplication_factor": 1.0
+          }
+        },
+        "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/scalar_functions.cpp": {
+          "chunk_count": 3,
+          "size_bytes": {
+            "min": 79,
+            "max": 1187,
+            "mean": 816.6666666666666,
+            "median": 1184
+          },
+          "line_span": {
+            "min": 4,
+            "max": 28,
+            "mean": 20.0,
+            "median": 28
+          },
+          "node_types": {
+            "function_definition": 3
+          },
+          "oversized_chunks_remaining_gt_5000_bytes": 0,
+          "overlap": {
+            "nested_chunk_count": 0,
+            "total_chunk_bytes_sum": 2450,
+            "unique_covered_bytes": 2450,
+            "redundancy_bytes": 0,
+            "duplication_factor": 1.0
+          }
+        },
+        "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h": {
+          "chunk_count": 65,
+          "size_bytes": {
+            "min": 22,
+            "max": 533,
+            "mean": 120.32307692307693,
+            "median": 78
+          },
+          "line_span": {
+            "min": 1,
+            "max": 15,
+            "mean": 2.923076923076923,
+            "median": 1
+          },
+          "node_types": {
+            "function_definition": 61,
+            "method_declaration": 4
+          },
+          "oversized_chunks_remaining_gt_5000_bytes": 0,
+          "overlap": {
+            "nested_chunk_count": 0,
+            "total_chunk_bytes_sum": 7821,
+            "unique_covered_bytes": 7821,
+            "redundancy_bytes": 0,
+            "duplication_factor": 1.0
+          }
+        },
+        "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/tests/2d_examples/test_2d_dambreak/Dambreak.cpp": {
+          "chunk_count": 6,
+          "size_bytes": {
+            "min": 15,
+            "max": 3248,
+            "mean": 1903.3333333333333,
+            "median": 2340.5
+          },
+          "line_span": {
+            "min": 2,
+            "max": 50,
+            "mean": 34.5,
+            "median": 50.0
+          },
+          "node_types": {
+            "function_definition": 1,
+            "line_window_subchunk": 5
+          },
+          "oversized_chunks_remaining_gt_5000_bytes": 0,
+          "overlap": {
+            "nested_chunk_count": 0,
+            "total_chunk_bytes_sum": 11420,
+            "unique_covered_bytes": 11420,
+            "redundancy_bytes": 0,
+            "duplication_factor": 1.0
+          }
+        },
+        "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/tests/unit_tests_src/shared/common/test_scalar_functions/test_scalar_functions.cpp": {
+          "chunk_count": 2,
+          "size_bytes": {
+            "min": 106,
+            "max": 302,
+            "mean": 204.0,
+            "median": 204.0
+          },
+          "line_span": {
+            "min": 5,
+            "max": 12,
+            "mean": 8.5,
+            "median": 8.5
+          },
+          "node_types": {
+            "function_definition": 2
+          },
+          "oversized_chunks_remaining_gt_5000_bytes": 0,
+          "overlap": {
+            "nested_chunk_count": 0,
+            "total_chunk_bytes_sum": 408,
+            "unique_covered_bytes": 408,
+            "redundancy_bytes": 0,
+            "duplication_factor": 1.0
+          }
+        }
+      }
+    },
+    "D3": {
+      "aggregate": {
+        "chunk_count": 96,
+        "size_bytes": {
+          "min": 22,
+          "max": 4658,
+          "mean": 242.1875,
+          "median": 74.5
+        },
+        "line_span": {
+          "min": 1,
+          "max": 87,
+          "mean": 5.177083333333333,
+          "median": 1.0
+        },
+        "node_types": {
+          "function_definition": 80,
+          "method_declaration": 13,
+          "tree_sitter_statement_subchunk": 3
+        },
+        "oversized_chunks_remaining_gt_5000_bytes": 0,
+        "overlap": {
+          "nested_chunk_count": 0,
+          "total_chunk_bytes_sum": 23250,
+          "unique_covered_bytes": 23250,
+          "redundancy_bytes": 0,
+          "duplication_factor": 1.0
+        }
+      },
+      "per_file": {
+        "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h": {
+          "chunk_count": 22,
+          "size_bytes": {
+            "min": 23,
+            "max": 149,
+            "mean": 52.31818181818182,
+            "median": 45.0
+          },
+          "line_span": {
+            "min": 1,
+            "max": 2,
+            "mean": 1.0454545454545454,
+            "median": 1.0
+          },
+          "node_types": {
+            "function_definition": 13,
+            "method_declaration": 9
+          },
+          "oversized_chunks_remaining_gt_5000_bytes": 0,
+          "overlap": {
+            "nested_chunk_count": 0,
+            "total_chunk_bytes_sum": 1151,
+            "unique_covered_bytes": 1151,
+            "redundancy_bytes": 0,
+            "duplication_factor": 1.0
+          }
+        },
+        "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/scalar_functions.cpp": {
+          "chunk_count": 3,
+          "size_bytes": {
+            "min": 79,
+            "max": 1187,
+            "mean": 816.6666666666666,
+            "median": 1184
+          },
+          "line_span": {
+            "min": 4,
+            "max": 28,
+            "mean": 20.0,
+            "median": 28
+          },
+          "node_types": {
+            "function_definition": 3
+          },
+          "oversized_chunks_remaining_gt_5000_bytes": 0,
+          "overlap": {
+            "nested_chunk_count": 0,
+            "total_chunk_bytes_sum": 2450,
+            "unique_covered_bytes": 2450,
+            "redundancy_bytes": 0,
+            "duplication_factor": 1.0
+          }
+        },
+        "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h": {
+          "chunk_count": 65,
+          "size_bytes": {
+            "min": 22,
+            "max": 533,
+            "mean": 120.32307692307693,
+            "median": 78
+          },
+          "line_span": {
+            "min": 1,
+            "max": 15,
+            "mean": 2.923076923076923,
+            "median": 1
+          },
+          "node_types": {
+            "function_definition": 61,
+            "method_declaration": 4
+          },
+          "oversized_chunks_remaining_gt_5000_bytes": 0,
+          "overlap": {
+            "nested_chunk_count": 0,
+            "total_chunk_bytes_sum": 7821,
+            "unique_covered_bytes": 7821,
+            "redundancy_bytes": 0,
+            "duplication_factor": 1.0
+          }
+        },
+        "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/tests/2d_examples/test_2d_dambreak/Dambreak.cpp": {
+          "chunk_count": 4,
+          "size_bytes": {
+            "min": 272,
+            "max": 4658,
+            "mean": 2855.0,
+            "median": 3245.0
+          },
+          "line_span": {
+            "min": 5,
+            "max": 87,
+            "mean": 51.75,
+            "median": 57.5
+          },
+          "node_types": {
+            "function_definition": 1,
+            "tree_sitter_statement_subchunk": 3
+          },
+          "oversized_chunks_remaining_gt_5000_bytes": 0,
+          "overlap": {
+            "nested_chunk_count": 0,
+            "total_chunk_bytes_sum": 11420,
+            "unique_covered_bytes": 11420,
+            "redundancy_bytes": 0,
+            "duplication_factor": 1.0
+          }
+        },
+        "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/tests/unit_tests_src/shared/common/test_scalar_functions/test_scalar_functions.cpp": {
+          "chunk_count": 2,
+          "size_bytes": {
+            "min": 106,
+            "max": 302,
+            "mean": 204.0,
+            "median": 204.0
+          },
+          "line_span": {
+            "min": 5,
+            "max": 12,
+            "mean": 8.5,
+            "median": 8.5
+          },
+          "node_types": {
+            "function_definition": 2
+          },
+          "oversized_chunks_remaining_gt_5000_bytes": 0,
+          "overlap": {
+            "nested_chunk_count": 0,
+            "total_chunk_bytes_sum": 408,
+            "unique_covered_bytes": 408,
+            "redundancy_bytes": 0,
+            "duplication_factor": 1.0
+          }
+        }
+      }
+    }
+  }
+}

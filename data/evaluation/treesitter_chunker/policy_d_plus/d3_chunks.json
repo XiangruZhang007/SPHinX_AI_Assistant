@@ -1,0 +1,1631 @@
+[
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/tests/2d_examples/test_2d_dambreak/Dambreak.cpp",
+    "node_type": "function_definition",
+    "start_line": 42,
+    "end_line": 46,
+    "byte_start": 2308,
+    "byte_end": 2580,
+    "chunk_id": "0746b40b96d26de344eccab842bcbaa3c68a27c3",
+    "parent_route": [
+      "class_specifier:WallBoundary",
+      "function_definition:anon@42"
+    ],
+    "content": "explicit WallBoundary(const std::string &shape_name) : ComplexShape(shape_name)\n    {\n        add<GeometricShapeBox>(Transform(outer_wall_translation), outer_wall_halfsize);\n        subtract<GeometricShapeBox>(Transform(inner_wall_translation), inner_wall_halfsize);\n    }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "parent_chunk_id": "6839c17ba29478d7ae815279b8f5f580c9ad29e1",
+    "parent_node_type": "function_definition",
+    "parent_start_line": 51,
+    "parent_end_line": 252,
+    "parent_byte_start": 2759,
+    "parent_byte_end": 13907,
+    "parent_route": [
+      "function_definition:anon@51"
+    ],
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/tests/2d_examples/test_2d_dambreak/Dambreak.cpp",
+    "node_type": "tree_sitter_statement_subchunk",
+    "subchunk_index": 0,
+    "start_line": 51,
+    "end_line": 118,
+    "byte_start": 2759,
+    "byte_end": 7417,
+    "content": "int main(int ac, char *av[])\n{\n    //----------------------------------------------------------------------\n    //\tBuild up an SPHSystem and IO environment.\n    //----------------------------------------------------------------------\n    BoundingBoxd system_domain_bounds(Vec2d(-BW, -BW), Vec2d(DL + BW, DH + BW));\n    SPHSystem sph_system(system_domain_bounds, particle_spacing_ref);\n    sph_system.handleCommandlineOptions(ac, av);\n    //----------------------------------------------------------------------\n    //\tCreating bodies with corresponding materials and particles.\n    //----------------------------------------------------------------------\n    GeometricShapeBox initial_water_block(Transform(water_block_translation), water_block_halfsize, \"WaterBody\");\n    FluidBody water_block(sph_system, initial_water_block);\n    water_block.defineMatterMaterial<WeaklyCompressibleFluid>(rho0_f, c_f);\n    water_block.generateParticles<BaseParticles, Lattice>();\n\n    SolidBody wall_boundary(sph_system, makeShared<WallBoundary>(\"WallBoundary\"));\n    wall_boundary.defineMatterMaterial<Solid>();\n    wall_boundary.generateParticles<BaseParticles, Lattice>();\n\n    ObserverBody fluid_observer(sph_system, \"FluidObserver\");\n    StdVec<Vecd> observation_location = {Vecd(DL, 0.2)};\n    fluid_observer.generateParticles<ObserverParticles>(observation_location);\n    //----------------------------------------------------------------------\n    //\tDefine body relation map.\n    //\tThe contact map gives the topological connections between the bodies.\n    //\tBasically the the range of bodies to build neighbor particle lists.\n    //  Generally, we first define all the inner relations, then the contact relations.\n    //----------------------------------------------------------------------\n    InnerRelation water_block_inner(water_block);\n    ContactRelation water_wall_contact(water_block, {&wall_boundary});\n    ContactRelation fluid_observer_contact(fluid_observer, {&water_block});\n    //----------------------------------------------------------------------\n    // Combined relations built from basic relations\n    // which is only used for update configuration.\n    //----------------------------------------------------------------------\n    ComplexRelation water_wall_complex(water_block_inner, water_wall_contact);\n    //----------------------------------------------------------------------\n    // Define the numerical methods used in the simulation.\n    // Note that there may be data dependence on the sequence of constructions.\n    // Generally, the geometric models or simple objects without data dependencies,\n    // such as gravity, should be initiated first.\n    // Then the major physical particle dynamics model should be introduced.\n    // Finally, the auxiliary models such as time step estimator, initial condition,\n    // boundary condition and other constraints should be defined.\n    //----------------------------------------------------------------------\n    Gravity gravity(Vecd(0.0, -gravity_g));\n    SimpleDynamics<GravityForce<Gravity>> constant_gravity(water_block, gravity);\n    SimpleDynamics<NormalDirectionFromBodyShape> wall_boundary_normal_direction(wall_boundary);\n\n    Dynamics1Level<fluid_dynamics::Integration1stHalfWithWallRiemann> fluid_pressure_relaxation(water_block_inner, water_wall_contact);\n    Dynamics1Level<fluid_dynamics::Integration2ndHalfWithWallRiemann> fluid_density_relaxation(water_block_inner, water_wall_contact);\n    InteractionWithUpdate<fluid_dynamics::DensitySummationComplexFreeSurface> fluid_density_by_summation(water_block_inner, water_wall_contact);\n\n    ReduceDynamics<fluid_dynamics::AdvectionTimeStep> fluid_advection_time_step(water_block, U_ref);\n    ReduceDynamics<fluid_dynamics::AcousticTimeStep> fluid_acoustic_time_step(water_block);\n    //----------------------------------------------------------------------\n    //\tDefine the configuration related particles dynamics.\n    //----------------------------------------------------------------------\n    ParticleSorting particle_sorting(water_block);\n    //----------------------------------------------------------------------\n    //\tDefine the methods for I/O operations, observations\n    //\tand regression tests of the simulation.\n    //----------------------------------------------------------------------\n    BodyStatesRecordingToVtp body_states_recording(sph_system);\n    body_states_recording.addToWrite<Vecd>(wall_boundary, \"NormalDirection\");\n    RestartIO restart_io(sph_system);\n    RegressionTestDynamicTimeWarping<ReducedQuantityRecording<TotalMechanicalEnergy>> write_water_mechanical_energy(water_block, gravity);\n",
+    "selection_kind": "tree_sitter_top_level_statement_boundary",
+    "boundary_start": "function_signature_and_opening_brace",
+    "boundary_end": "declaration"
+  },
+  {
+    "parent_chunk_id": "6839c17ba29478d7ae815279b8f5f580c9ad29e1",
+    "parent_node_type": "function_definition",
+    "parent_start_line": 51,
+    "parent_end_line": 252,
+    "parent_byte_start": 2759,
+    "parent_byte_end": 13907,
+    "parent_route": [
+      "function_definition:anon@51"
+    ],
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/tests/2d_examples/test_2d_dambreak/Dambreak.cpp",
+    "node_type": "tree_sitter_statement_subchunk",
+    "subchunk_index": 1,
+    "start_line": 119,
+    "end_line": 165,
+    "byte_start": 7417,
+    "byte_end": 10023,
+    "content": "    RegressionTestDynamicTimeWarping<ObservedQuantityRecording<Real>> write_recorded_water_pressure(\"Pressure\", fluid_observer_contact);\n    //----------------------------------------------------------------------\n    //\tPrepare the simulation with cell linked list, configuration\n    //\tand case specified initial condition if necessary.\n    //----------------------------------------------------------------------\n    sph_system.initializeSystemCellLinkedLists();\n    sph_system.initializeSystemConfigurations();\n    wall_boundary_normal_direction.exec();\n    constant_gravity.exec();\n    //----------------------------------------------------------------------\n    //\tLoad restart file if necessary.\n    //----------------------------------------------------------------------\n    Real &physical_time = *sph_system.getSystemVariableDataByName<Real>(\"PhysicalTime\");\n    if (sph_system.RestartStep() != 0)\n    {\n        restart_io.readRestartFiles(sph_system.RestartStep());\n        water_block.updateCellLinkedList();\n        water_wall_complex.updateConfiguration();\n        fluid_observer_contact.updateConfiguration();\n    }\n    //----------------------------------------------------------------------\n    //\tSetup for time-stepping control\n    //----------------------------------------------------------------------\n    size_t number_of_iterations = sph_system.RestartStep();\n    int screen_output_interval = 100;\n    int observation_sample_interval = screen_output_interval * 2;\n    int restart_output_interval = screen_output_interval * 10;\n    Real end_time = 20.0;\n    Real output_interval = 0.1;\n    //----------------------------------------------------------------------\n    //\tStatistics for CPU time\n    //----------------------------------------------------------------------\n    TickCount t1 = TickCount::now();\n    TimeInterval interval;\n    TimeInterval interval_computing_time_step;\n    TimeInterval interval_computing_fluid_pressure_relaxation;\n    TimeInterval interval_updating_configuration;\n    TickCount time_instance;\n    //----------------------------------------------------------------------\n    //\tFirst output before the main loop.\n    //----------------------------------------------------------------------\n    body_states_recording.writeToFile();\n    write_water_mechanical_energy.writeToFile(number_of_iterations);\n    write_recorded_water_pressure.writeToFile(number_of_iterations);\n    //----------------------------------------------------------------------\n    //\tMain loop starts here.\n    //----------------------------------------------------------------------\n",
+    "selection_kind": "tree_sitter_top_level_statement_boundary",
+    "boundary_start": "declaration",
+    "boundary_end": "while_statement"
+  },
+  {
+    "parent_chunk_id": "6839c17ba29478d7ae815279b8f5f580c9ad29e1",
+    "parent_node_type": "function_definition",
+    "parent_start_line": 51,
+    "parent_end_line": 252,
+    "parent_byte_start": 2759,
+    "parent_byte_end": 13907,
+    "parent_route": [
+      "function_definition:anon@51"
+    ],
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/tests/2d_examples/test_2d_dambreak/Dambreak.cpp",
+    "node_type": "tree_sitter_statement_subchunk",
+    "subchunk_index": 2,
+    "start_line": 166,
+    "end_line": 252,
+    "byte_start": 10023,
+    "byte_end": 13907,
+    "content": "    while (physical_time < end_time)\n    {\n        Real integration_time = 0.0;\n        /** Integrate time (loop) until the next output time. */\n        while (integration_time < output_interval)\n        {\n            /** outer loop for dual-time criteria time-stepping. */\n            time_instance = TickCount::now();\n            Real advection_dt = fluid_advection_time_step.exec();\n            fluid_density_by_summation.exec();\n            interval_computing_time_step += TickCount::now() - time_instance;\n\n            time_instance = TickCount::now();\n            Real relaxation_time = 0.0;\n            Real acoustic_dt = 0.0;\n            while (relaxation_time < advection_dt)\n            {\n                /** inner loop for dual-time criteria time-stepping.  */\n                acoustic_dt = fluid_acoustic_time_step.exec();\n                fluid_pressure_relaxation.exec(acoustic_dt);\n                fluid_density_relaxation.exec(acoustic_dt);\n                relaxation_time += acoustic_dt;\n                integration_time += acoustic_dt;\n                physical_time += acoustic_dt;\n            }\n            interval_computing_fluid_pressure_relaxation += TickCount::now() - time_instance;\n\n            /** screen output, write body observables and restart files  */\n            if (number_of_iterations % screen_output_interval == 0)\n            {\n                std::cout << std::fixed << std::setprecision(9) << \"N=\" << number_of_iterations << \"\tTime = \"\n                          << physical_time\n                          << \"\tadvection_dt = \" << advection_dt << \"\tacoustic_dt = \" << acoustic_dt << \"\\n\";\n\n                if (number_of_iterations % observation_sample_interval == 0 && number_of_iterations != sph_system.RestartStep())\n                {\n                    write_water_mechanical_energy.writeToFile(number_of_iterations);\n                    write_recorded_water_pressure.writeToFile(number_of_iterations);\n                }\n                if (number_of_iterations % restart_output_interval == 0)\n                    restart_io.writeToFile(number_of_iterations);\n            }\n            number_of_iterations++;\n\n            /** Update cell linked list and configuration. */\n            time_instance = TickCount::now();\n            if (number_of_iterations % 100 == 0 && number_of_iterations != 1)\n            {\n                particle_sorting.exec();\n            }\n            water_block.updateCellLinkedList();\n            water_wall_complex.updateConfiguration();\n            fluid_observer_contact.updateConfiguration();\n            interval_updating_configuration += TickCount::now() - time_instance;\n        }\n\n        body_states_recording.writeToFile();\n        TickCount t2 = TickCount::now();\n        TickCount t3 = TickCount::now();\n        interval += t3 - t2;\n    }\n    TickCount t4 = TickCount::now();\n\n    TimeInterval tt;\n    tt = t4 - t1 - interval;\n    std::cout << \"Total wall time for computation: \" << tt.seconds()\n              << \" seconds.\" << std::endl;\n    std::cout << std::fixed << std::setprecision(9) << \"interval_computing_time_step =\"\n              << interval_computing_time_step.seconds() << \"\\n\";\n    std::cout << std::fixed << std::setprecision(9) << \"interval_computing_fluid_pressure_relaxation = \"\n              << interval_computing_fluid_pressure_relaxation.seconds() << \"\\n\";\n    std::cout << std::fixed << std::setprecision(9) << \"interval_updating_configuration = \"\n              << interval_updating_configuration.seconds() << \"\\n\";\n\n    if (sph_system.GenerateRegressionData())\n    {\n        write_water_mechanical_energy.generateDataBase(1.0e-3);\n        write_recorded_water_pressure.generateDataBase(1.0e-3);\n    }\n    else if (sph_system.RestartStep() == 0)\n    {\n        write_water_mechanical_energy.testResult();\n        write_recorded_water_pressure.testResult();\n    }\n\n    return 0;\n}",
+    "selection_kind": "tree_sitter_top_level_statement_boundary",
+    "boundary_start": "while_statement",
+    "boundary_end": "function_closing_brace"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+    "node_type": "function_definition",
+    "start_line": 94,
+    "end_line": 94,
+    "byte_start": 4440,
+    "byte_end": 4481,
+    "chunk_id": "a0b04918f86ca684c33b4bd724b233f23f416c25",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "class_specifier:SPHBody",
+      "function_definition:Name"
+    ],
+    "content": "std::string Name() { return body_name_; }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+    "node_type": "function_definition",
+    "start_line": 96,
+    "end_line": 96,
+    "byte_start": 4518,
+    "byte_end": 4557,
+    "chunk_id": "b9611ea63ed50d19c02ab5c75c8287081cd18433",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "class_specifier:SPHBody",
+      "function_definition:getSPHBody"
+    ],
+    "content": "SPHBody &getSPHBody() { return *this; }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+    "node_type": "function_definition",
+    "start_line": 97,
+    "end_line": 97,
+    "byte_start": 4563,
+    "byte_end": 4615,
+    "chunk_id": "0904144e3c4cbd39ef62beb1f903a72e9af7b5ee",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "class_specifier:SPHBody",
+      "function_definition:getInitialShape"
+    ],
+    "content": "Shape &getInitialShape() { return *initial_shape_; }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+    "node_type": "function_definition",
+    "start_line": 98,
+    "end_line": 98,
+    "byte_start": 4621,
+    "byte_end": 4714,
+    "chunk_id": "619c6003007cbdd61e3fdc54e9a91db143469dd1",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "class_specifier:SPHBody",
+      "function_definition:assignBaseParticles"
+    ],
+    "content": "void assignBaseParticles(BaseParticles *base_particles) { base_particles_ = base_particles; }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+    "node_type": "function_definition",
+    "start_line": 112,
+    "end_line": 112,
+    "byte_start": 5177,
+    "byte_end": 5246,
+    "chunk_id": "ef531acd725d0408102787c5805a44d6641375be",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "class_specifier:SPHBody",
+      "function_definition:getBodyRelations"
+    ],
+    "content": "StdVec<SPHRelation *> &getBodyRelations() { return body_relations_; }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+    "node_type": "method_declaration",
+    "start_line": 113,
+    "end_line": 113,
+    "byte_start": 5252,
+    "byte_end": 5275,
+    "chunk_id": "1a0a10149c6b18286e1477121166aa98f51aef81",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "class_specifier:SPHBody",
+      "method_declaration:LoopRange"
+    ],
+    "content": "IndexRange LoopRange();",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+    "node_type": "method_declaration",
+    "start_line": 114,
+    "end_line": 114,
+    "byte_start": 5280,
+    "byte_end": 5305,
+    "chunk_id": "b176a4faed8976103a6b79954bc414884751a02d",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "class_specifier:SPHBody",
+      "method_declaration:SizeOfLoopRange"
+    ],
+    "content": "size_t SizeOfLoopRange();",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+    "node_type": "method_declaration",
+    "start_line": 115,
+    "end_line": 115,
+    "byte_start": 5310,
+    "byte_end": 5341,
+    "chunk_id": "7a8c4698863a26e5cb579ad7c1ac41f1316e05c5",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "class_specifier:SPHBody",
+      "method_declaration:getSPHBodyResolutionRef"
+    ],
+    "content": "Real getSPHBodyResolutionRef();",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+    "node_type": "function_definition",
+    "start_line": 116,
+    "end_line": 116,
+    "byte_start": 5346,
+    "byte_end": 5395,
+    "chunk_id": "59a1baa72bc937a94541d293951aca9c15292ad3",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "class_specifier:SPHBody",
+      "function_definition:setNewlyUpdated"
+    ],
+    "content": "void setNewlyUpdated() { newly_updated_ = true; }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+    "node_type": "function_definition",
+    "start_line": 117,
+    "end_line": 117,
+    "byte_start": 5401,
+    "byte_end": 5454,
+    "chunk_id": "34be35b8e0f4ef13dd99639513bc6cc5e3f850c1",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "class_specifier:SPHBody",
+      "function_definition:setNotNewlyUpdated"
+    ],
+    "content": "void setNotNewlyUpdated() { newly_updated_ = false; }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+    "node_type": "function_definition",
+    "start_line": 118,
+    "end_line": 118,
+    "byte_start": 5460,
+    "byte_end": 5511,
+    "chunk_id": "a48f0304ec5206e0c6747615427b26273a39f5e9",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "class_specifier:SPHBody",
+      "function_definition:checkNewlyUpdated"
+    ],
+    "content": "bool checkNewlyUpdated() { return newly_updated_; }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+    "node_type": "method_declaration",
+    "start_line": 119,
+    "end_line": 119,
+    "byte_start": 5517,
+    "byte_end": 5566,
+    "chunk_id": "21b7adccc1bd6de9db75cd951e2ee7f4aa4af999",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "class_specifier:SPHBody",
+      "method_declaration:setSPHBodyBounds"
+    ],
+    "content": "void setSPHBodyBounds(const BoundingBoxd &bound);",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+    "node_type": "method_declaration",
+    "start_line": 120,
+    "end_line": 120,
+    "byte_start": 5571,
+    "byte_end": 5603,
+    "chunk_id": "c05ec00d2cadd5ccb5803722aa409234a1057209",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "class_specifier:SPHBody",
+      "method_declaration:getSPHBodyBounds"
+    ],
+    "content": "BoundingBoxd getSPHBodyBounds();",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+    "node_type": "method_declaration",
+    "start_line": 121,
+    "end_line": 121,
+    "byte_start": 5608,
+    "byte_end": 5642,
+    "chunk_id": "ef4a144a78937425dd4952a03e6edaa388fe17d7",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "class_specifier:SPHBody",
+      "method_declaration:getSPHSystemBounds"
+    ],
+    "content": "BoundingBoxd getSPHSystemBounds();",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+    "node_type": "function_definition",
+    "start_line": 127,
+    "end_line": 127,
+    "byte_start": 5766,
+    "byte_end": 5840,
+    "chunk_id": "9325a4a0365da89200efa268bef546c4517fc124",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "class_specifier:SPHBody",
+      "field_declaration:anon@123",
+      "class_specifier:SourceParticleMask",
+      "template_declaration:anon@126",
+      "function_definition:anon@127"
+    ],
+    "content": "SourceParticleMask(ExecutionPolicy &ex_policy, EnclosureType &encloser) {}",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+    "node_type": "function_definition",
+    "start_line": 128,
+    "end_line": 128,
+    "byte_start": 5849,
+    "byte_end": 5873,
+    "chunk_id": "735a25a7f4610dd62388238417639d06f9eb2b89",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "class_specifier:SPHBody",
+      "field_declaration:anon@123",
+      "class_specifier:SourceParticleMask",
+      "function_definition:anon@128"
+    ],
+    "content": "~SourceParticleMask() {}",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+    "node_type": "function_definition",
+    "start_line": 129,
+    "end_line": 129,
+    "byte_start": 5882,
+    "byte_end": 5960,
+    "chunk_id": "87cc0dcbb864fc235c1cc124215a4fe9b8fffae3",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "class_specifier:SPHBody",
+      "field_declaration:anon@123",
+      "class_specifier:SourceParticleMask",
+      "function_definition:anon@129"
+    ],
+    "content": "constexpr bool operator()(UnsignedInt /*source_index*/) const { return true; }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+    "node_type": "function_definition",
+    "start_line": 137,
+    "end_line": 138,
+    "byte_start": 6174,
+    "byte_end": 6323,
+    "chunk_id": "096247d1553cdd525e569418635f75aca83d86cb",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "class_specifier:SPHBody",
+      "template_declaration:anon@132",
+      "class_specifier:TargetParticleMask",
+      "template_declaration:anon@136",
+      "function_definition:anon@137"
+    ],
+    "content": "TargetParticleMask(ExecutionPolicy &ex_policy, EnclosureType &encloser, Args &&...args)\n            : TargetCriterion(std::forward<Args>(args)...) {}",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+    "node_type": "function_definition",
+    "start_line": 139,
+    "end_line": 139,
+    "byte_start": 6332,
+    "byte_end": 6364,
+    "chunk_id": "74e37d1491ceda0894483aad466e618c39d67436",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "class_specifier:SPHBody",
+      "template_declaration:anon@132",
+      "class_specifier:TargetParticleMask",
+      "function_definition:anon@139"
+    ],
+    "content": "virtual ~TargetParticleMask() {}",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+    "node_type": "method_declaration",
+    "start_line": 144,
+    "end_line": 144,
+    "byte_start": 6572,
+    "byte_end": 6667,
+    "chunk_id": "4be311a9a8fcfe3af8d6a34e215ee7b637fbc05e",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "class_specifier:SPHBody",
+      "method_declaration:defineAdaptationRatios"
+    ],
+    "content": "virtual void defineAdaptationRatios(Real h_spacing_ratio, Real new_refinement_to_global = 1.0);",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+    "node_type": "method_declaration",
+    "start_line": 188,
+    "end_line": 188,
+    "byte_start": 8457,
+    "byte_end": 8485,
+    "chunk_id": "937b31bae066dd109bbc4b16232670dd52dcad68",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "class_specifier:RealBody",
+      "method_declaration:updateCellLinkedList"
+    ],
+    "content": "void updateCellLinkedList();",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+    "node_type": "method_declaration",
+    "start_line": 200,
+    "end_line": 200,
+    "byte_start": 8829,
+    "byte_end": 8859,
+    "chunk_id": "ed4d5d0e9d1c9a9406c2858b4e280704a2689734",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "class_specifier:RealBody",
+      "method_declaration:addRealBodyToSPHSystem"
+    ],
+    "content": "void addRealBodyToSPHSystem();",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/scalar_functions.cpp",
+    "node_type": "function_definition",
+    "start_line": 6,
+    "end_line": 9,
+    "byte_start": 250,
+    "byte_end": 329,
+    "chunk_id": "fcfe6c711c5d31dbebf2d7b2da9019ad992ca2ae",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "function_definition:anon@6"
+    ],
+    "content": "int NextNextAxis(int first_axis)\n{\n    return NextAxis(NextAxis(first_axis));\n}",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/scalar_functions.cpp",
+    "node_type": "function_definition",
+    "start_line": 11,
+    "end_line": 38,
+    "byte_start": 432,
+    "byte_end": 1616,
+    "chunk_id": "4b5a2d194ada98d7df69eeb92d7be2c374049d78",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "function_definition:anon@11"
+    ],
+    "content": "Real getLeftStateInWeno(Real v_1, Real v_2, Real v_3, Real v_4)\n{\n    Real v1 = v_1;\n    Real v2 = v_2;\n    Real v3 = v_3;\n    Real v4 = v_4;\n\n    Real f1 = 0.5 * v2 + 0.5 * v3;\n    Real f2 = (-0.5) * v1 + 1.5 * v2;\n    Real f3 = v2 / 3.0 + 5.0 * v3 / 6.0 - v4 / 6.0;\n\n    Real epsilon = 1.0e-6;\n    Real s1 = pow(v2 - v3, 2) + epsilon;\n    Real s2 = pow(v2 - v1, 2) + epsilon;\n    Real s3 = pow(3.0 * v2 - 4.0 * v3 + v4, 2) / 4.0 + 13.0 * pow(v2 - 2.0 * v3 + v4, 2) / 12.0 + epsilon;\n    Real s12 = 13.0 * pow(v1 - 2.0 * v2 + v3, 2) / 12.0 + pow(v1 - v3, 2) / 4.0 + epsilon;\n    Real tau_4 = (v1 * (547.0 * v1 - 2522.0 * v2 + 1922.0 * v3 - 494.0 * v4) + v2 * (3443.0 * v2 - 5966.0 * v3 + 1602.0 * v4) + v3 * (2843.0 * v3 - 1642.0 * v4) + 267.0 * v4 * v4) / 240.0;\n\n    Real alpha_1 = (1.0 + (tau_4 / s1) * (tau_4 / s12)) / 3.0;\n    Real alpha_2 = (1.0 + (tau_4 / s2) * (tau_4 / s12)) / 6.0;\n    Real alpha_3 = (1.0 + tau_4 / s3) / 2.0;\n    Real w_1 = alpha_1 / (alpha_1 + alpha_2 + alpha_3);\n    Real w_2 = alpha_2 / (alpha_1 + alpha_2 + alpha_3);\n    Real w_3 = alpha_3 / (alpha_1 + alpha_2 + alpha_3);\n    Real left_state = w_1 * f1 + w_2 * f2 + w_3 * f3;\n\n    return left_state;\n}",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/scalar_functions.cpp",
+    "node_type": "function_definition",
+    "start_line": 40,
+    "end_line": 67,
+    "byte_start": 1719,
+    "byte_end": 2906,
+    "chunk_id": "33797b9a95cd33969ea4ab1c29cbe1dd639dd945",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "function_definition:anon@40"
+    ],
+    "content": "Real getRightStateInWeno(Real v_1, Real v_2, Real v_3, Real v_4)\n{\n    Real v1 = v_4;\n    Real v2 = v_3;\n    Real v3 = v_2;\n    Real v4 = v_1;\n\n    Real f1 = 0.5 * v2 + 0.5 * v3;\n    Real f2 = (-0.5) * v1 + 1.5 * v2;\n    Real f3 = v2 / 3.0 + 5.0 * v3 / 6.0 - v4 / 6.0;\n\n    Real epsilon = 1.0e-6;\n    Real s1 = pow(v2 - v3, 2) + epsilon;\n    Real s2 = pow(v2 - v1, 2) + epsilon;\n    Real s3 = pow(3.0 * v2 - 4.0 * v3 + v4, 2) / 4.0 + 13.0 * pow(v2 - 2.0 * v3 + v4, 2) / 12.0 + epsilon;\n    Real s12 = 13.0 * pow(v1 - 2.0 * v2 + v3, 2) / 12.0 + pow(v1 - v3, 2) / 4.0 + epsilon;\n    Real tau_4 = (v1 * (547.0 * v1 - 2522.0 * v2 + 1922.0 * v3 - 494.0 * v4) + v2 * (3443.0 * v2 - 5966.0 * v3 + 1602.0 * v4) + v3 * (2843.0 * v3 - 1642.0 * v4) + 267.0 * v4 * v4) / 240.0;\n\n    Real alpha_1 = (1.0 + (tau_4 / s1) * (tau_4 / s12)) / 3.0;\n    Real alpha_2 = (1.0 + (tau_4 / s2) * (tau_4 / s12)) / 6.0;\n    Real alpha_3 = (1.0 + tau_4 / s3) / 2.0;\n    Real w_1 = alpha_1 / (alpha_1 + alpha_2 + alpha_3);\n    Real w_2 = alpha_2 / (alpha_1 + alpha_2 + alpha_3);\n    Real w_3 = alpha_3 / (alpha_1 + alpha_2 + alpha_3);\n    Real right_state = w_1 * f1 + w_2 * f2 + w_3 * f3;\n\n    return right_state;\n}",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 54,
+    "end_line": 54,
+    "byte_start": 2369,
+    "byte_end": 2410,
+    "chunk_id": "d1be365ed3494c124ff3ec35bf44adebe5be2f83",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@50",
+      "class_specifier:DataView",
+      "function_definition:anon@54"
+    ],
+    "content": "DataView(DataType *data) : data_(data) {}",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 56,
+    "end_line": 59,
+    "byte_start": 2417,
+    "byte_end": 2507,
+    "chunk_id": "18b50209a70bc48055ffba5b8e19725af47b6a78",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@50",
+      "class_specifier:DataView",
+      "function_definition:anon@56"
+    ],
+    "content": "DataType &operator[](UnsignedInt index) const\n    {\n        return *(data_ + index);\n    }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 69,
+    "end_line": 70,
+    "byte_start": 2608,
+    "byte_end": 2726,
+    "chunk_id": "a1c052fc96c3f4e28b5b676841563d7406f9d2b5",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@65",
+      "class_specifier:EntryView",
+      "function_definition:anon@69"
+    ],
+    "content": "EntryView(DataType *data, UnsignedInt entry, UnsignedInt width)\n        : data_(data), entry_(entry), width_(width) {}",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 72,
+    "end_line": 72,
+    "byte_start": 2733,
+    "byte_end": 2777,
+    "chunk_id": "a0bf40fee704e6fd5538a6a23d4a18d0182b2400",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@65",
+      "class_specifier:EntryView",
+      "function_definition:Entry"
+    ],
+    "content": "UnsignedInt Entry() const { return entry_; }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 73,
+    "end_line": 73,
+    "byte_start": 2783,
+    "byte_end": 2827,
+    "chunk_id": "c46ad34327991c6b3080fe8a01cbb21bfe2dd747",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@65",
+      "class_specifier:EntryView",
+      "function_definition:Width"
+    ],
+    "content": "UnsignedInt Width() const { return width_; }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 75,
+    "end_line": 78,
+    "byte_start": 2834,
+    "byte_end": 2942,
+    "chunk_id": "08326d82f791dcf25482ac2c20fc4b0beada0567",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@65",
+      "class_specifier:EntryView",
+      "function_definition:anon@75"
+    ],
+    "content": "DataType &operator[](UnsignedInt index) const\n    {\n        return *(data_ + entry_ + index * width_);\n    }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 89,
+    "end_line": 89,
+    "byte_start": 3080,
+    "byte_end": 3127,
+    "chunk_id": "73140a3da38628fa7f2d86a7a2823aca7b133bbc",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@85",
+      "class_specifier:MultiEntryView",
+      "function_definition:anon@89"
+    ],
+    "content": "MultiEntryView() : data_(nullptr), width_(0) {}",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 90,
+    "end_line": 91,
+    "byte_start": 3133,
+    "byte_end": 3222,
+    "chunk_id": "5411ed11037038539fb2e95c6f4945e09c90c57d",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@85",
+      "class_specifier:MultiEntryView",
+      "function_definition:anon@90"
+    ],
+    "content": "MultiEntryView(DataType *data, UnsignedInt width)\n        : data_(data), width_(width) {}",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 92,
+    "end_line": 92,
+    "byte_start": 3228,
+    "byte_end": 3274,
+    "chunk_id": "30151d2919897d55ed13e8910a77b1715acee8c1",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@85",
+      "class_specifier:MultiEntryView",
+      "function_definition:setData"
+    ],
+    "content": "void setData(DataType *data) { data_ = data; }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 93,
+    "end_line": 93,
+    "byte_start": 3280,
+    "byte_end": 3324,
+    "chunk_id": "26f528536354e2f5a494ab3eb5f6e104774bca7d",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@85",
+      "class_specifier:MultiEntryView",
+      "function_definition:Width"
+    ],
+    "content": "UnsignedInt Width() const { return width_; }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 95,
+    "end_line": 98,
+    "byte_start": 3331,
+    "byte_end": 3427,
+    "chunk_id": "b8b05f4a5325168aa00fb643213a3df63ed37f28",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@85",
+      "class_specifier:MultiEntryView",
+      "function_definition:anon@95"
+    ],
+    "content": "DataType *operator[](UnsignedInt index) const\n    {\n        return data_ + index * width_;\n    }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 108,
+    "end_line": 108,
+    "byte_start": 3522,
+    "byte_end": 3581,
+    "chunk_id": "95103fe345b83beba49197b2d89c7119755cdc6b",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "class_specifier:Quantity",
+      "function_definition:anon@108"
+    ],
+    "content": "explicit Quantity(const std::string &name) : name_(name) {}",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 109,
+    "end_line": 109,
+    "byte_start": 3587,
+    "byte_end": 3609,
+    "chunk_id": "8303eb6cf76efff43594d42f0d15301b237ebed2",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "class_specifier:Quantity",
+      "function_definition:anon@109"
+    ],
+    "content": "virtual ~Quantity() {}",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 110,
+    "end_line": 110,
+    "byte_start": 3615,
+    "byte_end": 3657,
+    "chunk_id": "f2ef0409d03efac6c54e6e2008f957a7c2b5d23a",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "class_specifier:Quantity",
+      "function_definition:Name"
+    ],
+    "content": "std::string Name() const { return name_; }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 111,
+    "end_line": 111,
+    "byte_start": 3663,
+    "byte_end": 3718,
+    "chunk_id": "7da6a0e5e47e889c0475b4fbbae2fe7514adb475",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "class_specifier:Quantity",
+      "function_definition:setName"
+    ],
+    "content": "void setName(const std::string &name) { name_ = name; }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 112,
+    "end_line": 112,
+    "byte_start": 3724,
+    "byte_end": 3775,
+    "chunk_id": "9334f52c5b565fe5db719211986e42956a442220",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "class_specifier:Quantity",
+      "function_definition:getScalingRef"
+    ],
+    "content": "Real getScalingRef() const { return scaling_ref_; }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 113,
+    "end_line": 113,
+    "byte_start": 3781,
+    "byte_end": 3849,
+    "chunk_id": "5aa4ee1d085dfd790a9a4eb3e274945b8905cc45",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "class_specifier:Quantity",
+      "function_definition:setScalingRef"
+    ],
+    "content": "void setScalingRef(Real scaling_ref) { scaling_ref_ = scaling_ref; }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 137,
+    "end_line": 138,
+    "byte_start": 4334,
+    "byte_end": 4471,
+    "chunk_id": "2f7a3114f4d01dfba9c5875068030fc8d49dce72",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@131",
+      "class_specifier:SingleVariable",
+      "function_definition:anon@137"
+    ],
+    "content": "SingleVariable(const std::string &name, const DataType &value)\n        : Quantity(name), data_(new DataType(value)), delegated_(data_) {}",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 141,
+    "end_line": 143,
+    "byte_start": 4510,
+    "byte_end": 4671,
+    "chunk_id": "a20978b924cc46d16dabfa2757ce471adbee8517",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@131",
+      "class_specifier:SingleVariable",
+      "template_declaration:anon@140",
+      "function_definition:anon@141"
+    ],
+    "content": "SingleVariable(const std::string &name, Args &&...args)\n        : Quantity(name), data_(new DataType(std::forward<Args>(args)...)),\n          delegated_(data_){}",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 145,
+    "end_line": 145,
+    "byte_start": 4678,
+    "byte_end": 4713,
+    "chunk_id": "6ffbb731319a7870d9e82a0bdad9c902bce68cfb",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@131",
+      "class_specifier:SingleVariable",
+      "function_definition:anon@145"
+    ],
+    "content": "~SingleVariable() { delete data_; }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 147,
+    "end_line": 147,
+    "byte_start": 4720,
+    "byte_end": 4759,
+    "chunk_id": "40ae0dcc82f7da11e7d03957e7bf3f972bf87712",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@131",
+      "class_specifier:SingleVariable",
+      "function_definition:Data"
+    ],
+    "content": "DataType *Data() { return delegated_; }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 148,
+    "end_line": 148,
+    "byte_start": 4765,
+    "byte_end": 4826,
+    "chunk_id": "1e9e47c8191f7afc0beb379d01642bf267a7037f",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@131",
+      "class_specifier:SingleVariable",
+      "function_definition:setValue"
+    ],
+    "content": "void setValue(const DataType &value) { *delegated_ = value; }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 149,
+    "end_line": 149,
+    "byte_start": 4832,
+    "byte_end": 4881,
+    "chunk_id": "d49eedf2d0fb331af86bfe14a2fb985b8499d5c3",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@131",
+      "class_specifier:SingleVariable",
+      "function_definition:getValue"
+    ],
+    "content": "DataType getValue() const { return *delegated_; }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 150,
+    "end_line": 150,
+    "byte_start": 4887,
+    "byte_end": 4965,
+    "chunk_id": "e1c3e2e6c636be6d25b00f7a9bd85f69ef156cbb",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@131",
+      "class_specifier:SingleVariable",
+      "function_definition:getValueWithScalingRef"
+    ],
+    "content": "DataType getValueWithScalingRef() const { return *delegated_ * scaling_ref_; }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 151,
+    "end_line": 151,
+    "byte_start": 4971,
+    "byte_end": 5039,
+    "chunk_id": "9b36f04912b0254368a6e80db82e99d49b0b9acd",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@131",
+      "class_specifier:SingleVariable",
+      "function_definition:incrementValue"
+    ],
+    "content": "void incrementValue(const DataType &value) { *delegated_ += value; }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 154,
+    "end_line": 154,
+    "byte_start": 5083,
+    "byte_end": 5163,
+    "chunk_id": "b8f99ce1fa8e305d393b4edbeb2fb606e71060b3",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@131",
+      "class_specifier:SingleVariable",
+      "template_declaration:anon@153",
+      "function_definition:anon@154"
+    ],
+    "content": "DataType *DelegatedData(const ExecutionPolicy &ex_policy) { return delegated_; }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 157,
+    "end_line": 160,
+    "byte_start": 5202,
+    "byte_end": 5319,
+    "chunk_id": "f8c3b752df64f1bef0ec207fa0e645372ceed73a",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@131",
+      "class_specifier:SingleVariable",
+      "template_declaration:anon@156",
+      "function_definition:anon@157"
+    ],
+    "content": "DataType *DelegatedData(const DeviceExecution<PolicyType> &ex_policy)\n    {\n        return DelegatedOnDevice();\n    }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 167,
+    "end_line": 175,
+    "byte_start": 5442,
+    "byte_end": 5686,
+    "chunk_id": "ab4b79d8350ef0440dbefe459d7d241c79dadf02",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@131",
+      "class_specifier:SingleVariable",
+      "function_definition:DelegatedOnDevice"
+    ],
+    "content": "DataType *DelegatedOnDevice()\n    {\n        if (!isDataDelegated())\n        {\n            device_shared_singular_variable_keeper_\n                .createPtr<DeviceSharedSingleVariable<DataType>>(this);\n        }\n        return delegated_;\n    }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 176,
+    "end_line": 176,
+    "byte_start": 5692,
+    "byte_end": 5746,
+    "chunk_id": "05f22b94253742bfd426551047c7a5326f23cb67",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@131",
+      "class_specifier:SingleVariable",
+      "function_definition:isDataDelegated"
+    ],
+    "content": "bool isDataDelegated() { return data_ != delegated_; }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 177,
+    "end_line": 177,
+    "byte_start": 5752,
+    "byte_end": 5829,
+    "chunk_id": "cf0e6f71a25d567dbf3a085661a63d2f8e01a1c9",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@131",
+      "class_specifier:SingleVariable",
+      "function_definition:setDelegateData"
+    ],
+    "content": "void setDelegateData(DataType *new_delegated) { delegated_ = new_delegated; }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "method_declaration",
+    "start_line": 186,
+    "end_line": 186,
+    "byte_start": 6041,
+    "byte_end": 6104,
+    "chunk_id": "8d539fbb01fc4dc9110b2513cfe021db64aa1a94",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@180",
+      "class_specifier:DeviceOnlyDiscreteVariable",
+      "method_declaration:reallocateData"
+    ],
+    "content": "void reallocateData(DiscreteVariable<DataType> *host_variable);",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 187,
+    "end_line": 187,
+    "byte_start": 6109,
+    "byte_end": 6170,
+    "chunk_id": "731d1693d66c9c75441e1e682bb6868b7fad2a79",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@180",
+      "class_specifier:DeviceOnlyDiscreteVariable",
+      "function_definition:DeviceOnlyDataField"
+    ],
+    "content": "DataType *DeviceOnlyDataField() { return device_only_data_; }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 205,
+    "end_line": 211,
+    "byte_start": 6481,
+    "byte_end": 6776,
+    "chunk_id": "5bb397c2fd1fd0c167522c7464db3e8386752c07",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@197",
+      "class_specifier:DiscreteVariable",
+      "template_declaration:anon@204",
+      "function_definition:anon@205"
+    ],
+    "content": "DiscreteVariable(const std::string &name, UnsignedInt size,\n                     const InitializationFunction &initialization)\n        : Quantity(name), size_(size), width_(1), data_(new DataType[size]),\n          device_only_variable_(nullptr)\n    {\n        fill(initialization, 0, size);\n    }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 213,
+    "end_line": 216,
+    "byte_start": 6783,
+    "byte_end": 7034,
+    "chunk_id": "13dc1513a550e5f93ebb39f38cec10541014ee01",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@197",
+      "class_specifier:DiscreteVariable",
+      "function_definition:anon@213"
+    ],
+    "content": "DiscreteVariable(const std::string &name, UnsignedInt size,\n                     DataType initial_value = ZeroData<DataType>::value)\n        : DiscreteVariable(name, size, [&](UnsignedInt index)\n                           { return initial_value; }) {}",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 218,
+    "end_line": 229,
+    "byte_start": 7041,
+    "byte_end": 7563,
+    "chunk_id": "2246b3b342eaf0363689234b528f1b96b3536fb4",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@197",
+      "class_specifier:DiscreteVariable",
+      "function_definition:anon@218"
+    ],
+    "content": "DiscreteVariable(const std::string &name, UnsignedInt size,\n                     const MultiEntryTag &tag, UnsignedInt width)\n        : Quantity(name), size_(size), width_(width), data_(new DataType[size * width]),\n          device_only_variable_(nullptr)\n    {\n        for (UnsignedInt i = 0; i < width; i++)\n        {\n            entry_names_.push_back(std::to_string(i));\n            fill([&](UnsignedInt index) // zero initialization\n                 { return ZeroData<DataType>::value; }, 0, size, i);\n        }\n    }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 231,
+    "end_line": 235,
+    "byte_start": 7570,
+    "byte_end": 7786,
+    "chunk_id": "56fa3edcb87cf8b0b77c5d4af42edbc05ad6e6c6",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@197",
+      "class_specifier:DiscreteVariable",
+      "function_definition:anon@231"
+    ],
+    "content": "DiscreteVariable(const std::string &name, UnsignedInt size, StdVec<std::string> entry_names)\n        : DiscreteVariable(name, size, MultiEntryTag{}, entry_names.size())\n    {\n        entry_names_ = entry_names;\n    }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 237,
+    "end_line": 237,
+    "byte_start": 7793,
+    "byte_end": 7832,
+    "chunk_id": "d4c8028051ee7981bb31d207acb827e08b2e0c29",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@197",
+      "class_specifier:DiscreteVariable",
+      "function_definition:anon@237"
+    ],
+    "content": "~DiscreteVariable() { delete[] data_; }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 238,
+    "end_line": 238,
+    "byte_start": 7838,
+    "byte_end": 7872,
+    "chunk_id": "1738cb758e9d87a2ec35662c1d33ffd9e33a1b36",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@197",
+      "class_specifier:DiscreteVariable",
+      "function_definition:Data"
+    ],
+    "content": "DataType *Data() { return data_; }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 239,
+    "end_line": 239,
+    "byte_start": 7878,
+    "byte_end": 7939,
+    "chunk_id": "5ae6a137bf7d1ea6e5f98377a284214e42a049c5",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@197",
+      "class_specifier:DiscreteVariable",
+      "function_definition:getValue"
+    ],
+    "content": "DataType getValue(UnsignedInt index) { return data_[index]; }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 240,
+    "end_line": 240,
+    "byte_start": 7945,
+    "byte_end": 8041,
+    "chunk_id": "7f2ca8f74a6a253e5135a220dc0d3c135916a30a",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@197",
+      "class_specifier:DiscreteVariable",
+      "function_definition:getValueWithScalingRef"
+    ],
+    "content": "DataType getValueWithScalingRef(UnsignedInt index) const { return data_[index] * scaling_ref_; }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 241,
+    "end_line": 241,
+    "byte_start": 8047,
+    "byte_end": 8086,
+    "chunk_id": "13171047f240719fd186053a5404964a2cf1532c",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@197",
+      "class_specifier:DiscreteVariable",
+      "function_definition:getSize"
+    ],
+    "content": "UnsignedInt getSize() { return size_; }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 242,
+    "end_line": 242,
+    "byte_start": 8091,
+    "byte_end": 8132,
+    "chunk_id": "bdaed5ab926cec4db818673ea133482f42f50a8c",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@197",
+      "class_specifier:DiscreteVariable",
+      "function_definition:getWidth"
+    ],
+    "content": "UnsignedInt getWidth() { return width_; }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 243,
+    "end_line": 243,
+    "byte_start": 8137,
+    "byte_end": 8190,
+    "chunk_id": "a87c692e6f1ea9e774e2349ebd2c8aa399763d3f",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@197",
+      "class_specifier:DiscreteVariable",
+      "function_definition:getTotalSize"
+    ],
+    "content": "UnsignedInt getTotalSize() { return size_ * width_; }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 244,
+    "end_line": 244,
+    "byte_start": 8195,
+    "byte_end": 8299,
+    "chunk_id": "38a84cdfb2204ce79794447886e7fc643ec52eb5",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@197",
+      "class_specifier:DiscreteVariable",
+      "function_definition:getEntryName"
+    ],
+    "content": "std::string getEntryName(UnsignedInt entry) { return !entry_names_.empty() ? entry_names_[entry] : \"\"; }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 246,
+    "end_line": 259,
+    "byte_start": 8305,
+    "byte_end": 8795,
+    "chunk_id": "ce0749db7450f6126eeca03bafe08f7bafc19756",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@197",
+      "class_specifier:DiscreteVariable",
+      "function_definition:getEntryIndexByName"
+    ],
+    "content": "UnsignedInt getEntryIndexByName(std::string entry_name)\n    {\n        auto iter = std::find(entry_names_.begin(), entry_names_.end(), entry_name);\n        if (iter != entry_names_.end())\n        {\n            return std::distance(entry_names_.begin(), iter);\n        }\n        else\n        {\n            std::cout << \"\\n Error: the variable '\" << this->name_\n                      << \"' does not have a entry named '\" << entry_name << \"'!\" << std::endl;\n            exit(1);\n        }\n    }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 261,
+    "end_line": 264,
+    "byte_start": 8802,
+    "byte_end": 8955,
+    "chunk_id": "5964eb1297f0133d9a1b5ac2c1da2e4f587d3ef8",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@197",
+      "class_specifier:DiscreteVariable",
+      "function_definition:getEntryValueWithScalingRef"
+    ],
+    "content": "DataType getEntryValueWithScalingRef(UnsignedInt index, UnsignedInt entry) const\n    {\n        return data_[index * width_ + entry] * scaling_ref_;\n    }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 267,
+    "end_line": 281,
+    "byte_start": 8996,
+    "byte_end": 9529,
+    "chunk_id": "cd70af6c0cc98eec72a2e92e7c90ee1b96985145",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@197",
+      "class_specifier:DiscreteVariable",
+      "template_declaration:anon@266",
+      "function_definition:anon@267"
+    ],
+    "content": "void fill(const FillFunction &fill_function, UnsignedInt begin_index,\n              UnsignedInt fill_size, UnsignedInt entry = 0)\n    {\n        if (begin_index + fill_size > size_)\n        {\n            std::cout << \"\\n Error: trying to fill data out of range in DiscreteVariable '\"\n                      << this->name_ << \"'!\" << std::endl;\n            exit(1);\n        }\n\n        for (UnsignedInt i = begin_index; i < begin_index + fill_size; ++i)\n        {\n            data_[i * width_ + entry] = fill_function(i);\n        }\n    }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 284,
+    "end_line": 284,
+    "byte_start": 9573,
+    "byte_end": 9648,
+    "chunk_id": "f45f8ca39b851fc153ad83bf0035e0a0f7edb855",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@197",
+      "class_specifier:DiscreteVariable",
+      "template_declaration:anon@283",
+      "function_definition:anon@284"
+    ],
+    "content": "DataType *DelegatedData(const ExecutionPolicy &ex_policy) { return data_; }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 287,
+    "end_line": 290,
+    "byte_start": 9687,
+    "byte_end": 9804,
+    "chunk_id": "eb291f7ba7bbd79bb6ca580d7887e4000ad53676",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@197",
+      "class_specifier:DiscreteVariable",
+      "template_declaration:anon@286",
+      "function_definition:anon@287"
+    ],
+    "content": "DataType *DelegatedData(const DeviceExecution<PolicyType> &ex_policy)\n    {\n        return DelegatedOnDevice();\n    }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 293,
+    "end_line": 303,
+    "byte_start": 9848,
+    "byte_end": 10200,
+    "chunk_id": "e983728442098d4784baca66421071d5f2b87289",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@197",
+      "class_specifier:DiscreteVariable",
+      "template_declaration:anon@292",
+      "function_definition:anon@293"
+    ],
+    "content": "DataView<DataType> DelegatedDataView(const ExecutionPolicy &ex_policy)\n    {\n        if (width_ != 1)\n        {\n            std::cout << \"\\n Error: the variable '\" << this->name_\n                      << \"' is not a single entry variable!\" << std::endl;\n            exit(1);\n        }\n\n        return DataView<DataType>(DelegatedData(ex_policy));\n    }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 306,
+    "end_line": 316,
+    "byte_start": 10244,
+    "byte_end": 10630,
+    "chunk_id": "11bc9128d7935262b703bd081c65e6178be573cf",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@197",
+      "class_specifier:DiscreteVariable",
+      "template_declaration:anon@305",
+      "function_definition:anon@306"
+    ],
+    "content": "EntryView<DataType> DelegatedEntryView(const ExecutionPolicy &ex_policy, UnsignedInt entry)\n    {\n        if (entry >= width_)\n        {\n            std::cout << \"\\n Error: entry index out of range in variable '\"\n                      << this->name_ << \"'!\" << std::endl;\n            exit(1);\n        }\n\n        return EntryView<DataType>(DelegatedData(ex_policy), entry, width_);\n    }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 319,
+    "end_line": 322,
+    "byte_start": 10674,
+    "byte_end": 10861,
+    "chunk_id": "dcae517b6a03926ada88abfd8d4a986f41090b6d",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@197",
+      "class_specifier:DiscreteVariable",
+      "template_declaration:anon@318",
+      "function_definition:anon@319"
+    ],
+    "content": "EntryView<DataType> DelegatedEntryView(const ExecutionPolicy &ex_policy, std::string entry_name)\n    {\n        return DelegatedEntryView(ex_policy, getEntryIndexByName(entry_name));\n    }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 325,
+    "end_line": 328,
+    "byte_start": 10905,
+    "byte_end": 11074,
+    "chunk_id": "3e4a12aa57a2c28890063933ac7010e16eb182a0",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@197",
+      "class_specifier:DiscreteVariable",
+      "template_declaration:anon@324",
+      "function_definition:anon@325"
+    ],
+    "content": "MultiEntryView<DataType> DelegatedMultiEntryView(const ExecutionPolicy &ex_policy)\n    {\n        return MultiEntryView<DataType>(DelegatedData(ex_policy), width_);\n    }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 330,
+    "end_line": 330,
+    "byte_start": 11081,
+    "byte_end": 11161,
+    "chunk_id": "355d4876799c53a4316aa8efd5e10139dd94be1d",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@197",
+      "class_specifier:DiscreteVariable",
+      "function_definition:getDataView"
+    ],
+    "content": "DataView<DataType> getDataView() { return DelegatedDataView(ParallelPolicy{}); }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 331,
+    "end_line": 331,
+    "byte_start": 11167,
+    "byte_end": 11274,
+    "chunk_id": "f0828c17ee77b47c310b2ee295c0d67999c9c751",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@197",
+      "class_specifier:DiscreteVariable",
+      "function_definition:getEntryView"
+    ],
+    "content": "EntryView<DataType> getEntryView(UnsignedInt entry) { return DelegatedEntryView(ParallelPolicy{}, entry); }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 332,
+    "end_line": 332,
+    "byte_start": 11280,
+    "byte_end": 11378,
+    "chunk_id": "446806aa6dcef334e0335ecda0b09ea8c9fab729",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@197",
+      "class_specifier:DiscreteVariable",
+      "function_definition:getMultiEntryView"
+    ],
+    "content": "MultiEntryView<DataType> getMultiEntryView() { return DelegatedMultiEntryView(ParallelPolicy{}); }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 335,
+    "end_line": 341,
+    "byte_start": 11422,
+    "byte_end": 11615,
+    "chunk_id": "8e33f3ee09ccd3a971fb727b764ee1af2713e8d0",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@197",
+      "class_specifier:DiscreteVariable",
+      "template_declaration:anon@334",
+      "function_definition:anon@335"
+    ],
+    "content": "void reallocateData(const ExecutionPolicy &ex_policy, UnsignedInt tentative_size)\n    {\n        if (size_ < tentative_size)\n        {\n            reallocateData(tentative_size);\n        }\n    }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 343,
+    "end_line": 349,
+    "byte_start": 11622,
+    "byte_end": 11829,
+    "chunk_id": "90d6bfb00b332de25ea702ecd3c0912f2d828b73",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@197",
+      "class_specifier:DiscreteVariable",
+      "function_definition:reallocateData"
+    ],
+    "content": "void reallocateData(const ParallelDevicePolicy &par_device, UnsignedInt tentative_size)\n    {\n        if (size_ < tentative_size)\n        {\n            reallocateDataOnDevice(tentative_size);\n        }\n    }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 353,
+    "end_line": 353,
+    "byte_start": 11937,
+    "byte_end": 12026,
+    "chunk_id": "af449c795ee99a236840f89f55d299a621b9c7c0",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@197",
+      "class_specifier:DiscreteVariable",
+      "function_definition:prepareForOutput"
+    ],
+    "content": "void prepareForOutput(const ParallelDevicePolicy &ex_policy) { synchronizeWithDevice(); }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 357,
+    "end_line": 357,
+    "byte_start": 12132,
+    "byte_end": 12217,
+    "chunk_id": "8934689505faf8646a950199a357d70a940de9e0",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@197",
+      "class_specifier:DiscreteVariable",
+      "function_definition:finalizeLoadIn"
+    ],
+    "content": "void finalizeLoadIn(const ParallelDevicePolicy &ex_policy) { synchronizeToDevice(); }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 367,
+    "end_line": 367,
+    "byte_start": 12491,
+    "byte_end": 12558,
+    "chunk_id": "cf7bd6cd0460498c2b242b1c644a65b239927670",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@197",
+      "class_specifier:DiscreteVariable",
+      "function_definition:isDataDelegated"
+    ],
+    "content": "bool isDataDelegated() { return device_only_variable_ != nullptr; }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "function_definition",
+    "start_line": 369,
+    "end_line": 374,
+    "byte_start": 12565,
+    "byte_end": 12747,
+    "chunk_id": "38e03db5e220938f187ea397b4261d32e6113a16",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@197",
+      "class_specifier:DiscreteVariable",
+      "function_definition:reallocateData"
+    ],
+    "content": "void reallocateData(UnsignedInt tentative_size)\n    {\n        delete[] data_;\n        size_ = tentative_size + tentative_size / 4;\n        data_ = new DataType[size_ * width_];\n    }",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "method_declaration",
+    "start_line": 376,
+    "end_line": 376,
+    "byte_start": 12754,
+    "byte_end": 12810,
+    "chunk_id": "b52e816d62164b71964c757ba3efa2ca2a4ed51f",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@197",
+      "class_specifier:DiscreteVariable",
+      "method_declaration:reallocateDataOnDevice"
+    ],
+    "content": "void reallocateDataOnDevice(UnsignedInt tentative_size);",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "method_declaration",
+    "start_line": 377,
+    "end_line": 377,
+    "byte_start": 12815,
+    "byte_end": 12844,
+    "chunk_id": "658357c1534433feabef4737fe129c7225f7b9fe",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@197",
+      "class_specifier:DiscreteVariable",
+      "method_declaration:synchronizeWithDevice"
+    ],
+    "content": "void synchronizeWithDevice();",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "node_type": "method_declaration",
+    "start_line": 378,
+    "end_line": 378,
+    "byte_start": 12849,
+    "byte_end": 12876,
+    "chunk_id": "108f758b2e8cc113378bfe5e69a9edb072ca8416",
+    "parent_route": [
+      "namespace_definition:SPH",
+      "template_declaration:anon@197",
+      "class_specifier:DiscreteVariable",
+      "method_declaration:synchronizeToDevice"
+    ],
+    "content": "void synchronizeToDevice();",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/tests/unit_tests_src/shared/common/test_scalar_functions/test_scalar_functions.cpp",
+    "node_type": "function_definition",
+    "start_line": 6,
+    "end_line": 17,
+    "byte_start": 100,
+    "byte_end": 402,
+    "chunk_id": "dd5809fa0e65596cc7a718b1a35f1888741be220",
+    "parent_route": [
+      "function_definition:anon@6"
+    ],
+    "content": "TEST(test_scalar_functions, test_WENO)\n{\n    Real v1 = 1.0;\n    Real v2 = 2.0;\n    Real v3 = 3.0;\n    Real v4 = 4.0;\n\n    Real Left_state = getLeftStateInWeno(v1, v2, v3, v4);\n    Real Right_state = getRightStateInWeno(v4, v3, v2, v1);\n    EXPECT_EQ(2.5, Left_state);\n    EXPECT_EQ(2.5, Right_state);\n}",
+    "selection_kind": "original_function_or_method"
+  },
+  {
+    "file": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/tests/unit_tests_src/shared/common/test_scalar_functions/test_scalar_functions.cpp",
+    "node_type": "function_definition",
+    "start_line": 19,
+    "end_line": 23,
+    "byte_start": 404,
+    "byte_end": 510,
+    "chunk_id": "6a442f6976d853515e9ffaefb75893985f2fed16",
+    "parent_route": [
+      "function_definition:anon@19"
+    ],
+    "content": "int main(int argc, char *argv[])\n{\n    testing::InitGoogleTest(&argc, argv);\n    return RUN_ALL_TESTS();\n}",
+    "selection_kind": "original_function_or_method"
+  }
+]

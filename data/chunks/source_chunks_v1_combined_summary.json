@@ -1,0 +1,146 @@
+{
+  "prototype": "source_chunks_v1_combined",
+  "total_chunk_count": 10473,
+  "counts_by_repository": {
+    "SPHinXsim": 1264,
+    "SPHinXsys": 9209
+  },
+  "counts_by_source_role": {
+    "binding": 7,
+    "config_or_schema": 112,
+    "core_library": 6546,
+    "extra_source_or_test": 379,
+    "llm_support": 99,
+    "optimization_case": 56,
+    "simulation_case": 1918,
+    "simulation_example": 10,
+    "simulator_library": 323,
+    "sycl_case": 159,
+    "test": 662,
+    "unit_test": 151,
+    "visualization": 51
+  },
+  "counts_by_chunk_type": {
+    "class_definition": 174,
+    "config_document": 14,
+    "function_definition": 4980,
+    "method_declaration": 4295,
+    "semantic_section": 985,
+    "semantic_section_tree_sitter_subchunk": 25
+  },
+  "chunk_size_bytes": {
+    "min": 8,
+    "max": 57230,
+    "mean": 499.2705051083739,
+    "median": 196
+  },
+  "oversized_chunks_remaining_gt_5000_bytes": 98,
+  "skipped_files": [],
+  "parse_warning_files": [
+    {
+      "repository": "SPHinXsys",
+      "source_path": "repos/SPHinXsys/src/for_2D_build/geometries/multi_polygon_shape.h",
+      "warning": "Tree-sitter reported a parse error"
+    },
+    {
+      "repository": "SPHinXsys",
+      "source_path": "repos/SPHinXsys/src/for_3D_build/geometries/stl_reader.h",
+      "warning": "Tree-sitter reported a parse error"
+    },
+    {
+      "repository": "SPHinXsys",
+      "source_path": "repos/SPHinXsys/src/shared/body_relations/contact_body_relation.h",
+      "warning": "Tree-sitter reported a parse error"
+    },
+    {
+      "repository": "SPHinXsys",
+      "source_path": "repos/SPHinXsys/src/shared/materials/all_materials.h",
+      "warning": "Tree-sitter reported a parse error"
+    },
+    {
+      "repository": "SPHinXsys",
+      "source_path": "repos/SPHinXsys/src/shared/materials/elastic_solid.cpp",
+      "warning": "Tree-sitter reported a parse error"
+    },
+    {
+      "repository": "SPHinXsys",
+      "source_path": "repos/SPHinXsys/src/shared/particle_dynamics/fluid_dynamics/density_gradient.cpp",
+      "warning": "Tree-sitter reported a parse error"
+    },
+    {
+      "repository": "SPHinXsys",
+      "source_path": "repos/SPHinXsys/src/shared/particle_dynamics/fluid_dynamics/energy_gradient.cpp",
+      "warning": "Tree-sitter reported a parse error"
+    },
+    {
+      "repository": "SPHinXsys",
+      "source_path": "repos/SPHinXsys/src/shared/particle_dynamics/fluid_dynamics/eulerian_fluid_dynamics/eulerian_compressible_fluid_integration.cpp",
+      "warning": "Tree-sitter reported a parse error"
+    },
+    {
+      "repository": "SPHinXsys",
+      "source_path": "repos/SPHinXsys/src/shared/particle_dynamics/fluid_dynamics/muscl_reconstruction.hpp",
+      "warning": "Tree-sitter reported a parse error"
+    },
+    {
+      "repository": "SPHinXsys",
+      "source_path": "repos/SPHinXsys/src/shared/particle_dynamics/general_dynamics/all_general_dynamics.h",
+      "warning": "Tree-sitter reported a parse error"
+    },
+    {
+      "repository": "SPHinXsys",
+      "source_path": "repos/SPHinXsys/src/shared/shared_ck/particle_dynamics/configuration_dynamics/update_body_relation.hpp",
+      "warning": "Tree-sitter reported a parse error"
+    },
+    {
+      "repository": "SPHinXsys",
+      "source_path": "repos/SPHinXsys/src/shared/shared_ck/particle_dynamics/configuration_dynamics/update_cell_linked_list.hpp",
+      "warning": "Tree-sitter reported a parse error"
+    },
+    {
+      "repository": "SPHinXsys",
+      "source_path": "repos/SPHinXsys/src/shared/shared_ck/particle_dynamics/continuum_dynamics/all_continuum_dynamics_ck.h",
+      "warning": "Tree-sitter reported a parse error"
+    },
+    {
+      "repository": "SPHinXsys",
+      "source_path": "repos/SPHinXsys/src/shared/shared_ck/particle_dynamics/general_dynamics/all_general_dynamics_ck.h",
+      "warning": "Tree-sitter reported a parse error"
+    },
+    {
+      "repository": "SPHinXsys",
+      "source_path": "repos/SPHinXsys/src/shared/shared_ck/particle_dynamics/solid_dynamics/contact_dynamics/all_contact_dynamics_ck.h",
+      "warning": "Tree-sitter reported a parse error"
+    },
+    {
+      "repository": "SPHinXsys",
+      "source_path": "repos/SPHinXsys/src/shared/tools/tinyxml2.h",
+      "warning": "Tree-sitter reported a parse error"
+    },
+    {
+      "repository": "SPHinXsys",
+      "source_path": "repos/SPHinXsys/tests/3d_examples/test_3d_poiseuille_flow_shell/poiseuille_flow_shell.cpp",
+      "warning": "Tree-sitter reported a parse error"
+    },
+    {
+      "repository": "SPHinXsys",
+      "source_path": "repos/SPHinXsys/tests/3d_examples/test_3d_solid_to_shell_coupling/test_3d_solid_to_shell_coupling.cpp",
+      "warning": "Tree-sitter reported a parse error"
+    },
+    {
+      "repository": "SPHinXsys",
+      "source_path": "repos/SPHinXsys/tests/extra_source_and_tests/extra_src/shared/pressure_boundary/windkessel_bc.cpp",
+      "warning": "Tree-sitter reported a parse error"
+    },
+    {
+      "repository": "SPHinXsim",
+      "source_path": "repos/SPHinXsim/sphinxsim/sph_simulation/common_builder/geometry_builder.cpp",
+      "warning": "Tree-sitter reported a parse error"
+    }
+  ],
+  "validation": {
+    "every_line_parses_as_json": true,
+    "all_records_have_required_fields": true,
+    "chunk_id_values_unique": true
+  }
+}

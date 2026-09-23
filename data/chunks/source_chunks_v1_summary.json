@@ -1,0 +1,348 @@
+{
+  "prototype": "source_chunks_v1",
+  "repository_scope": [
+    "SPHinXsys"
+  ],
+  "input_root": "repos/SPHinXsys",
+  "total_chunk_count": 9209,
+  "counts_by_source_role": {
+    "core_library": 6546,
+    "extra_source_or_test": 379,
+    "optimization_case": 56,
+    "simulation_case": 1918,
+    "sycl_case": 159,
+    "unit_test": 151
+  },
+  "counts_by_repository": {
+    "SPHinXsys": 9209
+  },
+  "counts_by_chunk_type": {
+    "function_definition": 4142,
+    "method_declaration": 4057,
+    "semantic_section": 985,
+    "semantic_section_tree_sitter_subchunk": 25
+  },
+  "chunk_size_bytes": {
+    "min": 8,
+    "max": 22954,
+    "mean": 445.7310239982626,
+    "median": 180
+  },
+  "oversized_chunks_remaining_gt_5000_bytes": 67,
+  "skipped_files": [],
+  "parse_errors": [
+    "repos/SPHinXsys/src/for_2D_build/geometries/multi_polygon_shape.h",
+    "repos/SPHinXsys/src/for_3D_build/geometries/stl_reader.h",
+    "repos/SPHinXsys/src/shared/body_relations/contact_body_relation.h",
+    "repos/SPHinXsys/src/shared/materials/all_materials.h",
+    "repos/SPHinXsys/src/shared/materials/elastic_solid.cpp",
+    "repos/SPHinXsys/src/shared/particle_dynamics/fluid_dynamics/density_gradient.cpp",
+    "repos/SPHinXsys/src/shared/particle_dynamics/fluid_dynamics/energy_gradient.cpp",
+    "repos/SPHinXsys/src/shared/particle_dynamics/fluid_dynamics/eulerian_fluid_dynamics/eulerian_compressible_fluid_integration.cpp",
+    "repos/SPHinXsys/src/shared/particle_dynamics/fluid_dynamics/muscl_reconstruction.hpp",
+    "repos/SPHinXsys/src/shared/particle_dynamics/general_dynamics/all_general_dynamics.h",
+    "repos/SPHinXsys/src/shared/shared_ck/particle_dynamics/configuration_dynamics/update_body_relation.hpp",
+    "repos/SPHinXsys/src/shared/shared_ck/particle_dynamics/configuration_dynamics/update_cell_linked_list.hpp",
+    "repos/SPHinXsys/src/shared/shared_ck/particle_dynamics/continuum_dynamics/all_continuum_dynamics_ck.h",
+    "repos/SPHinXsys/src/shared/shared_ck/particle_dynamics/general_dynamics/all_general_dynamics_ck.h",
+    "repos/SPHinXsys/src/shared/shared_ck/particle_dynamics/solid_dynamics/contact_dynamics/all_contact_dynamics_ck.h",
+    "repos/SPHinXsys/src/shared/tools/tinyxml2.h",
+    "repos/SPHinXsys/tests/3d_examples/test_3d_poiseuille_flow_shell/poiseuille_flow_shell.cpp",
+    "repos/SPHinXsys/tests/3d_examples/test_3d_solid_to_shell_coupling/test_3d_solid_to_shell_coupling.cpp",
+    "repos/SPHinXsys/tests/extra_source_and_tests/extra_src/shared/pressure_boundary/windkessel_bc.cpp"
+  ],
+  "semantic_section_warnings": [
+    {
+      "source_path": "repos/SPHinXsys/tests/2d_examples/test_2d_eulerian_flow_around_cylinder_LG/2d_eulerian_flow_around_cylinder_LG.cpp",
+      "function_chunk_id": "3c4b55c1896fe627c2dbdaeb50f2ff63bc23754f",
+      "issues": [
+        {
+          "relative_line": 49,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 52,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 57,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 68,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 96,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 113,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 118,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 129,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 142,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 150,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 155,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 159,
+          "issue": "missing closing separator"
+        }
+      ]
+    },
+    {
+      "source_path": "repos/SPHinXsys/tests/2d_examples/test_2d_impact_patch/impact_patch.cpp",
+      "function_chunk_id": "8f50ac1fcad36bcde253bfb57cd40812acc9be3c",
+      "issues": [
+        {
+          "relative_line": 25,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 29,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 43,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 48,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 58,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 64,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 74,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 82,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 91,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 95,
+          "issue": "missing closing separator"
+        }
+      ]
+    },
+    {
+      "source_path": "repos/SPHinXsys/tests/2d_examples/test_2d_nonlinear_wave_fsi/nonlinear_wave_fsi.cpp",
+      "function_chunk_id": "8ff660aca2035b64c90ce1363b71e9f09b4de101",
+      "issues": [
+        {
+          "relative_line": 137,
+          "issue": "separator block has no usable comment title"
+        }
+      ]
+    },
+    {
+      "source_path": "repos/SPHinXsys/tests/2d_examples/test_2d_oscillating_beam/oscillating_beam.cpp",
+      "function_chunk_id": "f9fbf63b38b9990506d814ef884c7f10ac61362e",
+      "issues": [
+        {
+          "relative_line": 12,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 27,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 32,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 44,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 50,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 57,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 66,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 81,
+          "issue": "missing closing separator"
+        }
+      ]
+    },
+    {
+      "source_path": "repos/SPHinXsys/tests/2d_examples/test_2d_oscillating_beam_cauchy/cauchy_oscillating_beam.cpp",
+      "function_chunk_id": "9732c995e96e79ddc2171db0e69b5f7b3ec58b04",
+      "issues": [
+        {
+          "relative_line": 12,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 27,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 32,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 44,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 49,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 56,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 71,
+          "issue": "missing closing separator"
+        }
+      ]
+    },
+    {
+      "source_path": "repos/SPHinXsys/tests/2d_examples/test_2d_shell_beam_collision/shell_beam_collision.cpp",
+      "function_chunk_id": "d57d0d8c5356c4d45aa523eccc0a93ae054eb2f0",
+      "issues": [
+        {
+          "relative_line": 124,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 154,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 169,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 174,
+          "issue": "missing closing separator"
+        }
+      ]
+    },
+    {
+      "source_path": "repos/SPHinXsys/tests/3d_examples/test_3d_FVM_incompressible_channel_flow/test_3d_FVM_incompressible_channel_flow.cpp",
+      "function_chunk_id": "8c9b3bff91820d87de5eb71adea87453e818b0a1",
+      "issues": [
+        {
+          "relative_line": 37,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 47,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 55,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 60,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 64,
+          "issue": "missing closing separator"
+        }
+      ]
+    },
+    {
+      "source_path": "repos/SPHinXsys/tests/3d_examples/test_3d_dambreak/dambreak.cpp",
+      "function_chunk_id": "c54752632a4d079a0f50c7e016ea95c42f4f4225",
+      "issues": [
+        {
+          "relative_line": 39,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 43,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 56,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 61,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 69,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 76,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 85,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 90,
+          "issue": "separator block has no usable comment title"
+        },
+        {
+          "relative_line": 95,
+          "issue": "missing closing separator"
+        }
+      ]
+    },
+    {
+      "source_path": "repos/SPHinXsys/tests/3d_examples/test_3d_solid_to_shell_coupling/test_3d_solid_to_shell_coupling.cpp",
+      "function_chunk_id": "cb91ed381979143f5a87da6f170ab76b4b4459be",
+      "issues": [
+        {
+          "relative_line": 1,
+          "issue": "Tree-sitter reported a parse error"
+        }
+      ]
+    },
+    {
+      "source_path": "repos/SPHinXsys/tests/3d_examples/test_3d_solid_to_shell_coupling/test_3d_solid_to_shell_coupling.cpp",
+      "function_chunk_id": "fe53b185fc78c417008ff3f0ed1de7942f0ce493",
+      "issues": [
+        {
+          "relative_line": 1,
+          "issue": "Tree-sitter reported a parse error"
+        }
+      ]
+    }
+  ]
+}

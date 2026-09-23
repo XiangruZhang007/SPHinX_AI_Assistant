@@ -1,0 +1,496 @@
+{
+  "file": "repos/SPHinXsys/src/shared/common/scalar_functions.cpp",
+  "language": "cpp",
+  "chunks": [
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/scalar_functions.cpp",
+      "node_type": "namespace_definition",
+      "start_line": 3,
+      "end_line": 69,
+      "byte_start": 132,
+      "byte_end": 3010,
+      "parent_context": "",
+      "content": "namespace SPH\n{\n//=================================================================================================//\nint NextNextAxis(int first_axis)\n{\n    return NextAxis(NextAxis(first_axis));\n}\n//=================================================================================================//\nReal getLeftStateInWeno(Real v_1, Real v_2, Real v_3, Real v_4)\n{\n    Real v1 = v_1;\n    Real v2 = v_2;\n    Real v3 = v_3;\n    Real v4 = v_4;\n\n    Real f1 = 0.5 * v2 + 0.5 * v3;\n    Real f2 = (-0.5) * v1 + 1.5 * v2;\n    Real f3 = v2 / 3.0 + 5.0 * v3 / 6.0 - v4 / 6.0;\n\n    Real epsilon = 1.0e-6;\n    Real s1 = pow(v2 - v3, 2) + epsilon;\n    Real s2 = pow(v2 - v1, 2) + epsilon;\n    Real s3 = pow(3.0 * v2 - 4.0 * v3 + v4, 2) / 4.0 + 13.0 * pow(v2 - 2.0 * v3 + v4, 2) / 12.0 + epsilon;\n    Real s12 = 13.0 * pow(v1 - 2.0 * v2 + v3, 2) / 12.0 + pow(v1 - v3, 2) / 4.0 + epsilon;\n    Real tau_4 = (v1 * (547.0 * v1 - 2522.0 * v2 + 1922.0 * v3 - 494.0 * v4) + v2 * (3443.0 * v2 - 5966.0 * v3 + 1602.0 * v4) + v3 * (2843.0 * v3 - 1642.0 * v4) + 267.0 * v4 * v4) / 240.0;\n\n    Real alpha_1 = (1.0 + (tau_4 / s1) * (tau_4 / s12)) / 3.0;\n    Real alpha_2 = (1.0 + (tau_4 / s2) * (tau_4 / s12)) / 6.0;\n    Real alpha_3 = (1.0 + tau_4 / s3) / 2.0;\n    Real w_1 = alpha_1 / (alpha_1 + alpha_2 + alpha_3);\n    Real w_2 = alpha_2 / (alpha_1 + alpha_2 + alpha_3);\n    Real w_3 = alpha_3 / (alpha_1 + alpha_2 + alpha_3);\n    Real left_state = w_1 * f1 + w_2 * f2 + w_3 * f3;\n\n    return left_state;\n}\n//=================================================================================================//\nReal getRightStateInWeno(Real v_1, Real v_2, Real v_3, Real v_4)\n{\n    Real v1 = v_4;\n    Real v2 = v_3;\n    Real v3 = v_2;\n    Real v4 = v_1;\n\n    Real f1 = 0.5 * v2 + 0.5 * v3;\n    Real f2 = (-0.5) * v1 + 1.5 * v2;\n    Real f3 = v2 / 3.0 + 5.0 * v3 / 6.0 - v4 / 6.0;\n\n    Real epsilon = 1.0e-6;\n    Real s1 = pow(v2 - v3, 2) + epsilon;\n    Real s2 = pow(v2 - v1, 2) + epsilon;\n    Real s3 = pow(3.0 * v2 - 4.0 * v3 + v4, 2) / 4.0 + 13.0 * pow(v2 - 2.0 * v3 + v4, 2) / 12.0 + epsilon;\n    Real s12 = 13.0 * pow(v1 - 2.0 * v2 + v3, 2) / 12.0 + pow(v1 - v3, 2) / 4.0 + epsilon;\n    Real tau_4 = (v1 * (547.0 * v1 - 2522.0 * v2 + 1922.0 * v3 - 494.0 * v4) + v2 * (3443.0 * v2 - 5966.0 * v3 + 1602.0 * v4) + v3 * (2843.0 * v3 - 1642.0 * v4) + 267.0 * v4 * v4) / 240.0;\n\n    Real alpha_1 = (1.0 + (tau_4 / s1) * (tau_4 / s12)) / 3.0;\n    Real alpha_2 = (1.0 + (tau_4 / s2) * (tau_4 / s12)) / 6.0;\n    Real alpha_3 = (1.0 + tau_4 / s3) / 2.0;\n    Real w_1 = alpha_1 / (alpha_1 + alpha_2 + alpha_3);\n    Real w_2 = alpha_2 / (alpha_1 + alpha_2 + alpha_3);\n    Real w_3 = alpha_3 / (alpha_1 + alpha_2 + alpha_3);\n    Real right_state = w_1 * f1 + w_2 * f2 + w_3 * f3;\n\n    return right_state;\n}\n//=================================================================================================//\n}",
+      "chunk_id": "44e1750ef28519df6b7787e6ea0335f5fbee67d5",
+      "parent_chunk_id": null,
+      "references": [],
+      "dependencies": [
+        "NextAxis",
+        "first_axis",
+        "pow"
+      ],
+      "metadata": {
+        "docstring": "=================================================================================================",
+        "dependencies": [
+          "NextAxis",
+          "first_axis",
+          "pow"
+        ],
+        "calls": [
+          "NextAxis",
+          "NextAxis",
+          "pow",
+          "pow",
+          "pow",
+          "pow",
+          "pow",
+          "pow",
+          "pow",
+          "pow",
+          "pow",
+          "pow",
+          "pow",
+          "pow"
+        ],
+        "call_spans": [
+          {
+            "name": "NextAxis",
+            "start": 296,
+            "end": 326,
+            "function_start": 296,
+            "function_end": 304,
+            "arguments_start": 304,
+            "arguments_end": 326
+          },
+          {
+            "name": "NextAxis",
+            "start": 305,
+            "end": 325,
+            "function_start": 305,
+            "function_end": 313,
+            "arguments_start": 313,
+            "arguments_end": 325
+          },
+          {
+            "name": "pow",
+            "start": 742,
+            "end": 757,
+            "function_start": 742,
+            "function_end": 745,
+            "arguments_start": 745,
+            "arguments_end": 757
+          },
+          {
+            "name": "pow",
+            "start": 783,
+            "end": 798,
+            "function_start": 783,
+            "function_end": 786,
+            "arguments_start": 786,
+            "arguments_end": 798
+          },
+          {
+            "name": "pow",
+            "start": 824,
+            "end": 856,
+            "function_start": 824,
+            "function_end": 827,
+            "arguments_start": 827,
+            "arguments_end": 856
+          },
+          {
+            "name": "pow",
+            "start": 872,
+            "end": 898,
+            "function_start": 872,
+            "function_end": 875,
+            "arguments_start": 875,
+            "arguments_end": 898
+          },
+          {
+            "name": "pow",
+            "start": 939,
+            "end": 965,
+            "function_start": 939,
+            "function_end": 942,
+            "arguments_start": 942,
+            "arguments_end": 965
+          },
+          {
+            "name": "pow",
+            "start": 975,
+            "end": 990,
+            "function_start": 975,
+            "function_end": 978,
+            "arguments_start": 978,
+            "arguments_end": 990
+          },
+          {
+            "name": "pow",
+            "start": 2030,
+            "end": 2045,
+            "function_start": 2030,
+            "function_end": 2033,
+            "arguments_start": 2033,
+            "arguments_end": 2045
+          },
+          {
+            "name": "pow",
+            "start": 2071,
+            "end": 2086,
+            "function_start": 2071,
+            "function_end": 2074,
+            "arguments_start": 2074,
+            "arguments_end": 2086
+          },
+          {
+            "name": "pow",
+            "start": 2112,
+            "end": 2144,
+            "function_start": 2112,
+            "function_end": 2115,
+            "arguments_start": 2115,
+            "arguments_end": 2144
+          },
+          {
+            "name": "pow",
+            "start": 2160,
+            "end": 2186,
+            "function_start": 2160,
+            "function_end": 2163,
+            "arguments_start": 2163,
+            "arguments_end": 2186
+          },
+          {
+            "name": "pow",
+            "start": 2227,
+            "end": 2253,
+            "function_start": 2227,
+            "function_end": 2230,
+            "arguments_start": 2230,
+            "arguments_end": 2253
+          },
+          {
+            "name": "pow",
+            "start": 2263,
+            "end": 2278,
+            "function_start": 2263,
+            "function_end": 2266,
+            "arguments_start": 2266,
+            "arguments_end": 2278
+          }
+        ],
+        "type": "namespace_definition"
+      },
+      "node_id": "44e1750ef28519df6b7787e6ea0335f5fbee67d5",
+      "file_id": "b3613484c2ed2c00242cce30e9462d1a4bb92dc4",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH"
+      ],
+      "definition_id": "96901f554a0705cea8079462bdcf78166c50f088",
+      "chunk_index": 0
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/scalar_functions.cpp",
+      "node_type": "function_definition",
+      "start_line": 6,
+      "end_line": 9,
+      "byte_start": 250,
+      "byte_end": 329,
+      "parent_context": "namespace_definition",
+      "content": "int NextNextAxis(int first_axis)\n{\n    return NextAxis(NextAxis(first_axis));\n}",
+      "chunk_id": "fcfe6c711c5d31dbebf2d7b2da9019ad992ca2ae",
+      "parent_chunk_id": "44e1750ef28519df6b7787e6ea0335f5fbee67d5",
+      "references": [],
+      "dependencies": [
+        "NextAxis",
+        "first_axis"
+      ],
+      "metadata": {
+        "signature": {
+          "name": "NextNextAxis",
+          "parameters": [
+            "int first_axis"
+          ],
+          "return_type": "int",
+          "decorators": [],
+          "modifiers": []
+        },
+        "docstring": "=================================================================================================",
+        "dependencies": [
+          "NextAxis",
+          "first_axis"
+        ],
+        "exports": [
+          "NextNextAxis"
+        ],
+        "calls": [
+          "NextAxis",
+          "NextAxis"
+        ],
+        "call_spans": [
+          {
+            "name": "NextAxis",
+            "start": 296,
+            "end": 326,
+            "function_start": 296,
+            "function_end": 304,
+            "arguments_start": 304,
+            "arguments_end": 326
+          },
+          {
+            "name": "NextAxis",
+            "start": 305,
+            "end": 325,
+            "function_start": 305,
+            "function_end": 313,
+            "arguments_start": 313,
+            "arguments_end": 325
+          }
+        ],
+        "type": "function_definition"
+      },
+      "node_id": "fcfe6c711c5d31dbebf2d7b2da9019ad992ca2ae",
+      "file_id": "b3613484c2ed2c00242cce30e9462d1a4bb92dc4",
+      "symbol_id": "4486c134476c3d6ed96f0f1063a9508cff501c00",
+      "parent_route": [
+        "namespace_definition",
+        "function_definition"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "function_definition:anon@6"
+      ],
+      "definition_id": "9d6758f6fc9728f916cf3fb8ef5f5cde02a04801",
+      "chunk_index": 1
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/scalar_functions.cpp",
+      "node_type": "function_definition",
+      "start_line": 11,
+      "end_line": 38,
+      "byte_start": 432,
+      "byte_end": 1616,
+      "parent_context": "namespace_definition",
+      "content": "Real getLeftStateInWeno(Real v_1, Real v_2, Real v_3, Real v_4)\n{\n    Real v1 = v_1;\n    Real v2 = v_2;\n    Real v3 = v_3;\n    Real v4 = v_4;\n\n    Real f1 = 0.5 * v2 + 0.5 * v3;\n    Real f2 = (-0.5) * v1 + 1.5 * v2;\n    Real f3 = v2 / 3.0 + 5.0 * v3 / 6.0 - v4 / 6.0;\n\n    Real epsilon = 1.0e-6;\n    Real s1 = pow(v2 - v3, 2) + epsilon;\n    Real s2 = pow(v2 - v1, 2) + epsilon;\n    Real s3 = pow(3.0 * v2 - 4.0 * v3 + v4, 2) / 4.0 + 13.0 * pow(v2 - 2.0 * v3 + v4, 2) / 12.0 + epsilon;\n    Real s12 = 13.0 * pow(v1 - 2.0 * v2 + v3, 2) / 12.0 + pow(v1 - v3, 2) / 4.0 + epsilon;\n    Real tau_4 = (v1 * (547.0 * v1 - 2522.0 * v2 + 1922.0 * v3 - 494.0 * v4) + v2 * (3443.0 * v2 - 5966.0 * v3 + 1602.0 * v4) + v3 * (2843.0 * v3 - 1642.0 * v4) + 267.0 * v4 * v4) / 240.0;\n\n    Real alpha_1 = (1.0 + (tau_4 / s1) * (tau_4 / s12)) / 3.0;\n    Real alpha_2 = (1.0 + (tau_4 / s2) * (tau_4 / s12)) / 6.0;\n    Real alpha_3 = (1.0 + tau_4 / s3) / 2.0;\n    Real w_1 = alpha_1 / (alpha_1 + alpha_2 + alpha_3);\n    Real w_2 = alpha_2 / (alpha_1 + alpha_2 + alpha_3);\n    Real w_3 = alpha_3 / (alpha_1 + alpha_2 + alpha_3);\n    Real left_state = w_1 * f1 + w_2 * f2 + w_3 * f3;\n\n    return left_state;\n}",
+      "chunk_id": "4b5a2d194ada98d7df69eeb92d7be2c374049d78",
+      "parent_chunk_id": "44e1750ef28519df6b7787e6ea0335f5fbee67d5",
+      "references": [],
+      "dependencies": [
+        "pow"
+      ],
+      "metadata": {
+        "signature": {
+          "name": "getLeftStateInWeno",
+          "parameters": [
+            "Real v_1",
+            "Real v_2",
+            "Real v_3",
+            "Real v_4"
+          ],
+          "return_type": "Real",
+          "decorators": [],
+          "modifiers": []
+        },
+        "docstring": "=================================================================================================",
+        "dependencies": [
+          "pow"
+        ],
+        "exports": [
+          "getLeftStateInWeno"
+        ],
+        "calls": [
+          "pow",
+          "pow",
+          "pow",
+          "pow",
+          "pow",
+          "pow"
+        ],
+        "call_spans": [
+          {
+            "name": "pow",
+            "start": 742,
+            "end": 757,
+            "function_start": 742,
+            "function_end": 745,
+            "arguments_start": 745,
+            "arguments_end": 757
+          },
+          {
+            "name": "pow",
+            "start": 783,
+            "end": 798,
+            "function_start": 783,
+            "function_end": 786,
+            "arguments_start": 786,
+            "arguments_end": 798
+          },
+          {
+            "name": "pow",
+            "start": 824,
+            "end": 856,
+            "function_start": 824,
+            "function_end": 827,
+            "arguments_start": 827,
+            "arguments_end": 856
+          },
+          {
+            "name": "pow",
+            "start": 872,
+            "end": 898,
+            "function_start": 872,
+            "function_end": 875,
+            "arguments_start": 875,
+            "arguments_end": 898
+          },
+          {
+            "name": "pow",
+            "start": 939,
+            "end": 965,
+            "function_start": 939,
+            "function_end": 942,
+            "arguments_start": 942,
+            "arguments_end": 965
+          },
+          {
+            "name": "pow",
+            "start": 975,
+            "end": 990,
+            "function_start": 975,
+            "function_end": 978,
+            "arguments_start": 978,
+            "arguments_end": 990
+          }
+        ],
+        "type": "function_definition"
+      },
+      "node_id": "4b5a2d194ada98d7df69eeb92d7be2c374049d78",
+      "file_id": "b3613484c2ed2c00242cce30e9462d1a4bb92dc4",
+      "symbol_id": "316348aa9fb768ec77e73eb4f3730db3c4760160",
+      "parent_route": [
+        "namespace_definition",
+        "function_definition"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "function_definition:anon@11"
+      ],
+      "definition_id": "dd9d87f30a23b4009662c3351d8120cffccaf6fa",
+      "chunk_index": 2
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/common/scalar_functions.cpp",
+      "node_type": "function_definition",
+      "start_line": 40,
+      "end_line": 67,
+      "byte_start": 1719,
+      "byte_end": 2906,
+      "parent_context": "namespace_definition",
+      "content": "Real getRightStateInWeno(Real v_1, Real v_2, Real v_3, Real v_4)\n{\n    Real v1 = v_4;\n    Real v2 = v_3;\n    Real v3 = v_2;\n    Real v4 = v_1;\n\n    Real f1 = 0.5 * v2 + 0.5 * v3;\n    Real f2 = (-0.5) * v1 + 1.5 * v2;\n    Real f3 = v2 / 3.0 + 5.0 * v3 / 6.0 - v4 / 6.0;\n\n    Real epsilon = 1.0e-6;\n    Real s1 = pow(v2 - v3, 2) + epsilon;\n    Real s2 = pow(v2 - v1, 2) + epsilon;\n    Real s3 = pow(3.0 * v2 - 4.0 * v3 + v4, 2) / 4.0 + 13.0 * pow(v2 - 2.0 * v3 + v4, 2) / 12.0 + epsilon;\n    Real s12 = 13.0 * pow(v1 - 2.0 * v2 + v3, 2) / 12.0 + pow(v1 - v3, 2) / 4.0 + epsilon;\n    Real tau_4 = (v1 * (547.0 * v1 - 2522.0 * v2 + 1922.0 * v3 - 494.0 * v4) + v2 * (3443.0 * v2 - 5966.0 * v3 + 1602.0 * v4) + v3 * (2843.0 * v3 - 1642.0 * v4) + 267.0 * v4 * v4) / 240.0;\n\n    Real alpha_1 = (1.0 + (tau_4 / s1) * (tau_4 / s12)) / 3.0;\n    Real alpha_2 = (1.0 + (tau_4 / s2) * (tau_4 / s12)) / 6.0;\n    Real alpha_3 = (1.0 + tau_4 / s3) / 2.0;\n    Real w_1 = alpha_1 / (alpha_1 + alpha_2 + alpha_3);\n    Real w_2 = alpha_2 / (alpha_1 + alpha_2 + alpha_3);\n    Real w_3 = alpha_3 / (alpha_1 + alpha_2 + alpha_3);\n    Real right_state = w_1 * f1 + w_2 * f2 + w_3 * f3;\n\n    return right_state;\n}",
+      "chunk_id": "33797b9a95cd33969ea4ab1c29cbe1dd639dd945",
+      "parent_chunk_id": "44e1750ef28519df6b7787e6ea0335f5fbee67d5",
+      "references": [],
+      "dependencies": [
+        "pow"
+      ],
+      "metadata": {
+        "signature": {
+          "name": "getRightStateInWeno",
+          "parameters": [
+            "Real v_1",
+            "Real v_2",
+            "Real v_3",
+            "Real v_4"
+          ],
+          "return_type": "Real",
+          "decorators": [],
+          "modifiers": []
+        },
+        "docstring": "=================================================================================================",
+        "dependencies": [
+          "pow"
+        ],
+        "exports": [
+          "getRightStateInWeno"
+        ],
+        "calls": [
+          "pow",
+          "pow",
+          "pow",
+          "pow",
+          "pow",
+          "pow"
+        ],
+        "call_spans": [
+          {
+            "name": "pow",
+            "start": 2030,
+            "end": 2045,
+            "function_start": 2030,
+            "function_end": 2033,
+            "arguments_start": 2033,
+            "arguments_end": 2045
+          },
+          {
+            "name": "pow",
+            "start": 2071,
+            "end": 2086,
+            "function_start": 2071,
+            "function_end": 2074,
+            "arguments_start": 2074,
+            "arguments_end": 2086
+          },
+          {
+            "name": "pow",
+            "start": 2112,
+            "end": 2144,
+            "function_start": 2112,
+            "function_end": 2115,
+            "arguments_start": 2115,
+            "arguments_end": 2144
+          },
+          {
+            "name": "pow",
+            "start": 2160,
+            "end": 2186,
+            "function_start": 2160,
+            "function_end": 2163,
+            "arguments_start": 2163,
+            "arguments_end": 2186
+          },
+          {
+            "name": "pow",
+            "start": 2227,
+            "end": 2253,
+            "function_start": 2227,
+            "function_end": 2230,
+            "arguments_start": 2230,
+            "arguments_end": 2253
+          },
+          {
+            "name": "pow",
+            "start": 2263,
+            "end": 2278,
+            "function_start": 2263,
+            "function_end": 2266,
+            "arguments_start": 2266,
+            "arguments_end": 2278
+          }
+        ],
+        "type": "function_definition"
+      },
+      "node_id": "33797b9a95cd33969ea4ab1c29cbe1dd639dd945",
+      "file_id": "b3613484c2ed2c00242cce30e9462d1a4bb92dc4",
+      "symbol_id": "30316376cb9cc3e73efece9f43c7bb25f301c6a8",
+      "parent_route": [
+        "namespace_definition",
+        "function_definition"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "function_definition:anon@40"
+      ],
+      "definition_id": "569c9d7822cc58ba882d6e4f25df9bbe21fcd592",
+      "chunk_index": 3
+    }
+  ]
+}

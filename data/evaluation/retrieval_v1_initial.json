@@ -1,0 +1,337 @@
+{
+  "prototype": "retrieval_v1_initial",
+  "corpus": "data/chunks/source_chunks_v1_combined.jsonl",
+  "top_k": 5,
+  "queries": [
+    {
+      "query": "How is the 2D dambreak case initialized?",
+      "top_k_results": [
+        {
+          "score": 22.740141,
+          "repository": "SPHinXsim",
+          "source_role": "config_or_schema",
+          "source_path": "repos/SPHinXsim/tests/test_simulation/test_2d_simulation/data/dambreak.json",
+          "chunk_type": "config_document",
+          "symbol_or_section_title": "dambreak",
+          "start_line": 1,
+          "end_line": 169
+        },
+        {
+          "score": 21.089971,
+          "repository": "SPHinXsim",
+          "source_role": "config_or_schema",
+          "source_path": "repos/SPHinXsim/tests/test_simulation/test_3d_simulation/data/dambreak.json",
+          "chunk_type": "config_document",
+          "symbol_or_section_title": "dambreak",
+          "start_line": 1,
+          "end_line": 142
+        },
+        {
+          "score": 20.928232,
+          "repository": "SPHinXsys",
+          "source_role": "simulation_case",
+          "source_path": "repos/SPHinXsys/tests/2d_examples/test_2d_dambreak/Dambreak.cpp",
+          "chunk_type": "semantic_section",
+          "symbol_or_section_title": "Prepare the simulation with cell linked list, configuration and case specified initial condition if necessary.",
+          "start_line": 120,
+          "end_line": 127
+        },
+        {
+          "score": 20.860605,
+          "repository": "SPHinXsys",
+          "source_role": "simulation_case",
+          "source_path": "repos/SPHinXsys/tests/2d_examples/test_2d_two_phase_dambreak/two_phase_dambreak.cpp",
+          "chunk_type": "semantic_section",
+          "symbol_or_section_title": "First output before the main loop.",
+          "start_line": 130,
+          "end_line": 133
+        },
+        {
+          "score": 20.799847,
+          "repository": "SPHinXsys",
+          "source_role": "simulation_case",
+          "source_path": "repos/SPHinXsys/tests/2d_examples/test_2d_dambreak/Dambreak.cpp",
+          "chunk_type": "semantic_section",
+          "symbol_or_section_title": "Define the configuration related particles dynamics.",
+          "start_line": 107,
+          "end_line": 110
+        }
+      ]
+    },
+    {
+      "query": "What does WeaklyCompressibleFluid do?",
+      "top_k_results": [
+        {
+          "score": 48.926564,
+          "repository": "SPHinXsys",
+          "source_role": "core_library",
+          "source_path": "repos/SPHinXsys/src/shared/materials/weakly_compressible_fluid.cpp",
+          "chunk_type": "method_declaration",
+          "symbol_or_section_title": "WeaklyCompressibleFluid",
+          "start_line": 14,
+          "end_line": 15
+        },
+        {
+          "score": 33.585612,
+          "repository": "SPHinXsys",
+          "source_role": "core_library",
+          "source_path": "repos/SPHinXsys/src/shared/materials/weakly_compressible_fluid.h",
+          "chunk_type": "function_definition",
+          "symbol_or_section_title": null,
+          "start_line": 50,
+          "end_line": 50
+        },
+        {
+          "score": 29.68316,
+          "repository": "SPHinXsys",
+          "source_role": "core_library",
+          "source_path": "repos/SPHinXsys/src/shared/materials/weakly_compressible_fluid.h",
+          "chunk_type": "method_declaration",
+          "symbol_or_section_title": "getPressure",
+          "start_line": 53,
+          "end_line": 53
+        },
+        {
+          "score": 29.623424,
+          "repository": "SPHinXsys",
+          "source_role": "core_library",
+          "source_path": "repos/SPHinXsys/src/shared/materials/weakly_compressible_fluid.cpp",
+          "chunk_type": "method_declaration",
+          "symbol_or_section_title": "getSoundSpeed",
+          "start_line": 27,
+          "end_line": 30
+        },
+        {
+          "score": 29.564035,
+          "repository": "SPHinXsys",
+          "source_role": "core_library",
+          "source_path": "repos/SPHinXsys/src/shared/materials/weakly_compressible_fluid.cpp",
+          "chunk_type": "method_declaration",
+          "symbol_or_section_title": "getPressure",
+          "start_line": 17,
+          "end_line": 20
+        }
+      ]
+    },
+    {
+      "query": "Find a heat transfer simulation case.",
+      "top_k_results": [
+        {
+          "score": 29.083652,
+          "repository": "SPHinXsys",
+          "source_role": "simulation_case",
+          "source_path": "repos/SPHinXsys/tests/2d_examples/test_2d_heat_transfer/heat_transfer.cpp",
+          "chunk_type": "semantic_section",
+          "symbol_or_section_title": "Function preamble (before first semantic section)",
+          "start_line": 181,
+          "end_line": 182
+        },
+        {
+          "score": 28.515818,
+          "repository": "SPHinXsys",
+          "source_role": "simulation_case",
+          "source_path": "repos/SPHinXsys/tests/2d_examples/test_2d_heat_transfer/heat_transfer.cpp",
+          "chunk_type": "semantic_section",
+          "symbol_or_section_title": "Statistics for CPU time",
+          "start_line": 288,
+          "end_line": 292
+        },
+        {
+          "score": 28.473442,
+          "repository": "SPHinXsys",
+          "source_role": "simulation_case",
+          "source_path": "repos/SPHinXsys/tests/2d_examples/test_2d_heat_transfer/heat_transfer.cpp",
+          "chunk_type": "semantic_section",
+          "symbol_or_section_title": "First output before the main loop.",
+          "start_line": 293,
+          "end_line": 296
+        },
+        {
+          "score": 28.222931,
+          "repository": "SPHinXsys",
+          "source_role": "simulation_case",
+          "source_path": "repos/SPHinXsys/tests/2d_examples/test_2d_heat_transfer/heat_transfer.cpp",
+          "chunk_type": "semantic_section",
+          "symbol_or_section_title": "Define the configuration related particles dynamics.",
+          "start_line": 253,
+          "end_line": 256
+        },
+        {
+          "score": 27.668443,
+          "repository": "SPHinXsys",
+          "source_role": "simulation_case",
+          "source_path": "repos/SPHinXsys/tests/2d_examples/test_2d_heat_transfer/heat_transfer.cpp",
+          "chunk_type": "semantic_section",
+          "symbol_or_section_title": "Build up the environment of a SPHSystem with global controls.",
+          "start_line": 183,
+          "end_line": 187
+        }
+      ]
+    },
+    {
+      "query": "How is a 2D simulation configured in SPHinXsim?",
+      "top_k_results": [
+        {
+          "score": 40.040645,
+          "repository": "SPHinXsim",
+          "source_role": "config_or_schema",
+          "source_path": "repos/SPHinXsim/sphinxsim/config/schemas.py",
+          "chunk_type": "class_definition",
+          "symbol_or_section_title": "SimulationConfig",
+          "start_line": 925,
+          "end_line": 1248
+        },
+        {
+          "score": 39.408459,
+          "repository": "SPHinXsim",
+          "source_role": "llm_support",
+          "source_path": "repos/SPHinXsim/sphinxsim/llm/common.py",
+          "chunk_type": "function_definition",
+          "symbol_or_section_title": "is_all_plastic_continuum_config",
+          "start_line": 178,
+          "end_line": 183
+        },
+        {
+          "score": 36.081091,
+          "repository": "SPHinXsim",
+          "source_role": "config_or_schema",
+          "source_path": "repos/SPHinXsim/examples/input/test_simulation_2d/config.json",
+          "chunk_type": "config_document",
+          "symbol_or_section_title": "config",
+          "start_line": 1,
+          "end_line": 94
+        },
+        {
+          "score": 34.245681,
+          "repository": "SPHinXsim",
+          "source_role": "config_or_schema",
+          "source_path": "repos/SPHinXsim/sphinxsim/config/schemas.py",
+          "chunk_type": "class_definition",
+          "symbol_or_section_title": "TransformConfig",
+          "start_line": 140,
+          "end_line": 150
+        },
+        {
+          "score": 33.80121,
+          "repository": "SPHinXsim",
+          "source_role": "simulation_example",
+          "source_path": "repos/SPHinXsim/examples/test_nlp_to_simulation.py",
+          "chunk_type": "function_definition",
+          "symbol_or_section_title": "_ensure_core_2d_available",
+          "start_line": 226,
+          "end_line": 232
+        }
+      ]
+    },
+    {
+      "query": "What information is defined by the SPHinXsim schema?",
+      "top_k_results": [
+        {
+          "score": 32.689953,
+          "repository": "SPHinXsim",
+          "source_role": "config_or_schema",
+          "source_path": "repos/SPHinXsim/sphinxsim/config/schemas.py",
+          "chunk_type": "function_definition",
+          "symbol_or_section_title": "_validate_shape_references",
+          "start_line": 322,
+          "end_line": 379
+        },
+        {
+          "score": 32.060833,
+          "repository": "SPHinXsim",
+          "source_role": "config_or_schema",
+          "source_path": "repos/SPHinXsim/sphinxsim/config/schemas.py",
+          "chunk_type": "class_definition",
+          "symbol_or_section_title": "GeometriesConfig",
+          "start_line": 314,
+          "end_line": 379
+        },
+        {
+          "score": 31.076906,
+          "repository": "SPHinXsim",
+          "source_role": "config_or_schema",
+          "source_path": "repos/SPHinXsim/sphinxsim/config/schemas.py",
+          "chunk_type": "function_definition",
+          "symbol_or_section_title": "_validate_settings",
+          "start_line": 459,
+          "end_line": 462
+        },
+        {
+          "score": 30.852919,
+          "repository": "SPHinXsim",
+          "source_role": "config_or_schema",
+          "source_path": "repos/SPHinXsim/sphinxsim/config/schemas.py",
+          "chunk_type": "class_definition",
+          "symbol_or_section_title": "ParticleGenerationConfig",
+          "start_line": 454,
+          "end_line": 462
+        },
+        {
+          "score": 30.654962,
+          "repository": "SPHinXsim",
+          "source_role": "config_or_schema",
+          "source_path": "repos/SPHinXsim/sphinxsim/config/schemas.py",
+          "chunk_type": "function_definition",
+          "symbol_or_section_title": "_exactly_one",
+          "start_line": 470,
+          "end_line": 473
+        }
+      ]
+    },
+    {
+      "query": "Which builder constructs simulations in SPHinXsim?",
+      "top_k_results": [
+        {
+          "score": 40.651655,
+          "repository": "SPHinXsim",
+          "source_role": "simulator_library",
+          "source_path": "repos/SPHinXsim/sphinxsim/sph_simulation/simulation_builder/base_simulation_builder.cpp",
+          "chunk_type": "method_declaration",
+          "symbol_or_section_title": "SimulationBuilder",
+          "start_line": 30,
+          "end_line": 30
+        },
+        {
+          "score": 32.904789,
+          "repository": "SPHinXsim",
+          "source_role": "test",
+          "source_path": "repos/SPHinXsim/tests/test_simulation/test_3d_simulation/simulation.cpp",
+          "chunk_type": "function_definition",
+          "symbol_or_section_title": "TEST",
+          "start_line": 117,
+          "end_line": 121
+        },
+        {
+          "score": 32.904789,
+          "repository": "SPHinXsim",
+          "source_role": "test",
+          "source_path": "repos/SPHinXsim/tests/test_simulation/test_2d_simulation/simulation.cpp",
+          "chunk_type": "function_definition",
+          "symbol_or_section_title": "TEST",
+          "start_line": 115,
+          "end_line": 119
+        },
+        {
+          "score": 32.817932,
+          "repository": "SPHinXsim",
+          "source_role": "simulator_library",
+          "source_path": "repos/SPHinXsim/sphinxsim/sph_simulation/common_builder/geometry_builder.h",
+          "chunk_type": "method_declaration",
+          "symbol_or_section_title": "resetInOutputRoot",
+          "start_line": 60,
+          "end_line": 60
+        },
+        {
+          "score": 31.01516,
+          "repository": "SPHinXsim",
+          "source_role": "simulator_library",
+          "source_path": "repos/SPHinXsim/sphinxsim/sph_simulation/common_builder/geometry_builder.cpp",
+          "chunk_type": "method_declaration",
+          "symbol_or_section_title": "resetInOutputRoot",
+          "start_line": 31,
+          "end_line": 40
+        }
+      ]
+    }
+  ]
+}

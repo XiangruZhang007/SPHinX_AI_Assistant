@@ -1,0 +1,19 @@
+{
+  "file": "repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+  "total_lines": 386,
+  "total_chunks": 121,
+  "chunk_node_types": [
+    "class_specifier",
+    "field_declaration",
+    "function_definition",
+    "method_declaration",
+    "namespace_definition",
+    "struct_specifier",
+    "template_declaration",
+    "type_definition"
+  ],
+  "minimum_chunk_size_bytes": 16,
+  "maximum_chunk_size_bytes": 10949,
+  "average_chunk_size_bytes": 358.25619834710744,
+  "parsing_errors_reported": false
+}

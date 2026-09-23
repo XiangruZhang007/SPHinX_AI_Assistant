@@ -1,0 +1,18 @@
+{
+  "file": "repos/SPHinXsys/src/shared/bodies/base_body.h",
+  "total_lines": 203,
+  "total_chunks": 81,
+  "chunk_node_types": [
+    "class_specifier",
+    "field_declaration",
+    "function_definition",
+    "method_declaration",
+    "namespace_definition",
+    "template_declaration",
+    "type_definition"
+  ],
+  "minimum_chunk_size_bytes": 11,
+  "maximum_chunk_size_bytes": 6472,
+  "average_chunk_size_bytes": 217.97530864197532,
+  "parsing_errors_reported": false
+}

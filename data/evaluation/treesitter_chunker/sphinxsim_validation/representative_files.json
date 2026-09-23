@@ -1,0 +1,50 @@
+[
+  {
+    "source_path": "repos/SPHinXsim/sphinxsim/bindings/loader.py",
+    "purpose": "Python binding loader",
+    "language": "python",
+    "source_role": "simulator_library"
+  },
+  {
+    "source_path": "repos/SPHinXsim/sphinxsim/config/schemas.py",
+    "purpose": "Python schema library",
+    "language": "python",
+    "source_role": "config/schema"
+  },
+  {
+    "source_path": "repos/SPHinXsim/sphinxsim/sph_simulation/simulation_builder/base_simulation_builder.cpp",
+    "purpose": "C++ simulation builder",
+    "language": "cpp",
+    "source_role": "simulator_library"
+  },
+  {
+    "source_path": "repos/SPHinXsim/sphinxsim/bindings/sphinxsys_python.cpp",
+    "purpose": "C++ Python binding",
+    "language": "cpp",
+    "source_role": "simulator_library"
+  },
+  {
+    "source_path": "repos/SPHinXsim/examples/test_simulation_2d.py",
+    "purpose": "Python simulation orchestration example",
+    "language": "python",
+    "source_role": "simulation_example"
+  },
+  {
+    "source_path": "repos/SPHinXsim/examples/input/test_simulation_2d/config.json",
+    "purpose": "Example simulation input/config",
+    "language": "json",
+    "source_role": "config/schema"
+  },
+  {
+    "source_path": "repos/SPHinXsim/tests/test_schemas.py",
+    "purpose": "Python schema test",
+    "language": "python",
+    "source_role": "test"
+  },
+  {
+    "source_path": "repos/SPHinXsim/tests/test_simulation/test_2d_simulation/simulation.cpp",
+    "purpose": "C++ simulation test",
+    "language": "cpp",
+    "source_role": "test"
+  }
+]

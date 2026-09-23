@@ -1,0 +1,77 @@
+[
+  {
+    "file": "repos/SPHinXsys/src/shared/common/scalar_functions.cpp",
+    "total_lines": 69,
+    "total_chunks": 4,
+    "chunk_node_types": [
+      "function_definition",
+      "namespace_definition"
+    ],
+    "minimum_chunk_size_bytes": 79,
+    "maximum_chunk_size_bytes": 2878,
+    "average_chunk_size_bytes": 1332.0,
+    "parsing_errors_reported": false
+  },
+  {
+    "file": "repos/SPHinXsys/src/shared/bodies/base_body.h",
+    "total_lines": 203,
+    "total_chunks": 81,
+    "chunk_node_types": [
+      "class_specifier",
+      "field_declaration",
+      "function_definition",
+      "method_declaration",
+      "namespace_definition",
+      "template_declaration",
+      "type_definition"
+    ],
+    "minimum_chunk_size_bytes": 11,
+    "maximum_chunk_size_bytes": 6472,
+    "average_chunk_size_bytes": 217.97530864197532,
+    "parsing_errors_reported": false
+  },
+  {
+    "file": "repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "total_lines": 386,
+    "total_chunks": 121,
+    "chunk_node_types": [
+      "class_specifier",
+      "field_declaration",
+      "function_definition",
+      "method_declaration",
+      "namespace_definition",
+      "struct_specifier",
+      "template_declaration",
+      "type_definition"
+    ],
+    "minimum_chunk_size_bytes": 16,
+    "maximum_chunk_size_bytes": 10949,
+    "average_chunk_size_bytes": 358.25619834710744,
+    "parsing_errors_reported": false
+  },
+  {
+    "file": "repos/SPHinXsys/tests/2d_examples/test_2d_dambreak/Dambreak.cpp",
+    "total_lines": 252,
+    "total_chunks": 3,
+    "chunk_node_types": [
+      "class_specifier",
+      "function_definition"
+    ],
+    "minimum_chunk_size_bytes": 272,
+    "maximum_chunk_size_bytes": 11148,
+    "average_chunk_size_bytes": 3917.0,
+    "parsing_errors_reported": false
+  },
+  {
+    "file": "repos/SPHinXsys/tests/unit_tests_src/shared/common/test_scalar_functions/test_scalar_functions.cpp",
+    "total_lines": 23,
+    "total_chunks": 2,
+    "chunk_node_types": [
+      "function_definition"
+    ],
+    "minimum_chunk_size_bytes": 106,
+    "maximum_chunk_size_bytes": 302,
+    "average_chunk_size_bytes": 204.0,
+    "parsing_errors_reported": false
+  }
+]

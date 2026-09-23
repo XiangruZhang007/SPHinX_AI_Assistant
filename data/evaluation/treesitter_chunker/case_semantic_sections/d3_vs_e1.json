@@ -1,0 +1,47 @@
+{
+  "parameters": {
+    "source_role": "simulation_case",
+    "oversized_threshold_bytes": 5000,
+    "section_header_pattern": "separator comment line + one or more comment title lines + separator comment line",
+    "tree_sitter_safety_rule": "semantic boundaries must not fall inside a top-level non-comment function-body node"
+  },
+  "D3_tree_sitter_statement_boundary": {
+    "chunk_count": 3,
+    "size_bytes": {
+      "min": 2606,
+      "max": 4658,
+      "mean": 3716.0,
+      "median": 3884
+    },
+    "oversized_chunks_remaining_gt_5000_bytes": 0
+  },
+  "E1_semantic_comment_sections": {
+    "chunk_count": 14,
+    "size_bytes": {
+      "min": 31,
+      "max": 4068,
+      "mean": 796.2857142857143,
+      "median": 464.0
+    },
+    "oversized_chunks_remaining_gt_5000_bytes": 0
+  },
+  "detected_semantic_section_titles": [
+    "Build up an SPHSystem and IO environment.",
+    "Creating bodies with corresponding materials and particles.",
+    "Define body relation map. The contact map gives the topological connections between the bodies. Basically the the range of bodies to build neighbor particle lists. Generally, we first define all the inner relations, then the contact relations.",
+    "Combined relations built from basic relations which is only used for update configuration.",
+    "Define the numerical methods used in the simulation. Note that there may be data dependence on the sequence of constructions. Generally, the geometric models or simple objects without data dependencies, such as gravity, should be initiated first. Then the major physical particle dynamics model should be introduced. Finally, the auxiliary models such as time step estimator, initial condition, boundary condition and other constraints should be defined.",
+    "Define the configuration related particles dynamics.",
+    "Define the methods for I/O operations, observations and regression tests of the simulation.",
+    "Prepare the simulation with cell linked list, configuration and case specified initial condition if necessary.",
+    "Load restart file if necessary.",
+    "Setup for time-stepping control",
+    "Statistics for CPU time",
+    "First output before the main loop.",
+    "Main loop starts here."
+  ],
+  "sections_subdivided_for_size": [],
+  "ambiguous_or_malformed_section_comments": [],
+  "section_boundary_conflicts_with_tree_sitter_nodes": [],
+  "tree_sitter_parse_has_error": false
+}

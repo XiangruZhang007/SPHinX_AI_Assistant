@@ -1,0 +1,622 @@
+{
+  "repos/SPHinXsys/src/shared/bodies/base_body.h": [
+    {
+      "child_chunk_index": 61,
+      "child_chunk_id": "096247d1553cdd525e569418635f75aca83d86cb",
+      "child_node_type": "function_definition",
+      "child_start_line": 137,
+      "child_end_line": 138,
+      "child_byte_size": 149,
+      "child_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "template_declaration:anon@132",
+        "class_specifier:TargetParticleMask",
+        "template_declaration:anon@136",
+        "function_definition:anon@137"
+      ],
+      "containing_chunk_count": 5,
+      "direct_parent_chunk_index": 60,
+      "direct_parent_chunk_id": "a866f7023b7468cc071f205bec25d8ff54a83490",
+      "direct_parent_node_type": "template_declaration",
+      "direct_parent_start_line": 136,
+      "direct_parent_end_line": 138,
+      "direct_parent_byte_size": 232,
+      "direct_parent_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "template_declaration:anon@132",
+        "class_specifier:TargetParticleMask",
+        "template_declaration:anon@136"
+      ]
+    },
+    {
+      "child_chunk_index": 35,
+      "child_chunk_id": "619c6003007cbdd61e3fdc54e9a91db143469dd1",
+      "child_node_type": "function_definition",
+      "child_start_line": 98,
+      "child_end_line": 98,
+      "child_byte_size": 93,
+      "child_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "function_definition:assignBaseParticles"
+      ],
+      "containing_chunk_count": 2,
+      "direct_parent_chunk_index": 12,
+      "direct_parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "direct_parent_node_type": "class_specifier",
+      "direct_parent_start_line": 62,
+      "direct_parent_end_line": 174,
+      "direct_parent_byte_size": 5200,
+      "direct_parent_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody"
+      ]
+    },
+    {
+      "child_chunk_index": 57,
+      "child_chunk_id": "87cc0dcbb864fc235c1cc124215a4fe9b8fffae3",
+      "child_node_type": "function_definition",
+      "child_start_line": 129,
+      "child_end_line": 129,
+      "child_byte_size": 78,
+      "child_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "field_declaration:anon@123",
+        "class_specifier:SourceParticleMask",
+        "function_definition:anon@129"
+      ],
+      "containing_chunk_count": 4,
+      "direct_parent_chunk_index": 53,
+      "direct_parent_chunk_id": "4cada913e3af25f381de3a9b5b46d4c42f17b09f",
+      "direct_parent_node_type": "class_specifier",
+      "direct_parent_start_line": 123,
+      "direct_parent_end_line": 130,
+      "direct_parent_byte_size": 318,
+      "direct_parent_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "field_declaration:anon@123",
+        "class_specifier:SourceParticleMask"
+      ]
+    },
+    {
+      "child_chunk_index": 63,
+      "child_chunk_id": "4be311a9a8fcfe3af8d6a34e215ee7b637fbc05e",
+      "child_node_type": "method_declaration",
+      "child_start_line": 144,
+      "child_end_line": 144,
+      "child_byte_size": 95,
+      "child_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "method_declaration:defineAdaptationRatios"
+      ],
+      "containing_chunk_count": 2,
+      "direct_parent_chunk_index": 12,
+      "direct_parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "direct_parent_node_type": "class_specifier",
+      "direct_parent_start_line": 62,
+      "direct_parent_end_line": 174,
+      "direct_parent_byte_size": 5200,
+      "direct_parent_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody"
+      ]
+    },
+    {
+      "child_chunk_index": 49,
+      "child_chunk_id": "21b7adccc1bd6de9db75cd951e2ee7f4aa4af999",
+      "child_node_type": "method_declaration",
+      "child_start_line": 119,
+      "child_end_line": 119,
+      "child_byte_size": 49,
+      "child_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "method_declaration:setSPHBodyBounds"
+      ],
+      "containing_chunk_count": 2,
+      "direct_parent_chunk_index": 12,
+      "direct_parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "direct_parent_node_type": "class_specifier",
+      "direct_parent_start_line": 62,
+      "direct_parent_end_line": 174,
+      "direct_parent_byte_size": 5200,
+      "direct_parent_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody"
+      ]
+    },
+    {
+      "child_chunk_index": 51,
+      "child_chunk_id": "ef4a144a78937425dd4952a03e6edaa388fe17d7",
+      "child_node_type": "method_declaration",
+      "child_start_line": 121,
+      "child_end_line": 121,
+      "child_byte_size": 34,
+      "child_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "method_declaration:getSPHSystemBounds"
+      ],
+      "containing_chunk_count": 2,
+      "direct_parent_chunk_index": 12,
+      "direct_parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "direct_parent_node_type": "class_specifier",
+      "direct_parent_start_line": 62,
+      "direct_parent_end_line": 174,
+      "direct_parent_byte_size": 5200,
+      "direct_parent_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody"
+      ]
+    },
+    {
+      "child_chunk_index": 58,
+      "child_chunk_id": "05f862e825aff1d87a4d6bfc678659df37060f3b",
+      "child_node_type": "template_declaration",
+      "child_start_line": 132,
+      "child_end_line": 140,
+      "child_byte_size": 398,
+      "child_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "template_declaration:anon@132"
+      ],
+      "containing_chunk_count": 2,
+      "direct_parent_chunk_index": 12,
+      "direct_parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "direct_parent_node_type": "class_specifier",
+      "direct_parent_start_line": 62,
+      "direct_parent_end_line": 174,
+      "direct_parent_byte_size": 5200,
+      "direct_parent_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody"
+      ]
+    },
+    {
+      "child_chunk_index": 60,
+      "child_chunk_id": "a866f7023b7468cc071f205bec25d8ff54a83490",
+      "child_node_type": "template_declaration",
+      "child_start_line": 136,
+      "child_end_line": 138,
+      "child_byte_size": 232,
+      "child_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "template_declaration:anon@132",
+        "class_specifier:TargetParticleMask",
+        "template_declaration:anon@136"
+      ],
+      "containing_chunk_count": 4,
+      "direct_parent_chunk_index": 59,
+      "direct_parent_chunk_id": "9b55a024510f941a01419cff316efcb232cdfe25",
+      "direct_parent_node_type": "class_specifier",
+      "direct_parent_start_line": 133,
+      "direct_parent_end_line": 140,
+      "direct_parent_byte_size": 357,
+      "direct_parent_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "template_declaration:anon@132",
+        "class_specifier:TargetParticleMask"
+      ]
+    },
+    {
+      "child_chunk_index": 71,
+      "child_chunk_id": "425997426964dde7e76e54622ba53802080889c3",
+      "child_node_type": "template_declaration",
+      "child_start_line": 172,
+      "child_end_line": 173,
+      "child_byte_size": 185,
+      "child_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "template_declaration:anon@172"
+      ],
+      "containing_chunk_count": 2,
+      "direct_parent_chunk_index": 12,
+      "direct_parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "direct_parent_node_type": "class_specifier",
+      "direct_parent_start_line": 62,
+      "direct_parent_end_line": 174,
+      "direct_parent_byte_size": 5200,
+      "direct_parent_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody"
+      ]
+    },
+    {
+      "child_chunk_index": 52,
+      "child_chunk_id": "680efe2c938be6eef6cb73e741b63e3206948e42",
+      "child_node_type": "field_declaration",
+      "child_start_line": 123,
+      "child_end_line": 130,
+      "child_byte_size": 319,
+      "child_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "field_declaration:anon@123"
+      ],
+      "containing_chunk_count": 2,
+      "direct_parent_chunk_index": 12,
+      "direct_parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "direct_parent_node_type": "class_specifier",
+      "direct_parent_start_line": 62,
+      "direct_parent_end_line": 174,
+      "direct_parent_byte_size": 5200,
+      "direct_parent_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody"
+      ]
+    },
+    {
+      "child_chunk_index": 17,
+      "child_chunk_id": "7b8587213be6cffe5a8d037d999a48d4a660db80",
+      "child_node_type": "field_declaration",
+      "child_start_line": 69,
+      "child_end_line": 69,
+      "child_byte_size": 59,
+      "child_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "field_declaration:material_properties_keeper_"
+      ],
+      "containing_chunk_count": 2,
+      "direct_parent_chunk_index": 12,
+      "direct_parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "direct_parent_node_type": "class_specifier",
+      "direct_parent_start_line": 62,
+      "direct_parent_end_line": 174,
+      "direct_parent_byte_size": 5200,
+      "direct_parent_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody"
+      ]
+    },
+    {
+      "child_chunk_index": 14,
+      "child_chunk_id": "48e16d4c57f5eca0fd9a98d0972339e5c2008e9a",
+      "child_node_type": "field_declaration",
+      "child_start_line": 66,
+      "child_end_line": 66,
+      "child_byte_size": 54,
+      "child_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "field_declaration:sph_adaptation_keeper_"
+      ],
+      "containing_chunk_count": 2,
+      "direct_parent_chunk_index": 12,
+      "direct_parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "direct_parent_node_type": "class_specifier",
+      "direct_parent_start_line": 62,
+      "direct_parent_end_line": 174,
+      "direct_parent_byte_size": 5200,
+      "direct_parent_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody"
+      ]
+    }
+  ],
+  "repos/SPHinXsys/src/shared/common/sphinxsys_variable.h": [
+    {
+      "child_chunk_index": 86,
+      "child_chunk_id": "cd70af6c0cc98eec72a2e92e7c90ee1b96985145",
+      "child_node_type": "function_definition",
+      "child_start_line": 267,
+      "child_end_line": 281,
+      "child_byte_size": 533,
+      "child_route": [
+        "namespace_definition:SPH",
+        "template_declaration:anon@197",
+        "class_specifier:DiscreteVariable",
+        "template_declaration:anon@266",
+        "function_definition:anon@267"
+      ],
+      "containing_chunk_count": 4,
+      "direct_parent_chunk_index": 85,
+      "direct_parent_chunk_id": "ffae610c7798a743c37b2648599a159e3250e4f3",
+      "direct_parent_node_type": "template_declaration",
+      "direct_parent_start_line": 266,
+      "direct_parent_end_line": 281,
+      "direct_parent_byte_size": 567,
+      "direct_parent_route": [
+        "namespace_definition:SPH",
+        "template_declaration:anon@197",
+        "class_specifier:DiscreteVariable",
+        "template_declaration:anon@266"
+      ]
+    },
+    {
+      "child_chunk_index": 73,
+      "child_chunk_id": "2246b3b342eaf0363689234b528f1b96b3536fb4",
+      "child_node_type": "function_definition",
+      "child_start_line": 218,
+      "child_end_line": 229,
+      "child_byte_size": 522,
+      "child_route": [
+        "namespace_definition:SPH",
+        "template_declaration:anon@197",
+        "class_specifier:DiscreteVariable",
+        "function_definition:anon@218"
+      ],
+      "containing_chunk_count": 3,
+      "direct_parent_chunk_index": 67,
+      "direct_parent_chunk_id": "d8668f001202f081b93c4a8d880d9384af8b9238",
+      "direct_parent_node_type": "class_specifier",
+      "direct_parent_start_line": 198,
+      "direct_parent_end_line": 379,
+      "direct_parent_byte_size": 6599,
+      "direct_parent_route": [
+        "namespace_definition:SPH",
+        "template_declaration:anon@197",
+        "class_specifier:DiscreteVariable"
+      ]
+    },
+    {
+      "child_chunk_index": 83,
+      "child_chunk_id": "ce0749db7450f6126eeca03bafe08f7bafc19756",
+      "child_node_type": "function_definition",
+      "child_start_line": 246,
+      "child_end_line": 259,
+      "child_byte_size": 490,
+      "child_route": [
+        "namespace_definition:SPH",
+        "template_declaration:anon@197",
+        "class_specifier:DiscreteVariable",
+        "function_definition:getEntryIndexByName"
+      ],
+      "containing_chunk_count": 3,
+      "direct_parent_chunk_index": 67,
+      "direct_parent_chunk_id": "d8668f001202f081b93c4a8d880d9384af8b9238",
+      "direct_parent_node_type": "class_specifier",
+      "direct_parent_start_line": 198,
+      "direct_parent_end_line": 379,
+      "direct_parent_byte_size": 6599,
+      "direct_parent_route": [
+        "namespace_definition:SPH",
+        "template_declaration:anon@197",
+        "class_specifier:DiscreteVariable"
+      ]
+    },
+    {
+      "child_chunk_index": 62,
+      "child_chunk_id": "8d539fbb01fc4dc9110b2513cfe021db64aa1a94",
+      "child_node_type": "method_declaration",
+      "child_start_line": 186,
+      "child_end_line": 186,
+      "child_byte_size": 63,
+      "child_route": [
+        "namespace_definition:SPH",
+        "template_declaration:anon@180",
+        "class_specifier:DeviceOnlyDiscreteVariable",
+        "method_declaration:reallocateData"
+      ],
+      "containing_chunk_count": 3,
+      "direct_parent_chunk_index": 61,
+      "direct_parent_chunk_id": "bd5950e75e664a56cefc75eea3c27b290b0a1145",
+      "direct_parent_node_type": "class_specifier",
+      "direct_parent_start_line": 181,
+      "direct_parent_end_line": 191,
+      "direct_parent_byte_size": 356,
+      "direct_parent_route": [
+        "namespace_definition:SPH",
+        "template_declaration:anon@180",
+        "class_specifier:DeviceOnlyDiscreteVariable"
+      ]
+    },
+    {
+      "child_chunk_index": 116,
+      "child_chunk_id": "b52e816d62164b71964c757ba3efa2ca2a4ed51f",
+      "child_node_type": "method_declaration",
+      "child_start_line": 376,
+      "child_end_line": 376,
+      "child_byte_size": 56,
+      "child_route": [
+        "namespace_definition:SPH",
+        "template_declaration:anon@197",
+        "class_specifier:DiscreteVariable",
+        "method_declaration:reallocateDataOnDevice"
+      ],
+      "containing_chunk_count": 3,
+      "direct_parent_chunk_index": 67,
+      "direct_parent_chunk_id": "d8668f001202f081b93c4a8d880d9384af8b9238",
+      "direct_parent_node_type": "class_specifier",
+      "direct_parent_start_line": 198,
+      "direct_parent_end_line": 379,
+      "direct_parent_byte_size": 6599,
+      "direct_parent_route": [
+        "namespace_definition:SPH",
+        "template_declaration:anon@197",
+        "class_specifier:DiscreteVariable"
+      ]
+    },
+    {
+      "child_chunk_index": 117,
+      "child_chunk_id": "658357c1534433feabef4737fe129c7225f7b9fe",
+      "child_node_type": "method_declaration",
+      "child_start_line": 377,
+      "child_end_line": 377,
+      "child_byte_size": 29,
+      "child_route": [
+        "namespace_definition:SPH",
+        "template_declaration:anon@197",
+        "class_specifier:DiscreteVariable",
+        "method_declaration:synchronizeWithDevice"
+      ],
+      "containing_chunk_count": 3,
+      "direct_parent_chunk_index": 67,
+      "direct_parent_chunk_id": "d8668f001202f081b93c4a8d880d9384af8b9238",
+      "direct_parent_node_type": "class_specifier",
+      "direct_parent_start_line": 198,
+      "direct_parent_end_line": 379,
+      "direct_parent_byte_size": 6599,
+      "direct_parent_route": [
+        "namespace_definition:SPH",
+        "template_declaration:anon@197",
+        "class_specifier:DiscreteVariable"
+      ]
+    },
+    {
+      "child_chunk_index": 85,
+      "child_chunk_id": "ffae610c7798a743c37b2648599a159e3250e4f3",
+      "child_node_type": "template_declaration",
+      "child_start_line": 266,
+      "child_end_line": 281,
+      "child_byte_size": 567,
+      "child_route": [
+        "namespace_definition:SPH",
+        "template_declaration:anon@197",
+        "class_specifier:DiscreteVariable",
+        "template_declaration:anon@266"
+      ],
+      "containing_chunk_count": 3,
+      "direct_parent_chunk_index": 67,
+      "direct_parent_chunk_id": "d8668f001202f081b93c4a8d880d9384af8b9238",
+      "direct_parent_node_type": "class_specifier",
+      "direct_parent_start_line": 198,
+      "direct_parent_end_line": 379,
+      "direct_parent_byte_size": 6599,
+      "direct_parent_route": [
+        "namespace_definition:SPH",
+        "template_declaration:anon@197",
+        "class_specifier:DiscreteVariable"
+      ]
+    },
+    {
+      "child_chunk_index": 93,
+      "child_chunk_id": "a22ee357698d080dc306bb84731e32fed487c6f0",
+      "child_node_type": "template_declaration",
+      "child_start_line": 305,
+      "child_end_line": 316,
+      "child_byte_size": 423,
+      "child_route": [
+        "namespace_definition:SPH",
+        "template_declaration:anon@197",
+        "class_specifier:DiscreteVariable",
+        "template_declaration:anon@305"
+      ],
+      "containing_chunk_count": 3,
+      "direct_parent_chunk_index": 67,
+      "direct_parent_chunk_id": "d8668f001202f081b93c4a8d880d9384af8b9238",
+      "direct_parent_node_type": "class_specifier",
+      "direct_parent_start_line": 198,
+      "direct_parent_end_line": 379,
+      "direct_parent_byte_size": 6599,
+      "direct_parent_route": [
+        "namespace_definition:SPH",
+        "template_declaration:anon@197",
+        "class_specifier:DiscreteVariable"
+      ]
+    },
+    {
+      "child_chunk_index": 91,
+      "child_chunk_id": "8fff661d0acb85f1d7e8db3cd19506ffbe6339b0",
+      "child_node_type": "template_declaration",
+      "child_start_line": 292,
+      "child_end_line": 303,
+      "child_byte_size": 389,
+      "child_route": [
+        "namespace_definition:SPH",
+        "template_declaration:anon@197",
+        "class_specifier:DiscreteVariable",
+        "template_declaration:anon@292"
+      ],
+      "containing_chunk_count": 3,
+      "direct_parent_chunk_index": 67,
+      "direct_parent_chunk_id": "d8668f001202f081b93c4a8d880d9384af8b9238",
+      "direct_parent_node_type": "class_specifier",
+      "direct_parent_start_line": 198,
+      "direct_parent_end_line": 379,
+      "direct_parent_byte_size": 6599,
+      "direct_parent_route": [
+        "namespace_definition:SPH",
+        "template_declaration:anon@197",
+        "class_specifier:DiscreteVariable"
+      ]
+    },
+    {
+      "child_chunk_index": 112,
+      "child_chunk_id": "a8d86b2a1ef4dc90f38f7c08ec193e3d56518bb6",
+      "child_node_type": "field_declaration",
+      "child_start_line": 363,
+      "child_end_line": 363,
+      "child_byte_size": 70,
+      "child_route": [
+        "namespace_definition:SPH",
+        "template_declaration:anon@197",
+        "class_specifier:DiscreteVariable",
+        "field_declaration:device_only_variable_"
+      ],
+      "containing_chunk_count": 3,
+      "direct_parent_chunk_index": 67,
+      "direct_parent_chunk_id": "d8668f001202f081b93c4a8d880d9384af8b9238",
+      "direct_parent_node_type": "class_specifier",
+      "direct_parent_start_line": 198,
+      "direct_parent_end_line": 379,
+      "direct_parent_byte_size": 6599,
+      "direct_parent_route": [
+        "namespace_definition:SPH",
+        "template_declaration:anon@197",
+        "class_specifier:DiscreteVariable"
+      ]
+    },
+    {
+      "child_chunk_index": 41,
+      "child_chunk_id": "0e68718c319525cd97f202971dff0fab98528f1a",
+      "child_node_type": "field_declaration",
+      "child_start_line": 134,
+      "child_end_line": 134,
+      "child_byte_size": 66,
+      "child_route": [
+        "namespace_definition:SPH",
+        "template_declaration:anon@131",
+        "class_specifier:SingleVariable",
+        "field_declaration:device_shared_singular_variable_keeper_"
+      ],
+      "containing_chunk_count": 3,
+      "direct_parent_chunk_index": 40,
+      "direct_parent_chunk_id": "d532d48736f6f41235140bd551b8fbf4ce1e0df8",
+      "direct_parent_node_type": "class_specifier",
+      "direct_parent_start_line": 132,
+      "direct_parent_end_line": 178,
+      "direct_parent_byte_size": 1625,
+      "direct_parent_route": [
+        "namespace_definition:SPH",
+        "template_declaration:anon@131",
+        "class_specifier:SingleVariable"
+      ]
+    },
+    {
+      "child_chunk_index": 68,
+      "child_chunk_id": "66135cd6d830acf8c39a3c77ae7ddf3f27b96226",
+      "child_node_type": "field_declaration",
+      "child_start_line": 200,
+      "child_end_line": 200,
+      "child_byte_size": 55,
+      "child_route": [
+        "namespace_definition:SPH",
+        "template_declaration:anon@197",
+        "class_specifier:DiscreteVariable",
+        "field_declaration:device_only_variable_keeper_"
+      ],
+      "containing_chunk_count": 3,
+      "direct_parent_chunk_index": 67,
+      "direct_parent_chunk_id": "d8668f001202f081b93c4a8d880d9384af8b9238",
+      "direct_parent_node_type": "class_specifier",
+      "direct_parent_start_line": 198,
+      "direct_parent_end_line": 379,
+      "direct_parent_byte_size": 6599,
+      "direct_parent_route": [
+        "namespace_definition:SPH",
+        "template_declaration:anon@197",
+        "class_specifier:DiscreteVariable"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,226 @@
+[
+  {
+    "file": "repos/SPHinXsys/tests/2d_examples/test_2d_dambreak/Dambreak.cpp",
+    "chunk_count_by_node_type": {
+      "class_specifier": 1,
+      "function_definition": 2
+    },
+    "chunk_size_distribution": {
+      "bytes": {
+        "min": 272,
+        "max": 11148,
+        "median": 331,
+        "mean": 3917.0
+      },
+      "line_span": {
+        "min": 5,
+        "max": 202,
+        "median": 9,
+        "mean": 72.0
+      }
+    },
+    "tiny_chunks": {
+      "lt_50_bytes": 0,
+      "lt_100_bytes": 0,
+      "lt_200_bytes": 0
+    },
+    "large_chunks": {
+      "gt_2000_bytes": 1,
+      "gt_5000_bytes": 1,
+      "gt_10000_bytes": 1
+    },
+    "parent_child_structural_overlap": {
+      "nested_chunk_count": 1,
+      "top_level_chunk_count": 2,
+      "nested_chunk_bytes_sum": 272,
+      "total_chunk_bytes_sum": 11751,
+      "unique_covered_bytes": 11479,
+      "hierarchical_redundancy_bytes": 272,
+      "duplication_factor": 1.0236954438539942
+    },
+    "parsing_errors_reported": false,
+    "main_function_case": {
+      "chunk_index": 2,
+      "byte_size": 11148,
+      "start_line": 51,
+      "end_line": 252,
+      "line_span": 202,
+      "internal_raw_structural_child_count": 0,
+      "internal_raw_structural_children": []
+    }
+  },
+  {
+    "file": "repos/SPHinXsys/src/shared/bodies/base_body.h",
+    "chunk_count_by_node_type": {
+      "class_specifier": 15,
+      "field_declaration": 25,
+      "function_definition": 13,
+      "method_declaration": 9,
+      "namespace_definition": 1,
+      "template_declaration": 16,
+      "type_definition": 2
+    },
+    "chunk_size_distribution": {
+      "bytes": {
+        "min": 11,
+        "max": 6472,
+        "median": 42,
+        "mean": 217.97530864197532
+      },
+      "line_span": {
+        "min": 1,
+        "max": 162,
+        "median": 1,
+        "mean": 5.185185185185185
+      }
+    },
+    "tiny_chunks": {
+      "lt_50_bytes": 46,
+      "lt_100_bytes": 64,
+      "lt_200_bytes": 73
+    },
+    "large_chunks": {
+      "gt_2000_bytes": 2,
+      "gt_5000_bytes": 2,
+      "gt_10000_bytes": 0
+    },
+    "parent_child_structural_overlap": {
+      "nested_chunk_count": 80,
+      "top_level_chunk_count": 1,
+      "nested_chunk_bytes_sum": 11184,
+      "total_chunk_bytes_sum": 17656,
+      "unique_covered_bytes": 6472,
+      "hierarchical_redundancy_bytes": 11184,
+      "duplication_factor": 2.728059332509271
+    },
+    "parsing_errors_reported": false
+  },
+  {
+    "file": "repos/SPHinXsys/src/shared/common/scalar_functions.cpp",
+    "chunk_count_by_node_type": {
+      "function_definition": 3,
+      "namespace_definition": 1
+    },
+    "chunk_size_distribution": {
+      "bytes": {
+        "min": 79,
+        "max": 2878,
+        "median": 1185.5,
+        "mean": 1332.0
+      },
+      "line_span": {
+        "min": 4,
+        "max": 67,
+        "median": 28.0,
+        "mean": 31.75
+      }
+    },
+    "tiny_chunks": {
+      "lt_50_bytes": 0,
+      "lt_100_bytes": 1,
+      "lt_200_bytes": 1
+    },
+    "large_chunks": {
+      "gt_2000_bytes": 1,
+      "gt_5000_bytes": 0,
+      "gt_10000_bytes": 0
+    },
+    "parent_child_structural_overlap": {
+      "nested_chunk_count": 3,
+      "top_level_chunk_count": 1,
+      "nested_chunk_bytes_sum": 2450,
+      "total_chunk_bytes_sum": 5328,
+      "unique_covered_bytes": 2878,
+      "hierarchical_redundancy_bytes": 2450,
+      "duplication_factor": 1.851285615010424
+    },
+    "parsing_errors_reported": false
+  },
+  {
+    "file": "repos/SPHinXsys/src/shared/common/sphinxsys_variable.h",
+    "chunk_count_by_node_type": {
+      "class_specifier": 10,
+      "field_declaration": 18,
+      "function_definition": 61,
+      "method_declaration": 4,
+      "namespace_definition": 1,
+      "struct_specifier": 1,
+      "template_declaration": 23,
+      "type_definition": 3
+    },
+    "chunk_size_distribution": {
+      "bytes": {
+        "min": 16,
+        "max": 10949,
+        "median": 80,
+        "mean": 358.25619834710744
+      },
+      "line_span": {
+        "min": 1,
+        "max": 346,
+        "median": 1,
+        "mean": 10.50413223140496
+      }
+    },
+    "tiny_chunks": {
+      "lt_50_bytes": 36,
+      "lt_100_bytes": 70,
+      "lt_200_bytes": 88
+    },
+    "large_chunks": {
+      "gt_2000_bytes": 3,
+      "gt_5000_bytes": 3,
+      "gt_10000_bytes": 1
+    },
+    "parent_child_structural_overlap": {
+      "nested_chunk_count": 120,
+      "top_level_chunk_count": 1,
+      "nested_chunk_bytes_sum": 32400,
+      "total_chunk_bytes_sum": 43349,
+      "unique_covered_bytes": 10949,
+      "hierarchical_redundancy_bytes": 32400,
+      "duplication_factor": 3.959174353822267
+    },
+    "parsing_errors_reported": false
+  },
+  {
+    "file": "repos/SPHinXsys/tests/unit_tests_src/shared/common/test_scalar_functions/test_scalar_functions.cpp",
+    "chunk_count_by_node_type": {
+      "function_definition": 2
+    },
+    "chunk_size_distribution": {
+      "bytes": {
+        "min": 106,
+        "max": 302,
+        "median": 204.0,
+        "mean": 204.0
+      },
+      "line_span": {
+        "min": 5,
+        "max": 12,
+        "median": 8.5,
+        "mean": 8.5
+      }
+    },
+    "tiny_chunks": {
+      "lt_50_bytes": 0,
+      "lt_100_bytes": 0,
+      "lt_200_bytes": 1
+    },
+    "large_chunks": {
+      "gt_2000_bytes": 0,
+      "gt_5000_bytes": 0,
+      "gt_10000_bytes": 0
+    },
+    "parent_child_structural_overlap": {
+      "nested_chunk_count": 0,
+      "top_level_chunk_count": 2,
+      "nested_chunk_bytes_sum": 0,
+      "total_chunk_bytes_sum": 408,
+      "unique_covered_bytes": 408,
+      "hierarchical_redundancy_bytes": 0,
+      "duplication_factor": 1.0
+    },
+    "parsing_errors_reported": false
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "file": "repos/SPHinXsys/src/shared/common/scalar_functions.cpp",
+  "total_lines": 69,
+  "total_chunks": 4,
+  "chunk_node_types": [
+    "function_definition",
+    "namespace_definition"
+  ],
+  "minimum_chunk_size_bytes": 79,
+  "maximum_chunk_size_bytes": 2878,
+  "average_chunk_size_bytes": 1332.0,
+  "parsing_errors_reported": false
+}

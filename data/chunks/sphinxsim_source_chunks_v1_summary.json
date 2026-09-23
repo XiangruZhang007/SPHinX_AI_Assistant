@@ -1,0 +1,43 @@
+{
+  "prototype": "sphinxsim_source_chunks_v1",
+  "repository_scope": [
+    "SPHinXsim"
+  ],
+  "input_root": "repos/SPHinXsim",
+  "excluded_paths": [
+    "repos/SPHinXsim/sphinxsim/sphinxsys/"
+  ],
+  "total_chunk_count": 1264,
+  "counts_by_source_role": {
+    "binding": 7,
+    "config_or_schema": 112,
+    "llm_support": 99,
+    "simulation_example": 10,
+    "simulator_library": 323,
+    "test": 662,
+    "visualization": 51
+  },
+  "counts_by_repository": {
+    "SPHinXsim": 1264
+  },
+  "counts_by_chunk_type": {
+    "class_definition": 174,
+    "config_document": 14,
+    "function_definition": 838,
+    "method_declaration": 238
+  },
+  "chunk_size_bytes": {
+    "min": 11,
+    "max": 57230,
+    "mean": 889.3378164556962,
+    "median": 331.5
+  },
+  "oversized_chunks_remaining_gt_5000_bytes": 31,
+  "skipped_files": [],
+  "parse_warning_files": [
+    {
+      "source_path": "repos/SPHinXsim/sphinxsim/sph_simulation/common_builder/geometry_builder.cpp",
+      "warning": "Tree-sitter reported a parse error"
+    }
+  ]
+}

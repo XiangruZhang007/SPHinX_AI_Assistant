@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+
+# Local secrets / env files
+.env
+.env.*
+*.key
+
+# Upstream repositories are managed separately
+repos/SPHinXsys/
+repos/SPHinXsim/
+
+# Generated local caches / logs
+*.log
+
+# Project documentation kept local for now
+doc/
+
+# Third-party Tree-sitter tool checkout and its local environments
+tools/treesitter-chunker/
+
+# Re-generatable chunk intermediates
+data/chunks/source_chunks_v1.jsonl
+data/chunks/sphinxsim_source_chunks_v1.jsonl
+
+# Local development user-testing records
+data/user_testing/local_tester/
+
+# Generated review batches
+data/user_testing/review_batches/
+
+# User-testing runtime locks
+data/user_testing/**/*.lock

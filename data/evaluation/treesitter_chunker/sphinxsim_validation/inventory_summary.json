@@ -1,0 +1,43 @@
+{
+  "repository": "SPHinXsim",
+  "scope_roots": [
+    "sphinxsim/bindings",
+    "sphinxsim/config",
+    "sphinxsim/llm",
+    "sphinxsim/sph_simulation",
+    "sphinxsim/visualization",
+    "examples",
+    "tests"
+  ],
+  "excluded_paths": [
+    "sphinxsim/sphinxsys/"
+  ],
+  "total_files": 103,
+  "counts_by_directory": {
+    "sphinxsim/bindings": 3,
+    "sphinxsim/config": 3,
+    "sphinxsim/llm": 6,
+    "sphinxsim/sph_simulation": 47,
+    "sphinxsim/visualization": 3,
+    "examples": 3,
+    "tests": 38
+  },
+  "counts_by_extension": {
+    ".cpp": 21,
+    ".dat": 5,
+    ".h": 19,
+    ".hpp": 9,
+    ".json": 14,
+    ".py": 28,
+    ".stl": 3,
+    ".txt": 4
+  },
+  "counts_by_likely_source_role": {
+    "config/schema": 3,
+    "llm_support": 6,
+    "simulation_example": 3,
+    "simulator_library": 50,
+    "test": 38,
+    "visualization": 3
+  }
+}

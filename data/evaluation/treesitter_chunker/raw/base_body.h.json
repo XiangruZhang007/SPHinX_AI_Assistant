@@ -1,0 +1,3237 @@
+{
+  "file": "repos/SPHinXsys/src/shared/bodies/base_body.h",
+  "language": "cpp",
+  "chunks": [
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "namespace_definition",
+      "start_line": 41,
+      "end_line": 202,
+      "byte_start": 2392,
+      "byte_end": 8864,
+      "parent_context": "",
+      "content": "namespace SPH\n{\nclass SPHRelation;\nclass BodyPart;\nclass Shape;\nclass ComplexShape;\nclass LevelSetShape;\nclass SPHAdaptation;\nclass BaseParticles;\nclass BaseMaterial;\nclass MatterMaterial;\nclass SPHSystem;\nclass BaseCellLinkedList;\n\n/**\n * @class SPHBody\n * @brief SPHBody is a base body with basic data and functions.\n * Its derived class can be a real fluid body, a real deformable solid body,\n * a static or moving solid body or an observer body.\n * Note that only real bodies have cell linked list.\n */\nclass SPHBody\n{\n  private:\n    SharedPtrKeeper<Shape> shape_keeper_;\n    UniquePtrKeeper<SPHAdaptation> sph_adaptation_keeper_;\n    UniquePtrKeeper<BaseParticles> base_particles_keeper_;\n    UniquePtrKeeper<BaseMaterial> matter_keeper_;\n    UniquePtrsKeeper<BaseMaterial> material_properties_keeper_;\n\n  protected:\n    SPHSystem &sph_system_;\n    std::string body_name_;\n    bool newly_updated_;            /**< whether this body is in a newly updated state */\n    BaseParticles *base_particles_; /**< Base particles for dynamic cast DataDelegate  */\n    bool is_bound_set_;             /**< whether the bounding box is set */\n    BoundingBoxd bound_;            /**< bounding box of the body */\n    bool is_physical_;              /**< whether this body is a physical body */\n    Shape *initial_shape_;          /**< initial volumetric geometry enclosing the body */\n    SPHAdaptation *sph_adaptation_; /**< numerical adaptation policy */\n    StdVec<BaseMaterial *> material_properties_;\n    StdVec<SPHRelation *> body_relations_; /**< all contact relations centered from this body **/\n\n  public:\n    typedef SPHBody RangeIdentifier;\n    typedef SPHAdaptation Adaptation;\n    SPHBody(SPHSystem &sph_system, Shape &shape, const std::string &name);\n    SPHBody(SPHSystem &sph_system, Shape &shape);\n    SPHBody(SPHSystem &sph_system, const std::string &name);\n    SPHBody(SPHSystem &sph_system, SharedPtr<Shape> shape_ptr, const std::string &name);\n    SPHBody(SPHSystem &sph_system, SharedPtr<Shape> shape_ptr);\n    virtual ~SPHBody();\n\n    std::string Name() { return body_name_; };\n    SPHSystem &getSPHSystem();\n    SPHBody &getSPHBody() { return *this; };\n    Shape &getInitialShape() { return *initial_shape_; };\n    void assignBaseParticles(BaseParticles *base_particles) { base_particles_ = base_particles; };\n    SPHAdaptation &getSPHAdaptation();\n    BaseParticles &getBaseParticles();\n    MatterMaterial &getMatterMaterial() const;\n\n    template <typename MaterialType>\n    bool isMatterMaterial() const;\n\n    template <typename MaterialType>\n    StdVec<MaterialType *> collectMaterialProperties();\n\n    template <typename MaterialType>\n    MaterialType &getMaterialProperty(const std::string &name = \"\"); // name is optional for one material for a material type\n\n    StdVec<SPHRelation *> &getBodyRelations() { return body_relations_; };\n    IndexRange LoopRange();\n    size_t SizeOfLoopRange();\n    Real getSPHBodyResolutionRef();\n    void setNewlyUpdated() { newly_updated_ = true; };\n    void setNotNewlyUpdated() { newly_updated_ = false; };\n    bool checkNewlyUpdated() { return newly_updated_; };\n    void setSPHBodyBounds(const BoundingBoxd &bound);\n    BoundingBoxd getSPHBodyBounds();\n    BoundingBoxd getSPHSystemBounds();\n\n    class SourceParticleMask\n    {\n      public:\n        template <class ExecutionPolicy, typename EnclosureType>\n        SourceParticleMask(ExecutionPolicy &ex_policy, EnclosureType &encloser) {}\n        ~SourceParticleMask() {}\n        constexpr bool operator()(UnsignedInt /*source_index*/) const { return true; }\n    };\n\n    template <typename TargetCriterion>\n    class TargetParticleMask : public TargetCriterion\n    {\n      public:\n        template <class ExecutionPolicy, typename EnclosureType, typename... Args>\n        TargetParticleMask(ExecutionPolicy &ex_policy, EnclosureType &encloser, Args &&...args)\n            : TargetCriterion(std::forward<Args>(args)...) {}\n        virtual ~TargetParticleMask() {}\n    };\n    //----------------------------------------------------------------------\n    //\t\tObject factory template functions\n    //----------------------------------------------------------------------\n    virtual void defineAdaptationRatios(Real h_spacing_ratio, Real new_refinement_to_global = 1.0);\n\n    template <class AdaptationType, typename... Args>\n    void defineAdaptation(Args &&...args);\n\n    template <typename... Args>\n    LevelSetShape &defineComponentLevelSetShape(const std::string &shape_name, Args &&...args);\n\n    template <typename... Args>\n    LevelSetShape &defineBodyLevelSetShape(Args &&...args);\n\n    template <typename ExecutionPolicy, typename... Args>\n    LevelSetShape &defineBodyLevelSetShape(const ExecutionPolicy &ex_policy, Args &&...args);\n\n    template <class MaterialType = MatterMaterial, typename... Args>\n    MaterialType &defineMatterMaterial(Args &&...args);\n\n    template <class MaterialType, typename... Args>\n    MaterialType &addMaterialProperty(Args &&...args);\n    //----------------------------------------------------------------------\n    // Particle generating methods\n    // Initialize particle data using a particle generator for geometric data.\n    // The local material parameters are also initialized.\n    //----------------------------------------------------------------------\n    template <class ParticleType, class... Parameters, typename... Args>\n    ParticleType &generateParticles(Args &&...args);\n\n    // Buffer or ghost particles can be generated together with real particles\n    template <class ParticleType, typename... Parameters, class ReserveType, typename... Args>\n    ParticleType &generateParticlesWithReserve(ReserveType &particle_reserve, Args &&...args);\n};\n\n/**\n * @class RealBody\n * @brief Derived body with inner particle configuration or inner interactions.\n * After construction, the particle and material must be specified.\n */\nclass RealBody : public SPHBody\n{\n  public:\n    template <typename... Args>\n    RealBody(Args &&...args);\n    virtual ~RealBody();\n    BaseCellLinkedList &getCellLinkedList();\n    void updateCellLinkedList();\n    using ListedParticleMask = typename SPHBody::SourceParticleMask;\n\n    template <class BodyPartType, typename... Args>\n    BodyPartType &addBodyPart(Args &&...args);\n\n  protected:\n    UniquePtr<BaseCellLinkedList> cell_linked_list_ptr_;\n    UniquePtrsKeeper<BodyPart> body_parts_keeper_;\n    bool cell_linked_list_created_;\n\n  private:\n    void addRealBodyToSPHSystem();\n};\n}",
+      "chunk_id": "61195d92d62d5a14d9a0b2621be7874eb8727afe",
+      "parent_chunk_id": null,
+      "references": [],
+      "dependencies": [
+        "addBodyPart",
+        "addMaterialProperty",
+        "args",
+        "base_particles",
+        "base_particles_",
+        "body_name_",
+        "body_relations_",
+        "bound",
+        "defineBodyLevelSetShape",
+        "defineComponentLevelSetShape",
+        "defineMatterMaterial",
+        "encloser",
+        "ex_policy",
+        "forward",
+        "generateParticles",
+        "generateParticlesWithReserve",
+        "getMaterialProperty",
+        "h_spacing_ratio",
+        "initial_shape_",
+        "name",
+        "new_refinement_to_global",
+        "newly_updated_",
+        "particle_reserve",
+        "shape",
+        "shape_name",
+        "shape_ptr",
+        "sph_system"
+      ],
+      "metadata": {
+        "dependencies": [
+          "addBodyPart",
+          "addMaterialProperty",
+          "args",
+          "base_particles",
+          "base_particles_",
+          "body_name_",
+          "body_relations_",
+          "bound",
+          "defineBodyLevelSetShape",
+          "defineComponentLevelSetShape",
+          "defineMatterMaterial",
+          "encloser",
+          "ex_policy",
+          "forward",
+          "generateParticles",
+          "generateParticlesWithReserve",
+          "getMaterialProperty",
+          "h_spacing_ratio",
+          "initial_shape_",
+          "name",
+          "new_refinement_to_global",
+          "newly_updated_",
+          "particle_reserve",
+          "shape",
+          "shape_name",
+          "shape_ptr",
+          "sph_system"
+        ],
+        "calls": [
+          "forward"
+        ],
+        "call_spans": [
+          {
+            "name": "forward",
+            "start": 6292,
+            "end": 6316,
+            "function_start": 6292,
+            "function_end": 6310,
+            "arguments_start": 6310,
+            "arguments_end": 6316
+          }
+        ],
+        "type": "namespace_definition"
+      },
+      "node_id": "61195d92d62d5a14d9a0b2621be7874eb8727afe",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH"
+      ],
+      "definition_id": "c12b74e8b227bc052a524c340a40ca8b2da3143d",
+      "chunk_index": 0
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "class_specifier",
+      "start_line": 43,
+      "end_line": 43,
+      "byte_start": 2408,
+      "byte_end": 2425,
+      "parent_context": "namespace_definition",
+      "content": "class SPHRelation",
+      "chunk_id": "06649ccbf6d881565cf736e2baf72904c84a8510",
+      "parent_chunk_id": "61195d92d62d5a14d9a0b2621be7874eb8727afe",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "class_specifier"
+      },
+      "node_id": "06649ccbf6d881565cf736e2baf72904c84a8510",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHRelation"
+      ],
+      "definition_id": "7684c53a4b316fcaaeb2e4363711d10c521a8af7",
+      "chunk_index": 1
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "class_specifier",
+      "start_line": 44,
+      "end_line": 44,
+      "byte_start": 2427,
+      "byte_end": 2441,
+      "parent_context": "namespace_definition",
+      "content": "class BodyPart",
+      "chunk_id": "28005dcf016b475908c31b9eee9a87234b621fa1",
+      "parent_chunk_id": "61195d92d62d5a14d9a0b2621be7874eb8727afe",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "class_specifier"
+      },
+      "node_id": "28005dcf016b475908c31b9eee9a87234b621fa1",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:BodyPart"
+      ],
+      "definition_id": "d755014d2c0b7b6983a22c5a7921f15abe3588cd",
+      "chunk_index": 2
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "class_specifier",
+      "start_line": 45,
+      "end_line": 45,
+      "byte_start": 2443,
+      "byte_end": 2454,
+      "parent_context": "namespace_definition",
+      "content": "class Shape",
+      "chunk_id": "ea724da9259418cb5d6bf4824f4630fb894c677f",
+      "parent_chunk_id": "61195d92d62d5a14d9a0b2621be7874eb8727afe",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "class_specifier"
+      },
+      "node_id": "ea724da9259418cb5d6bf4824f4630fb894c677f",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:Shape"
+      ],
+      "definition_id": "82fa114f5be340be1787e14d872a38fc99b4bcdd",
+      "chunk_index": 3
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "class_specifier",
+      "start_line": 46,
+      "end_line": 46,
+      "byte_start": 2456,
+      "byte_end": 2474,
+      "parent_context": "namespace_definition",
+      "content": "class ComplexShape",
+      "chunk_id": "6ab0865d85effbdef795d7f68d7c2df2d37ff787",
+      "parent_chunk_id": "61195d92d62d5a14d9a0b2621be7874eb8727afe",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "class_specifier"
+      },
+      "node_id": "6ab0865d85effbdef795d7f68d7c2df2d37ff787",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:ComplexShape"
+      ],
+      "definition_id": "d60939d7f4f2b71f6f0c8080ff92471fba542af5",
+      "chunk_index": 4
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "class_specifier",
+      "start_line": 47,
+      "end_line": 47,
+      "byte_start": 2476,
+      "byte_end": 2495,
+      "parent_context": "namespace_definition",
+      "content": "class LevelSetShape",
+      "chunk_id": "5f620ad34bd42e5dbb2812171bb6b58189851270",
+      "parent_chunk_id": "61195d92d62d5a14d9a0b2621be7874eb8727afe",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "class_specifier"
+      },
+      "node_id": "5f620ad34bd42e5dbb2812171bb6b58189851270",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:LevelSetShape"
+      ],
+      "definition_id": "722fdcc93c29136e8d85dd9350ad057e7e2b1ee9",
+      "chunk_index": 5
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "class_specifier",
+      "start_line": 48,
+      "end_line": 48,
+      "byte_start": 2497,
+      "byte_end": 2516,
+      "parent_context": "namespace_definition",
+      "content": "class SPHAdaptation",
+      "chunk_id": "515f08d677e6c20162f6d8949e1b06d1b5888301",
+      "parent_chunk_id": "61195d92d62d5a14d9a0b2621be7874eb8727afe",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "class_specifier"
+      },
+      "node_id": "515f08d677e6c20162f6d8949e1b06d1b5888301",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHAdaptation"
+      ],
+      "definition_id": "a173b4450c51fe08836c42f0577c617558505bf6",
+      "chunk_index": 6
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "class_specifier",
+      "start_line": 49,
+      "end_line": 49,
+      "byte_start": 2518,
+      "byte_end": 2537,
+      "parent_context": "namespace_definition",
+      "content": "class BaseParticles",
+      "chunk_id": "bb8744ed33f8114cae6feafbbf0f6773dfef8d5d",
+      "parent_chunk_id": "61195d92d62d5a14d9a0b2621be7874eb8727afe",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "class_specifier"
+      },
+      "node_id": "bb8744ed33f8114cae6feafbbf0f6773dfef8d5d",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:BaseParticles"
+      ],
+      "definition_id": "bb442c3b3e94d1e8bd767f441306b7b94d52d67a",
+      "chunk_index": 7
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "class_specifier",
+      "start_line": 50,
+      "end_line": 50,
+      "byte_start": 2539,
+      "byte_end": 2557,
+      "parent_context": "namespace_definition",
+      "content": "class BaseMaterial",
+      "chunk_id": "b3f5cac79b4e025d3667d637a46a63fdf242fedd",
+      "parent_chunk_id": "61195d92d62d5a14d9a0b2621be7874eb8727afe",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "class_specifier"
+      },
+      "node_id": "b3f5cac79b4e025d3667d637a46a63fdf242fedd",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:BaseMaterial"
+      ],
+      "definition_id": "c83fae2ff02374aef3662e61d3e04150cb5c6100",
+      "chunk_index": 8
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "class_specifier",
+      "start_line": 51,
+      "end_line": 51,
+      "byte_start": 2559,
+      "byte_end": 2579,
+      "parent_context": "namespace_definition",
+      "content": "class MatterMaterial",
+      "chunk_id": "b7af5cb6e353563271c1f4ae673104b2c17ce092",
+      "parent_chunk_id": "61195d92d62d5a14d9a0b2621be7874eb8727afe",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "class_specifier"
+      },
+      "node_id": "b7af5cb6e353563271c1f4ae673104b2c17ce092",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:MatterMaterial"
+      ],
+      "definition_id": "7f5f95a4f636af859cc5e985ddb3627fa41f2bfe",
+      "chunk_index": 9
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "class_specifier",
+      "start_line": 52,
+      "end_line": 52,
+      "byte_start": 2581,
+      "byte_end": 2596,
+      "parent_context": "namespace_definition",
+      "content": "class SPHSystem",
+      "chunk_id": "da718d034402b991b7c1374f61fa07576f61dc59",
+      "parent_chunk_id": "61195d92d62d5a14d9a0b2621be7874eb8727afe",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "class_specifier"
+      },
+      "node_id": "da718d034402b991b7c1374f61fa07576f61dc59",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHSystem"
+      ],
+      "definition_id": "36f8f4289c8db60ec22bf67ff029c0db1b9a2796",
+      "chunk_index": 10
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "class_specifier",
+      "start_line": 53,
+      "end_line": 53,
+      "byte_start": 2598,
+      "byte_end": 2622,
+      "parent_context": "namespace_definition",
+      "content": "class BaseCellLinkedList",
+      "chunk_id": "fd12e93e23f8087281366bcbbdcc756e53a052de",
+      "parent_chunk_id": "61195d92d62d5a14d9a0b2621be7874eb8727afe",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "class_specifier"
+      },
+      "node_id": "fd12e93e23f8087281366bcbbdcc756e53a052de",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:BaseCellLinkedList"
+      ],
+      "definition_id": "c1cf5ef65226ca9eabf8bcdf196816f00fb115b6",
+      "chunk_index": 11
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "class_specifier",
+      "start_line": 62,
+      "end_line": 174,
+      "byte_start": 2899,
+      "byte_end": 8099,
+      "parent_context": "namespace_definition",
+      "content": "class SPHBody\n{\n  private:\n    SharedPtrKeeper<Shape> shape_keeper_;\n    UniquePtrKeeper<SPHAdaptation> sph_adaptation_keeper_;\n    UniquePtrKeeper<BaseParticles> base_particles_keeper_;\n    UniquePtrKeeper<BaseMaterial> matter_keeper_;\n    UniquePtrsKeeper<BaseMaterial> material_properties_keeper_;\n\n  protected:\n    SPHSystem &sph_system_;\n    std::string body_name_;\n    bool newly_updated_;            /**< whether this body is in a newly updated state */\n    BaseParticles *base_particles_; /**< Base particles for dynamic cast DataDelegate  */\n    bool is_bound_set_;             /**< whether the bounding box is set */\n    BoundingBoxd bound_;            /**< bounding box of the body */\n    bool is_physical_;              /**< whether this body is a physical body */\n    Shape *initial_shape_;          /**< initial volumetric geometry enclosing the body */\n    SPHAdaptation *sph_adaptation_; /**< numerical adaptation policy */\n    StdVec<BaseMaterial *> material_properties_;\n    StdVec<SPHRelation *> body_relations_; /**< all contact relations centered from this body **/\n\n  public:\n    typedef SPHBody RangeIdentifier;\n    typedef SPHAdaptation Adaptation;\n    SPHBody(SPHSystem &sph_system, Shape &shape, const std::string &name);\n    SPHBody(SPHSystem &sph_system, Shape &shape);\n    SPHBody(SPHSystem &sph_system, const std::string &name);\n    SPHBody(SPHSystem &sph_system, SharedPtr<Shape> shape_ptr, const std::string &name);\n    SPHBody(SPHSystem &sph_system, SharedPtr<Shape> shape_ptr);\n    virtual ~SPHBody();\n\n    std::string Name() { return body_name_; };\n    SPHSystem &getSPHSystem();\n    SPHBody &getSPHBody() { return *this; };\n    Shape &getInitialShape() { return *initial_shape_; };\n    void assignBaseParticles(BaseParticles *base_particles) { base_particles_ = base_particles; };\n    SPHAdaptation &getSPHAdaptation();\n    BaseParticles &getBaseParticles();\n    MatterMaterial &getMatterMaterial() const;\n\n    template <typename MaterialType>\n    bool isMatterMaterial() const;\n\n    template <typename MaterialType>\n    StdVec<MaterialType *> collectMaterialProperties();\n\n    template <typename MaterialType>\n    MaterialType &getMaterialProperty(const std::string &name = \"\"); // name is optional for one material for a material type\n\n    StdVec<SPHRelation *> &getBodyRelations() { return body_relations_; };\n    IndexRange LoopRange();\n    size_t SizeOfLoopRange();\n    Real getSPHBodyResolutionRef();\n    void setNewlyUpdated() { newly_updated_ = true; };\n    void setNotNewlyUpdated() { newly_updated_ = false; };\n    bool checkNewlyUpdated() { return newly_updated_; };\n    void setSPHBodyBounds(const BoundingBoxd &bound);\n    BoundingBoxd getSPHBodyBounds();\n    BoundingBoxd getSPHSystemBounds();\n\n    class SourceParticleMask\n    {\n      public:\n        template <class ExecutionPolicy, typename EnclosureType>\n        SourceParticleMask(ExecutionPolicy &ex_policy, EnclosureType &encloser) {}\n        ~SourceParticleMask() {}\n        constexpr bool operator()(UnsignedInt /*source_index*/) const { return true; }\n    };\n\n    template <typename TargetCriterion>\n    class TargetParticleMask : public TargetCriterion\n    {\n      public:\n        template <class ExecutionPolicy, typename EnclosureType, typename... Args>\n        TargetParticleMask(ExecutionPolicy &ex_policy, EnclosureType &encloser, Args &&...args)\n            : TargetCriterion(std::forward<Args>(args)...) {}\n        virtual ~TargetParticleMask() {}\n    };\n    //----------------------------------------------------------------------\n    //\t\tObject factory template functions\n    //----------------------------------------------------------------------\n    virtual void defineAdaptationRatios(Real h_spacing_ratio, Real new_refinement_to_global = 1.0);\n\n    template <class AdaptationType, typename... Args>\n    void defineAdaptation(Args &&...args);\n\n    template <typename... Args>\n    LevelSetShape &defineComponentLevelSetShape(const std::string &shape_name, Args &&...args);\n\n    template <typename... Args>\n    LevelSetShape &defineBodyLevelSetShape(Args &&...args);\n\n    template <typename ExecutionPolicy, typename... Args>\n    LevelSetShape &defineBodyLevelSetShape(const ExecutionPolicy &ex_policy, Args &&...args);\n\n    template <class MaterialType = MatterMaterial, typename... Args>\n    MaterialType &defineMatterMaterial(Args &&...args);\n\n    template <class MaterialType, typename... Args>\n    MaterialType &addMaterialProperty(Args &&...args);\n    //----------------------------------------------------------------------\n    // Particle generating methods\n    // Initialize particle data using a particle generator for geometric data.\n    // The local material parameters are also initialized.\n    //----------------------------------------------------------------------\n    template <class ParticleType, class... Parameters, typename... Args>\n    ParticleType &generateParticles(Args &&...args);\n\n    // Buffer or ghost particles can be generated together with real particles\n    template <class ParticleType, typename... Parameters, class ReserveType, typename... Args>\n    ParticleType &generateParticlesWithReserve(ReserveType &particle_reserve, Args &&...args);\n}",
+      "chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "parent_chunk_id": "61195d92d62d5a14d9a0b2621be7874eb8727afe",
+      "references": [],
+      "dependencies": [
+        "addMaterialProperty",
+        "args",
+        "base_particles",
+        "base_particles_",
+        "body_name_",
+        "body_relations_",
+        "bound",
+        "defineBodyLevelSetShape",
+        "defineComponentLevelSetShape",
+        "defineMatterMaterial",
+        "encloser",
+        "ex_policy",
+        "forward",
+        "generateParticles",
+        "generateParticlesWithReserve",
+        "getMaterialProperty",
+        "h_spacing_ratio",
+        "initial_shape_",
+        "name",
+        "new_refinement_to_global",
+        "newly_updated_",
+        "particle_reserve",
+        "shape",
+        "shape_name",
+        "shape_ptr",
+        "sph_system"
+      ],
+      "metadata": {
+        "docstring": "* @class SPHBody\n * @brief SPHBody is a base body with basic data and functions.\n * Its derived class can be a real fluid body, a real deformable solid body,\n * a static or moving solid body or an observer body.\n * Note that only real bodies have cell linked list.",
+        "dependencies": [
+          "addMaterialProperty",
+          "args",
+          "base_particles",
+          "base_particles_",
+          "body_name_",
+          "body_relations_",
+          "bound",
+          "defineBodyLevelSetShape",
+          "defineComponentLevelSetShape",
+          "defineMatterMaterial",
+          "encloser",
+          "ex_policy",
+          "forward",
+          "generateParticles",
+          "generateParticlesWithReserve",
+          "getMaterialProperty",
+          "h_spacing_ratio",
+          "initial_shape_",
+          "name",
+          "new_refinement_to_global",
+          "newly_updated_",
+          "particle_reserve",
+          "shape",
+          "shape_name",
+          "shape_ptr",
+          "sph_system"
+        ],
+        "calls": [
+          "forward"
+        ],
+        "call_spans": [
+          {
+            "name": "forward",
+            "start": 6292,
+            "end": 6316,
+            "function_start": 6292,
+            "function_end": 6310,
+            "arguments_start": 6310,
+            "arguments_end": 6316
+          }
+        ],
+        "type": "class_specifier"
+      },
+      "node_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody"
+      ],
+      "definition_id": "b8108f8e2304e3adcbd3ff58b5a2573049f5a5ac",
+      "chunk_index": 12
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "field_declaration",
+      "start_line": 65,
+      "end_line": 65,
+      "byte_start": 2930,
+      "byte_end": 2967,
+      "parent_context": "class_specifier",
+      "content": "SharedPtrKeeper<Shape> shape_keeper_;",
+      "chunk_id": "f5f1fca5924067fa8d57a3e7137b681bad148e28",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "field_declaration"
+      },
+      "node_id": "f5f1fca5924067fa8d57a3e7137b681bad148e28",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "field_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "field_declaration:shape_keeper_"
+      ],
+      "definition_id": "ad89d443661b2940315ac038e4e570417ae2d790",
+      "chunk_index": 13
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "field_declaration",
+      "start_line": 66,
+      "end_line": 66,
+      "byte_start": 2972,
+      "byte_end": 3026,
+      "parent_context": "class_specifier",
+      "content": "UniquePtrKeeper<SPHAdaptation> sph_adaptation_keeper_;",
+      "chunk_id": "48e16d4c57f5eca0fd9a98d0972339e5c2008e9a",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "field_declaration"
+      },
+      "node_id": "48e16d4c57f5eca0fd9a98d0972339e5c2008e9a",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "field_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "field_declaration:sph_adaptation_keeper_"
+      ],
+      "definition_id": "37661dfbceaa3f15cd46539328355afc3cdcb514",
+      "chunk_index": 14
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "field_declaration",
+      "start_line": 67,
+      "end_line": 67,
+      "byte_start": 3031,
+      "byte_end": 3085,
+      "parent_context": "class_specifier",
+      "content": "UniquePtrKeeper<BaseParticles> base_particles_keeper_;",
+      "chunk_id": "9e9f9ac72fdcfd7983f7491936b17f3e6c2ecdbb",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "field_declaration"
+      },
+      "node_id": "9e9f9ac72fdcfd7983f7491936b17f3e6c2ecdbb",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "field_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "field_declaration:base_particles_keeper_"
+      ],
+      "definition_id": "34a9678a5c1b8a983f5afab3c53c184f8a896812",
+      "chunk_index": 15
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "field_declaration",
+      "start_line": 68,
+      "end_line": 68,
+      "byte_start": 3090,
+      "byte_end": 3135,
+      "parent_context": "class_specifier",
+      "content": "UniquePtrKeeper<BaseMaterial> matter_keeper_;",
+      "chunk_id": "45e40d91f07405033bd51cf15d0a904050e76b21",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "field_declaration"
+      },
+      "node_id": "45e40d91f07405033bd51cf15d0a904050e76b21",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "field_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "field_declaration:matter_keeper_"
+      ],
+      "definition_id": "fe84494784ad2dd36de6da66ca5013e0176a3712",
+      "chunk_index": 16
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "field_declaration",
+      "start_line": 69,
+      "end_line": 69,
+      "byte_start": 3140,
+      "byte_end": 3199,
+      "parent_context": "class_specifier",
+      "content": "UniquePtrsKeeper<BaseMaterial> material_properties_keeper_;",
+      "chunk_id": "7b8587213be6cffe5a8d037d999a48d4a660db80",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "field_declaration"
+      },
+      "node_id": "7b8587213be6cffe5a8d037d999a48d4a660db80",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "field_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "field_declaration:material_properties_keeper_"
+      ],
+      "definition_id": "69657988575465148292f6b2ffd0a291d4ab141c",
+      "chunk_index": 17
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "field_declaration",
+      "start_line": 72,
+      "end_line": 72,
+      "byte_start": 3218,
+      "byte_end": 3241,
+      "parent_context": "class_specifier",
+      "content": "SPHSystem &sph_system_;",
+      "chunk_id": "a0559628631d0c5a3cae33ca08b1d31c880d9861",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "field_declaration"
+      },
+      "node_id": "a0559628631d0c5a3cae33ca08b1d31c880d9861",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "field_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "field_declaration:sph_system_"
+      ],
+      "definition_id": "ca53ecb881cc8bf69c593df3759d734fd47926af",
+      "chunk_index": 18
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "field_declaration",
+      "start_line": 73,
+      "end_line": 73,
+      "byte_start": 3246,
+      "byte_end": 3269,
+      "parent_context": "class_specifier",
+      "content": "std::string body_name_;",
+      "chunk_id": "3ea6978d799182becedffe1fe0a0c90acc3155b5",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "field_declaration"
+      },
+      "node_id": "3ea6978d799182becedffe1fe0a0c90acc3155b5",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "field_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "field_declaration:body_name_"
+      ],
+      "definition_id": "5b3ea525a9584e12b4458af1b7a57c0ed8e24a95",
+      "chunk_index": 19
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "field_declaration",
+      "start_line": 74,
+      "end_line": 74,
+      "byte_start": 3274,
+      "byte_end": 3294,
+      "parent_context": "class_specifier",
+      "content": "bool newly_updated_;",
+      "chunk_id": "83bfa51a42cac4a745626df6bcb40bfe2cc6a5b8",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "field_declaration"
+      },
+      "node_id": "83bfa51a42cac4a745626df6bcb40bfe2cc6a5b8",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "field_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "field_declaration:newly_updated_"
+      ],
+      "definition_id": "0aadf1bceda060e546e3e344b5267d1fff66e0f3",
+      "chunk_index": 20
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "field_declaration",
+      "start_line": 75,
+      "end_line": 75,
+      "byte_start": 3364,
+      "byte_end": 3395,
+      "parent_context": "class_specifier",
+      "content": "BaseParticles *base_particles_;",
+      "chunk_id": "ff7d30efeac96b9b90efd742801f71ce5d3cc858",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "docstring": "< whether this body is in a newly updated state",
+        "dependencies": [],
+        "type": "field_declaration"
+      },
+      "node_id": "ff7d30efeac96b9b90efd742801f71ce5d3cc858",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "field_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "field_declaration:base_particles_"
+      ],
+      "definition_id": "4f903cda538216522e4776c778b2fd8078ffc73e",
+      "chunk_index": 21
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "field_declaration",
+      "start_line": 76,
+      "end_line": 76,
+      "byte_start": 3454,
+      "byte_end": 3473,
+      "parent_context": "class_specifier",
+      "content": "bool is_bound_set_;",
+      "chunk_id": "17277477ba2fb1ef927471072e2c89d7f5e9bbf5",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "docstring": "< Base particles for dynamic cast DataDelegate",
+        "dependencies": [],
+        "type": "field_declaration"
+      },
+      "node_id": "17277477ba2fb1ef927471072e2c89d7f5e9bbf5",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "field_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "field_declaration:is_bound_set_"
+      ],
+      "definition_id": "5c6b65a05192f7aed89d5edeb24c9a938981687d",
+      "chunk_index": 22
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "field_declaration",
+      "start_line": 77,
+      "end_line": 77,
+      "byte_start": 3530,
+      "byte_end": 3550,
+      "parent_context": "class_specifier",
+      "content": "BoundingBoxd bound_;",
+      "chunk_id": "323621754d45f23590e69cec4b6f224abc412c4e",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "docstring": "< whether the bounding box is set",
+        "dependencies": [],
+        "type": "field_declaration"
+      },
+      "node_id": "323621754d45f23590e69cec4b6f224abc412c4e",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "field_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "field_declaration:bound_"
+      ],
+      "definition_id": "aa6840c05317db94d25d38d34b751f92f0b854ba",
+      "chunk_index": 23
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "field_declaration",
+      "start_line": 78,
+      "end_line": 78,
+      "byte_start": 3599,
+      "byte_end": 3617,
+      "parent_context": "class_specifier",
+      "content": "bool is_physical_;",
+      "chunk_id": "b6f2cfff744be59b7a094be5185ea8d48fb79886",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "docstring": "< bounding box of the body",
+        "dependencies": [],
+        "type": "field_declaration"
+      },
+      "node_id": "b6f2cfff744be59b7a094be5185ea8d48fb79886",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "field_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "field_declaration:is_physical_"
+      ],
+      "definition_id": "b8371dbffa3a9934be33a1ac3f9ec0b9336ed76e",
+      "chunk_index": 24
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "field_declaration",
+      "start_line": 79,
+      "end_line": 79,
+      "byte_start": 3680,
+      "byte_end": 3702,
+      "parent_context": "class_specifier",
+      "content": "Shape *initial_shape_;",
+      "chunk_id": "7c2d9a0b063dd8abc418a15b76b8f9c9ccdbbdd4",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "docstring": "< whether this body is a physical body",
+        "dependencies": [],
+        "type": "field_declaration"
+      },
+      "node_id": "7c2d9a0b063dd8abc418a15b76b8f9c9ccdbbdd4",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "field_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "field_declaration:initial_shape_"
+      ],
+      "definition_id": "6618c4992bbd1dd959b478350b23cdb23c8f8ba9",
+      "chunk_index": 25
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "field_declaration",
+      "start_line": 80,
+      "end_line": 80,
+      "byte_start": 3771,
+      "byte_end": 3802,
+      "parent_context": "class_specifier",
+      "content": "SPHAdaptation *sph_adaptation_;",
+      "chunk_id": "2a2c11751c55acc0e9ce143dbd204bd0b4bec6a9",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "docstring": "< initial volumetric geometry enclosing the body",
+        "dependencies": [],
+        "type": "field_declaration"
+      },
+      "node_id": "2a2c11751c55acc0e9ce143dbd204bd0b4bec6a9",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "field_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "field_declaration:sph_adaptation_"
+      ],
+      "definition_id": "ee449ec58c9eb86997926ef6d1b112ad33d1efc5",
+      "chunk_index": 26
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "field_declaration",
+      "start_line": 81,
+      "end_line": 81,
+      "byte_start": 3843,
+      "byte_end": 3887,
+      "parent_context": "class_specifier",
+      "content": "StdVec<BaseMaterial *> material_properties_;",
+      "chunk_id": "e56ebe5940bd23559121f74f69e8b5eca1b0df6b",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "docstring": "< numerical adaptation policy",
+        "dependencies": [],
+        "type": "field_declaration"
+      },
+      "node_id": "e56ebe5940bd23559121f74f69e8b5eca1b0df6b",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "field_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "field_declaration:material_properties_"
+      ],
+      "definition_id": "6ee61558201d19d2f41ff6d3bbcb4153def0b3f6",
+      "chunk_index": 27
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "field_declaration",
+      "start_line": 82,
+      "end_line": 82,
+      "byte_start": 3892,
+      "byte_end": 3930,
+      "parent_context": "class_specifier",
+      "content": "StdVec<SPHRelation *> body_relations_;",
+      "chunk_id": "e360a5805b040e34806142f056e522250429230e",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "field_declaration"
+      },
+      "node_id": "e360a5805b040e34806142f056e522250429230e",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "field_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "field_declaration:body_relations_"
+      ],
+      "definition_id": "d957f1ac1a451365e9d67ff97dcdc69427f94e52",
+      "chunk_index": 28
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "type_definition",
+      "start_line": 85,
+      "end_line": 85,
+      "byte_start": 4001,
+      "byte_end": 4033,
+      "parent_context": "class_specifier",
+      "content": "typedef SPHBody RangeIdentifier;",
+      "chunk_id": "f8e9b3d87e5b2244024cf5bcb7198ec8f7ecaaad",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "type_definition"
+      },
+      "node_id": "f8e9b3d87e5b2244024cf5bcb7198ec8f7ecaaad",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "type_definition"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "type_definition:anon@85"
+      ],
+      "definition_id": "1e44f072ac25b54a2bcdcbec83873bbd0f9634f4",
+      "chunk_index": 29
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "type_definition",
+      "start_line": 86,
+      "end_line": 86,
+      "byte_start": 4038,
+      "byte_end": 4071,
+      "parent_context": "class_specifier",
+      "content": "typedef SPHAdaptation Adaptation;",
+      "chunk_id": "bfda37193ec3db6dbb4d924acd802cb7f1036ccb",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "type_definition"
+      },
+      "node_id": "bfda37193ec3db6dbb4d924acd802cb7f1036ccb",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "type_definition"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "type_definition:anon@86"
+      ],
+      "definition_id": "0d6c3b5427da5dc93bfea14da4f009e0e0c2e56b",
+      "chunk_index": 30
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "function_definition",
+      "start_line": 94,
+      "end_line": 94,
+      "byte_start": 4440,
+      "byte_end": 4481,
+      "parent_context": "class_specifier",
+      "content": "std::string Name() { return body_name_; }",
+      "chunk_id": "a0b04918f86ca684c33b4bd724b233f23f416c25",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [
+        "body_name_"
+      ],
+      "metadata": {
+        "signature": {
+          "name": "Name",
+          "parameters": [],
+          "return_type": "std::string",
+          "decorators": [],
+          "modifiers": []
+        },
+        "dependencies": [
+          "body_name_"
+        ],
+        "exports": [
+          "Name"
+        ],
+        "type": "function_definition"
+      },
+      "node_id": "a0b04918f86ca684c33b4bd724b233f23f416c25",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": "4babf0d481f95e064bce1acbdb26024a0cddf2f0",
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "function_definition"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "function_definition:Name"
+      ],
+      "definition_id": "c5ab17efd7e017fe2a9026b04b8a9642cfb4bd4e",
+      "chunk_index": 31
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "field_declaration",
+      "start_line": 95,
+      "end_line": 95,
+      "byte_start": 4487,
+      "byte_end": 4513,
+      "parent_context": "class_specifier",
+      "content": "SPHSystem &getSPHSystem();",
+      "chunk_id": "c3c8d5e0e065141eccde97d9df2ae807444b0828",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "field_declaration"
+      },
+      "node_id": "c3c8d5e0e065141eccde97d9df2ae807444b0828",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "field_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "field_declaration:getSPHSystem"
+      ],
+      "definition_id": "b78e99c4e3cc9d7d67fe3eb2d9ed09b7d401ccd4",
+      "chunk_index": 32
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "function_definition",
+      "start_line": 96,
+      "end_line": 96,
+      "byte_start": 4518,
+      "byte_end": 4557,
+      "parent_context": "class_specifier",
+      "content": "SPHBody &getSPHBody() { return *this; }",
+      "chunk_id": "b9611ea63ed50d19c02ab5c75c8287081cd18433",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "function_definition"
+      },
+      "node_id": "b9611ea63ed50d19c02ab5c75c8287081cd18433",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "function_definition"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "function_definition:getSPHBody"
+      ],
+      "definition_id": "cb9a132afcdaecf1c937656c2820f68241a13d65",
+      "chunk_index": 33
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "function_definition",
+      "start_line": 97,
+      "end_line": 97,
+      "byte_start": 4563,
+      "byte_end": 4615,
+      "parent_context": "class_specifier",
+      "content": "Shape &getInitialShape() { return *initial_shape_; }",
+      "chunk_id": "0904144e3c4cbd39ef62beb1f903a72e9af7b5ee",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [
+        "initial_shape_"
+      ],
+      "metadata": {
+        "dependencies": [
+          "initial_shape_"
+        ],
+        "type": "function_definition"
+      },
+      "node_id": "0904144e3c4cbd39ef62beb1f903a72e9af7b5ee",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "function_definition"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "function_definition:getInitialShape"
+      ],
+      "definition_id": "768dd8ae6d0847d5606e2c139f7514fe8adc2d54",
+      "chunk_index": 34
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "function_definition",
+      "start_line": 98,
+      "end_line": 98,
+      "byte_start": 4621,
+      "byte_end": 4714,
+      "parent_context": "class_specifier",
+      "content": "void assignBaseParticles(BaseParticles *base_particles) { base_particles_ = base_particles; }",
+      "chunk_id": "619c6003007cbdd61e3fdc54e9a91db143469dd1",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [
+        "base_particles",
+        "base_particles_"
+      ],
+      "metadata": {
+        "signature": {
+          "name": "assignBaseParticles",
+          "parameters": [
+            "BaseParticles *base_particles"
+          ],
+          "return_type": "void",
+          "decorators": [],
+          "modifiers": []
+        },
+        "dependencies": [
+          "base_particles",
+          "base_particles_"
+        ],
+        "exports": [
+          "assignBaseParticles"
+        ],
+        "type": "function_definition"
+      },
+      "node_id": "619c6003007cbdd61e3fdc54e9a91db143469dd1",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": "d5b4484bb5ee8727dfb930fc27b066a8afaf205c",
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "function_definition"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "function_definition:assignBaseParticles"
+      ],
+      "definition_id": "0643cf82d62e697a12024b672674eabf3977df36",
+      "chunk_index": 35
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "field_declaration",
+      "start_line": 99,
+      "end_line": 99,
+      "byte_start": 4720,
+      "byte_end": 4754,
+      "parent_context": "class_specifier",
+      "content": "SPHAdaptation &getSPHAdaptation();",
+      "chunk_id": "769d698b578d7d343c4b38f022a7b46e9d347278",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "field_declaration"
+      },
+      "node_id": "769d698b578d7d343c4b38f022a7b46e9d347278",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "field_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "field_declaration:getSPHAdaptation"
+      ],
+      "definition_id": "cb6f6aba2e7c8502768ffc3d53454adafaf2551e",
+      "chunk_index": 36
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "field_declaration",
+      "start_line": 100,
+      "end_line": 100,
+      "byte_start": 4759,
+      "byte_end": 4793,
+      "parent_context": "class_specifier",
+      "content": "BaseParticles &getBaseParticles();",
+      "chunk_id": "16f7db763dea3717e4f709fc9f9d243b6dccecc0",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "field_declaration"
+      },
+      "node_id": "16f7db763dea3717e4f709fc9f9d243b6dccecc0",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "field_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "field_declaration:getBaseParticles"
+      ],
+      "definition_id": "aa3b91c3859125da184c61082be5deb27c116b08",
+      "chunk_index": 37
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "field_declaration",
+      "start_line": 101,
+      "end_line": 101,
+      "byte_start": 4798,
+      "byte_end": 4840,
+      "parent_context": "class_specifier",
+      "content": "MatterMaterial &getMatterMaterial() const;",
+      "chunk_id": "38aa7ebaccaa2994332a6588a35cb782511a7c86",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "field_declaration"
+      },
+      "node_id": "38aa7ebaccaa2994332a6588a35cb782511a7c86",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "field_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "field_declaration:getMatterMaterial"
+      ],
+      "definition_id": "b079695f9892b4401fdd819e80cbb7f996cb83e4",
+      "chunk_index": 38
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "template_declaration",
+      "start_line": 103,
+      "end_line": 104,
+      "byte_start": 4846,
+      "byte_end": 4913,
+      "parent_context": "class_specifier",
+      "content": "template <typename MaterialType>\n    bool isMatterMaterial() const;",
+      "chunk_id": "45f2473e4f5aa50c52bf01f98445ceb1cce27814",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "template_declaration"
+      },
+      "node_id": "45f2473e4f5aa50c52bf01f98445ceb1cce27814",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "template_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "template_declaration:anon@103"
+      ],
+      "definition_id": "db8198cdbe04f38feb3a887a367e62d9419ad66d",
+      "chunk_index": 39
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "template_declaration",
+      "start_line": 106,
+      "end_line": 107,
+      "byte_start": 4919,
+      "byte_end": 5007,
+      "parent_context": "class_specifier",
+      "content": "template <typename MaterialType>\n    StdVec<MaterialType *> collectMaterialProperties();",
+      "chunk_id": "af81c094b2adfe88a24eb912bbc51abe682ca6a5",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "template_declaration"
+      },
+      "node_id": "af81c094b2adfe88a24eb912bbc51abe682ca6a5",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "template_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "template_declaration:anon@106"
+      ],
+      "definition_id": "0a5c7f046e748e0276e741d0de6fec8b19b8e64d",
+      "chunk_index": 40
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "template_declaration",
+      "start_line": 109,
+      "end_line": 110,
+      "byte_start": 5013,
+      "byte_end": 5114,
+      "parent_context": "class_specifier",
+      "content": "template <typename MaterialType>\n    MaterialType &getMaterialProperty(const std::string &name = \"\");",
+      "chunk_id": "a03fbba3886a06c92b3ffde2fd2da07b92684398",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [
+        "getMaterialProperty",
+        "name"
+      ],
+      "metadata": {
+        "dependencies": [
+          "getMaterialProperty",
+          "name"
+        ],
+        "type": "template_declaration"
+      },
+      "node_id": "a03fbba3886a06c92b3ffde2fd2da07b92684398",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "template_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "template_declaration:anon@109"
+      ],
+      "definition_id": "8d9bfb3cd675708eb41931f7d1cc0d1899efec58",
+      "chunk_index": 41
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "function_definition",
+      "start_line": 112,
+      "end_line": 112,
+      "byte_start": 5177,
+      "byte_end": 5246,
+      "parent_context": "class_specifier",
+      "content": "StdVec<SPHRelation *> &getBodyRelations() { return body_relations_; }",
+      "chunk_id": "ef531acd725d0408102787c5805a44d6641375be",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [
+        "body_relations_"
+      ],
+      "metadata": {
+        "docstring": "name is optional for one material for a material type",
+        "dependencies": [
+          "body_relations_"
+        ],
+        "type": "function_definition"
+      },
+      "node_id": "ef531acd725d0408102787c5805a44d6641375be",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "function_definition"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "function_definition:getBodyRelations"
+      ],
+      "definition_id": "440f5eebd8ba34459a7c339f89a16120bce224e2",
+      "chunk_index": 42
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "method_declaration",
+      "start_line": 113,
+      "end_line": 113,
+      "byte_start": 5252,
+      "byte_end": 5275,
+      "parent_context": "class_specifier",
+      "content": "IndexRange LoopRange();",
+      "chunk_id": "1a0a10149c6b18286e1477121166aa98f51aef81",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "method_declaration"
+      },
+      "node_id": "1a0a10149c6b18286e1477121166aa98f51aef81",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "method_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "method_declaration:LoopRange"
+      ],
+      "definition_id": "d841be49bfaf120a9730e9bf1bcb9a60015df2fd",
+      "chunk_index": 43
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "method_declaration",
+      "start_line": 114,
+      "end_line": 114,
+      "byte_start": 5280,
+      "byte_end": 5305,
+      "parent_context": "class_specifier",
+      "content": "size_t SizeOfLoopRange();",
+      "chunk_id": "b176a4faed8976103a6b79954bc414884751a02d",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "method_declaration"
+      },
+      "node_id": "b176a4faed8976103a6b79954bc414884751a02d",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "method_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "method_declaration:SizeOfLoopRange"
+      ],
+      "definition_id": "24cface68122b0f136fcb88eafb2536d960f34b2",
+      "chunk_index": 44
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "method_declaration",
+      "start_line": 115,
+      "end_line": 115,
+      "byte_start": 5310,
+      "byte_end": 5341,
+      "parent_context": "class_specifier",
+      "content": "Real getSPHBodyResolutionRef();",
+      "chunk_id": "7a8c4698863a26e5cb579ad7c1ac41f1316e05c5",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "method_declaration"
+      },
+      "node_id": "7a8c4698863a26e5cb579ad7c1ac41f1316e05c5",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "method_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "method_declaration:getSPHBodyResolutionRef"
+      ],
+      "definition_id": "10608100473a48d8ed1b5732c50916a4d0e4ae8c",
+      "chunk_index": 45
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "function_definition",
+      "start_line": 116,
+      "end_line": 116,
+      "byte_start": 5346,
+      "byte_end": 5395,
+      "parent_context": "class_specifier",
+      "content": "void setNewlyUpdated() { newly_updated_ = true; }",
+      "chunk_id": "59a1baa72bc937a94541d293951aca9c15292ad3",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [
+        "newly_updated_"
+      ],
+      "metadata": {
+        "signature": {
+          "name": "setNewlyUpdated",
+          "parameters": [],
+          "return_type": "void",
+          "decorators": [],
+          "modifiers": []
+        },
+        "dependencies": [
+          "newly_updated_"
+        ],
+        "exports": [
+          "setNewlyUpdated"
+        ],
+        "type": "function_definition"
+      },
+      "node_id": "59a1baa72bc937a94541d293951aca9c15292ad3",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": "84cbbf5ec3f637e3de817ed05bfe111a326b06b6",
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "function_definition"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "function_definition:setNewlyUpdated"
+      ],
+      "definition_id": "7e345ec99388e4a09fe5445e5114335731e18f63",
+      "chunk_index": 46
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "function_definition",
+      "start_line": 117,
+      "end_line": 117,
+      "byte_start": 5401,
+      "byte_end": 5454,
+      "parent_context": "class_specifier",
+      "content": "void setNotNewlyUpdated() { newly_updated_ = false; }",
+      "chunk_id": "34be35b8e0f4ef13dd99639513bc6cc5e3f850c1",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [
+        "newly_updated_"
+      ],
+      "metadata": {
+        "signature": {
+          "name": "setNotNewlyUpdated",
+          "parameters": [],
+          "return_type": "void",
+          "decorators": [],
+          "modifiers": []
+        },
+        "dependencies": [
+          "newly_updated_"
+        ],
+        "exports": [
+          "setNotNewlyUpdated"
+        ],
+        "type": "function_definition"
+      },
+      "node_id": "34be35b8e0f4ef13dd99639513bc6cc5e3f850c1",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": "137781fc325b49865b0ae23d5ef341bb8ffa4b4a",
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "function_definition"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "function_definition:setNotNewlyUpdated"
+      ],
+      "definition_id": "ce7801b0a891175b2152fbad069368da4df54fe8",
+      "chunk_index": 47
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "function_definition",
+      "start_line": 118,
+      "end_line": 118,
+      "byte_start": 5460,
+      "byte_end": 5511,
+      "parent_context": "class_specifier",
+      "content": "bool checkNewlyUpdated() { return newly_updated_; }",
+      "chunk_id": "a48f0304ec5206e0c6747615427b26273a39f5e9",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [
+        "newly_updated_"
+      ],
+      "metadata": {
+        "signature": {
+          "name": "checkNewlyUpdated",
+          "parameters": [],
+          "return_type": "bool",
+          "decorators": [],
+          "modifiers": []
+        },
+        "dependencies": [
+          "newly_updated_"
+        ],
+        "exports": [
+          "checkNewlyUpdated"
+        ],
+        "type": "function_definition"
+      },
+      "node_id": "a48f0304ec5206e0c6747615427b26273a39f5e9",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": "67e4cff1dc6605d984ee15280672e923ab0882ad",
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "function_definition"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "function_definition:checkNewlyUpdated"
+      ],
+      "definition_id": "09bf2e563aebbd738cb2f11f5f11c8a8d833d449",
+      "chunk_index": 48
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "method_declaration",
+      "start_line": 119,
+      "end_line": 119,
+      "byte_start": 5517,
+      "byte_end": 5566,
+      "parent_context": "class_specifier",
+      "content": "void setSPHBodyBounds(const BoundingBoxd &bound);",
+      "chunk_id": "21b7adccc1bd6de9db75cd951e2ee7f4aa4af999",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [
+        "bound"
+      ],
+      "metadata": {
+        "dependencies": [
+          "bound"
+        ],
+        "type": "method_declaration"
+      },
+      "node_id": "21b7adccc1bd6de9db75cd951e2ee7f4aa4af999",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "method_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "method_declaration:setSPHBodyBounds"
+      ],
+      "definition_id": "54c337b05188a82dc658529d3ccd2490ab8fdd99",
+      "chunk_index": 49
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "method_declaration",
+      "start_line": 120,
+      "end_line": 120,
+      "byte_start": 5571,
+      "byte_end": 5603,
+      "parent_context": "class_specifier",
+      "content": "BoundingBoxd getSPHBodyBounds();",
+      "chunk_id": "c05ec00d2cadd5ccb5803722aa409234a1057209",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "method_declaration"
+      },
+      "node_id": "c05ec00d2cadd5ccb5803722aa409234a1057209",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "method_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "method_declaration:getSPHBodyBounds"
+      ],
+      "definition_id": "0ee7e87d3b004228bf70f6bfba7c3010ab8612e0",
+      "chunk_index": 50
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "method_declaration",
+      "start_line": 121,
+      "end_line": 121,
+      "byte_start": 5608,
+      "byte_end": 5642,
+      "parent_context": "class_specifier",
+      "content": "BoundingBoxd getSPHSystemBounds();",
+      "chunk_id": "ef4a144a78937425dd4952a03e6edaa388fe17d7",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "method_declaration"
+      },
+      "node_id": "ef4a144a78937425dd4952a03e6edaa388fe17d7",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "method_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "method_declaration:getSPHSystemBounds"
+      ],
+      "definition_id": "9d272bd3c43f598801ed1adc2a5c446257e0a0b4",
+      "chunk_index": 51
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "field_declaration",
+      "start_line": 123,
+      "end_line": 130,
+      "byte_start": 5648,
+      "byte_end": 5967,
+      "parent_context": "class_specifier",
+      "content": "class SourceParticleMask\n    {\n      public:\n        template <class ExecutionPolicy, typename EnclosureType>\n        SourceParticleMask(ExecutionPolicy &ex_policy, EnclosureType &encloser) {}\n        ~SourceParticleMask() {}\n        constexpr bool operator()(UnsignedInt /*source_index*/) const { return true; }\n    };",
+      "chunk_id": "680efe2c938be6eef6cb73e741b63e3206948e42",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [
+        "encloser",
+        "ex_policy"
+      ],
+      "metadata": {
+        "dependencies": [
+          "encloser",
+          "ex_policy"
+        ],
+        "type": "field_declaration"
+      },
+      "node_id": "680efe2c938be6eef6cb73e741b63e3206948e42",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "field_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "field_declaration:anon@123"
+      ],
+      "definition_id": "ade36a03f968756a65021bb22c9aa385cc380e8b",
+      "chunk_index": 52
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "class_specifier",
+      "start_line": 123,
+      "end_line": 130,
+      "byte_start": 5648,
+      "byte_end": 5966,
+      "parent_context": "field_declaration",
+      "content": "class SourceParticleMask\n    {\n      public:\n        template <class ExecutionPolicy, typename EnclosureType>\n        SourceParticleMask(ExecutionPolicy &ex_policy, EnclosureType &encloser) {}\n        ~SourceParticleMask() {}\n        constexpr bool operator()(UnsignedInt /*source_index*/) const { return true; }\n    }",
+      "chunk_id": "4cada913e3af25f381de3a9b5b46d4c42f17b09f",
+      "parent_chunk_id": "680efe2c938be6eef6cb73e741b63e3206948e42",
+      "references": [],
+      "dependencies": [
+        "encloser",
+        "ex_policy"
+      ],
+      "metadata": {
+        "dependencies": [
+          "encloser",
+          "ex_policy"
+        ],
+        "type": "class_specifier"
+      },
+      "node_id": "4cada913e3af25f381de3a9b5b46d4c42f17b09f",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "field_declaration",
+        "class_specifier"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "field_declaration:anon@123",
+        "class_specifier:SourceParticleMask"
+      ],
+      "definition_id": "a200d54347bced96b56d2d23b7b9d736a5857414",
+      "chunk_index": 53
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "template_declaration",
+      "start_line": 126,
+      "end_line": 127,
+      "byte_start": 5701,
+      "byte_end": 5840,
+      "parent_context": "class_specifier",
+      "content": "template <class ExecutionPolicy, typename EnclosureType>\n        SourceParticleMask(ExecutionPolicy &ex_policy, EnclosureType &encloser) {}",
+      "chunk_id": "9bb7b01923ff1bc1e7bbde25d3becda3679201e6",
+      "parent_chunk_id": "4cada913e3af25f381de3a9b5b46d4c42f17b09f",
+      "references": [],
+      "dependencies": [
+        "encloser",
+        "ex_policy"
+      ],
+      "metadata": {
+        "dependencies": [
+          "encloser",
+          "ex_policy"
+        ],
+        "type": "template_declaration"
+      },
+      "node_id": "9bb7b01923ff1bc1e7bbde25d3becda3679201e6",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "field_declaration",
+        "class_specifier",
+        "template_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "field_declaration:anon@123",
+        "class_specifier:SourceParticleMask",
+        "template_declaration:anon@126"
+      ],
+      "definition_id": "e07869fb56393fe6abefd473f0b7cd9fe4769235",
+      "chunk_index": 54
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "function_definition",
+      "start_line": 127,
+      "end_line": 127,
+      "byte_start": 5766,
+      "byte_end": 5840,
+      "parent_context": "template_declaration",
+      "content": "SourceParticleMask(ExecutionPolicy &ex_policy, EnclosureType &encloser) {}",
+      "chunk_id": "9325a4a0365da89200efa268bef546c4517fc124",
+      "parent_chunk_id": "9bb7b01923ff1bc1e7bbde25d3becda3679201e6",
+      "references": [],
+      "dependencies": [
+        "encloser",
+        "ex_policy"
+      ],
+      "metadata": {
+        "signature": {
+          "name": "SourceParticleMask",
+          "parameters": [
+            "ExecutionPolicy &ex_policy",
+            "EnclosureType &encloser"
+          ],
+          "return_type": null,
+          "decorators": [],
+          "modifiers": []
+        },
+        "dependencies": [
+          "encloser",
+          "ex_policy"
+        ],
+        "exports": [
+          "SourceParticleMask"
+        ],
+        "type": "function_definition"
+      },
+      "node_id": "9325a4a0365da89200efa268bef546c4517fc124",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": "62b038cc0f13dcee54da3eaa5defd1ef82fc0ef2",
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "field_declaration",
+        "class_specifier",
+        "template_declaration",
+        "function_definition"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "field_declaration:anon@123",
+        "class_specifier:SourceParticleMask",
+        "template_declaration:anon@126",
+        "function_definition:anon@127"
+      ],
+      "definition_id": "84af2a85d64e2b5ee814e63f14dbe23dd8769d03",
+      "chunk_index": 55
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "function_definition",
+      "start_line": 128,
+      "end_line": 128,
+      "byte_start": 5849,
+      "byte_end": 5873,
+      "parent_context": "class_specifier",
+      "content": "~SourceParticleMask() {}",
+      "chunk_id": "735a25a7f4610dd62388238417639d06f9eb2b89",
+      "parent_chunk_id": "4cada913e3af25f381de3a9b5b46d4c42f17b09f",
+      "references": [],
+      "dependencies": [
+        "SourceParticleMask"
+      ],
+      "metadata": {
+        "dependencies": [
+          "SourceParticleMask"
+        ],
+        "type": "function_definition"
+      },
+      "node_id": "735a25a7f4610dd62388238417639d06f9eb2b89",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "field_declaration",
+        "class_specifier",
+        "function_definition"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "field_declaration:anon@123",
+        "class_specifier:SourceParticleMask",
+        "function_definition:anon@128"
+      ],
+      "definition_id": "a8a4d085f90c9bfc076dab29f3a6ae606fb0a670",
+      "chunk_index": 56
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "function_definition",
+      "start_line": 129,
+      "end_line": 129,
+      "byte_start": 5882,
+      "byte_end": 5960,
+      "parent_context": "class_specifier",
+      "content": "constexpr bool operator()(UnsignedInt /*source_index*/) const { return true; }",
+      "chunk_id": "87cc0dcbb864fc235c1cc124215a4fe9b8fffae3",
+      "parent_chunk_id": "4cada913e3af25f381de3a9b5b46d4c42f17b09f",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "function_definition"
+      },
+      "node_id": "87cc0dcbb864fc235c1cc124215a4fe9b8fffae3",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "field_declaration",
+        "class_specifier",
+        "function_definition"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "field_declaration:anon@123",
+        "class_specifier:SourceParticleMask",
+        "function_definition:anon@129"
+      ],
+      "definition_id": "aca5f552b148db99ea6c2407d3fd804c68c0eb3f",
+      "chunk_index": 57
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "template_declaration",
+      "start_line": 132,
+      "end_line": 140,
+      "byte_start": 5973,
+      "byte_end": 6371,
+      "parent_context": "class_specifier",
+      "content": "template <typename TargetCriterion>\n    class TargetParticleMask : public TargetCriterion\n    {\n      public:\n        template <class ExecutionPolicy, typename EnclosureType, typename... Args>\n        TargetParticleMask(ExecutionPolicy &ex_policy, EnclosureType &encloser, Args &&...args)\n            : TargetCriterion(std::forward<Args>(args)...) {}\n        virtual ~TargetParticleMask() {}\n    };",
+      "chunk_id": "05f862e825aff1d87a4d6bfc678659df37060f3b",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [
+        "args",
+        "encloser",
+        "ex_policy",
+        "forward"
+      ],
+      "metadata": {
+        "dependencies": [
+          "args",
+          "encloser",
+          "ex_policy",
+          "forward"
+        ],
+        "calls": [
+          "forward"
+        ],
+        "call_spans": [
+          {
+            "name": "forward",
+            "start": 6292,
+            "end": 6316,
+            "function_start": 6292,
+            "function_end": 6310,
+            "arguments_start": 6310,
+            "arguments_end": 6316
+          }
+        ],
+        "type": "template_declaration"
+      },
+      "node_id": "05f862e825aff1d87a4d6bfc678659df37060f3b",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "template_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "template_declaration:anon@132"
+      ],
+      "definition_id": "443525b184e1f56901b8cf30978dbd060c189733",
+      "chunk_index": 58
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "class_specifier",
+      "start_line": 133,
+      "end_line": 140,
+      "byte_start": 6013,
+      "byte_end": 6370,
+      "parent_context": "template_declaration",
+      "content": "class TargetParticleMask : public TargetCriterion\n    {\n      public:\n        template <class ExecutionPolicy, typename EnclosureType, typename... Args>\n        TargetParticleMask(ExecutionPolicy &ex_policy, EnclosureType &encloser, Args &&...args)\n            : TargetCriterion(std::forward<Args>(args)...) {}\n        virtual ~TargetParticleMask() {}\n    }",
+      "chunk_id": "9b55a024510f941a01419cff316efcb232cdfe25",
+      "parent_chunk_id": "05f862e825aff1d87a4d6bfc678659df37060f3b",
+      "references": [],
+      "dependencies": [
+        "args",
+        "encloser",
+        "ex_policy",
+        "forward"
+      ],
+      "metadata": {
+        "dependencies": [
+          "args",
+          "encloser",
+          "ex_policy",
+          "forward"
+        ],
+        "calls": [
+          "forward"
+        ],
+        "call_spans": [
+          {
+            "name": "forward",
+            "start": 6292,
+            "end": 6316,
+            "function_start": 6292,
+            "function_end": 6310,
+            "arguments_start": 6310,
+            "arguments_end": 6316
+          }
+        ],
+        "type": "class_specifier"
+      },
+      "node_id": "9b55a024510f941a01419cff316efcb232cdfe25",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "template_declaration",
+        "class_specifier"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "template_declaration:anon@132",
+        "class_specifier:TargetParticleMask"
+      ],
+      "definition_id": "d5aefda59e4aa564ad50623298a8f38ae46a5046",
+      "chunk_index": 59
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "template_declaration",
+      "start_line": 136,
+      "end_line": 138,
+      "byte_start": 6091,
+      "byte_end": 6323,
+      "parent_context": "class_specifier",
+      "content": "template <class ExecutionPolicy, typename EnclosureType, typename... Args>\n        TargetParticleMask(ExecutionPolicy &ex_policy, EnclosureType &encloser, Args &&...args)\n            : TargetCriterion(std::forward<Args>(args)...) {}",
+      "chunk_id": "a866f7023b7468cc071f205bec25d8ff54a83490",
+      "parent_chunk_id": "9b55a024510f941a01419cff316efcb232cdfe25",
+      "references": [],
+      "dependencies": [
+        "args",
+        "encloser",
+        "ex_policy",
+        "forward"
+      ],
+      "metadata": {
+        "dependencies": [
+          "args",
+          "encloser",
+          "ex_policy",
+          "forward"
+        ],
+        "calls": [
+          "forward"
+        ],
+        "call_spans": [
+          {
+            "name": "forward",
+            "start": 6292,
+            "end": 6316,
+            "function_start": 6292,
+            "function_end": 6310,
+            "arguments_start": 6310,
+            "arguments_end": 6316
+          }
+        ],
+        "type": "template_declaration"
+      },
+      "node_id": "a866f7023b7468cc071f205bec25d8ff54a83490",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "template_declaration",
+        "class_specifier",
+        "template_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "template_declaration:anon@132",
+        "class_specifier:TargetParticleMask",
+        "template_declaration:anon@136"
+      ],
+      "definition_id": "4130bf9a645e721f6140655b7a4d45dbf6975daa",
+      "chunk_index": 60
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "function_definition",
+      "start_line": 137,
+      "end_line": 138,
+      "byte_start": 6174,
+      "byte_end": 6323,
+      "parent_context": "template_declaration",
+      "content": "TargetParticleMask(ExecutionPolicy &ex_policy, EnclosureType &encloser, Args &&...args)\n            : TargetCriterion(std::forward<Args>(args)...) {}",
+      "chunk_id": "096247d1553cdd525e569418635f75aca83d86cb",
+      "parent_chunk_id": "a866f7023b7468cc071f205bec25d8ff54a83490",
+      "references": [],
+      "dependencies": [
+        "args",
+        "encloser",
+        "ex_policy",
+        "forward"
+      ],
+      "metadata": {
+        "signature": {
+          "name": "TargetParticleMask",
+          "parameters": [
+            "ExecutionPolicy &ex_policy",
+            "EnclosureType &encloser"
+          ],
+          "return_type": null,
+          "decorators": [],
+          "modifiers": []
+        },
+        "dependencies": [
+          "args",
+          "encloser",
+          "ex_policy",
+          "forward"
+        ],
+        "exports": [
+          "TargetParticleMask"
+        ],
+        "calls": [
+          "forward"
+        ],
+        "call_spans": [
+          {
+            "name": "forward",
+            "start": 6292,
+            "end": 6316,
+            "function_start": 6292,
+            "function_end": 6310,
+            "arguments_start": 6310,
+            "arguments_end": 6316
+          }
+        ],
+        "type": "function_definition"
+      },
+      "node_id": "096247d1553cdd525e569418635f75aca83d86cb",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": "cba3e442f40e604f4e9b06e97359380c0bdb8dec",
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "template_declaration",
+        "class_specifier",
+        "template_declaration",
+        "function_definition"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "template_declaration:anon@132",
+        "class_specifier:TargetParticleMask",
+        "template_declaration:anon@136",
+        "function_definition:anon@137"
+      ],
+      "definition_id": "617c6dccb87302c27c5a0a098c8a01a3320464d9",
+      "chunk_index": 61
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "function_definition",
+      "start_line": 139,
+      "end_line": 139,
+      "byte_start": 6332,
+      "byte_end": 6364,
+      "parent_context": "class_specifier",
+      "content": "virtual ~TargetParticleMask() {}",
+      "chunk_id": "74e37d1491ceda0894483aad466e618c39d67436",
+      "parent_chunk_id": "9b55a024510f941a01419cff316efcb232cdfe25",
+      "references": [],
+      "dependencies": [
+        "TargetParticleMask"
+      ],
+      "metadata": {
+        "dependencies": [
+          "TargetParticleMask"
+        ],
+        "type": "function_definition"
+      },
+      "node_id": "74e37d1491ceda0894483aad466e618c39d67436",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "template_declaration",
+        "class_specifier",
+        "function_definition"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "template_declaration:anon@132",
+        "class_specifier:TargetParticleMask",
+        "function_definition:anon@139"
+      ],
+      "definition_id": "f236bb0cafbbb2f8f9bbf54d9aa75e866fb0ee59",
+      "chunk_index": 62
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "method_declaration",
+      "start_line": 144,
+      "end_line": 144,
+      "byte_start": 6572,
+      "byte_end": 6667,
+      "parent_context": "class_specifier",
+      "content": "virtual void defineAdaptationRatios(Real h_spacing_ratio, Real new_refinement_to_global = 1.0);",
+      "chunk_id": "4be311a9a8fcfe3af8d6a34e215ee7b637fbc05e",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [
+        "h_spacing_ratio",
+        "new_refinement_to_global"
+      ],
+      "metadata": {
+        "docstring": "----------------------------------------------------------------------",
+        "dependencies": [
+          "h_spacing_ratio",
+          "new_refinement_to_global"
+        ],
+        "type": "method_declaration"
+      },
+      "node_id": "4be311a9a8fcfe3af8d6a34e215ee7b637fbc05e",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "method_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "method_declaration:defineAdaptationRatios"
+      ],
+      "definition_id": "d616fb84a4201f4d28087eaf48fe4f29777eb48d",
+      "chunk_index": 63
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "template_declaration",
+      "start_line": 146,
+      "end_line": 147,
+      "byte_start": 6673,
+      "byte_end": 6765,
+      "parent_context": "class_specifier",
+      "content": "template <class AdaptationType, typename... Args>\n    void defineAdaptation(Args &&...args);",
+      "chunk_id": "7f61b6b6eb33b9ae50db12a051d056cf8e38768f",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [
+        "args"
+      ],
+      "metadata": {
+        "dependencies": [
+          "args"
+        ],
+        "type": "template_declaration"
+      },
+      "node_id": "7f61b6b6eb33b9ae50db12a051d056cf8e38768f",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "template_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "template_declaration:anon@146"
+      ],
+      "definition_id": "b2013e0834d7c46beac97bb20656567a60da4f01",
+      "chunk_index": 64
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "template_declaration",
+      "start_line": 149,
+      "end_line": 150,
+      "byte_start": 6771,
+      "byte_end": 6894,
+      "parent_context": "class_specifier",
+      "content": "template <typename... Args>\n    LevelSetShape &defineComponentLevelSetShape(const std::string &shape_name, Args &&...args);",
+      "chunk_id": "3f61dac95ad8e047cefaed20a37e00a18d09b3d4",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [
+        "args",
+        "defineComponentLevelSetShape",
+        "shape_name"
+      ],
+      "metadata": {
+        "dependencies": [
+          "args",
+          "defineComponentLevelSetShape",
+          "shape_name"
+        ],
+        "type": "template_declaration"
+      },
+      "node_id": "3f61dac95ad8e047cefaed20a37e00a18d09b3d4",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "template_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "template_declaration:anon@149"
+      ],
+      "definition_id": "7116fd5b1a79297cbf7a5cf1f424e10820330916",
+      "chunk_index": 65
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "template_declaration",
+      "start_line": 152,
+      "end_line": 153,
+      "byte_start": 6900,
+      "byte_end": 6987,
+      "parent_context": "class_specifier",
+      "content": "template <typename... Args>\n    LevelSetShape &defineBodyLevelSetShape(Args &&...args);",
+      "chunk_id": "24b49d988f328aeebb0bdaf21525aa85b38e1568",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [
+        "args",
+        "defineBodyLevelSetShape"
+      ],
+      "metadata": {
+        "dependencies": [
+          "args",
+          "defineBodyLevelSetShape"
+        ],
+        "type": "template_declaration"
+      },
+      "node_id": "24b49d988f328aeebb0bdaf21525aa85b38e1568",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "template_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "template_declaration:anon@152"
+      ],
+      "definition_id": "8a5aaad92dce1bc18cfeccd51bcb2c5ad0f97c0d",
+      "chunk_index": 66
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "template_declaration",
+      "start_line": 155,
+      "end_line": 156,
+      "byte_start": 6993,
+      "byte_end": 7140,
+      "parent_context": "class_specifier",
+      "content": "template <typename ExecutionPolicy, typename... Args>\n    LevelSetShape &defineBodyLevelSetShape(const ExecutionPolicy &ex_policy, Args &&...args);",
+      "chunk_id": "aa3e1508f7c8f7f0a778d613f708b3548720d8cc",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [
+        "args",
+        "defineBodyLevelSetShape",
+        "ex_policy"
+      ],
+      "metadata": {
+        "dependencies": [
+          "args",
+          "defineBodyLevelSetShape",
+          "ex_policy"
+        ],
+        "type": "template_declaration"
+      },
+      "node_id": "aa3e1508f7c8f7f0a778d613f708b3548720d8cc",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "template_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "template_declaration:anon@155"
+      ],
+      "definition_id": "fddb9e253c000d6a85036b906dcbb93b251b60d6",
+      "chunk_index": 67
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "template_declaration",
+      "start_line": 158,
+      "end_line": 159,
+      "byte_start": 7146,
+      "byte_end": 7266,
+      "parent_context": "class_specifier",
+      "content": "template <class MaterialType = MatterMaterial, typename... Args>\n    MaterialType &defineMatterMaterial(Args &&...args);",
+      "chunk_id": "c17be322f1d8a2f27971adb013711f57de4ffb93",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [
+        "args",
+        "defineMatterMaterial"
+      ],
+      "metadata": {
+        "dependencies": [
+          "args",
+          "defineMatterMaterial"
+        ],
+        "type": "template_declaration"
+      },
+      "node_id": "c17be322f1d8a2f27971adb013711f57de4ffb93",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "template_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "template_declaration:anon@158"
+      ],
+      "definition_id": "e7f38ebff49043eb5e226a8c6b71ed1e96d744a3",
+      "chunk_index": 68
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "template_declaration",
+      "start_line": 161,
+      "end_line": 162,
+      "byte_start": 7272,
+      "byte_end": 7374,
+      "parent_context": "class_specifier",
+      "content": "template <class MaterialType, typename... Args>\n    MaterialType &addMaterialProperty(Args &&...args);",
+      "chunk_id": "32696158f3b84e55bc86d0ad38c7adbcd0ff3ff7",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [
+        "addMaterialProperty",
+        "args"
+      ],
+      "metadata": {
+        "dependencies": [
+          "addMaterialProperty",
+          "args"
+        ],
+        "type": "template_declaration"
+      },
+      "node_id": "32696158f3b84e55bc86d0ad38c7adbcd0ff3ff7",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "template_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "template_declaration:anon@161"
+      ],
+      "definition_id": "a5cbd3ba5f256e918ba4c93b8fc37eb73f87ee17",
+      "chunk_index": 69
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "template_declaration",
+      "start_line": 168,
+      "end_line": 169,
+      "byte_start": 7706,
+      "byte_end": 7827,
+      "parent_context": "class_specifier",
+      "content": "template <class ParticleType, class... Parameters, typename... Args>\n    ParticleType &generateParticles(Args &&...args);",
+      "chunk_id": "74c41e5c0e1adf12d5e07f2bce6c08f1a04fb4f7",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [
+        "args",
+        "generateParticles"
+      ],
+      "metadata": {
+        "docstring": "----------------------------------------------------------------------",
+        "dependencies": [
+          "args",
+          "generateParticles"
+        ],
+        "type": "template_declaration"
+      },
+      "node_id": "74c41e5c0e1adf12d5e07f2bce6c08f1a04fb4f7",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "template_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "template_declaration:anon@168"
+      ],
+      "definition_id": "a0a1eef8146f53874fc20315c58654d57bb350d4",
+      "chunk_index": 70
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "template_declaration",
+      "start_line": 172,
+      "end_line": 173,
+      "byte_start": 7912,
+      "byte_end": 8097,
+      "parent_context": "class_specifier",
+      "content": "template <class ParticleType, typename... Parameters, class ReserveType, typename... Args>\n    ParticleType &generateParticlesWithReserve(ReserveType &particle_reserve, Args &&...args);",
+      "chunk_id": "425997426964dde7e76e54622ba53802080889c3",
+      "parent_chunk_id": "efb106b1c76d2ad9ffee6335887b845a73e288e5",
+      "references": [],
+      "dependencies": [
+        "args",
+        "generateParticlesWithReserve",
+        "particle_reserve"
+      ],
+      "metadata": {
+        "docstring": "Buffer or ghost particles can be generated together with real particles",
+        "dependencies": [
+          "args",
+          "generateParticlesWithReserve",
+          "particle_reserve"
+        ],
+        "type": "template_declaration"
+      },
+      "node_id": "425997426964dde7e76e54622ba53802080889c3",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "template_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:SPHBody",
+        "template_declaration:anon@172"
+      ],
+      "definition_id": "aebb57cb88764f631a39f3cc0b2f1c63c50c13eb",
+      "chunk_index": 71
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "class_specifier",
+      "start_line": 181,
+      "end_line": 201,
+      "byte_start": 8277,
+      "byte_end": 8861,
+      "parent_context": "namespace_definition",
+      "content": "class RealBody : public SPHBody\n{\n  public:\n    template <typename... Args>\n    RealBody(Args &&...args);\n    virtual ~RealBody();\n    BaseCellLinkedList &getCellLinkedList();\n    void updateCellLinkedList();\n    using ListedParticleMask = typename SPHBody::SourceParticleMask;\n\n    template <class BodyPartType, typename... Args>\n    BodyPartType &addBodyPart(Args &&...args);\n\n  protected:\n    UniquePtr<BaseCellLinkedList> cell_linked_list_ptr_;\n    UniquePtrsKeeper<BodyPart> body_parts_keeper_;\n    bool cell_linked_list_created_;\n\n  private:\n    void addRealBodyToSPHSystem();\n}",
+      "chunk_id": "3d3c6bda260d8de490ba2d7bcf0f44aa418e95d1",
+      "parent_chunk_id": "61195d92d62d5a14d9a0b2621be7874eb8727afe",
+      "references": [],
+      "dependencies": [
+        "addBodyPart",
+        "args"
+      ],
+      "metadata": {
+        "docstring": "* @class RealBody\n * @brief Derived body with inner particle configuration or inner interactions.\n * After construction, the particle and material must be specified.",
+        "dependencies": [
+          "addBodyPart",
+          "args"
+        ],
+        "type": "class_specifier"
+      },
+      "node_id": "3d3c6bda260d8de490ba2d7bcf0f44aa418e95d1",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:RealBody"
+      ],
+      "definition_id": "4c371d352497550cb323d0833cac3b2feb72a512",
+      "chunk_index": 72
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "template_declaration",
+      "start_line": 184,
+      "end_line": 185,
+      "byte_start": 8325,
+      "byte_end": 8382,
+      "parent_context": "class_specifier",
+      "content": "template <typename... Args>\n    RealBody(Args &&...args);",
+      "chunk_id": "75540f0bdc26d2a602b0f8ceab5852bef0f7d27a",
+      "parent_chunk_id": "3d3c6bda260d8de490ba2d7bcf0f44aa418e95d1",
+      "references": [],
+      "dependencies": [
+        "args"
+      ],
+      "metadata": {
+        "dependencies": [
+          "args"
+        ],
+        "type": "template_declaration"
+      },
+      "node_id": "75540f0bdc26d2a602b0f8ceab5852bef0f7d27a",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "template_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:RealBody",
+        "template_declaration:anon@184"
+      ],
+      "definition_id": "6a807f706836bc213e2dc7b3e55b4b8260bd8573",
+      "chunk_index": 73
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "field_declaration",
+      "start_line": 187,
+      "end_line": 187,
+      "byte_start": 8412,
+      "byte_end": 8452,
+      "parent_context": "class_specifier",
+      "content": "BaseCellLinkedList &getCellLinkedList();",
+      "chunk_id": "908941ea21855fe0c39f5d07ccb84346d0cb8d43",
+      "parent_chunk_id": "3d3c6bda260d8de490ba2d7bcf0f44aa418e95d1",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "field_declaration"
+      },
+      "node_id": "908941ea21855fe0c39f5d07ccb84346d0cb8d43",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "field_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:RealBody",
+        "field_declaration:getCellLinkedList"
+      ],
+      "definition_id": "2897c12de2b4e3822742cec116b22d127836984f",
+      "chunk_index": 74
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "method_declaration",
+      "start_line": 188,
+      "end_line": 188,
+      "byte_start": 8457,
+      "byte_end": 8485,
+      "parent_context": "class_specifier",
+      "content": "void updateCellLinkedList();",
+      "chunk_id": "937b31bae066dd109bbc4b16232670dd52dcad68",
+      "parent_chunk_id": "3d3c6bda260d8de490ba2d7bcf0f44aa418e95d1",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "method_declaration"
+      },
+      "node_id": "937b31bae066dd109bbc4b16232670dd52dcad68",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "method_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:RealBody",
+        "method_declaration:updateCellLinkedList"
+      ],
+      "definition_id": "d129aaa7411aca1115084fd2b7d4fff128e3fdf6",
+      "chunk_index": 75
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "template_declaration",
+      "start_line": 191,
+      "end_line": 192,
+      "byte_start": 8560,
+      "byte_end": 8654,
+      "parent_context": "class_specifier",
+      "content": "template <class BodyPartType, typename... Args>\n    BodyPartType &addBodyPart(Args &&...args);",
+      "chunk_id": "03440a6de6be6f6af4f93d52c0912ae11e09caf5",
+      "parent_chunk_id": "3d3c6bda260d8de490ba2d7bcf0f44aa418e95d1",
+      "references": [],
+      "dependencies": [
+        "addBodyPart",
+        "args"
+      ],
+      "metadata": {
+        "dependencies": [
+          "addBodyPart",
+          "args"
+        ],
+        "type": "template_declaration"
+      },
+      "node_id": "03440a6de6be6f6af4f93d52c0912ae11e09caf5",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "template_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:RealBody",
+        "template_declaration:anon@191"
+      ],
+      "definition_id": "648b47cdff077c782a56283bcb5f7498c763dbce",
+      "chunk_index": 76
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "field_declaration",
+      "start_line": 195,
+      "end_line": 195,
+      "byte_start": 8673,
+      "byte_end": 8725,
+      "parent_context": "class_specifier",
+      "content": "UniquePtr<BaseCellLinkedList> cell_linked_list_ptr_;",
+      "chunk_id": "fab5626e0949ac271ba80355e64e58183059ffbe",
+      "parent_chunk_id": "3d3c6bda260d8de490ba2d7bcf0f44aa418e95d1",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "field_declaration"
+      },
+      "node_id": "fab5626e0949ac271ba80355e64e58183059ffbe",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "field_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:RealBody",
+        "field_declaration:cell_linked_list_ptr_"
+      ],
+      "definition_id": "524bc56d98854674a49e33502ff1ed1e1a5c99e0",
+      "chunk_index": 77
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "field_declaration",
+      "start_line": 196,
+      "end_line": 196,
+      "byte_start": 8730,
+      "byte_end": 8776,
+      "parent_context": "class_specifier",
+      "content": "UniquePtrsKeeper<BodyPart> body_parts_keeper_;",
+      "chunk_id": "b516f11c9e96c72ea32a9292b91065f76a4b1680",
+      "parent_chunk_id": "3d3c6bda260d8de490ba2d7bcf0f44aa418e95d1",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "field_declaration"
+      },
+      "node_id": "b516f11c9e96c72ea32a9292b91065f76a4b1680",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "field_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:RealBody",
+        "field_declaration:body_parts_keeper_"
+      ],
+      "definition_id": "bb73b2cba51540f16acf31bc374db20b7050860d",
+      "chunk_index": 78
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "field_declaration",
+      "start_line": 197,
+      "end_line": 197,
+      "byte_start": 8781,
+      "byte_end": 8812,
+      "parent_context": "class_specifier",
+      "content": "bool cell_linked_list_created_;",
+      "chunk_id": "cacbf24c11117ee42fe7cc93d366cdd9ad8f59fb",
+      "parent_chunk_id": "3d3c6bda260d8de490ba2d7bcf0f44aa418e95d1",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "field_declaration"
+      },
+      "node_id": "cacbf24c11117ee42fe7cc93d366cdd9ad8f59fb",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "field_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:RealBody",
+        "field_declaration:cell_linked_list_created_"
+      ],
+      "definition_id": "b70f3c5d377b7d103b50c87d6decd76168c13a10",
+      "chunk_index": 79
+    },
+    {
+      "language": "cpp",
+      "file_path": "/home/zhang/Projects/SPHinX_AI_Assistant/repos/SPHinXsys/src/shared/bodies/base_body.h",
+      "node_type": "method_declaration",
+      "start_line": 200,
+      "end_line": 200,
+      "byte_start": 8829,
+      "byte_end": 8859,
+      "parent_context": "class_specifier",
+      "content": "void addRealBodyToSPHSystem();",
+      "chunk_id": "ed4d5d0e9d1c9a9406c2858b4e280704a2689734",
+      "parent_chunk_id": "3d3c6bda260d8de490ba2d7bcf0f44aa418e95d1",
+      "references": [],
+      "dependencies": [],
+      "metadata": {
+        "dependencies": [],
+        "type": "method_declaration"
+      },
+      "node_id": "ed4d5d0e9d1c9a9406c2858b4e280704a2689734",
+      "file_id": "aa50ffdc8625fa2591d7cfca330c8766567fc152",
+      "symbol_id": null,
+      "parent_route": [
+        "namespace_definition",
+        "class_specifier",
+        "method_declaration"
+      ],
+      "qualified_route": [
+        "namespace_definition:SPH",
+        "class_specifier:RealBody",
+        "method_declaration:addRealBodyToSPHSystem"
+      ],
+      "definition_id": "678be844cbecca24d642425bbf76d94ef983c801",
+      "chunk_index": 80
+    }
+  ]
+}

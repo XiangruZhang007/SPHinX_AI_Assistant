@@ -1,0 +1,250 @@
+[
+  {
+    "source_path": "repos/SPHinXsim/sphinxsim/bindings/loader.py",
+    "purpose": "Python binding loader",
+    "source_role": "simulator_library",
+    "language": "python",
+    "line_count": 131,
+    "chunking_checked": true,
+    "parse_success": true,
+    "raw_chunk_count": 6,
+    "main_node_types": {
+      "function_definition": 6
+    },
+    "functions_classes_intact": {
+      "functions": {
+        "ast_count": 6,
+        "raw_chunk_exact_span_count": 6,
+        "all_intact": true
+      },
+      "classes": {
+        "ast_count": 0,
+        "raw_chunk_exact_span_count": 0,
+        "all_intact": true
+      }
+    },
+    "chunk_size_bytes": {
+      "min": 193,
+      "max": 1163,
+      "mean": 615.5,
+      "median": 467.5,
+      "tiny_under_100_bytes": 0,
+      "oversized_over_5000_bytes": 0
+    }
+  },
+  {
+    "source_path": "repos/SPHinXsim/sphinxsim/config/schemas.py",
+    "purpose": "Python schema library",
+    "source_role": "config/schema",
+    "language": "python",
+    "line_count": 1248,
+    "chunking_checked": true,
+    "parse_success": true,
+    "raw_chunk_count": 104,
+    "main_node_types": {
+      "class_definition": 54,
+      "function_definition": 26,
+      "decorated_definition": 24
+    },
+    "functions_classes_intact": {
+      "functions": {
+        "ast_count": 26,
+        "raw_chunk_exact_span_count": 26,
+        "all_intact": true
+      },
+      "classes": {
+        "ast_count": 54,
+        "raw_chunk_exact_span_count": 54,
+        "all_intact": true
+      }
+    },
+    "chunk_size_bytes": {
+      "min": 79,
+      "max": 17479,
+      "mean": 1275.625,
+      "median": 439.5,
+      "tiny_under_100_bytes": 5,
+      "oversized_over_5000_bytes": 5
+    }
+  },
+  {
+    "source_path": "repos/SPHinXsim/sphinxsim/sph_simulation/simulation_builder/base_simulation_builder.cpp",
+    "purpose": "C++ simulation builder",
+    "source_role": "simulator_library",
+    "language": "cpp",
+    "line_count": 352,
+    "chunking_checked": true,
+    "parse_success": true,
+    "raw_chunk_count": 19,
+    "main_node_types": {
+      "method_declaration": 17,
+      "namespace_definition": 1,
+      "function_definition": 1
+    },
+    "functions_classes_intact": {
+      "functions": {
+        "ast_count": 18,
+        "raw_chunk_exact_span_count": 18,
+        "all_intact": true
+      },
+      "classes": {
+        "ast_count": 0,
+        "raw_chunk_exact_span_count": 0,
+        "all_intact": true
+      }
+    },
+    "chunk_size_bytes": {
+      "min": 51,
+      "max": 15507,
+      "mean": 1528.4736842105262,
+      "median": 828,
+      "tiny_under_100_bytes": 2,
+      "oversized_over_5000_bytes": 1
+    }
+  },
+  {
+    "source_path": "repos/SPHinXsim/sphinxsim/bindings/sphinxsys_python.cpp",
+    "purpose": "C++ Python binding",
+    "source_role": "simulator_library",
+    "language": "cpp",
+    "line_count": 71,
+    "chunking_checked": true,
+    "parse_success": true,
+    "raw_chunk_count": 1,
+    "main_node_types": {
+      "function_definition": 1
+    },
+    "functions_classes_intact": {
+      "functions": {
+        "ast_count": 1,
+        "raw_chunk_exact_span_count": 1,
+        "all_intact": true
+      },
+      "classes": {
+        "ast_count": 0,
+        "raw_chunk_exact_span_count": 0,
+        "all_intact": true
+      }
+    },
+    "chunk_size_bytes": {
+      "min": 2692,
+      "max": 2692,
+      "mean": 2692.0,
+      "median": 2692,
+      "tiny_under_100_bytes": 0,
+      "oversized_over_5000_bytes": 0
+    }
+  },
+  {
+    "source_path": "repos/SPHinXsim/examples/test_simulation_2d.py",
+    "purpose": "Python simulation orchestration example",
+    "source_role": "simulation_example",
+    "language": "python",
+    "line_count": 108,
+    "chunking_checked": true,
+    "parse_success": true,
+    "raw_chunk_count": 3,
+    "main_node_types": {
+      "function_definition": 3
+    },
+    "functions_classes_intact": {
+      "functions": {
+        "ast_count": 3,
+        "raw_chunk_exact_span_count": 3,
+        "all_intact": true
+      },
+      "classes": {
+        "ast_count": 0,
+        "raw_chunk_exact_span_count": 0,
+        "all_intact": true
+      }
+    },
+    "chunk_size_bytes": {
+      "min": 248,
+      "max": 1930,
+      "mean": 860.3333333333334,
+      "median": 403,
+      "tiny_under_100_bytes": 0,
+      "oversized_over_5000_bytes": 0
+    }
+  },
+  {
+    "source_path": "repos/SPHinXsim/examples/input/test_simulation_2d/config.json",
+    "purpose": "Example simulation input/config",
+    "source_role": "config/schema",
+    "language": "json",
+    "line_count": 94,
+    "chunking_checked": false,
+    "reason": "configuration/input file; no source-code check requested"
+  },
+  {
+    "source_path": "repos/SPHinXsim/tests/test_schemas.py",
+    "purpose": "Python schema test",
+    "source_role": "test",
+    "language": "python",
+    "line_count": 1572,
+    "chunking_checked": true,
+    "parse_success": true,
+    "raw_chunk_count": 86,
+    "main_node_types": {
+      "function_definition": 82,
+      "class_definition": 2,
+      "decorated_definition": 2
+    },
+    "functions_classes_intact": {
+      "functions": {
+        "ast_count": 82,
+        "raw_chunk_exact_span_count": 82,
+        "all_intact": true
+      },
+      "classes": {
+        "ast_count": 2,
+        "raw_chunk_exact_span_count": 2,
+        "all_intact": true
+      }
+    },
+    "chunk_size_bytes": {
+      "min": 131,
+      "max": 57230,
+      "mean": 1396.7558139534883,
+      "median": 620.0,
+      "tiny_under_100_bytes": 0,
+      "oversized_over_5000_bytes": 1
+    }
+  },
+  {
+    "source_path": "repos/SPHinXsim/tests/test_simulation/test_2d_simulation/simulation.cpp",
+    "purpose": "C++ simulation test",
+    "source_role": "test",
+    "language": "cpp",
+    "line_count": 157,
+    "chunking_checked": true,
+    "parse_success": true,
+    "raw_chunk_count": 8,
+    "main_node_types": {
+      "function_definition": 6,
+      "namespace_definition": 1,
+      "class_specifier": 1
+    },
+    "functions_classes_intact": {
+      "functions": {
+        "ast_count": 6,
+        "raw_chunk_exact_span_count": 6,
+        "all_intact": true
+      },
+      "classes": {
+        "ast_count": 1,
+        "raw_chunk_exact_span_count": 1,
+        "all_intact": true
+      }
+    },
+    "chunk_size_bytes": {
+      "min": 58,
+      "max": 2089,
+      "mean": 631.625,
+      "median": 446.0,
+      "tiny_under_100_bytes": 1,
+      "oversized_over_5000_bytes": 0
+    }
+  }
+]
