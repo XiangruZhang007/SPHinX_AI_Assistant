@@ -211,3 +211,33 @@ Use `--only-unreviewed` to restrict selection to records whose
 JSONL and Markdown batch to `data/user_testing/review_batches/`. It is
 read-only with respect to source session files and does not approve, reject, or
 otherwise promote tester feedback into knowledge.
+
+## Markdown session exports
+
+JSONL session files remain the authoritative structured records. Markdown
+exports are deterministic, generated human-readable views for supervisors and
+expert reviewers; they are not approved repository knowledge, and suggested
+corrections remain unreviewed until human review.
+
+Export one session:
+
+```bash
+tools/treesitter-chunker/.venv/bin/python \
+  scripts/export_user_testing_session_md.py \
+  --session data/user_testing/<tester_id>/session_<...>.jsonl
+```
+
+Export all sessions for one tester, or all non-development tester sessions:
+
+```bash
+tools/treesitter-chunker/.venv/bin/python \
+  scripts/export_user_testing_session_md.py \
+  --input-dir data/user_testing/<tester_id>/
+
+tools/treesitter-chunker/.venv/bin/python \
+  scripts/export_user_testing_session_md.py \
+  --all-sessions
+```
+
+Derived reports are written under `data/user_testing/markdown_exports/`. The
+exporter never modifies the source JSONL session files.

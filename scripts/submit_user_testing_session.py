@@ -183,6 +183,20 @@ def _validate_git_repository(project_root: Path, remote: str) -> str:
     return branch.stdout.strip()
 
 
+
+def available_remotes(*, project_root: Path = PROJECT_ROOT) -> list[str]:
+    """Return available remote names for a local UI without exposing URLs."""
+    project_root = project_root.resolve()
+    try:
+        top_level = _git(project_root, ["rev-parse", "--show-toplevel"]).stdout.strip()
+    except SubmissionError:
+        return []
+    if Path(top_level).resolve() != project_root:
+        return []
+    remotes = _git(project_root, ["remote"], check=False)
+    if remotes.returncode != 0:
+        return []
+    return sorted(remote for remote in remotes.stdout.splitlines() if remote)
 def _staged_paths(project_root: Path) -> list[str]:
     staged = _git(project_root, ["diff", "--cached", "--name-only", "-z"]).stdout
     return [path for path in staged.split("\0") if path]

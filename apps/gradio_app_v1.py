@@ -31,6 +31,13 @@ from src.user_testing_logging_v1 import (  # noqa: E402
 )
 
 
+from scripts.submit_user_testing_session import (  # noqa: E402
+    PushError,
+    SubmissionError,
+    available_remotes,
+    submit_session,
+)
+
 CORPUS_PATH = PROJECT_ROOT / "data/chunks/source_chunks_v1_combined.jsonl"
 MARKDOWN_RENDERER = MarkdownIt("commonmark", {"html": False}).enable("table")
 CODE_COPY_JS = """
@@ -243,6 +250,58 @@ def build_app() -> gr.Blocks:
             print(f"Correction feedback persistence failed: {type(error).__name__}", flush=True)
             return "**Feedback not saved:** The interaction session could not be updated safely."
 
+    def submission_started():
+        return gr.Button(interactive=False), "**Submission:** Preparing current session..."
+
+    def submit_current_session(
+        current_interaction: dict[str, str] | None, remote: str | None, mode: str
+    ):
+        if not isinstance(current_interaction, dict) or not isinstance(current_interaction.get("session_file"), str):
+            return "**Submission:** No logged session is available for submission.", gr.Button(interactive=True)
+        if not remote:
+            return "**Submission:** Select an available Git remote.", gr.Button(interactive=True)
+
+        try:
+            result = submit_session(
+                session_argument=current_interaction["session_file"],
+                remote=remote,
+                dry_run=mode == "dry-run",
+                no_push=mode == "no-push",
+            )
+        except PushError as error:
+            return (
+                "**Submission failed:** Push failed; local commit preserved "
+                f"`{error.commit[:7]}`. Check authentication, permissions, and remote state.",
+                gr.Button(interactive=True),
+            )
+        except SubmissionError as error:
+            return f"**Submission failed:** {error}", gr.Button(interactive=True)
+        except Exception as error:
+            print(f"Submission UI failed: {type(error).__name__}", flush=True)
+            return "**Submission failed:** The session could not be submitted safely.", gr.Button(interactive=True)
+
+        if result.push_status == "nothing to submit":
+            message = "**Submission:** Nothing to submit; this session is already committed."
+        elif result.dry_run:
+            message = "**Submission prepared**"
+        else:
+            message = "**Submission succeeded**"
+        lines = [
+            message,
+            f"- **Tester:** {result.session.tester_id}",
+            f"- **Session:** {result.session.session_id}",
+            f"- **Interactions:** {result.session.interaction_count}",
+        ]
+        if result.commit:
+            lines.append(f"- **Commit:** `{result.commit[:7]}`")
+        lines.extend(
+            [
+                f"- **Remote:** {result.remote}/{result.branch}",
+                f"- **Push status:** {result.push_status}",
+            ]
+        )
+        return "\n".join(lines), gr.Button(interactive=True)
+
     def ask(
         question: str,
         model: str,
@@ -405,6 +464,22 @@ def build_app() -> gr.Blocks:
         with gr.Accordion("Suggested correction", open=False, visible=False) as correction_form:
             correction_text = gr.Textbox(label="Suggested correction", lines=4)
             save_correction_button = gr.Button("Save correction")
+        remote_names = available_remotes()
+        with gr.Accordion("Submission", open=False):
+            with gr.Row():
+                submission_remote = gr.Dropdown(
+                    label="Remote",
+                    choices=remote_names,
+                    value=remote_names[0] if remote_names else None,
+                )
+                submission_mode = gr.Radio(
+                    label="Submission mode",
+                    choices=["dry-run", "no-push", "push"],
+                    value="dry-run",
+                )
+                submission_button = gr.Button("Submit current session")
+            submission_status = gr.Markdown("**Submission:** Ready")
+
         with gr.Accordion("Raw Markdown fallback", open=False):
             answer_fallback = gr.Textbox(label="Raw answer", interactive=False, lines=18, buttons=["copy"])
         gr.Markdown("## Sources")
@@ -528,6 +603,21 @@ def build_app() -> gr.Blocks:
             save_correction_feedback,
             inputs=[current_interaction_state, correction_text],
             outputs=[feedback_status],
+        )
+        submission_stage_a = submission_button.click(
+            submission_started,
+            outputs=[submission_button, submission_status],
+            queue=False,
+            trigger_mode="once",
+        )
+        submission_stage_a.then(
+            submit_current_session,
+            inputs=[current_interaction_state, submission_remote, submission_mode],
+            outputs=[submission_status, submission_button],
+            queue=True,
+            trigger_mode="once",
+            concurrency_limit=1,
+            concurrency_id="user-testing-submission-v1",
         )
         clear_button.click(clear_history, outputs=[history_state, history_markdown])
     return app
