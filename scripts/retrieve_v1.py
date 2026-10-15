@@ -10,6 +10,10 @@ import sys
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_CORPUS_PATH = PROJECT_ROOT / "data/chunks/source_chunks_v1_combined.jsonl"
+DEFAULT_VALIDATION_REPORT_PATH = (
+    PROJECT_ROOT / "data/evaluation/retrieval_v1_initial.json"
+)
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.retrieval_v1 import RetrievalV1, content_preview  # noqa: E402
@@ -41,10 +45,18 @@ def print_results(query: str, results, debug: bool) -> None:
             print(f"  debug: {json.dumps(item['score_components'], sort_keys=True)}")
 
 
+def serialize_corpus_path(corpus_path: Path) -> str:
+    """Use project-relative paths where possible, otherwise retain the path."""
+    try:
+        return str(corpus_path.relative_to(PROJECT_ROOT))
+    except ValueError:
+        return str(corpus_path)
+
+
 def write_initial_validation(retriever: RetrievalV1, path: Path, top_k: int) -> None:
     payload = {
         "prototype": "retrieval_v1_initial",
-        "corpus": str(retriever.corpus_path.relative_to(PROJECT_ROOT)),
+        "corpus": serialize_corpus_path(retriever.corpus_path),
         "top_k": top_k,
         "queries": [
             {"query": query, "top_k_results": [result.as_dict() for result in retriever.search(query, top_k)]}
@@ -56,7 +68,7 @@ def write_initial_validation(retriever: RetrievalV1, path: Path, top_k: int) -> 
     print(f"Validation report: {path}")
 
 
-def main() -> None:
+def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--query", help="Natural-language repository question")
     parser.add_argument("--top-k", type=int, default=5)
@@ -64,13 +76,24 @@ def main() -> None:
     parser.add_argument(
         "--corpus",
         type=Path,
-        default=PROJECT_ROOT / "data/chunks/source_chunks_v1_combined.jsonl",
+        default=DEFAULT_CORPUS_PATH,
     )
     parser.add_argument(
         "--write-initial-validation",
         action="store_true",
         help="Run the six initial checks and write data/evaluation/retrieval_v1_initial.json",
     )
+    parser.add_argument(
+        "--validation-report",
+        type=Path,
+        default=DEFAULT_VALIDATION_REPORT_PATH,
+        help="Output path for --write-initial-validation.",
+    )
+    return parser
+
+
+def main() -> None:
+    parser = build_parser()
     arguments = parser.parse_args()
     if not arguments.query and not arguments.write_initial_validation:
         parser.error("provide --query or --write-initial-validation")
@@ -80,7 +103,7 @@ def main() -> None:
     if arguments.write_initial_validation:
         write_initial_validation(
             retriever,
-            PROJECT_ROOT / "data/evaluation/retrieval_v1_initial.json",
+            arguments.validation_report,
             arguments.top_k,
         )
 

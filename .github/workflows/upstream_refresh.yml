@@ -1,0 +1,80 @@
+name: Upstream Refresh Candidate
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - ci-upstream-refresh
+  schedule:
+    - cron: "0 6 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  candidate-refresh:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out SPHinXsistant
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Initialize candidate directory
+        run: mkdir -p "${{ runner.temp }}/sphinxsistant_candidate"
+
+      - name: Check configured upstream branches
+        run: >
+          python scripts/check_upstream_updates.py
+          --config configs/upstream_baseline.json
+          > "${{ runner.temp }}/sphinxsistant_candidate/upstream_status.json"
+
+      - name: Clone upstream source repositories
+        run: |
+          git clone --branch master https://github.com/Xiangyu-Hu/SPHinXsys.git repos/SPHinXsys
+          git clone --branch main https://github.com/Xiangyu-Hu/SPHinXsim.git repos/SPHinXsim
+
+      - name: Clone pinned treesitter-chunker
+        run: |
+          git clone https://github.com/Consiliency/treesitter-chunker.git tools/treesitter-chunker
+          git -C tools/treesitter-chunker checkout --detach fb70922076c773d1865176329a03f67ff893fd90
+
+      - name: Install isolated chunk-generation runtime
+        run: |
+          python -m venv tools/treesitter-chunker/.venv
+          tools/treesitter-chunker/.venv/bin/python -m pip install -e tools/treesitter-chunker
+
+      - name: Generate candidate corpus
+        run: |
+          candidate_dir="${{ runner.temp }}/sphinxsistant_candidate"
+          PYTHONDONTWRITEBYTECODE=1 tools/treesitter-chunker/.venv/bin/python scripts/generate_source_chunks_v1.py \
+            --output "$candidate_dir/source_chunks_v1.jsonl" \
+            --summary "$candidate_dir/source_chunks_v1_summary.json"
+          PYTHONDONTWRITEBYTECODE=1 tools/treesitter-chunker/.venv/bin/python scripts/generate_sphinxsim_source_chunks_v1.py \
+            --sys-input "$candidate_dir/source_chunks_v1.jsonl" \
+            --sys-summary-input "$candidate_dir/source_chunks_v1_summary.json" \
+            --sim-output "$candidate_dir/sphinxsim_source_chunks_v1.jsonl" \
+            --sim-summary-output "$candidate_dir/sphinxsim_source_chunks_v1_summary.json" \
+            --combined-output "$candidate_dir/source_chunks_v1_combined.jsonl" \
+            --combined-summary-output "$candidate_dir/source_chunks_v1_combined_summary.json"
+
+      - name: Run deterministic retrieval regression
+        run: |
+          candidate_dir="${{ runner.temp }}/sphinxsistant_candidate"
+          PYTHONDONTWRITEBYTECODE=1 tools/treesitter-chunker/.venv/bin/python scripts/retrieve_v1.py \
+            --corpus "$candidate_dir/source_chunks_v1_combined.jsonl" \
+            --validation-report "$candidate_dir/retrieval_v1_initial.json" \
+            --write-initial-validation
+
+      - name: Upload candidate refresh artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: sphinxsistant-candidate-refresh
+          path: ${{ runner.temp }}/sphinxsistant_candidate
+          if-no-files-found: error

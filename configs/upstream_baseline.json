@@ -1,0 +1,12 @@
+{
+  "SPHinXsim": {
+    "remote": "https://github.com/Xiangyu-Hu/SPHinXsim.git",
+    "branch": "main",
+    "baseline_commit": "90375915a25d6f16ea6c496264171f15df14b007"
+  },
+  "SPHinXsys": {
+    "remote": "https://github.com/Xiangyu-Hu/SPHinXsys.git",
+    "branch": "master",
+    "baseline_commit": "5dec24e4731e5ad8e45cc7f7191cda19871f410f"
+  }
+}
