@@ -12,10 +12,13 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.chunk_generation_v1 import generate  # noqa: E402
+from src.chunk_identity import IDENTITY_SCHEMES  # noqa: E402
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--identity-scheme", choices=IDENTITY_SCHEMES, default="legacy",
+                        help="Source identity mode; portable-v1 is opt-in, legacy preserves existing IDs")
     parser.add_argument(
         "--output",
         type=Path,
@@ -29,7 +32,8 @@ def main() -> None:
         help="Summary JSON path (default: data/chunks/source_chunks_v1_summary.json)",
     )
     arguments = parser.parse_args()
-    summary = generate(PROJECT_ROOT, arguments.output, arguments.summary)
+    options = {} if arguments.identity_scheme == "legacy" else {"identity_scheme": arguments.identity_scheme}
+    summary = generate(PROJECT_ROOT, arguments.output, arguments.summary, **options)
     print(f"Generated {summary['total_chunk_count']} chunks")
     print(f"JSONL: {arguments.output}")
     print(f"Summary: {arguments.summary}")

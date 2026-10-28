@@ -21,6 +21,7 @@ from tree_sitter_language_pack import get_parser
 
 from .indexing_scope import discover_files, load_config
 from .cpp_coverage import data_definitions, recover_delegating_constructors
+from .chunk_identity import source_identity_path, validate_identity_scheme
 
 
 PRIMARY_NODE_TYPES = {"function_definition", "method_declaration"}
@@ -301,8 +302,29 @@ def _source_files(repo_root: Path) -> Iterable[Path]:
     yield from discover_files(load_config(), "SPHinXsys", repo_root)
 
 
-def generate(project_root: Path, output_jsonl: Path, output_summary: Path) -> dict[str, Any]:
+def _identity_options(repo_root: Path, repository: str, identity_scheme: str) -> dict:
+    if identity_scheme == "legacy":
+        return {}
+    return {"identity_scheme": identity_scheme, "repository": repository, "repo_root": repo_root}
+
+
+def _raw_source_chunks(source_path: Path, language: str, repo_root: Path,
+                       repository: str, identity_scheme: str) -> list[dict]:
+    options = {} if identity_scheme == "legacy" else {
+        "identity_path": source_identity_path(source_path, identity_scheme, repository=repository, repo_root=repo_root)}
+    chunks = [asdict(chunk) for chunk in chunk_file(str(source_path), language=language, **options)]
+    if identity_scheme != "legacy":
+        # IDs/parent links were already computed from the canonical identity.
+        # Bind only the read/provenance path used by the existing record adapter.
+        for raw in chunks:
+            raw["file_path"] = str(source_path)
+    return chunks
+
+
+def generate(project_root: Path, output_jsonl: Path, output_summary: Path, *,
+             identity_scheme: str = "legacy") -> dict[str, Any]:
     """Generate Prototype V1 chunks from the standalone SPHinXsys source tree."""
+    validate_identity_scheme(identity_scheme)
     repo_root = project_root / "repos" / "SPHinXsys"
     parser = get_parser("cpp")
     records: list[dict[str, Any]] = []
@@ -317,8 +339,9 @@ def generate(project_root: Path, output_jsonl: Path, output_summary: Path) -> di
             source_bytes = source_path.read_bytes()
             if parser.parse(source_bytes).root_node.has_error:
                 parse_errors.append(relative)
-            raw_chunks = [asdict(chunk) for chunk in chunk_file(str(source_path), language="cpp")]
-            raw_chunks = recover_delegating_constructors(source_path, raw_chunks)
+            raw_chunks = _raw_source_chunks(source_path, "cpp", repo_root, "SPHinXsys", identity_scheme)
+            raw_chunks = recover_delegating_constructors(source_path, raw_chunks,
+                **_identity_options(repo_root, "SPHinXsys", identity_scheme))
         except Exception as error:  # Keep the demo run complete if one source is unsupported.
             skipped_files.append({"source_path": relative, "reason": f"{type(error).__name__}: {error}"})
             continue
@@ -364,6 +387,8 @@ def generate(project_root: Path, output_jsonl: Path, output_summary: Path) -> di
         "parse_errors": parse_errors,
         "semantic_section_warnings": semantic_issues,
     }
+    if identity_scheme != "legacy":
+        summary["identity_scheme"] = identity_scheme
     output_summary.write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return summary
 
@@ -424,8 +449,10 @@ def _config_document_record(project_root: Path, source_path: Path, content: str)
     )
 
 
-def generate_sphinxsim(project_root: Path, output_jsonl: Path, output_summary: Path) -> dict[str, Any]:
+def generate_sphinxsim(project_root: Path, output_jsonl: Path, output_summary: Path, *,
+                      identity_scheme: str = "legacy") -> dict[str, Any]:
     """Generate SPHinXsim-specific V1 chunks while excluding its embedded subtree."""
+    validate_identity_scheme(identity_scheme)
     repo_root = project_root / "repos" / "SPHinXsim"
     parsers = {"python": get_parser("python"), "cpp": get_parser("cpp")}
     records: list[dict[str, Any]] = []
@@ -447,9 +474,10 @@ def generate_sphinxsim(project_root: Path, output_jsonl: Path, output_summary: P
             language = SIM_SOURCE_LANGUAGES[suffix]
             if parsers[language].parse(content.encode("utf-8")).root_node.has_error:
                 parse_warnings.append({"source_path": relative, "warning": "Tree-sitter reported a parse error"})
-            raw_chunks = [asdict(chunk) for chunk in chunk_file(str(source_path), language=language)]
+            raw_chunks = _raw_source_chunks(source_path, language, repo_root, "SPHinXsim", identity_scheme)
             if language == "cpp":
-                raw_chunks = recover_delegating_constructors(source_path, raw_chunks)
+                raw_chunks = recover_delegating_constructors(source_path, raw_chunks,
+                    **_identity_options(repo_root, "SPHinXsim", identity_scheme))
         except Exception as error:
             skipped_files.append({"source_path": relative, "reason": f"{type(error).__name__}: {error}"})
             continue
@@ -464,7 +492,8 @@ def generate_sphinxsim(project_root: Path, output_jsonl: Path, output_summary: P
         if language == "cpp" and role == "simulator_library":
             records.extend(
                 _record_from_raw(raw, project_root, role, repository="SPHinXsim")
-                for raw in data_definitions(source_path)
+                for raw in data_definitions(source_path,
+                    **_identity_options(repo_root, "SPHinXsim", identity_scheme))
             )
 
     output_jsonl.parent.mkdir(parents=True, exist_ok=True)
@@ -491,6 +520,8 @@ def generate_sphinxsim(project_root: Path, output_jsonl: Path, output_summary: P
         "skipped_files": skipped_files,
         "parse_warning_files": parse_warnings,
     }
+    if identity_scheme != "legacy":
+        summary["identity_scheme"] = identity_scheme
     output_summary.write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return summary
 
@@ -508,6 +539,12 @@ def generate_combined_corpus(
     output_summary: Path,
 ) -> dict[str, Any]:
     """Concatenate compatible V1 records and validate their demo corpus invariants."""
+    sys_summary = json.loads(sys_summary_path.read_text(encoding="utf-8"))
+    sim_summary = json.loads(sim_summary_path.read_text(encoding="utf-8"))
+    sys_scheme = validate_identity_scheme(sys_summary.get("identity_scheme", "legacy"))
+    sim_scheme = validate_identity_scheme(sim_summary.get("identity_scheme", "legacy"))
+    if sys_scheme != sim_scheme:
+        raise ValueError("Cannot combine different source identity schemes")
     records = [*_read_jsonl(sys_jsonl), *_read_jsonl(sim_jsonl)]
     required = {"chunk_id", "repository", "source_role", "source_path", "content"}
     missing = [index for index, record in enumerate(records) if not required <= set(record)]
@@ -520,8 +557,6 @@ def generate_combined_corpus(
     with output_jsonl.open("w", encoding="utf-8") as handle:
         for record in records:
             handle.write(json.dumps(record, ensure_ascii=False, sort_keys=True) + "\n")
-    sys_summary = json.loads(sys_summary_path.read_text(encoding="utf-8"))
-    sim_summary = json.loads(sim_summary_path.read_text(encoding="utf-8"))
     sizes = [record["byte_end"] - record["byte_start"] for record in records]
     parse_warnings = [
         {"repository": "SPHinXsys", "source_path": path, "warning": "Tree-sitter reported a parse error"}
@@ -558,5 +593,7 @@ def generate_combined_corpus(
             "chunk_id_values_unique": True,
         },
     }
+    if sys_scheme != "legacy":
+        summary["identity_scheme"] = sys_scheme
     output_summary.write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return summary

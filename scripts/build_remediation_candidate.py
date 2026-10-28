@@ -11,17 +11,21 @@ sys.path.insert(0, str(P))
 from src.chunk_generation_v1 import generate, generate_sphinxsim, generate_combined_corpus
 from src.documentation_chunking import generate_documentation, DEFAULT_CONFIG
 from scripts.combine_candidate_corpus import combine, read_records
+from src.chunk_identity import IDENTITY_SCHEMES
 
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output-dir',type=Path,required=True)
+    parser.add_argument('--identity-scheme',choices=IDENTITY_SCHEMES,default='legacy',
+                        help='Source identity mode; JSON/documentation algorithms stay unchanged')
     a=parser.parse_args()
     if a.output_dir.exists() or a.output_dir.is_symlink():
         parser.error('Output directory already exists')
     a.output_dir.mkdir(parents=True,exist_ok=False);d=a.output_dir
-    generate(P,d/'sphinxsys.jsonl',d/'sphinxsys-summary.json')
-    generate_sphinxsim(P,d/'sphinxsim.jsonl',d/'sphinxsim-summary.json')
+    options={} if a.identity_scheme=='legacy' else {'identity_scheme':a.identity_scheme}
+    generate(P,d/'sphinxsys.jsonl',d/'sphinxsys-summary.json',**options)
+    generate_sphinxsim(P,d/'sphinxsim.jsonl',d/'sphinxsim-summary.json',**options)
     generate_combined_corpus(d/'sphinxsys.jsonl',d/'sphinxsys-summary.json',d/'sphinxsim.jsonl',d/'sphinxsim-summary.json',d/'source.jsonl',d/'source-summary.json')
     generate_documentation(P,d/'documentation.jsonl',d/'documentation-summary.json',DEFAULT_CONFIG)
     combine([d/'source.jsonl',d/'documentation.jsonl'],d/'expanded-candidate.jsonl')
@@ -40,6 +44,7 @@ def main():
     report={'count':len(rows),'unique_ids':True,'all_source_slices_match':True,
             'sha256':hashlib.sha256((d/'expanded-candidate.jsonl').read_bytes()).hexdigest(),
             'component_counts':{name:len(read_records(d/(name+'.jsonl'))) for name in ['sphinxsys','sphinxsim','source','documentation']}}
+    if a.identity_scheme!='legacy':report['identity_scheme']=a.identity_scheme
     (d/'build-verification.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps(report),flush=True)
 

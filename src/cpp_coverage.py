@@ -5,6 +5,7 @@ Use existing Tree-sitter; preserve original source slices and existing records.
 from hashlib import sha1
 from pathlib import Path
 from tree_sitter_language_pack import get_parser
+from .chunk_identity import source_identity_path
 
 
 def _walk(node):
@@ -13,12 +14,13 @@ def _walk(node):
         yield from _walk(child)
 
 
-def data_definitions(source_path: Path):
+def data_definitions(source_path: Path, *, identity_scheme="legacy", repository=None, repo_root=None):
     """Yield named enums and field-only structs; never duplicate method classes.
 
     Called only for already-discovered SPHinXsim simulator-library files.
     The newline convention matches chunk_file's existing text reader.
     """
+    identity_path = source_identity_path(source_path, identity_scheme, repository=repository, repo_root=repo_root)
     source = source_path.read_text(encoding='utf-8').encode('utf-8')
     tree = get_parser('cpp').parse(source)
     for node in _walk(tree.root_node):
@@ -37,7 +39,7 @@ def data_definitions(source_path: Path):
         if source[end:end+1] == b';':
             end += 1
         content = source[start:end].decode('utf-8'); symbol = source[name.start_byte:name.end_byte].decode('utf-8')
-        identity = f'cpp-data-v1:{source_path}:{start}:{end}:{content}'
+        identity = f'cpp-data-v1:{identity_path}:{start}:{end}:{content}'
         yield {'chunk_id': sha1(identity.encode()).hexdigest(), 'file_path': str(source_path),
             'node_type': node.type, 'start_line': source[:start].count(b'\n')+1,
             'end_line': source[:end].count(b'\n')+1, 'byte_start': start, 'byte_end': end,
@@ -46,7 +48,8 @@ def data_definitions(source_path: Path):
             'metadata': {'signature': {'name': symbol}, 'extraction': 'field-only-struct-or-named-enum-v1'}}
 
 
-def recover_delegating_constructors(source_path: Path, chunks: list[dict]) -> list[dict]:
+def recover_delegating_constructors(source_path: Path, chunks: list[dict], *,
+                                    identity_scheme="legacy", repository=None, repo_root=None) -> list[dict]:
     """Repair one specific grammar boundary pattern, retaining original bytes.
 
     Some nested `>>` template closers parse as an ERROR signature followed by
@@ -59,6 +62,7 @@ def recover_delegating_constructors(source_path: Path, chunks: list[dict]) -> li
     from dataclasses import asdict
     from chunker import chunk_text
 
+    identity_path = source_identity_path(source_path, identity_scheme, repository=repository, repo_root=repo_root)
     source = source_path.read_text(encoding='utf-8').encode('utf-8')
     parser = get_parser('cpp'); tree = parser.parse(source)
     if not tree.root_node.has_error:
@@ -91,7 +95,7 @@ def recover_delegating_constructors(source_path: Path, chunks: list[dict]) -> li
                 continue
             # Metadata comes from the validated complete syntax; original bytes
             # remain the sole retrieval content and provenance authority.
-            parsed_chunks = [asdict(c) for c in chunk_text(validation.decode(), 'cpp', str(source_path))
+            parsed_chunks = [asdict(c) for c in chunk_text(validation.decode(), 'cpp', identity_path)
                              if c.node_type in {'function_definition', 'method_declaration'}]
             if len(parsed_chunks) != 1:
                 continue
@@ -99,7 +103,7 @@ def recover_delegating_constructors(source_path: Path, chunks: list[dict]) -> li
             repaired = copy.deepcopy(raw)
             repaired.update(byte_start=start, byte_end=end, start_line=source[:start].count(b'\n')+1,
                             end_line=source[:end].count(b'\n')+1, content=candidate.decode())
-            repaired['chunk_id'] = sha1(f'cpp-recovered-constructor-v1:{source_path}:{start}:{end}:{candidate!r}'.encode()).hexdigest()
+            repaired['chunk_id'] = sha1(f'cpp-recovered-constructor-v1:{identity_path}:{start}:{end}:{candidate!r}'.encode()).hexdigest()
             repaired['metadata'] = complete.get('metadata', {})
             repaired['metadata']['source_signature'] = prefix.rstrip().rstrip(b':').rstrip().decode()
             repaired['metadata']['recovery'] = {'method': 'adjacent-error-template-closer-validation-v1',

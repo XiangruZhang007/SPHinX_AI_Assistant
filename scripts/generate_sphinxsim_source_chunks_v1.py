@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 from pathlib import Path
 import sys
 
@@ -12,11 +13,14 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.chunk_generation_v1 import generate_combined_corpus, generate_sphinxsim  # noqa: E402
+from src.chunk_identity import IDENTITY_SCHEMES, validate_identity_scheme  # noqa: E402
 
 
 def build_parser() -> argparse.ArgumentParser:
     chunks = PROJECT_ROOT / "data/chunks"
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--identity-scheme", choices=IDENTITY_SCHEMES, default="legacy",
+                        help="Source identity mode; must match the supplied SPHinXsys component")
     parser.add_argument(
         "--sys-input",
         type=Path,
@@ -58,7 +62,12 @@ def build_parser() -> argparse.ArgumentParser:
 
 def main() -> None:
     arguments = build_parser().parse_args()
-    summary = generate_sphinxsim(PROJECT_ROOT, arguments.sim_output, arguments.sim_summary_output)
+    if arguments.identity_scheme != "legacy":
+        sys_summary = json.loads(arguments.sys_summary_input.read_text(encoding="utf-8"))
+        if validate_identity_scheme(sys_summary.get("identity_scheme", "legacy")) != arguments.identity_scheme:
+            raise ValueError("SPHinXsys input must use the selected source identity scheme")
+    options = {} if arguments.identity_scheme == "legacy" else {"identity_scheme": arguments.identity_scheme}
+    summary = generate_sphinxsim(PROJECT_ROOT, arguments.sim_output, arguments.sim_summary_output, **options)
     combined = generate_combined_corpus(
         arguments.sys_input,
         arguments.sys_summary_input,
