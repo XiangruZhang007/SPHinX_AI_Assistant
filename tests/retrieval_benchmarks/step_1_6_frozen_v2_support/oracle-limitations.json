@@ -1,0 +1,27 @@
+{
+  "stale_oracle_count": 0,
+  "post_run_semantic_uniqueness_uncertain_count": 4,
+  "unverified_frozen_source_binding_count": 0,
+  "legacy_gold_standard_limitations": [
+    {
+      "id": "B-05",
+      "interpretation": "Top1 main preamble identifies the exact heat-transfer entry file; further body initialization fragments are retrieved. Broad original request finds the case, but the new specific247-248 thermal-step binding misses Top10. Oracle specificity limitation, no strict score change."
+    },
+    {
+      "id": "B-06",
+      "interpretation": "Top2 examples/input/test_simulation_2d/config.json includes fluid_dynamics and 2D bounds. This supports the broad original question; frozen target was another current test JSON. Exact target failure is not proof of no useful configuration answer."
+    },
+    {
+      "id": "B-07",
+      "interpretation": "SimulationBuilder constructor is retrieved but alone does not explain dispatch to FluidSimulationBuilder/ContinuumSimulationBuilder. Broad query and new dispatch target need human interpretation; no complete success inferred."
+    },
+    {
+      "id": "B-09",
+      "interpretation": "GeometriesConfig and shape-reference validation explain schema information, whereas frozen binding requires top-level SimulationConfig fields. Broad query does not uniquely specify that class; report the specificity caveat, not a silent oracle correction."
+    }
+  ],
+  "legacy_question_oracle_provenance": "9 queries had no original fixed passage oracle; newv2 source bindings are explicit operationalizations, not unique gold answers. CLI5 original symbol criteria retained.",
+  "denominator_changes_after_ranking": false,
+  "post_run_alternatives_do_not_change_metrics": true,
+  "semantic_adjudication": "Special frozen anchor supplement for knownDOC cases, manual observed alternatives separately; not a complete semantic answer correctness benchmark."
+}

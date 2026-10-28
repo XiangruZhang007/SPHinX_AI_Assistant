@@ -19,19 +19,12 @@ from typing import Any, Iterable
 from chunker import chunk_file
 from tree_sitter_language_pack import get_parser
 
+from .indexing_scope import discover_files, load_config
+from .cpp_coverage import data_definitions, recover_delegating_constructors
 
-SOURCE_EXTENSIONS = {".c", ".cc", ".cpp", ".cxx", ".h", ".hh", ".hpp", ".hxx"}
+
 PRIMARY_NODE_TYPES = {"function_definition", "method_declaration"}
 PYTHON_PRIMARY_NODE_TYPES = {"function_definition", "class_definition"}
-SIM_SCOPE_ROOTS = (
-    "sphinxsim/bindings",
-    "sphinxsim/config",
-    "sphinxsim/llm",
-    "sphinxsim/sph_simulation",
-    "sphinxsim/visualization",
-    "examples",
-    "tests",
-)
 SIM_SOURCE_LANGUAGES = {
     ".py": "python",
     ".c": "cpp",
@@ -305,8 +298,7 @@ def _subdivide_semantic_section(start: int, end: int, nodes: list[Any]) -> list[
 
 
 def _source_files(repo_root: Path) -> Iterable[Path]:
-    for directory in (repo_root / "src", repo_root / "tests"):
-        yield from sorted(path for path in directory.rglob("*") if path.is_file() and path.suffix.lower() in SOURCE_EXTENSIONS)
+    yield from discover_files(load_config(), "SPHinXsys", repo_root)
 
 
 def generate(project_root: Path, output_jsonl: Path, output_summary: Path) -> dict[str, Any]:
@@ -326,6 +318,7 @@ def generate(project_root: Path, output_jsonl: Path, output_summary: Path) -> di
             if parser.parse(source_bytes).root_node.has_error:
                 parse_errors.append(relative)
             raw_chunks = [asdict(chunk) for chunk in chunk_file(str(source_path), language="cpp")]
+            raw_chunks = recover_delegating_constructors(source_path, raw_chunks)
         except Exception as error:  # Keep the demo run complete if one source is unsupported.
             skipped_files.append({"source_path": relative, "reason": f"{type(error).__name__}: {error}"})
             continue
@@ -381,6 +374,8 @@ def _sphinxsim_source_role(repo_root: Path, source_path: Path) -> str:
     if source_path.suffix.lower() == ".json":
         return "config_or_schema"
     text = relative.as_posix()
+    if text in {"sphinxsim/cli.py", "sphinxsim/json_format.py"}:
+        return "cli"
     if text.startswith("sphinxsim/bindings/"):
         return "binding"
     if text.startswith("sphinxsim/config/"):
@@ -397,16 +392,7 @@ def _sphinxsim_source_role(repo_root: Path, source_path: Path) -> str:
 
 
 def _sphinxsim_files(repo_root: Path) -> Iterable[Path]:
-    embedded_root = repo_root / "sphinxsim" / "sphinxsys"
-    for scope_root in SIM_SCOPE_ROOTS:
-        root = repo_root / scope_root
-        for path in sorted(item for item in root.rglob("*") if item.is_file()):
-            # Keep this explicit provenance guard even though the declared roots
-            # currently do not recurse into the embedded SPHinXsys subtree.
-            if path.is_relative_to(embedded_root):
-                continue
-            if path.suffix.lower() in SIM_SOURCE_LANGUAGES or path.suffix.lower() == ".json":
-                yield path
+    yield from discover_files(load_config(), "SPHinXsim", repo_root)
 
 
 def _config_document_record(project_root: Path, source_path: Path, content: str) -> tuple[dict[str, Any], str | None]:
@@ -462,6 +448,8 @@ def generate_sphinxsim(project_root: Path, output_jsonl: Path, output_summary: P
             if parsers[language].parse(content.encode("utf-8")).root_node.has_error:
                 parse_warnings.append({"source_path": relative, "warning": "Tree-sitter reported a parse error"})
             raw_chunks = [asdict(chunk) for chunk in chunk_file(str(source_path), language=language)]
+            if language == "cpp":
+                raw_chunks = recover_delegating_constructors(source_path, raw_chunks)
         except Exception as error:
             skipped_files.append({"source_path": relative, "reason": f"{type(error).__name__}: {error}"})
             continue
@@ -473,6 +461,11 @@ def generate_sphinxsim(project_root: Path, output_jsonl: Path, output_summary: P
             for raw in raw_chunks
             if raw["node_type"] in node_types
         )
+        if language == "cpp" and role == "simulator_library":
+            records.extend(
+                _record_from_raw(raw, project_root, role, repository="SPHinXsim")
+                for raw in data_definitions(source_path)
+            )
 
     output_jsonl.parent.mkdir(parents=True, exist_ok=True)
     with output_jsonl.open("w", encoding="utf-8") as handle:

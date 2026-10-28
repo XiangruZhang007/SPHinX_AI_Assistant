@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "repositories": {
+    "SPHinXsys": {
+      "include_directories": [],
+      "extensions": [
+        ".md",
+        ".rst"
+      ],
+      "include_files": [
+        "tutorials/sphinx/examples/example1_2D_dambreak.rst",
+        "tutorials/sphinx/examples/example8_2D_hydrostatic_fsi.rst",
+        "tutorials/sphinx/theory.rst",
+        "tutorials/sphinx/introduction.rst",
+        "tutorials/sphinx/SPHinXsysArch.rst",
+        "tutorials/sphinx/examples/example2_elasticGate.rst",
+        "tutorials/sphinx/examples/example3_3D_multiResolutionParticleDistribution.rst",
+        "tutorials/sphinx/examples/example6_2D_heat_transfer.rst",
+        "tutorials/sphinx/examples/example7_2D_diffusion.rst",
+        "tutorials/sphinx/examples/example13_2D_oscillating_beam.rst",
+        "tutorials/sphinx/examples/example5_2D_tayloygreen.rst",
+        "tutorials/sphinx/examples/example9_2D_staticConfinement.rst",
+        "tutorials/sphinx/examples/example10_2D_thinPlate.rst",
+        "tutorials/sphinx/examples/example12_2D_flowaroundcylinder.rst",
+        "tutorials/sphinx/examples/example15_2D_aortic_valve.rst",
+        "tutorials/sphinx/examples/example17_2D_throat.rst",
+        "tutorials/sphinx/examples/example18_2D_wetting.rst",
+        "tutorials/markdown/smoothing_kernel/first_order_consistancy.md",
+        "tutorials/markdown/multi_resolution_solid/multi_resolution_solid.md",
+        "tutorials/markdown/multiphase_mixture_model.md",
+        "tests/3d_examples/test_3d_solid_to_shell_coupling/doc/README.md",
+        "tests/3d_examples/test_3d_taylor_bar_hjc/README.md",
+        "README.md",
+        "shell_model.md",
+        "tutorials/markdown/fluid_shell_interaction/one-side-fluid-shell-interaction.md",
+        "tutorials/markdown/smoothing_kernel/aisotropic_kernel.md",
+        "tutorials/sphinx/examples/example4_2D_multiResolutionParticleDistribution.rst",
+        "tutorials/sphinx/examples/example11_3D_arch.rst",
+        "docs/_posts/2024-09-20-tensile-instability-p1.md",
+        "docs/_posts/2024-09-20-tensile-instability-p2.md",
+        "docs/_posts/2025-01-31-heterogeneous-parallelism-p2.md",
+        "docs/_posts/2025-12-15-sparse-grid-heterogeneous-p2.md",
+        "docs/_posts/2026-01-08-sparse-grid-heterogeneous-p3.md"
+      ],
+      "exclude_directories": [],
+      "exclude_files": []
+    },
+    "SPHinXsim": {
+      "include_directories": [],
+      "extensions": [
+        ".md",
+        ".rst"
+      ],
+      "include_files": [
+        "docs/cli-usage.md",
+        "docs/index.md",
+        "docs/theoretical-background-sph-methods.md",
+        "docs/theoretical-background-physical-models.md",
+        "docs/visualization.md",
+        "docs/installation-linux.md",
+        "docs/installation-windows.md",
+        "docs/installation-macos.md",
+        "docs/llm-testing.md"
+      ],
+      "exclude_directories": [
+        "sphinxsim/sphinxsys"
+      ],
+      "exclude_files": []
+    }
+  }
+}

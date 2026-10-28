@@ -1,0 +1,26 @@
+{
+  "metrics.json": {
+    "file_sha256": "44cbc533fd37a18df30f3af19704dac7825a42475db3f5bb65f1b4cbdd024524",
+    "canonical_sha256": "d320f2dedfc2ec36118f4992b252e12f991d963e770b83b7f1fd0e2d19e504d2"
+  },
+  "alternative-evidence-review.json": {
+    "file_sha256": "af3dbfbd95ab7ac6b797f775e22963c80360e09e459209ded7f19ea5f7682fc0",
+    "canonical_sha256": "d4d7ba978a0ca14968a9ac9df0c1a80b8ae064381e0e9c867acc7169feda56dc"
+  },
+  "failure-analysis.json": {
+    "file_sha256": "7ad9b188c87eca7a505380b357f01d5bca3062178d6efa83c70c287816efc472",
+    "canonical_sha256": "a768dac564fe482a7dfe1bf1802cad377528eaada4ffc5d6aaa1475320cdcb27"
+  },
+  "documentation-comparison.json": {
+    "file_sha256": "851b56a9e3bf80bc7f35b5771e5c514f5937df49efe42e70f1198ee5cf3957dc",
+    "canonical_sha256": "fbf6310fb8b6b4acf4e4a3250ab1f0348a2f9e025f466148565c66e85cde384b"
+  },
+  "p1-diagnostics.json": {
+    "file_sha256": "95d57c09dc2123d2fded85e719268b076d7236c6461a93dd77c913820f311c91",
+    "canonical_sha256": "e55dcdf9a15a6be499872605dc0dd7cf61c8ade6fcede75f516835eb3ad7e8b4"
+  },
+  "oracle-limitations.json": {
+    "file_sha256": "f0a811f4adb3f064cfa919ddcb5262ab864c8a736b3dd5e050e6c028181c30ec",
+    "canonical_sha256": "8da08dcec6059f33576cfbfdc7ecb44ef475a39068c88e9e34336a08b4a7c7d5"
+  }
+}

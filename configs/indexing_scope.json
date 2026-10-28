@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "repositories": {
+    "SPHinXsys": {
+      "include_directories": ["src", "tests"],
+      "extensions": [".c", ".cc", ".cpp", ".cxx", ".h", ".hh", ".hpp", ".hxx"],
+      "include_files": [],
+      "exclude_directories": [],
+      "exclude_files": []
+    },
+    "SPHinXsim": {
+      "include_directories": ["sphinxsim/bindings", "sphinxsim/config", "sphinxsim/llm", "sphinxsim/sph_simulation", "sphinxsim/visualization", "examples", "tests"],
+      "extensions": [".py", ".c", ".cc", ".cpp", ".cxx", ".h", ".hh", ".hpp", ".hxx", ".json"],
+      "include_files": ["sphinxsim/cli.py", "sphinxsim/json_format.py"],
+      "exclude_directories": ["sphinxsim/sphinxsys"],
+      "exclude_files": []
+    }
+  }
+}

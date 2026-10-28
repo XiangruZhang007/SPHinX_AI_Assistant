@@ -1,0 +1,2491 @@
+{
+  "status": "HISTORICAL_RESULTS_ONLY_NOT_NEW_EVALUATION",
+  "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2",
+  "pass": 38,
+  "fail": 2,
+  "questions": [
+    {
+      "id": "DOC-Q01",
+      "historical_doc_only_result": "FAIL",
+      "observed_ranks": {
+        "Generate": 2,
+        "Validate": null
+      },
+      "observed_top_5": [
+        {
+          "score": 48.531626,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/index.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "SPHinXsim Documentation / Core workflow::section_4::part_1",
+          "start_line": 17,
+          "end_line": 51
+        },
+        {
+          "score": 48.492277,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/cli-usage.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "CLI Usage Guide / Direct commands (non-interactive) / Generate::section_8::part_1",
+          "start_line": 167,
+          "end_line": 181
+        },
+        {
+          "score": 43.20821,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/cli-usage.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "CLI Usage Guide / Quick start / Interactive shell mode (recommended)::section_4::part_1",
+          "start_line": 61,
+          "end_line": 117
+        },
+        {
+          "score": 41.497751,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/cli-usage.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "CLI Usage Guide / Geometry update workflow::section_6::part_1",
+          "start_line": 153,
+          "end_line": 162
+        },
+        {
+          "score": 41.080822,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/cli-usage.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "CLI Usage Guide / Quick start / Shell commands::section_5::part_1",
+          "start_line": 118,
+          "end_line": 140
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q1",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q02",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "High-level architecture": 3
+      },
+      "observed_top_5": [
+        {
+          "score": 41.704561,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/index.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "SPHinXsim Documentation / What this repository provides::section_3::part_1",
+          "start_line": 9,
+          "end_line": 16
+        },
+        {
+          "score": 40.735521,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/index.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "SPHinXsim Documentation / Introduction::section_2::part_1",
+          "start_line": 3,
+          "end_line": 8
+        },
+        {
+          "score": 38.492563,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/index.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "SPHinXsim Documentation / High-level architecture::section_5::part_1",
+          "start_line": 52,
+          "end_line": 62
+        },
+        {
+          "score": 37.382251,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/cli-usage.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "CLI Usage Guide / Workflow examples / Example 2: Compare two configurations::section_16::part_1",
+          "start_line": 287,
+          "end_line": 299
+        },
+        {
+          "score": 35.769533,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/index.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "SPHinXsim Documentation / Current capabilities::section_6::part_1",
+          "start_line": 63,
+          "end_line": 75
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q2",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q03",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "Gradient Approximation": 2
+      },
+      "observed_top_5": [
+        {
+          "score": 56.241698,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/markdown/smoothing_kernel/first_order_consistancy.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "![](../../assets/logo.png) SPHinXsys / Conservative SPH formulation with zero- and first-order consistency::section_2::part_1",
+          "start_line": 3,
+          "end_line": 58
+        },
+        {
+          "score": 44.251853,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/theoretical-background-sph-methods.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Smoothed Particle Hydrodynamics (SPH) / Gradient Approximation::section_2::part_2",
+          "start_line": 92,
+          "end_line": 172
+        },
+        {
+          "score": 30.527959,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/theoretical-background-sph-methods.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Smoothed Particle Hydrodynamics (SPH) / Gradient Approximation::section_2::part_1",
+          "start_line": 9,
+          "end_line": 91
+        },
+        {
+          "score": 28.655307,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/markdown/smoothing_kernel/aisotropic_kernel.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "![](../../assets/logo.png) SPHinXsys / Anisotropic SPH (ASPH) kernel::section_2::part_1",
+          "start_line": 3,
+          "end_line": 78
+        },
+        {
+          "score": 24.33871,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/markdown/smoothing_kernel/first_order_consistancy.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "![](../../assets/logo.png) SPHinXsys::section_1::part_1",
+          "start_line": 1,
+          "end_line": 2
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q3",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q04",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "dual-criteria time-stepping": 4
+      },
+      "observed_top_5": [
+        {
+          "score": 47.86258,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/theory.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Schemes for fluid dynamics / Dual-criteria time stepping::section_7::part_1",
+          "start_line": 260,
+          "end_line": 317
+        },
+        {
+          "score": 45.462668,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example1_2D_dambreak.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 1: 2D dam break::section_1::part_9",
+          "start_line": 655,
+          "end_line": 659
+        },
+        {
+          "score": 43.965155,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/theory.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Multi-resolution FSI coupling::section_18::part_2",
+          "start_line": 801,
+          "end_line": 827
+        },
+        {
+          "score": 43.693959,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example1_2D_dambreak.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 1: 2D dam break::section_1::part_7",
+          "start_line": 518,
+          "end_line": 573
+        },
+        {
+          "score": 43.611246,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example1_2D_dambreak.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 1: 2D dam break::section_1::part_8",
+          "start_line": 574,
+          "end_line": 654
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q4",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q05",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "FluidPressureForceOnSolid": 1
+      },
+      "observed_top_5": [
+        {
+          "score": 35.962179,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example8_2D_hydrostatic_fsi.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 8: Hydrostatic water column on an elastic plate::section_1::part_6",
+          "start_line": 339,
+          "end_line": 393
+        },
+        {
+          "score": 32.965557,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example8_2D_hydrostatic_fsi.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Document preamble::section_0::part_1",
+          "start_line": 1,
+          "end_line": 5
+        },
+        {
+          "score": 32.404217,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example8_2D_hydrostatic_fsi.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 8: Hydrostatic water column on an elastic plate::section_1::part_8",
+          "start_line": 453,
+          "end_line": 534
+        },
+        {
+          "score": 30.059041,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example8_2D_hydrostatic_fsi.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 8: Hydrostatic water column on an elastic plate::section_1::part_5",
+          "start_line": 291,
+          "end_line": 338
+        },
+        {
+          "score": 29.237703,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/markdown/fluid_shell_interaction/one-side-fluid-shell-interaction.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Shell-fluid contact / Pressure force::section_14::part_1",
+          "start_line": 191,
+          "end_line": 202
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q5",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q06",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "lines 20-25": 1
+      },
+      "observed_top_5": [
+        {
+          "score": 40.369181,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/theoretical-background-physical-models.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Continuum in Lagrangian Framework / Total Lagrangian Formulation for Solid Mechanics::section_2::part_1",
+          "start_line": 3,
+          "end_line": 77
+        },
+        {
+          "score": 30.58461,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/theory.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Schemes for solid dynamics / Total Lagrangian formulation::section_10::part_1",
+          "start_line": 447,
+          "end_line": 498
+        },
+        {
+          "score": 29.242544,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/theoretical-background-physical-models.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Continuum in Lagrangian Framework / Total Lagrangian Formulation for Solid Mechanics::section_2::part_2",
+          "start_line": 78,
+          "end_line": 113
+        },
+        {
+          "score": 27.714204,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/introduction.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Unified modeling for fluid and solid dynamics::section_3::part_1",
+          "start_line": 110,
+          "end_line": 155
+        },
+        {
+          "score": 27.379675,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/markdown/multi_resolution_solid/multi_resolution_solid.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Context / SPH with adaptive resolution::section_2::part_1",
+          "start_line": 4,
+          "end_line": 10
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q6",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q07",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "lines 250-257": 1
+      },
+      "observed_top_5": [
+        {
+          "score": 50.240839,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/visualization.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Visualization / Two-tier rendering strategy / Bounds fallback::section_16::part_1",
+          "start_line": 250,
+          "end_line": 258
+        },
+        {
+          "score": 49.752639,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/visualization.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Visualization / Requirements::section_2::part_1",
+          "start_line": 8,
+          "end_line": 28
+        },
+        {
+          "score": 40.705485,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/visualization.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Visualization / Python API / `preview()` parameters::section_12::part_1",
+          "start_line": 216,
+          "end_line": 227
+        },
+        {
+          "score": 40.44854,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/visualization.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Visualization / CLI usage / Interactive shell::section_9::part_1",
+          "start_line": 115,
+          "end_line": 182
+        },
+        {
+          "score": 39.439733,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/visualization.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Visualization / Two-tier rendering strategy / VTP geometry (preferred)::section_15::part_1",
+          "start_line": 238,
+          "end_line": 249
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q7",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q08",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "lines 67-71": 1
+      },
+      "observed_top_5": [
+        {
+          "score": 65.169862,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/installation-linux.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Linux Installation (Ubuntu 22.04) / Configure and Build::section_6::part_1",
+          "start_line": 49,
+          "end_line": 72
+        },
+        {
+          "score": 48.603457,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/installation-macos.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "macOS Installation (macOS 13) / Configure and Build::section_6::part_1",
+          "start_line": 42,
+          "end_line": 65
+        },
+        {
+          "score": 48.435626,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/installation-windows.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Windows Installation (VS 2022) / Configure and Build::section_6::part_1",
+          "start_line": 45,
+          "end_line": 68
+        },
+        {
+          "score": 32.194215,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/installation-linux.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Linux Installation (Ubuntu 22.04) / Run Tests::section_7::part_1",
+          "start_line": 73,
+          "end_line": 97
+        },
+        {
+          "score": 26.218293,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/installation-linux.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Linux Installation (Ubuntu 22.04) / Install C/C++ Dependencies::section_5::part_1",
+          "start_line": 33,
+          "end_line": 48
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q8",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q09",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "lines 43-49": 2
+      },
+      "observed_top_5": [
+        {
+          "score": 43.257179,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example15_2D_aortic_valve.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 15: 2D aortic valve::section_1::part_14",
+          "start_line": 1269,
+          "end_line": 1275
+        },
+        {
+          "score": 41.516522,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/SPHinXsysArch.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "SPHinXsys architecture overview / Carrying out a computation::section_3::part_1",
+          "start_line": 40,
+          "end_line": 58
+        },
+        {
+          "score": 35.488245,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example18_2D_wetting.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 18: 2D wetting::section_1::part_9",
+          "start_line": 494,
+          "end_line": 497
+        },
+        {
+          "score": 35.219177,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/theory.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Multi-resolution FSI coupling::section_18::part_2",
+          "start_line": 801,
+          "end_line": 827
+        },
+        {
+          "score": 35.179174,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example1_2D_dambreak.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 1: 2D dam break::section_1::part_9",
+          "start_line": 655,
+          "end_line": 659
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q9",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q10",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "lines 198-204": 1
+      },
+      "observed_top_5": [
+        {
+          "score": 42.434476,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example2_elasticGate.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 2: Elastic water gate::section_1::part_4",
+          "start_line": 198,
+          "end_line": 275
+        },
+        {
+          "score": 41.557867,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example2_elasticGate.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 2: Elastic water gate::section_1::part_3",
+          "start_line": 142,
+          "end_line": 197
+        },
+        {
+          "score": 37.88628,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example8_2D_hydrostatic_fsi.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 8: Hydrostatic water column on an elastic plate::section_1::part_6",
+          "start_line": 339,
+          "end_line": 393
+        },
+        {
+          "score": 36.599528,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example2_elasticGate.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 2: Elastic water gate::section_1::part_5",
+          "start_line": 276,
+          "end_line": 293
+        },
+        {
+          "score": 31.147464,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example2_elasticGate.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 2: Elastic water gate::section_1::part_1",
+          "start_line": 4,
+          "end_line": 50
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q10",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q11",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "lines 15-18": 2
+      },
+      "observed_top_5": [
+        {
+          "score": 45.432504,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example4_2D_multiResolutionParticleDistribution.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Document preamble::section_0::part_1",
+          "start_line": 1,
+          "end_line": 3
+        },
+        {
+          "score": 44.444987,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example3_3D_multiResolutionParticleDistribution.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 3: 3D Multi-resolution isotropic particle distribution of complex geometries::section_1::part_1",
+          "start_line": 4,
+          "end_line": 57
+        },
+        {
+          "score": 42.747144,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example3_3D_multiResolutionParticleDistribution.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Document preamble::section_0::part_1",
+          "start_line": 1,
+          "end_line": 3
+        },
+        {
+          "score": 37.425473,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example4_2D_multiResolutionParticleDistribution.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 4: 2D Multi-resolution isotropic particle distribution of complex geometries::section_1::part_3",
+          "start_line": 120,
+          "end_line": 166
+        },
+        {
+          "score": 34.491677,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example3_3D_multiResolutionParticleDistribution.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 3: 3D Multi-resolution isotropic particle distribution of complex geometries::section_1::part_2",
+          "start_line": 58,
+          "end_line": 108
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q11",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q12",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "lines 400-401": 1
+      },
+      "observed_top_5": [
+        {
+          "score": 44.058065,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example6_2D_heat_transfer.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 6: Heat transfer::section_1::part_6",
+          "start_line": 343,
+          "end_line": 411
+        },
+        {
+          "score": 43.448484,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example6_2D_heat_transfer.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 6: Heat transfer::section_1::part_5",
+          "start_line": 310,
+          "end_line": 342
+        },
+        {
+          "score": 36.489951,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example6_2D_heat_transfer.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 6: Heat transfer::section_1::part_4",
+          "start_line": 244,
+          "end_line": 309
+        },
+        {
+          "score": 34.676999,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example6_2D_heat_transfer.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 6: Heat transfer::section_1::part_1",
+          "start_line": 3,
+          "end_line": 54
+        },
+        {
+          "score": 31.581041,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example6_2D_heat_transfer.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Document preamble::section_0::part_1",
+          "start_line": 1,
+          "end_line": 2
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q12",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q13",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "lines 238-240": 1
+      },
+      "observed_top_5": [
+        {
+          "score": 41.475437,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example7_2D_diffusion.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 7: 2D diffusion::section_1::part_4",
+          "start_line": 214,
+          "end_line": 294
+        },
+        {
+          "score": 40.832193,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/theory.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Schemes for reaction-diffusion model / SPH method for reaction-diffusion::section_16::part_1",
+          "start_line": 673,
+          "end_line": 701
+        },
+        {
+          "score": 36.643842,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/theory.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Schemes for thermal and mass diffusion / Governing equation::section_12::part_1",
+          "start_line": 503,
+          "end_line": 521
+        },
+        {
+          "score": 36.063242,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/theory.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Schemes for thermal and mass diffusion / SPH discretization for the anisotropic diffusion equation::section_13::part_2",
+          "start_line": 581,
+          "end_line": 613
+        },
+        {
+          "score": 35.950885,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/theory.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Schemes for thermal and mass diffusion / SPH discretization for the anisotropic diffusion equation::section_13::part_1",
+          "start_line": 522,
+          "end_line": 580
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q13",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q14",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "lines 233-242": 1
+      },
+      "observed_top_5": [
+        {
+          "score": 42.425521,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example13_2D_oscillating_beam.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 13: 2D oscillating beam::section_1::part_4",
+          "start_line": 218,
+          "end_line": 284
+        },
+        {
+          "score": 36.737325,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example13_2D_oscillating_beam.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 13: 2D oscillating beam::section_1::part_5",
+          "start_line": 285,
+          "end_line": 375
+        },
+        {
+          "score": 31.4348,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example13_2D_oscillating_beam.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 13: 2D oscillating beam::section_1::part_2",
+          "start_line": 69,
+          "end_line": 150
+        },
+        {
+          "score": 29.90987,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example13_2D_oscillating_beam.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 13: 2D oscillating beam::section_1::part_3",
+          "start_line": 151,
+          "end_line": 217
+        },
+        {
+          "score": 28.680029,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example13_2D_oscillating_beam.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 13: 2D oscillating beam::section_1::part_1",
+          "start_line": 4,
+          "end_line": 68
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q14",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q15",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "lines 216-219": 1
+      },
+      "observed_top_5": [
+        {
+          "score": 49.462551,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example5_2D_tayloygreen.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 5: 2D Taylor-Green vortex::section_1::part_3",
+          "start_line": 167,
+          "end_line": 222
+        },
+        {
+          "score": 34.817656,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example5_2D_tayloygreen.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 5: 2D Taylor-Green vortex::section_1::part_6",
+          "start_line": 318,
+          "end_line": 391
+        },
+        {
+          "score": 33.567356,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example15_2D_aortic_valve.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 15: 2D aortic valve::section_1::part_10",
+          "start_line": 997,
+          "end_line": 1051
+        },
+        {
+          "score": 29.113141,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example17_2D_throat.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 17: 2D throat::section_1::part_4",
+          "start_line": 196,
+          "end_line": 246
+        },
+        {
+          "score": 28.840618,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example6_2D_heat_transfer.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 6: Heat transfer::section_1::part_5",
+          "start_line": 310,
+          "end_line": 342
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q15",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q16",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "lines 17-19": 1
+      },
+      "observed_top_5": [
+        {
+          "score": 37.904349,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example9_2D_staticConfinement.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 9: 2D static confinement::section_1::part_1",
+          "start_line": 4,
+          "end_line": 62
+        },
+        {
+          "score": 36.158256,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example9_2D_staticConfinement.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 9: 2D static confinement::section_1::part_4",
+          "start_line": 190,
+          "end_line": 229
+        },
+        {
+          "score": 31.596441,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example9_2D_staticConfinement.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 9: 2D static confinement::section_1::part_3",
+          "start_line": 138,
+          "end_line": 189
+        },
+        {
+          "score": 30.400669,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example9_2D_staticConfinement.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 9: 2D static confinement::section_1::part_9",
+          "start_line": 380,
+          "end_line": 400
+        },
+        {
+          "score": 30.156693,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example9_2D_staticConfinement.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Document preamble::section_0::part_1",
+          "start_line": 1,
+          "end_line": 3
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q16",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q17",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "lines 1-5": 1
+      },
+      "observed_top_5": [
+        {
+          "score": 47.37603,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example10_2D_thinPlate.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Document preamble::section_0::part_1",
+          "start_line": 1,
+          "end_line": 6
+        },
+        {
+          "score": 38.116198,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example10_2D_thinPlate.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 10: Shell cases: a 2D thin plate::section_1::part_1",
+          "start_line": 7,
+          "end_line": 51
+        },
+        {
+          "score": 34.333955,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example10_2D_thinPlate.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 10: Shell cases: a 2D thin plate::section_1::part_3",
+          "start_line": 127,
+          "end_line": 168
+        },
+        {
+          "score": 33.674599,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example10_2D_thinPlate.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 10: Shell cases: a 2D thin plate::section_1::part_4",
+          "start_line": 169,
+          "end_line": 213
+        },
+        {
+          "score": 31.692225,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example10_2D_thinPlate.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 10: Shell cases: a 2D thin plate::section_1::part_2",
+          "start_line": 52,
+          "end_line": 126
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q17",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q18",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "lines 17-18": 1
+      },
+      "observed_top_5": [
+        {
+          "score": 56.021173,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example12_2D_flowaroundcylinder.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 12: Flow around a cylinder::section_1::part_1",
+          "start_line": 3,
+          "end_line": 49
+        },
+        {
+          "score": 44.767901,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example12_2D_flowaroundcylinder.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 12: Flow around a cylinder::section_1::part_3",
+          "start_line": 137,
+          "end_line": 225
+        },
+        {
+          "score": 38.245432,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example12_2D_flowaroundcylinder.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 12: Flow around a cylinder::section_1::part_5",
+          "start_line": 287,
+          "end_line": 341
+        },
+        {
+          "score": 32.005389,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/markdown/multiphase_mixture_model.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Lagrangian incompressible multiphase flow / Boundary conditions of drift contributions::section_4::part_1",
+          "start_line": 100,
+          "end_line": 125
+        },
+        {
+          "score": 31.148372,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example12_2D_flowaroundcylinder.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 12: Flow around a cylinder::section_1::part_4",
+          "start_line": 226,
+          "end_line": 286
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q18",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q19",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "lines 1269-1274": 1
+      },
+      "observed_top_5": [
+        {
+          "score": 50.615635,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example15_2D_aortic_valve.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 15: 2D aortic valve::section_1::part_14",
+          "start_line": 1269,
+          "end_line": 1275
+        },
+        {
+          "score": 42.345949,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example15_2D_aortic_valve.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 15: 2D aortic valve::section_1::part_10",
+          "start_line": 997,
+          "end_line": 1051
+        },
+        {
+          "score": 38.180025,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example15_2D_aortic_valve.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 15: 2D aortic valve::section_1::part_12",
+          "start_line": 1114,
+          "end_line": 1171
+        },
+        {
+          "score": 36.124257,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example15_2D_aortic_valve.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 15: 2D aortic valve::section_1::part_11",
+          "start_line": 1052,
+          "end_line": 1113
+        },
+        {
+          "score": 36.122706,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example15_2D_aortic_valve.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 15: 2D aortic valve::section_1::part_9",
+          "start_line": 940,
+          "end_line": 996
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q19",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q20",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "lines 205-208": 2
+      },
+      "observed_top_5": [
+        {
+          "score": 34.08036,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example17_2D_throat.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Document preamble::section_0::part_1",
+          "start_line": 1,
+          "end_line": 3
+        },
+        {
+          "score": 33.777385,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example17_2D_throat.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 17: 2D throat::section_1::part_4",
+          "start_line": 196,
+          "end_line": 246
+        },
+        {
+          "score": 33.308252,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example17_2D_throat.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 17: 2D throat::section_1::part_3",
+          "start_line": 154,
+          "end_line": 195
+        },
+        {
+          "score": 29.800147,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example5_2D_tayloygreen.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 5: 2D Taylor-Green vortex::section_1::part_3",
+          "start_line": 167,
+          "end_line": 222
+        },
+        {
+          "score": 28.641902,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example15_2D_aortic_valve.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 15: 2D aortic valve::section_1::part_10",
+          "start_line": 997,
+          "end_line": 1051
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q20",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q21",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "lines 8-9": 1
+      },
+      "observed_top_5": [
+        {
+          "score": 53.52774,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example18_2D_wetting.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 18: 2D wetting::section_1::part_1",
+          "start_line": 4,
+          "end_line": 69
+        },
+        {
+          "score": 43.70434,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example18_2D_wetting.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 18: 2D wetting::section_1::part_4",
+          "start_line": 187,
+          "end_line": 240
+        },
+        {
+          "score": 40.127485,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example18_2D_wetting.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 18: 2D wetting::section_1::part_5",
+          "start_line": 241,
+          "end_line": 294
+        },
+        {
+          "score": 37.087274,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example18_2D_wetting.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 18: 2D wetting::section_1::part_2",
+          "start_line": 70,
+          "end_line": 94
+        },
+        {
+          "score": 35.276781,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example18_2D_wetting.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 18: 2D wetting::section_1::part_6",
+          "start_line": 295,
+          "end_line": 360
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q21",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q22",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "lines 26-31": 1
+      },
+      "observed_top_5": [
+        {
+          "score": 54.232414,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/markdown/smoothing_kernel/first_order_consistancy.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "![](../../assets/logo.png) SPHinXsys / Conservative SPH formulation with zero- and first-order consistency::section_2::part_1",
+          "start_line": 3,
+          "end_line": 58
+        },
+        {
+          "score": 44.854033,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/theoretical-background-sph-methods.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Smoothed Particle Hydrodynamics (SPH) / Gradient Approximation::section_2::part_2",
+          "start_line": 92,
+          "end_line": 172
+        },
+        {
+          "score": 24.570366,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/theoretical-background-sph-methods.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Smoothed Particle Hydrodynamics (SPH) / Gradient Approximation::section_2::part_1",
+          "start_line": 9,
+          "end_line": 91
+        },
+        {
+          "score": 19.440374,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/docs/_posts/2026-01-08-sparse-grid-heterogeneous-p3.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Multi-resolution Level-set / Consistency Correction and Small Feature Cleaning::section_5::part_1",
+          "start_line": 53,
+          "end_line": 88
+        },
+        {
+          "score": 17.880577,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/markdown/smoothing_kernel/first_order_consistancy.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "![](../../assets/logo.png) SPHinXsys::section_1::part_1",
+          "start_line": 1,
+          "end_line": 2
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q22",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q23",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "lines 4-9": 1
+      },
+      "observed_top_5": [
+        {
+          "score": 31.686267,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/markdown/multi_resolution_solid/multi_resolution_solid.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Context / SPH with adaptive resolution::section_2::part_1",
+          "start_line": 4,
+          "end_line": 10
+        },
+        {
+          "score": 26.537903,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example4_2D_multiResolutionParticleDistribution.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 4: 2D Multi-resolution isotropic particle distribution of complex geometries::section_1::part_4",
+          "start_line": 167,
+          "end_line": 232
+        },
+        {
+          "score": 25.181906,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example4_2D_multiResolutionParticleDistribution.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 4: 2D Multi-resolution isotropic particle distribution of complex geometries::section_1::part_3",
+          "start_line": 120,
+          "end_line": 166
+        },
+        {
+          "score": 25.064542,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example3_3D_multiResolutionParticleDistribution.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 3: 3D Multi-resolution isotropic particle distribution of complex geometries::section_1::part_3",
+          "start_line": 109,
+          "end_line": 159
+        },
+        {
+          "score": 25.035707,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example4_2D_multiResolutionParticleDistribution.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 4: 2D Multi-resolution isotropic particle distribution of complex geometries::section_1::part_2",
+          "start_line": 65,
+          "end_line": 119
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q23",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q24",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "lines 172-182": 2
+      },
+      "observed_top_5": [
+        {
+          "score": 47.957803,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/markdown/multiphase_mixture_model.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Lagrangian incompressible multiphase flow / Consistency of these models for inviscid, immiscible and initially pure phase flows::section_9::part_1",
+          "start_line": 279,
+          "end_line": 284
+        },
+        {
+          "score": 46.968752,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/markdown/multiphase_mixture_model.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Lagrangian incompressible multiphase flow / Time stepping::section_6::part_1",
+          "start_line": 170,
+          "end_line": 209
+        },
+        {
+          "score": 35.304,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/markdown/multiphase_mixture_model.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Lagrangian incompressible multiphase flow / Primary and derived variables::section_2::part_1",
+          "start_line": 12,
+          "end_line": 53
+        },
+        {
+          "score": 34.736025,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/markdown/multiphase_mixture_model.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Lagrangian incompressible multiphase flow::section_1::part_1",
+          "start_line": 1,
+          "end_line": 11
+        },
+        {
+          "score": 34.068698,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/markdown/multiphase_mixture_model.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Lagrangian incompressible multiphase flow / Governing equations::section_3::part_1",
+          "start_line": 54,
+          "end_line": 99
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q24",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q25",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "lines 4-5": 1
+      },
+      "observed_top_5": [
+        {
+          "score": 63.035625,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tests/3d_examples/test_3d_solid_to_shell_coupling/doc/README.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Solid-to-shell coupling / Dirichlet-Neumann coupling method::section_2::part_1",
+          "start_line": 4,
+          "end_line": 20
+        },
+        {
+          "score": 31.199567,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tests/3d_examples/test_3d_solid_to_shell_coupling/doc/README.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Solid-to-shell coupling / Direct/consistent mapping with SPH approximation::section_4::part_1",
+          "start_line": 38,
+          "end_line": 61
+        },
+        {
+          "score": 30.817226,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tests/3d_examples/test_3d_solid_to_shell_coupling/doc/README.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Solid-to-shell coupling / Example::section_5::part_1",
+          "start_line": 62,
+          "end_line": 96
+        },
+        {
+          "score": 30.701718,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tests/3d_examples/test_3d_solid_to_shell_coupling/doc/README.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Solid-to-shell coupling / Limitation::section_6::part_1",
+          "start_line": 97,
+          "end_line": 100
+        },
+        {
+          "score": 29.375481,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tests/3d_examples/test_3d_solid_to_shell_coupling/doc/README.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Solid-to-shell coupling / Data mapping for unmatched interfaces::section_3::part_1",
+          "start_line": 21,
+          "end_line": 37
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q25",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q26",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "lines 149-155": 1
+      },
+      "observed_top_5": [
+        {
+          "score": 57.400437,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tests/3d_examples/test_3d_taylor_bar_hjc/README.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Taylor-bar impact with HJC concrete / Verification and scope::section_3::part_1",
+          "start_line": 125,
+          "end_line": 156
+        },
+        {
+          "score": 25.030546,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tests/3d_examples/test_3d_taylor_bar_hjc/README.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Taylor-bar impact with HJC concrete::section_1::part_2",
+          "start_line": 56,
+          "end_line": 75
+        },
+        {
+          "score": 23.371113,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tests/3d_examples/test_3d_taylor_bar_hjc/README.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Taylor-bar impact with HJC concrete::section_1::part_1",
+          "start_line": 1,
+          "end_line": 55
+        },
+        {
+          "score": 20.867272,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tests/3d_examples/test_3d_taylor_bar_hjc/README.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Taylor-bar impact with HJC concrete / Constitutive update::section_2::part_1",
+          "start_line": 76,
+          "end_line": 124
+        },
+        {
+          "score": 19.183083,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tests/3d_examples/test_3d_taylor_bar_hjc/README.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Taylor-bar impact with HJC concrete / References::section_4::part_1",
+          "start_line": 157,
+          "end_line": 166
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q26",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q27",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "lines 101-104": 1
+      },
+      "observed_top_5": [
+        {
+          "score": 53.860325,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/installation-windows.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Windows Installation (VS 2022) / Notes::section_8::part_1",
+          "start_line": 101,
+          "end_line": 104
+        },
+        {
+          "score": 41.317841,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/installation-windows.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Windows Installation (VS 2022) / Configure and Build::section_6::part_1",
+          "start_line": 45,
+          "end_line": 68
+        },
+        {
+          "score": 37.427834,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/visualization.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Visualization / CLI usage / Interactive shell::section_9::part_1",
+          "start_line": 115,
+          "end_line": 182
+        },
+        {
+          "score": 35.206504,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/installation-windows.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Windows Installation (VS 2022)::section_1::part_1",
+          "start_line": 1,
+          "end_line": 2
+        },
+        {
+          "score": 34.579244,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/installation-windows.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Windows Installation (VS 2022) / Run Tests::section_7::part_1",
+          "start_line": 69,
+          "end_line": 100
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q27",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q28",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "lines 60-64": 1
+      },
+      "observed_top_5": [
+        {
+          "score": 89.966581,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/installation-macos.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "macOS Installation (macOS 13) / Configure and Build::section_6::part_1",
+          "start_line": 42,
+          "end_line": 65
+        },
+        {
+          "score": 65.709946,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/installation-macos.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "macOS Installation (macOS 13) / Run Tests::section_7::part_1",
+          "start_line": 66,
+          "end_line": 90
+        },
+        {
+          "score": 59.396443,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/installation-macos.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "macOS Installation (macOS 13) / Install vcpkg::section_4::part_1",
+          "start_line": 19,
+          "end_line": 25
+        },
+        {
+          "score": 58.60773,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/installation-macos.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "macOS Installation (macOS 13) / Prerequisites::section_2::part_1",
+          "start_line": 3,
+          "end_line": 11
+        },
+        {
+          "score": 58.552927,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/installation-macos.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "macOS Installation (macOS 13) / Install C/C++ Dependencies::section_5::part_1",
+          "start_line": 26,
+          "end_line": 41
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q28",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q29",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "lines 53-61": 1
+      },
+      "observed_top_5": [
+        {
+          "score": 51.097583,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/README.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "![SPHinXsys Logo](assets/logo.png) SPHinXsys / Fully compatible to classical FVM method::section_4::part_1",
+          "start_line": 51,
+          "end_line": 62
+        },
+        {
+          "score": 35.359988,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example5_2D_tayloygreen.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 5: 2D Taylor-Green vortex::section_1::part_3",
+          "start_line": 167,
+          "end_line": 222
+        },
+        {
+          "score": 34.99224,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/docs/_posts/2025-01-31-heterogeneous-parallelism-p2.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Implementing SYCL kernels in SPHinXsys::section_1::part_1",
+          "start_line": 9,
+          "end_line": 73
+        },
+        {
+          "score": 31.95749,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example15_2D_aortic_valve.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 15: 2D aortic valve::section_1::part_10",
+          "start_line": 997,
+          "end_line": 1051
+        },
+        {
+          "score": 30.920368,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/docs/_posts/2025-01-31-heterogeneous-parallelism-p2.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Cell linked-list, direct search and sorting::section_2::part_1",
+          "start_line": 74,
+          "end_line": 117
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q29",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q30",
+      "historical_doc_only_result": "FAIL",
+      "observed_ranks": {
+        "lines 51-55": null
+      },
+      "observed_top_5": [
+        {
+          "score": 37.144331,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/shell_model.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Plate model / Kinetics::section_2::part_2",
+          "start_line": 55,
+          "end_line": 78
+        },
+        {
+          "score": 27.181813,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/shell_model.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Plate model / Kinetics::section_2::part_1",
+          "start_line": 3,
+          "end_line": 54
+        },
+        {
+          "score": 25.000959,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example10_2D_thinPlate.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 10: Shell cases: a 2D thin plate::section_1::part_1",
+          "start_line": 7,
+          "end_line": 51
+        },
+        {
+          "score": 24.855525,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example10_2D_thinPlate.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 10: Shell cases: a 2D thin plate::section_1::part_2",
+          "start_line": 52,
+          "end_line": 126
+        },
+        {
+          "score": 23.456499,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example10_2D_thinPlate.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Document preamble::section_0::part_1",
+          "start_line": 1,
+          "end_line": 6
+        }
+      ],
+      "historical_limitations": [
+        "Strict single-chunk oracle FAIL: expected lines 51-55 span adjacent chunks. Top1 covers line55 and Top2 covers51-54; together cover all expected evidence. Query and oracle unchanged."
+      ],
+      "source_report_section": "Q30",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q31",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "lines 5-13": 3
+      },
+      "observed_top_5": [
+        {
+          "score": 43.765997,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/markdown/fluid_shell_interaction/one-side-fluid-shell-interaction.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Shell-fluid contact::section_12::part_1",
+          "start_line": 174,
+          "end_line": 178
+        },
+        {
+          "score": 43.490302,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/markdown/fluid_shell_interaction/one-side-fluid-shell-interaction.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Update volume change::section_9::part_1",
+          "start_line": 75,
+          "end_line": 97
+        },
+        {
+          "score": 40.75797,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/markdown/fluid_shell_interaction/one-side-fluid-shell-interaction.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Ghost particle integration::section_2::part_1",
+          "start_line": 4,
+          "end_line": 22
+        },
+        {
+          "score": 40.696056,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/markdown/fluid_shell_interaction/one-side-fluid-shell-interaction.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Average shell curvature::section_11::part_1",
+          "start_line": 157,
+          "end_line": 173
+        },
+        {
+          "score": 39.555819,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/markdown/fluid_shell_interaction/one-side-fluid-shell-interaction.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Algorithm for one-sided FSI problem::section_1::part_1",
+          "start_line": 1,
+          "end_line": 3
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q31",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q32",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "lines 5-11": 1
+      },
+      "observed_top_5": [
+        {
+          "score": 30.032741,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/markdown/smoothing_kernel/aisotropic_kernel.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "![](../../assets/logo.png) SPHinXsys / Anisotropic SPH (ASPH) kernel::section_2::part_1",
+          "start_line": 3,
+          "end_line": 78
+        },
+        {
+          "score": 21.897775,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/markdown/smoothing_kernel/aisotropic_kernel.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "![](../../assets/logo.png) SPHinXsys / Anisotropic SPH (ASPH) kernel::section_2::part_2",
+          "start_line": 79,
+          "end_line": 123
+        },
+        {
+          "score": 19.590574,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/markdown/smoothing_kernel/first_order_consistancy.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "![](../../assets/logo.png) SPHinXsys / Conservative SPH formulation with zero- and first-order consistency::section_2::part_1",
+          "start_line": 3,
+          "end_line": 58
+        },
+        {
+          "score": 18.381918,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/theoretical-background-physical-models.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Continuum in Lagrangian Framework / Total Lagrangian Formulation for Solid Mechanics::section_2::part_1",
+          "start_line": 3,
+          "end_line": 77
+        },
+        {
+          "score": 15.574136,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/theory.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Schemes for thermal and mass diffusion / SPH discretization for the anisotropic diffusion equation::section_13::part_1",
+          "start_line": 522,
+          "end_line": 580
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q32",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q33",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "lines 120-123": 1
+      },
+      "observed_top_5": [
+        {
+          "score": 55.781764,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example4_2D_multiResolutionParticleDistribution.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 4: 2D Multi-resolution isotropic particle distribution of complex geometries::section_1::part_3",
+          "start_line": 120,
+          "end_line": 166
+        },
+        {
+          "score": 25.227401,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example4_2D_multiResolutionParticleDistribution.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 4: 2D Multi-resolution isotropic particle distribution of complex geometries::section_1::part_2",
+          "start_line": 65,
+          "end_line": 119
+        },
+        {
+          "score": 23.65253,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example4_2D_multiResolutionParticleDistribution.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 4: 2D Multi-resolution isotropic particle distribution of complex geometries::section_1::part_1",
+          "start_line": 4,
+          "end_line": 64
+        },
+        {
+          "score": 23.123035,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example3_3D_multiResolutionParticleDistribution.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 3: 3D Multi-resolution isotropic particle distribution of complex geometries::section_1::part_1",
+          "start_line": 4,
+          "end_line": 57
+        },
+        {
+          "score": 22.791789,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example4_2D_multiResolutionParticleDistribution.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 4: 2D Multi-resolution isotropic particle distribution of complex geometries::section_1::part_4",
+          "start_line": 167,
+          "end_line": 232
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q33",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q34",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "lines 60-61": 1
+      },
+      "observed_top_5": [
+        {
+          "score": 51.101261,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example11_3D_arch.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 11: Shell cases: a 3D arch::section_1::part_1",
+          "start_line": 6,
+          "end_line": 67
+        },
+        {
+          "score": 31.866471,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example10_2D_thinPlate.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 10: Shell cases: a 2D thin plate::section_1::part_1",
+          "start_line": 7,
+          "end_line": 51
+        },
+        {
+          "score": 31.001517,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example11_3D_arch.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Document preamble::section_0::part_1",
+          "start_line": 1,
+          "end_line": 5
+        },
+        {
+          "score": 27.637708,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example11_3D_arch.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 11: Shell cases: a 3D arch::section_1::part_3",
+          "start_line": 137,
+          "end_line": 191
+        },
+        {
+          "score": 24.67901,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example11_3D_arch.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 11: Shell cases: a 3D arch::section_1::part_5",
+          "start_line": 287,
+          "end_line": 287
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q34",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q35",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "lines 9-11": 4
+      },
+      "observed_top_5": [
+        {
+          "score": 72.582077,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/llm-testing.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "LLM Testing / How to run locally::section_4::part_1",
+          "start_line": 23,
+          "end_line": 42
+        },
+        {
+          "score": 56.735005,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/llm-testing.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "LLM Testing / How CI behaves::section_5::part_1",
+          "start_line": 43,
+          "end_line": 46
+        },
+        {
+          "score": 54.709375,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/index.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "SPHinXsim Documentation / LLM test matrix::section_8::part_1",
+          "start_line": 80,
+          "end_line": 88
+        },
+        {
+          "score": 53.39262,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/llm-testing.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "LLM Testing / Test matrix::section_2::part_1",
+          "start_line": 5,
+          "end_line": 12
+        },
+        {
+          "score": 50.288688,
+          "repository": "SPHinXsim",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsim/docs/llm-testing.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "LLM Testing::section_1::part_1",
+          "start_line": 1,
+          "end_line": 4
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q35",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q36",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "lines 32-43": 1
+      },
+      "observed_top_5": [
+        {
+          "score": 60.910411,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/docs/_posts/2024-09-20-tensile-instability-p1.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Puzzle on the origin of numerical instability / Hourglass modes::section_3::part_1",
+          "start_line": 32,
+          "end_line": 44
+        },
+        {
+          "score": 34.903572,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/docs/_posts/2024-09-20-tensile-instability-p1.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Puzzle on the origin of numerical instability::section_1::part_1",
+          "start_line": 9,
+          "end_line": 21
+        },
+        {
+          "score": 33.807171,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/docs/_posts/2024-09-20-tensile-instability-p2.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Remedy for hourglass modes / Origin of hourglass modes::section_2::part_1",
+          "start_line": 26,
+          "end_line": 45
+        },
+        {
+          "score": 32.62364,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/docs/_posts/2024-09-20-tensile-instability-p2.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Remedy for hourglass modes / Non-nested formulation of shear force::section_3::part_1",
+          "start_line": 46,
+          "end_line": 73
+        },
+        {
+          "score": 28.094354,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/docs/_posts/2024-09-20-tensile-instability-p2.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Remedy for hourglass modes::section_1::part_1",
+          "start_line": 9,
+          "end_line": 25
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q36",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q37",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "lines 33-44": 1
+      },
+      "observed_top_5": [
+        {
+          "score": 48.597964,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/docs/_posts/2024-09-20-tensile-instability-p2.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Remedy for hourglass modes / Origin of hourglass modes::section_2::part_1",
+          "start_line": 26,
+          "end_line": 45
+        },
+        {
+          "score": 31.933387,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/docs/_posts/2024-09-20-tensile-instability-p2.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Remedy for hourglass modes::section_1::part_1",
+          "start_line": 9,
+          "end_line": 25
+        },
+        {
+          "score": 30.790204,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/docs/_posts/2024-09-20-tensile-instability-p1.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Puzzle on the origin of numerical instability / Hourglass modes::section_3::part_1",
+          "start_line": 32,
+          "end_line": 44
+        },
+        {
+          "score": 25.224584,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/docs/_posts/2024-09-20-tensile-instability-p2.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Remedy for hourglass modes / Is the remedy able to eliminate tensile instability?::section_4::part_1",
+          "start_line": 74,
+          "end_line": 96
+        },
+        {
+          "score": 23.014284,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/docs/_posts/2024-09-20-tensile-instability-p2.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Remedy for hourglass modes / Non-nested formulation of shear force::section_3::part_1",
+          "start_line": 46,
+          "end_line": 73
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q37",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q38",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "lines 76-82": 1
+      },
+      "observed_top_5": [
+        {
+          "score": 53.127773,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/docs/_posts/2025-01-31-heterogeneous-parallelism-p2.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Cell linked-list, direct search and sorting::section_2::part_1",
+          "start_line": 74,
+          "end_line": 117
+        },
+        {
+          "score": 38.921675,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/docs/_posts/2025-12-15-sparse-grid-heterogeneous-p2.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Computation Offloading::section_5::part_1",
+          "start_line": 160,
+          "end_line": 223
+        },
+        {
+          "score": 34.674951,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example12_2D_flowaroundcylinder.rst",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Example 12: Flow around a cylinder::section_1::part_5",
+          "start_line": 287,
+          "end_line": 341
+        },
+        {
+          "score": 33.609059,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/tutorials/markdown/multi_resolution_solid/multi_resolution_solid.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Context / Multi-level cell-linked lists::section_3::part_1",
+          "start_line": 11,
+          "end_line": 19
+        },
+        {
+          "score": 32.558635,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/docs/_posts/2026-01-08-sparse-grid-heterogeneous-p3.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Multi-resolution Level-set / Initialization Process::section_4::part_1",
+          "start_line": 36,
+          "end_line": 52
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q38",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q39",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "lines 75-82": 1
+      },
+      "observed_top_5": [
+        {
+          "score": 64.625101,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/docs/_posts/2025-12-15-sparse-grid-heterogeneous-p2.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Array Storage and Access::section_2::part_1",
+          "start_line": 75,
+          "end_line": 87
+        },
+        {
+          "score": 38.103159,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/docs/_posts/2026-01-08-sparse-grid-heterogeneous-p3.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Mesh Local Dynamics / Implementation Class and Data Transfer::section_2::part_1",
+          "start_line": 20,
+          "end_line": 31
+        },
+        {
+          "score": 34.571637,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/docs/_posts/2026-01-08-sparse-grid-heterogeneous-p3.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Document preamble::section_0::part_1",
+          "start_line": 1,
+          "end_line": 11
+        },
+        {
+          "score": 33.574908,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/docs/_posts/2025-12-15-sparse-grid-heterogeneous-p2.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Document preamble::section_0::part_1",
+          "start_line": 1,
+          "end_line": 11
+        },
+        {
+          "score": 33.460168,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/docs/_posts/2025-12-15-sparse-grid-heterogeneous-p2.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "`MeshWithGridDataPackages` class::section_1::part_1",
+          "start_line": 12,
+          "end_line": 74
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q39",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    },
+    {
+      "id": "DOC-Q40",
+      "historical_doc_only_result": "PASS",
+      "observed_ranks": {
+        "lines 36-49": 1
+      },
+      "observed_top_5": [
+        {
+          "score": 49.045474,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/docs/_posts/2026-01-08-sparse-grid-heterogeneous-p3.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Multi-resolution Level-set / Initialization Process::section_4::part_1",
+          "start_line": 36,
+          "end_line": 52
+        },
+        {
+          "score": 45.980759,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/docs/_posts/2025-12-15-sparse-grid-heterogeneous-p2.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Computation Offloading::section_5::part_1",
+          "start_line": 160,
+          "end_line": 223
+        },
+        {
+          "score": 45.65253,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/docs/_posts/2025-12-15-sparse-grid-heterogeneous-p2.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "`MeshWithGridDataPackages` class::section_1::part_1",
+          "start_line": 12,
+          "end_line": 74
+        },
+        {
+          "score": 41.189763,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/docs/_posts/2026-01-08-sparse-grid-heterogeneous-p3.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Multi-resolution Level-set::section_3::part_1",
+          "start_line": 32,
+          "end_line": 35
+        },
+        {
+          "score": 38.24079,
+          "repository": "SPHinXsys",
+          "source_role": "documentation",
+          "source_path": "repos/SPHinXsys/docs/_posts/2026-01-08-sparse-grid-heterogeneous-p3.md",
+          "chunk_type": "documentation_section",
+          "symbol_or_section_title": "Multi-resolution Level-set / Integral with SPH Smoothing Kernel and Grid-Particle Coupling::section_6::part_1",
+          "start_line": 89,
+          "end_line": 110
+        }
+      ],
+      "historical_limitations": [],
+      "source_report_section": "Q40",
+      "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2"
+    }
+  ]
+}

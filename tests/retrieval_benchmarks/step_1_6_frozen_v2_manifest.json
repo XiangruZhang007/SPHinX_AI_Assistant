@@ -1,0 +1,104 @@
+{
+  "manifest_schema_version": 1,
+  "benchmark_id": "step_1_6_frozen_evaluation_v2",
+  "benchmark_semantic_version": 2,
+  "benchmark_schema_version": 1,
+  "benchmark_file": "step_1_6_combined_frozen_v2.json",
+  "benchmark_sha256": "bac0b31b74410eaff00246e628187ee07c4aaefb8747ad076f090393b71d1ab7",
+  "question_count": 88,
+  "group_counts": {
+    "A": 40,
+    "B": 14,
+    "C": 30,
+    "D": 4
+  },
+  "required_modes": {
+    "documentation_only": 40,
+    "combined": 88
+  },
+  "evaluation_combinations": 128,
+  "configuration_sha256": "58b96a12e190758a381a1a8ee0ebf95c325c89a6ea8067fa348d590acf86d213",
+  "corpora": {
+    "combined": {
+      "sha256": "b1665ca9fc82cc889c9dded10da98674de507c310585beaeaf4c0ae333a1a6be",
+      "records": 11338
+    },
+    "documentation_only": {
+      "sha256": "e3ba9f91cd4900f2c0d439dde6b0485efa3e5b72108208669d422e7d9780a153",
+      "records": 354
+    }
+  },
+  "upstream_revisions": {
+    "SPHinXsys": "4e686ee357de1cb798ac47eb760dd79e2fb407ff",
+    "SPHinXsim": "9cdae783e3ef3f8926c2174a0db89e96846befad"
+  },
+  "retriever_sha256": "fff314e272afc8512e675dadc79a9d914574a6e0b6dc84f1e33792665431a29d",
+  "historical_results_sha256": "5219b582b0ae491331dbe6c8d12acd1564a3001721092a7ba98345eaa609ef90",
+  "historical_reference_results": "Exact values + per-record and entire-row canonical hashes; no full corpus in repository support files.",
+  "runtime_locations": "Supplied independently by CLI; absolute paths inside the byte-identical benchmark are historical non-mandatory hints only.",
+  "transformation": "No spec fields or bytes changed; transformation.json records equality.",
+  "oracle_provenance": "Unchanged authoritativev2; post-run annotations remain separately archived/supporting, never alter frozen questions.",
+  "original_lock_semantics": "Original freeze-lock checks same benchmark/source-review/semantic SHA and pre-existing source benchmark checksums; not rewritten.",
+  "known_limitations": [
+    "DOC-Q01 Generate+Validate ALL_OF",
+    "DOC-Q30 strict single-chunk51-55; union separate",
+    "DOC-Q38/39 original range end82, semantic supplement separately ends83",
+    "DOC-Q40 CPU initialization semantics",
+    "B-05/B-06/B-07/B-09 post-run interpretation uncertainty separated from frozen targets",
+    "D diagnostics excluded from scored denominator"
+  ],
+  "support_files": {
+    "original_lock": {
+      "path": "step_1_6_frozen_v2_support/freeze-lock.json",
+      "sha256": "b388289a45438c41d2488f34a570de084f925d92ca485a4008c551a9217c0a15"
+    },
+    "source_review": {
+      "path": "step_1_6_frozen_v2_support/source-review.json",
+      "sha256": "f06229cb4a7300c67be08f7faf211de6503e9c13e122333feb296ad334575b9c"
+    },
+    "semantic_supplement": {
+      "path": "step_1_6_frozen_v2_support/semantic-supplement.json",
+      "sha256": "2d6d446c66f77c2b86fa94eacc5897ebae12d143d15b28fb63740d5b351c41ad"
+    },
+    "historical_documentation_results": {
+      "path": "step_1_6_frozen_v2_support/historical-documentation-results.json",
+      "sha256": "d53bc51aebca8a58445026da946df33c7fa6106bde4630450e0ea08242c5abdf"
+    },
+    "original_oracle_limitations": {
+      "path": "step_1_6_frozen_v2_support/oracle-limitations.json",
+      "sha256": "f0a811f4adb3f064cfa919ddcb5262ab864c8a736b3dd5e050e6c028181c30ec"
+    },
+    "original_environment": {
+      "path": "step_1_6_frozen_v2_support/environment.json",
+      "sha256": "452a31ac2a534ec016865d088d7238d2579765a671650ffae5079b9c7d21b670"
+    },
+    "reference_results": {
+      "path": "step_1_6_frozen_v2_support/reference-results.json",
+      "sha256": "a0d2b2d62186ef9c652d2694165afd755953450bf2277e7b7790d6381842604c"
+    },
+    "reference_metrics": {
+      "path": "step_1_6_frozen_v2_support/reference-metrics.json",
+      "sha256": "44cbc533fd37a18df30f3af19704dac7825a42475db3f5bb65f1b4cbdd024524"
+    },
+    "reference_artifact_checksums": {
+      "path": "step_1_6_frozen_v2_support/reference-artifact-checksums.json",
+      "sha256": "b2be3b9efccd55f91260ebc3bccf48d88f7333e3e1fc5837f0d8bc75358af7a3"
+    },
+    "transformation": {
+      "path": "step_1_6_frozen_v2_support/transformation.json",
+      "sha256": "c55699118c9258e4969bfabea49f389a5eb4f5bab31b43c2d591bff66eafe4f1"
+    },
+    "implementation_origin": {
+      "path": "step_1_6_frozen_v2_support/implementation-origin.json",
+      "sha256": "6ae3534473db9474cad2e9e597731b871035e7fb3343c4c1421f94c2438ab27e"
+    }
+  },
+  "implementation_files": {
+    "src/retrieval_v1.py": "fff314e272afc8512e675dadc79a9d914574a6e0b6dc84f1e33792665431a29d",
+    "src/retrieval_evaluation_criteria.py": "d9a126dbe4228fb3b9d6740c48d15ded9a086eef4d07161b67229ff08e287364",
+    "src/retrieval_evaluation_v2.py": "8645c2b8b14195a19fbd62b846ca9bca4e6a744516a23957b17a85e34a9d7870",
+    "src/retrieval_evaluation_reports.py": "05e0133f1ef0832584fcb5e1c4de0062460dab7e21c4a6173e8188be48a881c2",
+    "src/retrieval_evaluation_io.py": "b38f1da9eb401789cb80e737528b8e41c7b7f726489b82942f688d290a4742d5",
+    "scripts/evaluate_frozen_step_1_6.py": "5a6898f0c23b6c9fd7fbe271d9bf0467807d6902ba44e59846539d1eeadf7231"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "source_archive_specification": "/home/zhang/Projects/SPHinX_AI_Assistant_artifacts/retrieval_evaluation_results/step_1_6_combined_20261027T211957Z/frozen-evaluation.json",
+  "source_sha256": "bac0b31b74410eaff00246e628187ee07c4aaefb8747ad076f090393b71d1ab7",
+  "repository_specification": "tests/retrieval_benchmarks/step_1_6_combined_frozen_v2.json",
+  "repository_sha256": "bac0b31b74410eaff00246e628187ee07c4aaefb8747ad076f090393b71d1ab7",
+  "byte_identical": true,
+  "json_fields_changed": [],
+  "question_fields_changed": [],
+  "semantic_changes": false,
+  "runtime_locations": "Original absolute paths retained as non-mandatory historical location hints; CLI arguments select actual files.",
+  "lock": "Original freeze-lock.json is byte-preserved; it still checks the identical spec, source-review and semantic supplement. No original lock hash replaced.",
+  "post_run_annotations": "Original oracle-limitations and historical results preserved separately; not injected into frozen questions."
+}

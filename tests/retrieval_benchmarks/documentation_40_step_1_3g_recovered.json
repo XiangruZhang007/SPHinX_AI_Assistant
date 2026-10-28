@@ -1,0 +1,816 @@
+{
+  "schema_version": 1,
+  "benchmark_id": "documentation_40_step_1_3g_recovered",
+  "status": "reconstructed_from_step_1_3G_historical_report",
+  "question_count": 40,
+  "provenance": {
+    "source_report_filename": "SPHinXsistant_Step1_3G_Full_Report.txt",
+    "source_report_sha256": "f3d6116209d84a72d45e8b7707c84ddfe5ca8f40e4f68de6147072471d885dc2",
+    "reconstructed_input_sha256": "7b9395bc43cbd8c816a98f9d4a2b54d11b89c0e9f12d680557a9de6cde028e3b",
+    "lost_original_oracle_byte_identity": "NOT_CLAIMED"
+  },
+  "matching_conventions": {
+    "source_paths": "repository-qualified repos/<repository>/<relative_path>",
+    "line_ranges": "inclusive one-based source lines; each interval must occur within one evidence chunk",
+    "multi_evidence": "All criteria must be met; distinct required sections may use distinct chunks. DOC-Q01 requires Generate AND Validate.",
+    "single_evidence": "Do not merge adjacent chunks to turn DOC-Q30 into a pass.",
+    "historical_ranking": "Not part of ground truth; outcomes stored separately.",
+    "evaluation": "No new ranking executed during recovery."
+  },
+  "questions": [
+    {
+      "id": "DOC-Q01",
+      "question": "How do I generate a simulation config from a description and validate config.json using the SPHinXsim CLI?",
+      "expected_repository": "SPHinXsim",
+      "expected_source_path": "repos/SPHinXsim/docs/cli-usage.md",
+      "expected_evidence": [
+        {
+          "kind": "section_title",
+          "value": "Generate"
+        },
+        {
+          "kind": "section_title",
+          "value": "Validate"
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "multi_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": true
+      }
+    },
+    {
+      "id": "DOC-Q02",
+      "question": "How does the SPHinXsim Python workflow connect validated JSON configurations to the SPHinXsys C++ backend?",
+      "expected_repository": "SPHinXsim",
+      "expected_source_path": "repos/SPHinXsim/docs/index.md",
+      "expected_evidence": [
+        {
+          "kind": "section_title",
+          "value": "High-level architecture"
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      }
+    },
+    {
+      "id": "DOC-Q03",
+      "question": "How does SPH gradient approximation achieve first-order consistency with a kernel gradient correction matrix?",
+      "expected_repository": "SPHinXsim",
+      "expected_source_path": "repos/SPHinXsim/docs/theoretical-background-sph-methods.md",
+      "expected_evidence": [
+        {
+          "kind": "section_title",
+          "value": "Gradient Approximation"
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      }
+    },
+    {
+      "id": "DOC-Q04",
+      "question": "How does the SPHinXsys dam break tutorial use dual-criteria time-stepping with advection and acoustic time steps?",
+      "expected_repository": "SPHinXsys",
+      "expected_source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example1_2D_dambreak.rst",
+      "expected_evidence": [
+        {
+          "kind": "passage",
+          "value": "dual-criteria time-stepping"
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      }
+    },
+    {
+      "id": "DOC-Q05",
+      "question": "How is the fluid pressure force applied to the elastic plate in the hydrostatic fluid-structure interaction tutorial?",
+      "expected_repository": "SPHinXsys",
+      "expected_source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example8_2D_hydrostatic_fsi.rst",
+      "expected_evidence": [
+        {
+          "kind": "passage",
+          "value": "FluidPressureForceOnSolid"
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      }
+    },
+    {
+      "id": "DOC-Q06",
+      "question": "How is the deformation gradient defined in the total Lagrangian formulation for solid mechanics?",
+      "expected_repository": "SPHinXsim",
+      "expected_source_path": "repos/SPHinXsim/docs/theoretical-background-physical-models.md",
+      "expected_evidence": [
+        {
+          "kind": "line_range",
+          "start_line": 20,
+          "end_line": 25
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      },
+      "expected_concept": "reference configuration deformation gradient"
+    },
+    {
+      "id": "DOC-Q07",
+      "question": "What does SPHinXsim visualization do when VTP geometry files are not produced?",
+      "expected_repository": "SPHinXsim",
+      "expected_source_path": "repos/SPHinXsim/docs/visualization.md",
+      "expected_evidence": [
+        {
+          "kind": "line_range",
+          "start_line": 250,
+          "end_line": 257
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      },
+      "expected_concept": "getShapeBounds bounds fallback"
+    },
+    {
+      "id": "DOC-Q08",
+      "question": "How do I install the compiled C++ extension modules into the active Python environment on Linux?",
+      "expected_repository": "SPHinXsim",
+      "expected_source_path": "repos/SPHinXsim/docs/installation-linux.md",
+      "expected_evidence": [
+        {
+          "kind": "line_range",
+          "start_line": 67,
+          "end_line": 71
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      },
+      "expected_concept": "cmake install into Python sys.prefix"
+    },
+    {
+      "id": "DOC-Q09",
+      "question": "How are solid, fluid acoustic, and fluid viscosity time steps nested in the SPHinXsys computation?",
+      "expected_repository": "SPHinXsys",
+      "expected_source_path": "repos/SPHinXsys/tutorials/sphinx/SPHinXsysArch.rst",
+      "expected_evidence": [
+        {
+          "kind": "line_range",
+          "start_line": 43,
+          "end_line": 49
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      },
+      "expected_concept": "three integration layers"
+    },
+    {
+      "id": "DOC-Q10",
+      "question": "How does the elastic water gate example compute the fluid pressure force acting on the elastic gate?",
+      "expected_repository": "SPHinXsys",
+      "expected_source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example2_elasticGate.rst",
+      "expected_evidence": [
+        {
+          "kind": "line_range",
+          "start_line": 198,
+          "end_line": 204
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      },
+      "expected_concept": "FluidPressureForceOnSolid"
+    },
+    {
+      "id": "DOC-Q11",
+      "question": "How does SPHinXsys generate a multiresolution body-fitted particle distribution from dirty STL geometry?",
+      "expected_repository": "SPHinXsys",
+      "expected_source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example3_3D_multiResolutionParticleDistribution.rst",
+      "expected_evidence": [
+        {
+          "kind": "line_range",
+          "start_line": 15,
+          "end_line": 18
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      },
+      "expected_concept": "STL Level-Set cleaning and particle relaxation"
+    },
+    {
+      "id": "DOC-Q12",
+      "question": "How does the heat transfer example choose the time step for exchanging thermal and fluid data?",
+      "expected_repository": "SPHinXsys",
+      "expected_source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example6_2D_heat_transfer.rst",
+      "expected_evidence": [
+        {
+          "kind": "line_range",
+          "start_line": 400,
+          "end_line": 401
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      },
+      "expected_concept": "minimum diffusion and acoustic time step"
+    },
+    {
+      "id": "DOC-Q13",
+      "question": "Which time integration method is used to solve the anisotropic diffusion equations in the SPHinXsys diffusion example?",
+      "expected_repository": "SPHinXsys",
+      "expected_source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example7_2D_diffusion.rst",
+      "expected_evidence": [
+        {
+          "kind": "line_range",
+          "start_line": 238,
+          "end_line": 240
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      },
+      "expected_concept": "second-order Runge-Kutta"
+    },
+    {
+      "id": "DOC-Q14",
+      "question": "How are stress relaxation and the clamped beam base defined in the oscillating beam simulation?",
+      "expected_repository": "SPHinXsys",
+      "expected_source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example13_2D_oscillating_beam.rst",
+      "expected_evidence": [
+        {
+          "kind": "line_range",
+          "start_line": 233,
+          "end_line": 242
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      },
+      "expected_concept": "stress relaxation halves and ClampConstrainSolidBodyRegion"
+    },
+    {
+      "id": "DOC-Q15",
+      "question": "How does the Taylor-Green vortex example use viscous acceleration and transport velocity correction?",
+      "expected_repository": "SPHinXsys",
+      "expected_source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example5_2D_tayloygreen.rst",
+      "expected_evidence": [
+        {
+          "kind": "line_range",
+          "start_line": 216,
+          "end_line": 219
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      },
+      "expected_concept": "viscous and transport velocity algorithms"
+    },
+    {
+      "id": "DOC-Q16",
+      "question": "How does static confinement represent a wall without boundary particles and calculate fluid-wall interaction?",
+      "expected_repository": "SPHinXsys",
+      "expected_source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example9_2D_staticConfinement.rst",
+      "expected_evidence": [
+        {
+          "kind": "line_range",
+          "start_line": 17,
+          "end_line": 19
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      },
+      "expected_concept": "level-set wall and integration"
+    },
+    {
+      "id": "DOC-Q17",
+      "question": "How does the thin plate SPH model represent a moderately thin shell using a single layer of particles?",
+      "expected_repository": "SPHinXsys",
+      "expected_source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example10_2D_thinPlate.rst",
+      "expected_evidence": [
+        {
+          "kind": "line_range",
+          "start_line": 1,
+          "end_line": 5
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      },
+      "expected_concept": "Uflyand-Mindlin shell formulation"
+    },
+    {
+      "id": "DOC-Q18",
+      "question": "How are inflow and free-stream boundary conditions imposed in the flow around a cylinder tutorial?",
+      "expected_repository": "SPHinXsys",
+      "expected_source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example12_2D_flowaroundcylinder.rst",
+      "expected_evidence": [
+        {
+          "kind": "line_range",
+          "start_line": 17,
+          "end_line": 18
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      },
+      "expected_concept": "uniform buffer region"
+    },
+    {
+      "id": "DOC-Q19",
+      "question": "How do fluid and solid acoustic time steps differ in the aortic valve fluid-structure interaction example?",
+      "expected_repository": "SPHinXsys",
+      "expected_source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example15_2D_aortic_valve.rst",
+      "expected_evidence": [
+        {
+          "kind": "line_range",
+          "start_line": 1269,
+          "end_line": 1274
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      },
+      "expected_concept": "smaller solid acoustic steps nested in fluid steps"
+    },
+    {
+      "id": "DOC-Q20",
+      "question": "Which non-Newtonian pressure and density relaxation algorithms are used in the throat flow example?",
+      "expected_repository": "SPHinXsys",
+      "expected_source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example17_2D_throat.rst",
+      "expected_evidence": [
+        {
+          "kind": "line_range",
+          "start_line": 205,
+          "end_line": 208
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      },
+      "expected_concept": "Oldroyd-B relaxation"
+    },
+    {
+      "id": "DOC-Q21",
+      "question": "What makes an initially square water droplet deform when it contacts a wall and air in the wetting example?",
+      "expected_repository": "SPHinXsys",
+      "expected_source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example18_2D_wetting.rst",
+      "expected_evidence": [
+        {
+          "kind": "line_range",
+          "start_line": 8,
+          "end_line": 9
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      },
+      "expected_concept": "surface tension wetting"
+    },
+    {
+      "id": "DOC-Q22",
+      "question": "How is the correction matrix used to achieve first-order consistency in the conservative SPH gradient?",
+      "expected_repository": "SPHinXsys",
+      "expected_source_path": "repos/SPHinXsys/tutorials/markdown/smoothing_kernel/first_order_consistancy.md",
+      "expected_evidence": [
+        {
+          "kind": "line_range",
+          "start_line": 26,
+          "end_line": 31
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      },
+      "expected_concept": "gradient correction matrix"
+    },
+    {
+      "id": "DOC-Q23",
+      "question": "What smoothing length is chosen for a pair of particles in the multiresolution solid simulation?",
+      "expected_repository": "SPHinXsys",
+      "expected_source_path": "repos/SPHinXsys/tutorials/markdown/multi_resolution_solid/multi_resolution_solid.md",
+      "expected_evidence": [
+        {
+          "kind": "line_range",
+          "start_line": 4,
+          "end_line": 9
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      },
+      "expected_concept": "symmetric maximum smoothing length"
+    },
+    {
+      "id": "DOC-Q24",
+      "question": "How does multiphase mixture time stepping regularize negative phase masses while preserving mixture mass?",
+      "expected_repository": "SPHinXsys",
+      "expected_source_path": "repos/SPHinXsys/tutorials/markdown/multiphase_mixture_model.md",
+      "expected_evidence": [
+        {
+          "kind": "line_range",
+          "start_line": 172,
+          "end_line": 182
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      },
+      "expected_concept": "phase mass clipping and regularization"
+    },
+    {
+      "id": "DOC-Q25",
+      "question": "Which quantities are mapped in each direction by the Dirichlet-Neumann solid-to-shell coupling method?",
+      "expected_repository": "SPHinXsys",
+      "expected_source_path": "repos/SPHinXsys/tests/3d_examples/test_3d_solid_to_shell_coupling/doc/README.md",
+      "expected_evidence": [
+        {
+          "kind": "line_range",
+          "start_line": 4,
+          "end_line": 5
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      },
+      "expected_concept": "displacement/velocity solid to shell; force shell to solid"
+    },
+    {
+      "id": "DOC-Q26",
+      "question": "Does the HJC concrete damage model simulate crack opening, fragmentation, erosion or thermal effects?",
+      "expected_repository": "SPHinXsys",
+      "expected_source_path": "repos/SPHinXsys/tests/3d_examples/test_3d_taylor_bar_hjc/README.md",
+      "expected_evidence": [
+        {
+          "kind": "line_range",
+          "start_line": 149,
+          "end_line": 155
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      },
+      "expected_concept": "explicit HJC model limitations"
+    },
+    {
+      "id": "DOC-Q27",
+      "question": "What should I do if cl is not found when building SPHinXsim on Windows?",
+      "expected_repository": "SPHinXsim",
+      "expected_source_path": "repos/SPHinXsim/docs/installation-windows.md",
+      "expected_evidence": [
+        {
+          "kind": "line_range",
+          "start_line": 101,
+          "end_line": 104
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      },
+      "expected_concept": "Visual Studio developer shell"
+    },
+    {
+      "id": "DOC-Q28",
+      "question": "How do I install compiled SPHinXsim extensions into the active Python environment on macOS?",
+      "expected_repository": "SPHinXsim",
+      "expected_source_path": "repos/SPHinXsim/docs/installation-macos.md",
+      "expected_evidence": [
+        {
+          "kind": "line_range",
+          "start_line": 60,
+          "end_line": 64
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      },
+      "expected_concept": "cmake install with Python sys.prefix"
+    },
+    {
+      "id": "DOC-Q29",
+      "question": "How does SPHinXsys use the same algorithms for particle methods and classical finite volume methods?",
+      "expected_repository": "SPHinXsys",
+      "expected_source_path": "repos/SPHinXsys/README.md",
+      "expected_evidence": [
+        {
+          "kind": "line_range",
+          "start_line": 53,
+          "end_line": 61
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      },
+      "expected_concept": "FVM reads a predefined mesh instead of generating particles"
+    },
+    {
+      "id": "DOC-Q30",
+      "question": "Is the current plate mid-surface normal always equal to the pseudo-normal obtained from rotation?",
+      "expected_repository": "SPHinXsys",
+      "expected_source_path": "repos/SPHinXsys/shell_model.md",
+      "expected_evidence": [
+        {
+          "kind": "line_range",
+          "start_line": 51,
+          "end_line": 55
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      },
+      "expected_concept": "mid-surface normal differs from rotated pseudo-normal"
+    },
+    {
+      "id": "DOC-Q31",
+      "question": "How are ghost particle positions and normal directions defined for one-sided fluid-shell interaction?",
+      "expected_repository": "SPHinXsys",
+      "expected_source_path": "repos/SPHinXsys/tutorials/markdown/fluid_shell_interaction/one-side-fluid-shell-interaction.md",
+      "expected_evidence": [
+        {
+          "kind": "line_range",
+          "start_line": 5,
+          "end_line": 13
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      },
+      "expected_concept": "shell ghost particle integration"
+    },
+    {
+      "id": "DOC-Q32",
+      "question": "How does an anisotropic SPH kernel map physical positions to normalized coordinates?",
+      "expected_repository": "SPHinXsys",
+      "expected_source_path": "repos/SPHinXsys/tutorials/markdown/smoothing_kernel/aisotropic_kernel.md",
+      "expected_evidence": [
+        {
+          "kind": "line_range",
+          "start_line": 5,
+          "end_line": 11
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      },
+      "expected_concept": "linear transformation G r"
+    },
+    {
+      "id": "DOC-Q33",
+      "question": "Why does dirty airfoil trailing-edge geometry create unstable single-layer particles?",
+      "expected_repository": "SPHinXsys",
+      "expected_source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example4_2D_multiResolutionParticleDistribution.rst",
+      "expected_evidence": [
+        {
+          "kind": "line_range",
+          "start_line": 120,
+          "end_line": 123
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      },
+      "expected_concept": "dirty trailing-edge single-layer instability"
+    },
+    {
+      "id": "DOC-Q34",
+      "question": "How do the additional angular degrees of freedom define the pseudo-normal in a 3D arch shell?",
+      "expected_repository": "SPHinXsys",
+      "expected_source_path": "repos/SPHinXsys/tutorials/sphinx/examples/example11_3D_arch.rst",
+      "expected_evidence": [
+        {
+          "kind": "line_range",
+          "start_line": 60,
+          "end_line": 61
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      },
+      "expected_concept": "two angular degrees of freedom"
+    },
+    {
+      "id": "DOC-Q35",
+      "question": "Which SPHinXsim LLM tests use mocks and which require live Ollama locally or in CI?",
+      "expected_repository": "SPHinXsim",
+      "expected_source_path": "repos/SPHinXsim/docs/llm-testing.md",
+      "expected_evidence": [
+        {
+          "kind": "line_range",
+          "start_line": 9,
+          "end_line": 11
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      },
+      "expected_concept": "mock/live test matrix"
+    },
+    {
+      "id": "DOC-Q36",
+      "question": "Why are hourglass modes distinct from particle clustering and non-physical fractures in SPH elastic dynamics?",
+      "expected_repository": "SPHinXsys",
+      "expected_source_path": "repos/SPHinXsys/docs/_posts/2024-09-20-tensile-instability-p1.md",
+      "expected_evidence": [
+        {
+          "kind": "line_range",
+          "start_line": 32,
+          "end_line": 43
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      },
+      "expected_concept": "author distinction of tensile instability and hourglass artifacts"
+    },
+    {
+      "id": "DOC-Q37",
+      "question": "Why can a zigzag velocity field create artificial zero energy modes in the SPH velocity-gradient approximation?",
+      "expected_repository": "SPHinXsys",
+      "expected_source_path": "repos/SPHinXsys/docs/_posts/2024-09-20-tensile-instability-p2.md",
+      "expected_evidence": [
+        {
+          "kind": "line_range",
+          "start_line": 33,
+          "end_line": 44
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      },
+      "expected_concept": "zero velocity gradient and insufficient shear restoring force"
+    },
+    {
+      "id": "DOC-Q38",
+      "question": "How does SPHinXsys construct cell linked-lists on a device without concurrent_vector?",
+      "expected_repository": "SPHinXsys",
+      "expected_source_path": "repos/SPHinXsys/docs/_posts/2025-01-31-heterogeneous-parallelism-p2.md",
+      "expected_evidence": [
+        {
+          "kind": "line_range",
+          "start_line": 76,
+          "end_line": 82
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      },
+      "expected_concept": "atomic operations for device cell-list construction"
+    },
+    {
+      "id": "DOC-Q39",
+      "question": "Why does the sparse-grid implementation use contiguous one-dimensional arrays instead of a memory pool?",
+      "expected_repository": "SPHinXsys",
+      "expected_source_path": "repos/SPHinXsys/docs/_posts/2025-12-15-sparse-grid-heterogeneous-p2.md",
+      "expected_evidence": [
+        {
+          "kind": "line_range",
+          "start_line": 75,
+          "end_line": 82
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      },
+      "expected_concept": "GPU-compatible contiguous storage and SoA"
+    },
+    {
+      "id": "DOC-Q40",
+      "question": "How does multi-resolution Level-set initialization tag and sort grid data packages for device computation?",
+      "expected_repository": "SPHinXsys",
+      "expected_source_path": "repos/SPHinXsys/docs/_posts/2026-01-08-sparse-grid-heterogeneous-p3.md",
+      "expected_evidence": [
+        {
+          "kind": "line_range",
+          "start_line": 36,
+          "end_line": 49
+        }
+      ],
+      "evidence_requirement": {
+        "operator": "ALL_OF",
+        "scope": "single_evidence",
+        "each_criterion_requires_single_chunk": true,
+        "different_criteria_may_use_different_chunks": false
+      },
+      "expected_concept": "initial tagging sorting and mesh neighborhood initialization"
+    }
+  ]
+}

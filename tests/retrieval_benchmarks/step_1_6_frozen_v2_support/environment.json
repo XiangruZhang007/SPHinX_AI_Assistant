@@ -1,0 +1,41 @@
+{
+  "python": "/home/zhang/Projects/SPHinX_AI_Assistant_ci/tools/treesitter-chunker/.venv/bin/python",
+  "version": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "actual_retriever_import": "/home/zhang/Projects/SPHinX_AI_Assistant_ci/src/retrieval_v1.py",
+  "retriever_sha256": "fff314e272afc8512e675dadc79a9d914574a6e0b6dc84f1e33792665431a29d",
+  "candidate_sha256": "b1665ca9fc82cc889c9dded10da98674de507c310585beaeaf4c0ae333a1a6be",
+  "upstreams": {
+    "SPHinXsys": "4e686ee357de1cb798ac47eb760dd79e2fb407ff",
+    "SPHinXsim": "9cdae783e3ef3f8926c2174a0db89e96846befad"
+  },
+  "config": {
+    "primary_top_k": 5,
+    "diagnostic_top_k": 10,
+    "retriever_class": "src.retrieval_v1.RetrievalV1",
+    "k1": 1.5,
+    "b": 0.75,
+    "filters": "NONE; entire supplied corpus",
+    "query_preprocessing": "unchanged tokenize + identifier expansion",
+    "scoring": "unchanged BM25 + symbol/path/role/repository boosts",
+    "deduplication": "unchanged repository/source_path/symbol-or-section key",
+    "tie_break": "unchanged chunk_id",
+    "python_hash_seed": "0",
+    "semantic_scoring": "Separately frozen source-anchor supplement, no LLM judge; no semantic correctness claim from filename alone",
+    "metrics": {
+      "exact_Hit_at_k": "All required criteria matched among top-k; for multi this is complete coverage, not any-item hit",
+      "MRR_at_5": "Single-evidence questions only; first strict matching result, zero beyond5",
+      "partial_evidence_coverage": "Fraction of required items matched",
+      "strict_documentation_denominator": "All40 historical questions, including Q30 structurally unavailable; additionally report availability-conditioned denominator39",
+      "coverage_gaps_stale_uncertain": "Separate counts; D excluded from primary; B has new passage bindings for legacy queries not historical oracle equivalence"
+    }
+  },
+  "packages": {
+    "treesitter-chunker": "4.0.0",
+    "tree-sitter-yaml": "0.7.2",
+    "tree-sitter": "0.25.2",
+    "tree-sitter-language-pack": "0.9.0",
+    "tree-sitter-c-sharp": "0.23.5",
+    "tree-sitter-embedded-template": "0.25.0"
+  },
+  "retrieval_dependency": "Project standard-library-only lexical Retriever; Tree-sitter packages recorded but not used for ranking"
+}

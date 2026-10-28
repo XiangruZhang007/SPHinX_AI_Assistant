@@ -1,0 +1,1758 @@
+{
+  "benchmark_id": "combined_step_1_6_v1",
+  "version": 1,
+  "provenance": "Source inspection under specified upstream commits before any ranking",
+  "candidate_sha256": "b1665ca9fc82cc889c9dded10da98674de507c310585beaeaf4c0ae333a1a6be",
+  "questions": [
+    {
+      "id": "C-01",
+      "group": "C",
+      "category": "cpp_algorithm",
+      "question": "How does DensitySummation with adaptive smoothing length update density and particle volume?",
+      "requirements": [
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsys/src/shared/particle_dynamics/fluid_dynamics/density_summation.cpp",
+          "range": [
+            30,
+            34
+          ],
+          "contains_all": [
+            "rho_sum_",
+            "Vol_"
+          ]
+        }
+      ],
+      "evidence_mode": "ALL_OF",
+      "evidence_scope": "single_evidence",
+      "oracle_status": "CURRENT_SOURCE_VERIFIED",
+      "oracle_provenance": "Newv1 source-inspected before ranking",
+      "notes": [],
+      "availability": [
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsys/src/shared/particle_dynamics/fluid_dynamics/density_summation.cpp",
+            "range": [
+              30,
+              34
+            ],
+            "contains_all": [
+              "rho_sum_",
+              "Vol_"
+            ]
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "27d57fa8d782133a7cf990c0096f5154d4dec575"
+          ],
+          "partial_chunk_ids": [
+            "27d57fa8d782133a7cf990c0096f5154d4dec575"
+          ]
+        }
+      ],
+      "exact_evidence_available": true,
+      "primary_score_eligible": true
+    },
+    {
+      "id": "C-02",
+      "group": "C",
+      "category": "cpp_algorithm",
+      "question": "How does WeaklyCompressibleFluid getPressure compute pressure from density?",
+      "requirements": [
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsys/src/shared/materials/weakly_compressible_fluid.cpp",
+          "range": [
+            17,
+            20
+          ],
+          "contains_all": [
+            "p0_"
+          ]
+        }
+      ],
+      "evidence_mode": "ALL_OF",
+      "evidence_scope": "single_evidence",
+      "oracle_status": "CURRENT_SOURCE_VERIFIED",
+      "oracle_provenance": "Newv1 source-inspected before ranking",
+      "notes": [],
+      "availability": [
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsys/src/shared/materials/weakly_compressible_fluid.cpp",
+            "range": [
+              17,
+              20
+            ],
+            "contains_all": [
+              "p0_"
+            ]
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "59f716fdda8335d6d896425fb27c9d631d8b0903"
+          ],
+          "partial_chunk_ids": [
+            "59f716fdda8335d6d896425fb27c9d631d8b0903"
+          ]
+        }
+      ],
+      "exact_evidence_available": true,
+      "primary_score_eligible": true
+    },
+    {
+      "id": "C-03",
+      "group": "C",
+      "category": "cpp_algorithm",
+      "question": "How does J2Plasticity ReturnMappingShearStress reduce stress above the yield surface?",
+      "requirements": [
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsys/src/shared/materials/general_continuum.cpp",
+          "range": [
+            150,
+            158
+          ],
+          "contains_all": [
+            "f > TinyReal",
+            "return r * shear_stress"
+          ]
+        }
+      ],
+      "evidence_mode": "ALL_OF",
+      "evidence_scope": "single_evidence",
+      "oracle_status": "CURRENT_SOURCE_VERIFIED",
+      "oracle_provenance": "Newv1 source-inspected before ranking",
+      "notes": [],
+      "availability": [
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsys/src/shared/materials/general_continuum.cpp",
+            "range": [
+              150,
+              158
+            ],
+            "contains_all": [
+              "f > TinyReal",
+              "return r * shear_stress"
+            ]
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "d091f65f36e82e74625aa8a0f94c07c70ba59f38"
+          ],
+          "partial_chunk_ids": [
+            "d091f65f36e82e74625aa8a0f94c07c70ba59f38"
+          ]
+        }
+      ],
+      "exact_evidence_available": true,
+      "primary_score_eligible": true
+    },
+    {
+      "id": "C-04",
+      "group": "C",
+      "category": "cpp_algorithm",
+      "question": "How does ShellAcousticTimeStepSize reduce select a shell time-step size?",
+      "requirements": [
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsys/src/shared/particle_dynamics/solid_dynamics/thin_structure_dynamics.cpp",
+          "range": [
+            42,
+            54
+          ],
+          "contains_all": []
+        }
+      ],
+      "evidence_mode": "ALL_OF",
+      "evidence_scope": "single_evidence",
+      "oracle_status": "CURRENT_SOURCE_VERIFIED",
+      "oracle_provenance": "Newv1 source-inspected before ranking",
+      "notes": [],
+      "availability": [
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsys/src/shared/particle_dynamics/solid_dynamics/thin_structure_dynamics.cpp",
+            "range": [
+              42,
+              54
+            ],
+            "contains_all": []
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "9f671f59d2fa3099c97638e9d5d544a0d01a0ce0"
+          ],
+          "partial_chunk_ids": [
+            "9f671f59d2fa3099c97638e9d5d544a0d01a0ce0"
+          ]
+        }
+      ],
+      "exact_evidence_available": true,
+      "primary_score_eligible": true
+    },
+    {
+      "id": "C-05",
+      "group": "C",
+      "category": "simulation_case",
+      "question": "Where does the 2D dambreak implementation create water with WeaklyCompressibleFluid and generate lattice particles?",
+      "requirements": [
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsys/tests/2d_examples/test_2d_dambreak/Dambreak.cpp",
+          "range": [
+            62,
+            65
+          ],
+          "contains_all": [
+            "WeaklyCompressibleFluid",
+            "generateParticles"
+          ]
+        }
+      ],
+      "evidence_mode": "ALL_OF",
+      "evidence_scope": "single_evidence",
+      "oracle_status": "CURRENT_SOURCE_VERIFIED",
+      "oracle_provenance": "Newv1 source-inspected before ranking",
+      "notes": [],
+      "availability": [
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsys/tests/2d_examples/test_2d_dambreak/Dambreak.cpp",
+            "range": [
+              62,
+              65
+            ],
+            "contains_all": [
+              "WeaklyCompressibleFluid",
+              "generateParticles"
+            ]
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "3c682e71270c6accf697cfd78a65bd77ed0c00b2"
+          ],
+          "partial_chunk_ids": [
+            "3c682e71270c6accf697cfd78a65bd77ed0c00b2"
+          ]
+        }
+      ],
+      "exact_evidence_available": true,
+      "primary_score_eligible": true
+    },
+    {
+      "id": "C-06",
+      "group": "C",
+      "category": "simulation_case",
+      "question": "How does the 2D heat transfer case create diffusion time stepping and thermal relaxation?",
+      "requirements": [
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsys/tests/2d_examples/test_2d_heat_transfer/heat_transfer.cpp",
+          "range": [
+            247,
+            248
+          ],
+          "contains_all": [
+            "GetDiffusionTimeStepSize",
+            "ThermalRelaxationComplex"
+          ]
+        }
+      ],
+      "evidence_mode": "ALL_OF",
+      "evidence_scope": "single_evidence",
+      "oracle_status": "CURRENT_SOURCE_VERIFIED",
+      "oracle_provenance": "Newv1 source-inspected before ranking",
+      "notes": [],
+      "availability": [
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsys/tests/2d_examples/test_2d_heat_transfer/heat_transfer.cpp",
+            "range": [
+              247,
+              248
+            ],
+            "contains_all": [
+              "GetDiffusionTimeStepSize",
+              "ThermalRelaxationComplex"
+            ]
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "bbf9c4ea63234dc98e14a63725cbddb152e2be15"
+          ],
+          "partial_chunk_ids": [
+            "bbf9c4ea63234dc98e14a63725cbddb152e2be15"
+          ]
+        }
+      ],
+      "exact_evidence_available": true,
+      "primary_score_eligible": true
+    },
+    {
+      "id": "C-07",
+      "group": "C",
+      "category": "simulation_case",
+      "question": "How does the 2D dambreak case initialize cell linked lists, configurations and gravity before simulation?",
+      "requirements": [
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsys/tests/2d_examples/test_2d_dambreak/Dambreak.cpp",
+          "range": [
+            124,
+            127
+          ],
+          "contains_all": [
+            "initializeSystemConfigurations",
+            "constant_gravity.exec"
+          ]
+        }
+      ],
+      "evidence_mode": "ALL_OF",
+      "evidence_scope": "single_evidence",
+      "oracle_status": "CURRENT_SOURCE_VERIFIED",
+      "oracle_provenance": "Newv1 source-inspected before ranking",
+      "notes": [],
+      "availability": [
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsys/tests/2d_examples/test_2d_dambreak/Dambreak.cpp",
+            "range": [
+              124,
+              127
+            ],
+            "contains_all": [
+              "initializeSystemConfigurations",
+              "constant_gravity.exec"
+            ]
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "7fd9665a1ed326654b3de5f17308bb7b122bb0c2"
+          ],
+          "partial_chunk_ids": [
+            "7fd9665a1ed326654b3de5f17308bb7b122bb0c2"
+          ]
+        }
+      ],
+      "exact_evidence_available": true,
+      "primary_score_eligible": true
+    },
+    {
+      "id": "C-08",
+      "group": "C",
+      "category": "python",
+      "question": "How does load_sphinxsys_core_nd reject invalid dimensions and choose the compiled extension?",
+      "requirements": [
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsim/sphinxsim/bindings/loader.py",
+          "range": [
+            65,
+            98
+          ],
+          "contains_all": [
+            "ndim not in (2, 3)",
+            "importlib.import_module"
+          ]
+        }
+      ],
+      "evidence_mode": "ALL_OF",
+      "evidence_scope": "single_evidence",
+      "oracle_status": "CURRENT_SOURCE_VERIFIED",
+      "oracle_provenance": "Newv1 source-inspected before ranking",
+      "notes": [],
+      "availability": [
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsim/sphinxsim/bindings/loader.py",
+            "range": [
+              65,
+              98
+            ],
+            "contains_all": [
+              "ndim not in (2, 3)",
+              "importlib.import_module"
+            ]
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "ad2ff3b485e4d83b62fcd82ae40354f4c521d526"
+          ],
+          "partial_chunk_ids": [
+            "ad2ff3b485e4d83b62fcd82ae40354f4c521d526"
+          ]
+        }
+      ],
+      "exact_evidence_available": true,
+      "primary_score_eligible": true
+    },
+    {
+      "id": "C-09",
+      "group": "C",
+      "category": "python",
+      "question": "How does dump_simulation_config_json omit defaults for PlasticContinuum configurations?",
+      "requirements": [
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsim/sphinxsim/llm/common.py",
+          "range": [
+            197,
+            205
+          ],
+          "contains_all": [
+            "exclude_defaults=is_all_plastic_continuum_config"
+          ]
+        }
+      ],
+      "evidence_mode": "ALL_OF",
+      "evidence_scope": "single_evidence",
+      "oracle_status": "CURRENT_SOURCE_VERIFIED",
+      "oracle_provenance": "Newv1 source-inspected before ranking",
+      "notes": [],
+      "availability": [
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsim/sphinxsim/llm/common.py",
+            "range": [
+              197,
+              205
+            ],
+            "contains_all": [
+              "exclude_defaults=is_all_plastic_continuum_config"
+            ]
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "d780e05aa8187a3e360a9029e7a45d3553aef468"
+          ],
+          "partial_chunk_ids": [
+            "d780e05aa8187a3e360a9029e7a45d3553aef468"
+          ]
+        }
+      ],
+      "exact_evidence_available": true,
+      "primary_score_eligible": true
+    },
+    {
+      "id": "C-10",
+      "group": "C",
+      "category": "python",
+      "question": "How does the Python 2D simulation example build and run a simulation through SPHSimulation?",
+      "requirements": [
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsim/examples/test_simulation_2d.py",
+          "range": [
+            31,
+            85
+          ],
+          "contains_all": []
+        }
+      ],
+      "evidence_mode": "ALL_OF",
+      "evidence_scope": "single_evidence",
+      "oracle_status": "CURRENT_SOURCE_VERIFIED",
+      "oracle_provenance": "Newv1 source-inspected before ranking",
+      "notes": [],
+      "availability": [
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsim/examples/test_simulation_2d.py",
+            "range": [
+              31,
+              85
+            ],
+            "contains_all": []
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "ec369b2810ab973ade38c8c5d75b46030f83b122"
+          ],
+          "partial_chunk_ids": [
+            "ec369b2810ab973ade38c8c5d75b46030f83b122"
+          ]
+        }
+      ],
+      "exact_evidence_available": true,
+      "primary_score_eligible": true
+    },
+    {
+      "id": "C-11",
+      "group": "C",
+      "category": "schema",
+      "question": "How does DomainConfig _valid_bounds reject mismatched dimensions and reversed bounds?",
+      "requirements": [
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsim/sphinxsim/config/schemas.py",
+          "range": [
+            119,
+            125
+          ],
+          "contains_all": [
+            "dimensionality must match",
+            "upper_bound must be greater"
+          ]
+        }
+      ],
+      "evidence_mode": "ALL_OF",
+      "evidence_scope": "single_evidence",
+      "oracle_status": "CURRENT_SOURCE_VERIFIED",
+      "oracle_provenance": "Newv1 source-inspected before ranking",
+      "notes": [],
+      "availability": [
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsim/sphinxsim/config/schemas.py",
+            "range": [
+              119,
+              125
+            ],
+            "contains_all": [
+              "dimensionality must match",
+              "upper_bound must be greater"
+            ]
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "a079ee8965af7e7e13d7a6a41456a737cabe8790",
+            "744f88f732af872cde7eb101e3e0105d1ed7b27a"
+          ],
+          "partial_chunk_ids": [
+            "a079ee8965af7e7e13d7a6a41456a737cabe8790",
+            "744f88f732af872cde7eb101e3e0105d1ed7b27a"
+          ]
+        }
+      ],
+      "exact_evidence_available": true,
+      "primary_score_eligible": true
+    },
+    {
+      "id": "C-12",
+      "group": "C",
+      "category": "schema",
+      "question": "What simulation_type values are explicitly allowed by the SPHinXsim SimulationType enum?",
+      "requirements": [
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsim/sphinxsim/config/schemas.py",
+          "range": [
+            17,
+            19
+          ],
+          "contains_all": [
+            "fluid_dynamics",
+            "continuum_dynamics"
+          ]
+        }
+      ],
+      "evidence_mode": "ALL_OF",
+      "evidence_scope": "single_evidence",
+      "oracle_status": "CURRENT_SOURCE_VERIFIED",
+      "oracle_provenance": "Newv1 source-inspected before ranking",
+      "notes": [],
+      "availability": [
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsim/sphinxsim/config/schemas.py",
+            "range": [
+              17,
+              19
+            ],
+            "contains_all": [
+              "fluid_dynamics",
+              "continuum_dynamics"
+            ]
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "a0fd3b39af08402b45dcb705abcbeb6fd1fa6535"
+          ],
+          "partial_chunk_ids": [
+            "a0fd3b39af08402b45dcb705abcbeb6fd1fa6535"
+          ]
+        }
+      ],
+      "exact_evidence_available": true,
+      "primary_score_eligible": true
+    },
+    {
+      "id": "C-13",
+      "group": "C",
+      "category": "schema",
+      "question": "Which material names are enumerated by MaterialType, including J2 plasticity and multiphase fluids?",
+      "requirements": [
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsim/sphinxsim/config/schemas.py",
+          "range": [
+            85,
+            94
+          ],
+          "contains_all": [
+            "j2_plasticity",
+            "weakly_compressible_multi_phase"
+          ]
+        }
+      ],
+      "evidence_mode": "ALL_OF",
+      "evidence_scope": "single_evidence",
+      "oracle_status": "CURRENT_SOURCE_VERIFIED",
+      "oracle_provenance": "Newv1 source-inspected before ranking",
+      "notes": [],
+      "availability": [
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsim/sphinxsim/config/schemas.py",
+            "range": [
+              85,
+              94
+            ],
+            "contains_all": [
+              "j2_plasticity",
+              "weakly_compressible_multi_phase"
+            ]
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "38c7454ee9811e1f973c467aab3abdb29a36c5a1"
+          ],
+          "partial_chunk_ids": [
+            "38c7454ee9811e1f973c467aab3abdb29a36c5a1"
+          ]
+        }
+      ],
+      "exact_evidence_available": true,
+      "primary_score_eligible": true
+    },
+    {
+      "id": "C-14",
+      "group": "C",
+      "category": "schema",
+      "question": "What default acoustic and advection CFL values and kernel correction options does FluidDynamicsSolverConfig define?",
+      "requirements": [
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsim/sphinxsim/config/schemas.py",
+          "range": [
+            933,
+            941
+          ],
+          "contains_all": [
+            "default=0.6",
+            "default=0.25",
+            "kernel_correction"
+          ]
+        }
+      ],
+      "evidence_mode": "ALL_OF",
+      "evidence_scope": "single_evidence",
+      "oracle_status": "CURRENT_SOURCE_VERIFIED",
+      "oracle_provenance": "Newv1 source-inspected before ranking",
+      "notes": [],
+      "availability": [
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsim/sphinxsim/config/schemas.py",
+            "range": [
+              933,
+              941
+            ],
+            "contains_all": [
+              "default=0.6",
+              "default=0.25",
+              "kernel_correction"
+            ]
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "df5cefbace1468cc53c5f951cc6686536dfbd29b"
+          ],
+          "partial_chunk_ids": [
+            "df5cefbace1468cc53c5f951cc6686536dfbd29b"
+          ]
+        }
+      ],
+      "exact_evidence_available": true,
+      "primary_score_eligible": true
+    },
+    {
+      "id": "C-15",
+      "group": "C",
+      "category": "json_configuration",
+      "question": "Which simulation type and particle spacing are set in the current 2D dambreak JSON example?",
+      "requirements": [
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsim/tests/test_simulation/test_2d_simulation/data/dambreak.json",
+          "range": [
+            19,
+            19
+          ],
+          "contains_all": [
+            "\"simulation_type\""
+          ]
+        },
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsim/tests/test_simulation/test_2d_simulation/data/dambreak.json",
+          "range": [
+            21,
+            23
+          ],
+          "contains_all": [
+            "\"global_resolution\""
+          ]
+        }
+      ],
+      "evidence_mode": "ALL_OF",
+      "evidence_scope": "multi_evidence",
+      "oracle_status": "CURRENT_SOURCE_VERIFIED",
+      "oracle_provenance": "Newv1 source-inspected before ranking",
+      "notes": [],
+      "availability": [
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsim/tests/test_simulation/test_2d_simulation/data/dambreak.json",
+            "range": [
+              19,
+              19
+            ],
+            "contains_all": [
+              "\"simulation_type\""
+            ]
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "7601ef63d2a691c0a2bb16715d06091fae5d652d"
+          ],
+          "partial_chunk_ids": [
+            "7601ef63d2a691c0a2bb16715d06091fae5d652d"
+          ]
+        },
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsim/tests/test_simulation/test_2d_simulation/data/dambreak.json",
+            "range": [
+              21,
+              23
+            ],
+            "contains_all": [
+              "\"global_resolution\""
+            ]
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "7601ef63d2a691c0a2bb16715d06091fae5d652d"
+          ],
+          "partial_chunk_ids": [
+            "7601ef63d2a691c0a2bb16715d06091fae5d652d"
+          ]
+        }
+      ],
+      "exact_evidence_available": true,
+      "primary_score_eligible": true
+    },
+    {
+      "id": "C-16",
+      "group": "C",
+      "category": "json_configuration",
+      "question": "Where does the heat_transfer JSON configure thermal conductivity and a thermal boundary?",
+      "requirements": [
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsim/tests/test_simulation/test_2d_simulation/data/heat_transfer.json",
+          "range": [
+            114,
+            114
+          ],
+          "contains_all": [
+            "\"thermal_conductivity\""
+          ]
+        },
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsim/tests/test_simulation/test_2d_simulation/data/heat_transfer.json",
+          "range": [
+            128,
+            128
+          ],
+          "contains_all": [
+            "\"thermal_boundary\""
+          ]
+        }
+      ],
+      "evidence_mode": "ALL_OF",
+      "evidence_scope": "multi_evidence",
+      "oracle_status": "CURRENT_SOURCE_VERIFIED",
+      "oracle_provenance": "Newv1 source-inspected before ranking",
+      "notes": [],
+      "availability": [
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsim/tests/test_simulation/test_2d_simulation/data/heat_transfer.json",
+            "range": [
+              114,
+              114
+            ],
+            "contains_all": [
+              "\"thermal_conductivity\""
+            ]
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "5113db98f82368ef9bec95befa25cdb59c7b3294"
+          ],
+          "partial_chunk_ids": [
+            "5113db98f82368ef9bec95befa25cdb59c7b3294"
+          ]
+        },
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsim/tests/test_simulation/test_2d_simulation/data/heat_transfer.json",
+            "range": [
+              128,
+              128
+            ],
+            "contains_all": [
+              "\"thermal_boundary\""
+            ]
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "5113db98f82368ef9bec95befa25cdb59c7b3294"
+          ],
+          "partial_chunk_ids": [
+            "5113db98f82368ef9bec95befa25cdb59c7b3294"
+          ]
+        }
+      ],
+      "exact_evidence_available": true,
+      "primary_score_eligible": true
+    },
+    {
+      "id": "C-17",
+      "group": "C",
+      "category": "json_configuration",
+      "question": "Which material does the milling JSON assign to its deformable body?",
+      "requirements": [
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsim/tests/test_simulation/test_2d_simulation/data/milling.json",
+          "range": [
+            107,
+            107
+          ],
+          "contains_all": [
+            "\"type\": \"j2_plasticity\""
+          ]
+        }
+      ],
+      "evidence_mode": "ALL_OF",
+      "evidence_scope": "single_evidence",
+      "oracle_status": "CURRENT_SOURCE_VERIFIED",
+      "oracle_provenance": "Newv1 source-inspected before ranking",
+      "notes": [],
+      "availability": [
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsim/tests/test_simulation/test_2d_simulation/data/milling.json",
+            "range": [
+              107,
+              107
+            ],
+            "contains_all": [
+              "\"type\": \"j2_plasticity\""
+            ]
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "109a3deb80e19432c6e3f93e1197468745bd3b76"
+          ],
+          "partial_chunk_ids": [
+            "109a3deb80e19432c6e3f93e1197468745bd3b76"
+          ]
+        }
+      ],
+      "exact_evidence_available": true,
+      "primary_score_eligible": true
+    },
+    {
+      "id": "C-18",
+      "group": "C",
+      "category": "cli",
+      "question": "How does cmd_validate load a JSON configuration and return validation failures?",
+      "requirements": [
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsim/sphinxsim/cli.py",
+          "range": [
+            481,
+            486
+          ],
+          "contains_all": [
+            "_load_config",
+            "if rc != 0"
+          ]
+        }
+      ],
+      "evidence_mode": "ALL_OF",
+      "evidence_scope": "single_evidence",
+      "oracle_status": "CURRENT_SOURCE_VERIFIED",
+      "oracle_provenance": "Newv1 source-inspected before ranking",
+      "notes": [],
+      "availability": [
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsim/sphinxsim/cli.py",
+            "range": [
+              481,
+              486
+            ],
+            "contains_all": [
+              "_load_config",
+              "if rc != 0"
+            ]
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "27ef5d3666b77efebe0e73948637d47339440b87"
+          ],
+          "partial_chunk_ids": [
+            "27ef5d3666b77efebe0e73948637d47339440b87"
+          ]
+        }
+      ],
+      "exact_evidence_available": true,
+      "primary_score_eligible": true
+    },
+    {
+      "id": "C-19",
+      "group": "C",
+      "category": "cli",
+      "question": "How does cmd_run choose the dimension-specific C++ extension before running a simulation?",
+      "requirements": [
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsim/sphinxsim/cli.py",
+          "range": [
+            531,
+            543
+          ],
+          "contains_all": [
+            "_config_spatial_dim",
+            "load_sphinxsys_core_nd"
+          ]
+        }
+      ],
+      "evidence_mode": "ALL_OF",
+      "evidence_scope": "single_evidence",
+      "oracle_status": "CURRENT_SOURCE_VERIFIED",
+      "oracle_provenance": "Newv1 source-inspected before ranking",
+      "notes": [],
+      "availability": [
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsim/sphinxsim/cli.py",
+            "range": [
+              531,
+              543
+            ],
+            "contains_all": [
+              "_config_spatial_dim",
+              "load_sphinxsys_core_nd"
+            ]
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "a161a0ca44b6c990b87a5d657b548fe808f94a11"
+          ],
+          "partial_chunk_ids": [
+            "a161a0ca44b6c990b87a5d657b548fe808f94a11"
+          ]
+        }
+      ],
+      "exact_evidence_available": true,
+      "primary_score_eligible": true
+    },
+    {
+      "id": "C-20",
+      "group": "C",
+      "category": "cli",
+      "question": "Which implementation handles CLI configuration generation from a description?",
+      "requirements": [
+        {
+          "kind": "symbol",
+          "path": "repos/SPHinXsim/sphinxsim/cli.py",
+          "symbol": "cmd_generate"
+        }
+      ],
+      "evidence_mode": "ALL_OF",
+      "evidence_scope": "single_evidence",
+      "oracle_status": "CURRENT_SOURCE_VERIFIED",
+      "oracle_provenance": "Newv1 source-inspected before ranking",
+      "notes": [],
+      "availability": [
+        {
+          "criterion": {
+            "kind": "symbol",
+            "path": "repos/SPHinXsim/sphinxsim/cli.py",
+            "symbol": "cmd_generate"
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "70c3d790b1c5900bcdfeb7cef702a8b4e3f6ed88"
+          ],
+          "partial_chunk_ids": []
+        }
+      ],
+      "exact_evidence_available": true,
+      "primary_score_eligible": true
+    },
+    {
+      "id": "C-21",
+      "group": "C",
+      "category": "documentation_to_source",
+      "question": "What does the CLI guide say about Validate and which source handler performs it?",
+      "requirements": [
+        {
+          "kind": "section_title",
+          "path": "repos/SPHinXsim/docs/cli-usage.md",
+          "role": "documentation",
+          "value": "Validate"
+        },
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsim/sphinxsim/cli.py",
+          "range": [
+            481,
+            486
+          ],
+          "contains_all": [
+            "_load_config"
+          ]
+        }
+      ],
+      "evidence_mode": "ALL_OF",
+      "evidence_scope": "multi_evidence",
+      "oracle_status": "CURRENT_SOURCE_VERIFIED",
+      "oracle_provenance": "Newv1 source-inspected before ranking",
+      "notes": [],
+      "availability": [
+        {
+          "criterion": {
+            "kind": "section_title",
+            "path": "repos/SPHinXsim/docs/cli-usage.md",
+            "role": "documentation",
+            "value": "Validate"
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "doc-2638bd5b19a59c2fb6cb2fb22d117a2dc7493627cbfaae46712e79170817d6a1"
+          ],
+          "partial_chunk_ids": []
+        },
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsim/sphinxsim/cli.py",
+            "range": [
+              481,
+              486
+            ],
+            "contains_all": [
+              "_load_config"
+            ]
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "27ef5d3666b77efebe0e73948637d47339440b87"
+          ],
+          "partial_chunk_ids": [
+            "27ef5d3666b77efebe0e73948637d47339440b87"
+          ]
+        }
+      ],
+      "exact_evidence_available": true,
+      "primary_score_eligible": true
+    },
+    {
+      "id": "C-22",
+      "group": "C",
+      "category": "documentation_to_source",
+      "question": "How does the dam break tutorial explain dual time stepping and where are advection and acoustic steps created in the current case?",
+      "requirements": [
+        {
+          "kind": "passage",
+          "path": "repos/SPHinXsys/tutorials/sphinx/examples/example1_2D_dambreak.rst",
+          "role": "documentation",
+          "value": "dual-criteria time-stepping"
+        },
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsys/tests/2d_examples/test_2d_dambreak/Dambreak.cpp",
+          "range": [
+            101,
+            104
+          ],
+          "contains_all": []
+        }
+      ],
+      "evidence_mode": "ALL_OF",
+      "evidence_scope": "multi_evidence",
+      "oracle_status": "CURRENT_SOURCE_VERIFIED",
+      "oracle_provenance": "Newv1 source-inspected before ranking",
+      "notes": [],
+      "availability": [
+        {
+          "criterion": {
+            "kind": "passage",
+            "path": "repos/SPHinXsys/tutorials/sphinx/examples/example1_2D_dambreak.rst",
+            "role": "documentation",
+            "value": "dual-criteria time-stepping"
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "doc-d68052372ae8edbbec45ab9870dc345643a28337fe9d876271a873fe04e526db"
+          ],
+          "partial_chunk_ids": []
+        },
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsys/tests/2d_examples/test_2d_dambreak/Dambreak.cpp",
+            "range": [
+              101,
+              104
+            ],
+            "contains_all": []
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "b6b3a5da3643aacebfd2108c7b95182856968630"
+          ],
+          "partial_chunk_ids": [
+            "b6b3a5da3643aacebfd2108c7b95182856968630"
+          ]
+        }
+      ],
+      "exact_evidence_available": true,
+      "primary_score_eligible": true
+    },
+    {
+      "id": "C-23",
+      "group": "C",
+      "category": "documentation_to_source",
+      "question": "How does the Linux installation guide install extensions and how does the Python loader search dimension-specific modules?",
+      "requirements": [
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsim/docs/installation-linux.md",
+          "range": [
+            67,
+            71
+          ],
+          "contains_all": [
+            "cmake --install"
+          ]
+        },
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsim/sphinxsim/bindings/loader.py",
+          "range": [
+            65,
+            98
+          ],
+          "contains_all": [
+            "importlib.import_module"
+          ]
+        }
+      ],
+      "evidence_mode": "ALL_OF",
+      "evidence_scope": "multi_evidence",
+      "oracle_status": "CURRENT_SOURCE_VERIFIED",
+      "oracle_provenance": "Newv1 source-inspected before ranking",
+      "notes": [],
+      "availability": [
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsim/docs/installation-linux.md",
+            "range": [
+              67,
+              71
+            ],
+            "contains_all": [
+              "cmake --install"
+            ]
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "doc-51434e0321591b37bd950bd0e194f565c028290eb0d90dc288893690b2907511"
+          ],
+          "partial_chunk_ids": [
+            "doc-51434e0321591b37bd950bd0e194f565c028290eb0d90dc288893690b2907511"
+          ]
+        },
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsim/sphinxsim/bindings/loader.py",
+            "range": [
+              65,
+              98
+            ],
+            "contains_all": [
+              "importlib.import_module"
+            ]
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "ad2ff3b485e4d83b62fcd82ae40354f4c521d526"
+          ],
+          "partial_chunk_ids": [
+            "ad2ff3b485e4d83b62fcd82ae40354f4c521d526"
+          ]
+        }
+      ],
+      "exact_evidence_available": true,
+      "primary_score_eligible": true
+    },
+    {
+      "id": "C-24",
+      "group": "C",
+      "category": "cross_repository",
+      "question": "How does SPHinXsim construct a weakly compressible fluid material and where is its SPHinXsys constructor?",
+      "requirements": [
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsim/sphinxsim/sph_simulation/common_builder/material_builder.cpp",
+          "range": [
+            46,
+            52
+          ],
+          "contains_all": [
+            "defineMatterMaterial<WeaklyCompressibleFluid>"
+          ]
+        },
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsys/src/shared/materials/weakly_compressible_fluid.cpp",
+          "range": [
+            8,
+            12
+          ],
+          "contains_all": []
+        }
+      ],
+      "evidence_mode": "ALL_OF",
+      "evidence_scope": "multi_evidence",
+      "oracle_status": "CURRENT_SOURCE_VERIFIED",
+      "oracle_provenance": "Newv1 source-inspected before ranking",
+      "notes": [],
+      "availability": [
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsim/sphinxsim/sph_simulation/common_builder/material_builder.cpp",
+            "range": [
+              46,
+              52
+            ],
+            "contains_all": [
+              "defineMatterMaterial<WeaklyCompressibleFluid>"
+            ]
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "bb1ed9279c02c8dcd235c091cd22eac4ee690949"
+          ],
+          "partial_chunk_ids": [
+            "bb1ed9279c02c8dcd235c091cd22eac4ee690949"
+          ]
+        },
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsys/src/shared/materials/weakly_compressible_fluid.cpp",
+            "range": [
+              8,
+              12
+            ],
+            "contains_all": []
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "f51ee90bc1469f642b4b109cbcd55484a8101af4"
+          ],
+          "partial_chunk_ids": [
+            "f51ee90bc1469f642b4b109cbcd55484a8101af4"
+          ]
+        }
+      ],
+      "exact_evidence_available": true,
+      "primary_score_eligible": true
+    },
+    {
+      "id": "C-25",
+      "group": "C",
+      "category": "cross_repository",
+      "question": "Where does SPHinXsim instantiate J2Plasticity and where does SPHinXsys implement its shear return mapping?",
+      "requirements": [
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsim/sphinxsim/sph_simulation/common_builder/material_builder.cpp",
+          "range": [
+            139,
+            141
+          ],
+          "contains_all": [
+            "defineMatterMaterial<J2Plasticity>"
+          ]
+        },
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsys/src/shared/materials/general_continuum.cpp",
+          "range": [
+            150,
+            158
+          ],
+          "contains_all": []
+        }
+      ],
+      "evidence_mode": "ALL_OF",
+      "evidence_scope": "multi_evidence",
+      "oracle_status": "CURRENT_SOURCE_VERIFIED",
+      "oracle_provenance": "Newv1 source-inspected before ranking",
+      "notes": [],
+      "availability": [
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsim/sphinxsim/sph_simulation/common_builder/material_builder.cpp",
+            "range": [
+              139,
+              141
+            ],
+            "contains_all": [
+              "defineMatterMaterial<J2Plasticity>"
+            ]
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "bb1ed9279c02c8dcd235c091cd22eac4ee690949"
+          ],
+          "partial_chunk_ids": [
+            "bb1ed9279c02c8dcd235c091cd22eac4ee690949"
+          ]
+        },
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsys/src/shared/materials/general_continuum.cpp",
+            "range": [
+              150,
+              158
+            ],
+            "contains_all": []
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "d091f65f36e82e74625aa8a0f94c07c70ba59f38"
+          ],
+          "partial_chunk_ids": [
+            "d091f65f36e82e74625aa8a0f94c07c70ba59f38"
+          ]
+        }
+      ],
+      "exact_evidence_available": true,
+      "primary_score_eligible": true
+    },
+    {
+      "id": "C-26",
+      "group": "C",
+      "category": "cross_repository",
+      "question": "How is thermal diffusion wired through the SPHinXsim thermal dynamics builder to SPHinXsys IsotropicDiffusion?",
+      "requirements": [
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsim/sphinxsim/sph_simulation/dynamics_builder/thermal_dynamics/thermal_dynamics_builder.cpp",
+          "range": [
+            33,
+            34
+          ],
+          "contains_all": [
+            "DiffusionRelaxationCK, RungeKutta1stStage, IsotropicDiffusion"
+          ]
+        },
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsys/src/shared/materials/diffusion_reaction.cpp",
+          "range": [
+            21,
+            25
+          ],
+          "contains_all": []
+        }
+      ],
+      "evidence_mode": "ALL_OF",
+      "evidence_scope": "multi_evidence",
+      "oracle_status": "CURRENT_SOURCE_VERIFIED",
+      "oracle_provenance": "Newv1 source-inspected before ranking",
+      "notes": [],
+      "availability": [
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsim/sphinxsim/sph_simulation/dynamics_builder/thermal_dynamics/thermal_dynamics_builder.cpp",
+            "range": [
+              33,
+              34
+            ],
+            "contains_all": [
+              "DiffusionRelaxationCK, RungeKutta1stStage, IsotropicDiffusion"
+            ]
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "2015e21b3d9045d3707d5b22f391bf9ee9d25440"
+          ],
+          "partial_chunk_ids": [
+            "2015e21b3d9045d3707d5b22f391bf9ee9d25440"
+          ]
+        },
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsys/src/shared/materials/diffusion_reaction.cpp",
+            "range": [
+              21,
+              25
+            ],
+            "contains_all": []
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "3d860a0e9191d1e084e02773dd5d8d1e3651c9bf"
+          ],
+          "partial_chunk_ids": [
+            "3d860a0e9191d1e084e02773dd5d8d1e3651c9bf"
+          ]
+        }
+      ],
+      "exact_evidence_available": true,
+      "primary_score_eligible": true
+    },
+    {
+      "id": "C-27",
+      "group": "C",
+      "category": "cross_repository",
+      "question": "Where does SPHinXsim invoke particle relaxation and where does SPHinXsys compute the inner relaxation residual?",
+      "requirements": [
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsim/sphinxsim/sph_simulation/sph_simulation.cpp",
+          "range": [
+            85,
+            90
+          ],
+          "contains_all": [
+            "runRelaxation"
+          ]
+        },
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsys/src/shared/particle_dynamics/relax_dynamics/relax_stepping.cpp",
+          "range": [
+            22,
+            32
+          ],
+          "contains_all": [
+            "residual_[index_i]"
+          ]
+        }
+      ],
+      "evidence_mode": "ALL_OF",
+      "evidence_scope": "multi_evidence",
+      "oracle_status": "CURRENT_SOURCE_VERIFIED",
+      "oracle_provenance": "Newv1 source-inspected before ranking",
+      "notes": [],
+      "availability": [
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsim/sphinxsim/sph_simulation/sph_simulation.cpp",
+            "range": [
+              85,
+              90
+            ],
+            "contains_all": [
+              "runRelaxation"
+            ]
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "451aa8c65d1a9ef0896b497082e6847b4ee5be04"
+          ],
+          "partial_chunk_ids": [
+            "451aa8c65d1a9ef0896b497082e6847b4ee5be04"
+          ]
+        },
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsys/src/shared/particle_dynamics/relax_dynamics/relax_stepping.cpp",
+            "range": [
+              22,
+              32
+            ],
+            "contains_all": [
+              "residual_[index_i]"
+            ]
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "7bf683e011a3a03041d752f1afd6a84f61fd43f9"
+          ],
+          "partial_chunk_ids": [
+            "7bf683e011a3a03041d752f1afd6a84f61fd43f9"
+          ]
+        }
+      ],
+      "exact_evidence_available": true,
+      "primary_score_eligible": true
+    },
+    {
+      "id": "C-28",
+      "group": "C",
+      "category": "capability_boundary",
+      "question": "Which two simulation categories are declared in SPHinXsim and how does C++ dispatch them without proving runtime success?",
+      "requirements": [
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsim/sphinxsim/config/schemas.py",
+          "range": [
+            17,
+            19
+          ],
+          "contains_all": []
+        },
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsim/sphinxsim/sph_simulation/sph_simulation.cpp",
+          "range": [
+            125,
+            137
+          ],
+          "contains_all": []
+        }
+      ],
+      "evidence_mode": "ALL_OF",
+      "evidence_scope": "multi_evidence",
+      "oracle_status": "CURRENT_SOURCE_VERIFIED",
+      "oracle_provenance": "Newv1 source-inspected before ranking",
+      "notes": [
+        "Static positive interface evidence only; no runtime simulation guarantee."
+      ],
+      "availability": [
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsim/sphinxsim/config/schemas.py",
+            "range": [
+              17,
+              19
+            ],
+            "contains_all": []
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "a0fd3b39af08402b45dcb705abcbeb6fd1fa6535"
+          ],
+          "partial_chunk_ids": [
+            "a0fd3b39af08402b45dcb705abcbeb6fd1fa6535"
+          ]
+        },
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsim/sphinxsim/sph_simulation/sph_simulation.cpp",
+            "range": [
+              125,
+              137
+            ],
+            "contains_all": []
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "16fde400786243ee2f5c0f8407afd2541d840a20"
+          ],
+          "partial_chunk_ids": [
+            "16fde400786243ee2f5c0f8407afd2541d840a20"
+          ]
+        }
+      ],
+      "exact_evidence_available": true,
+      "primary_score_eligible": true
+    },
+    {
+      "id": "C-29",
+      "group": "C",
+      "category": "capability_boundary",
+      "question": "Does SPHinXsys electrophysiology implementation by itself establish an exposed SPHinXsim simulation type?",
+      "requirements": [
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsys/src/shared/particle_dynamics/electro_physiology/electro_physiology.cpp",
+          "range": [
+            30,
+            34
+          ],
+          "contains_all": []
+        },
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsim/sphinxsim/config/schemas.py",
+          "range": [
+            17,
+            19
+          ],
+          "contains_all": []
+        }
+      ],
+      "evidence_mode": "ALL_OF",
+      "evidence_scope": "multi_evidence",
+      "oracle_status": "CURRENT_SOURCE_VERIFIED",
+      "oracle_provenance": "Newv1 source-inspected before ranking",
+      "notes": [
+        "No: backend implementation plus two-type enum is a boundary probe, not proof of absence throughout arbitrary APIs. Scoped audit found no named electrophysiology exposure."
+      ],
+      "availability": [
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsys/src/shared/particle_dynamics/electro_physiology/electro_physiology.cpp",
+            "range": [
+              30,
+              34
+            ],
+            "contains_all": []
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "23e5d871a13f2e861e3111117b47071c95ff6593"
+          ],
+          "partial_chunk_ids": [
+            "23e5d871a13f2e861e3111117b47071c95ff6593"
+          ]
+        },
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsim/sphinxsim/config/schemas.py",
+            "range": [
+              17,
+              19
+            ],
+            "contains_all": []
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "a0fd3b39af08402b45dcb705abcbeb6fd1fa6535"
+          ],
+          "partial_chunk_ids": [
+            "a0fd3b39af08402b45dcb705abcbeb6fd1fa6535"
+          ]
+        }
+      ],
+      "exact_evidence_available": true,
+      "primary_score_eligible": true
+    },
+    {
+      "id": "C-30",
+      "group": "C",
+      "category": "capability_boundary",
+      "question": "Is the SPHinXsim interactive shell command the same thing as the SPHinXsys physical shell time-step model?",
+      "requirements": [
+        {
+          "kind": "symbol",
+          "path": "repos/SPHinXsim/sphinxsim/cli.py",
+          "symbol": "cmd_shell"
+        },
+        {
+          "kind": "source_range",
+          "path": "repos/SPHinXsys/src/shared/particle_dynamics/solid_dynamics/thin_structure_dynamics.cpp",
+          "range": [
+            42,
+            54
+          ],
+          "contains_all": []
+        }
+      ],
+      "evidence_mode": "ALL_OF",
+      "evidence_scope": "multi_evidence",
+      "oracle_status": "CURRENT_SOURCE_VERIFIED",
+      "oracle_provenance": "Newv1 source-inspected before ranking",
+      "notes": [
+        "CLI interactive shell and structural shell are different concepts; no claim of exposed shell solver."
+      ],
+      "availability": [
+        {
+          "criterion": {
+            "kind": "symbol",
+            "path": "repos/SPHinXsim/sphinxsim/cli.py",
+            "symbol": "cmd_shell"
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "b20a9cb82bc1c0c84bfac29fb9e1e7c622f1b3b1"
+          ],
+          "partial_chunk_ids": []
+        },
+        {
+          "criterion": {
+            "kind": "source_range",
+            "path": "repos/SPHinXsys/src/shared/particle_dynamics/solid_dynamics/thin_structure_dynamics.cpp",
+            "range": [
+              42,
+              54
+            ],
+            "contains_all": []
+          },
+          "available": true,
+          "matching_chunk_ids": [
+            "9f671f59d2fa3099c97638e9d5d544a0d01a0ce0"
+          ],
+          "partial_chunk_ids": [
+            "9f671f59d2fa3099c97638e9d5d544a0d01a0ce0"
+          ]
+        }
+      ],
+      "exact_evidence_available": true,
+      "primary_score_eligible": true
+    }
+  ]
+}

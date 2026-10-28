@@ -214,6 +214,12 @@ class RetrievalV1:
                 record["source_path"],
                 record.get("symbol") or record.get("section_title"),
             )
+            if record.get("node_type") in {"function_definition", "method_declaration"}:
+                # A name identifies several overloads and same-named methods.
+                # Equal physical definitions still collapse, even with distinct IDs.
+                evidence_key += (
+                    record.get("start_line"), record.get("end_line"), record["content"],
+                )
             if evidence_key in seen_evidence:
                 continue
             seen_evidence.add(evidence_key)

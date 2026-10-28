@@ -1,0 +1,16 @@
+{
+  "specification_sha256": "bac0b31b74410eaff00246e628187ee07c4aaefb8747ad076f090393b71d1ab7",
+  "source_review_sha256": "f06229cb4a7300c67be08f7faf211de6503e9c13e122333feb296ad334575b9c",
+  "semantic_sha256": "2d6d446c66f77c2b86fa94eacc5897ebae12d143d15b28fb63740d5b351c41ad",
+  "frozen_before_any_retrieval": true,
+  "new_project_files": {
+    "tests/retrieval_benchmarks/combined_step_1_6_v2.json": "6fd5473290584c57d260d72d738bd27e971efd211a0602e0a4e818815ba22fdd",
+    "tests/retrieval_benchmarks/documentation_40_semantic_supplement_v1.json": "2d6d446c66f77c2b86fa94eacc5897ebae12d143d15b28fb63740d5b351c41ad"
+  },
+  "counts": {
+    "A": 40,
+    "B": 14,
+    "C": 30,
+    "D": 4
+  }
+}

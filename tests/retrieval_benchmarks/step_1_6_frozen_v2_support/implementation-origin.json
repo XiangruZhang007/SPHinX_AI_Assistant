@@ -1,0 +1,23 @@
+{
+  "archive": "/home/zhang/Projects/SPHinX_AI_Assistant_artifacts/retrieval_evaluation_results/step_1_6_combined_20261027T211957Z",
+  "source_components": {
+    "evaluate.py": "79f84a69ca231353e44d9a092e289c81660716e23d9999731fd760b30fb108fe",
+    "criteria.py": "d9a126dbe4228fb3b9d6740c48d15ded9a086eef4d07161b67229ff08e287364",
+    "run_evaluation.py": "cdb24c14a3ad3a48f90485d1aeeeb38adc61d946f1b030072948417633966434",
+    "finish_evaluation.py": "d72aa6b12415892092dc8945c09c0f9d3692e3c5f1eca37a6040c82e18af47c4",
+    "source-review.json": "f06229cb4a7300c67be08f7faf211de6503e9c13e122333feb296ad334575b9c",
+    "semantic-supplement.json": "2d6d446c66f77c2b86fa94eacc5897ebae12d143d15b28fb63740d5b351c41ad",
+    "environment.json": "452a31ac2a534ec016865d088d7238d2579765a671650ffae5079b9c7d21b670",
+    "metrics.json": "44cbc533fd37a18df30f3af19704dac7825a42475db3f5bb65f1b4cbdd024524",
+    "historical-documentation-results.json": "d53bc51aebca8a58445026da946df33c7fa6106bde4630450e0ea08242c5abdf",
+    "oracle-limitations.json": "f0a811f4adb3f064cfa919ddcb5262ab864c8a736b3dd5e050e6c028181c30ec"
+  },
+  "criteria_file_byte_identical": true,
+  "worker_changes": [
+    "corpus paths supplied by independent parameters",
+    "print progress replaced by optional progress callback"
+  ],
+  "metric_function_source_unchanged": true,
+  "aggregation_diagnostic_block_source_unchanged": true,
+  "historical_results_not_embedded_in_oracles": true
+}
