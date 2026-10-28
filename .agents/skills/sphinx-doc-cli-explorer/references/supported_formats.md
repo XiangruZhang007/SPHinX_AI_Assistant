@@ -1,0 +1,11 @@
+# Capability interpretation
+
+`formats` generates the complete matrix from `src/skill_guided_retrieval/formats.py`, including extension/special-name patterns, text/binary classification, adapters, optional dependencies, presence, and allowed counts. Registration grants no file access. `NOT_PRESENT_IN_PINNED_REPOS` means absent in the real tracked-file inventory; synthetic tests demonstrate generic behavior rather than fabricated upstream coverage.
+
+UTF-8 registered text formats have exact bounded line reading and lexical search when approved, up to the configured source size limit. Markdown supports ATX/setext headings and skips fenced examples. RST supports basic underline/overline headings and ignores indented code/directive content. These conservative detectors do not fully interpret all directives, substitutions or embedded syntax. MDX/QMD/Rmd use the Markdown detector; AsciiDoc, Org, HTML and LaTeX use basic heading extraction, not rendering. Plain text and BibTeX use exact line reading; no bibliography entry parser is advertised.
+
+JSON/JSONL/CSV/TSV/TOML/INI have lightweight stdlib structure inspection. YAML/JSON5/JSONC/XML and special configuration filenames retain generic text access without an advertised schema parser. Notebook inspection parses JSON only; a returned cell carries its index/ID and exact decoded cell source rather than invented physical source line numbers. Raw notebook JSON can also be read with actual physical lines.
+
+Python symbols use AST ranges including decorators and nested qualified names. C/C++ symbol navigation uses the existing `tree_sitter_language_pack` when available; C headers use its C++ grammar and parser errors are reported. Other approved source languages use a lexical name window labeled `not_a_symbol_boundary`, not an AST. No code is imported or executed.
+
+Binary document families (PDF, modern/legacy Word, ODT/RTF/EPUB, PowerPoint/ODP, Excel/ODS) have an explicit future adapter interface and `REGISTERED_ADAPTER_UNAVAILABLE`. V1 does not extract these documents or claim locations. SVG/images are metadata-only. Archives, native libraries and serialized arrays/objects are unsupported; they are never unpacked, loaded, unpickled or decoded as ordinary text. No OCR or image interpretation is performed.

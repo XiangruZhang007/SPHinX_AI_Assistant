@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "documentation_config": "configs/documentation_scope.json",
+  "indexing_config": "configs/indexing_scope.json",
+  "curated_cli_files": [
+    "sphinxsim/cli.py",
+    "sphinxsim/json_format.py",
+    "sphinxsim/config/schemas.py",
+    "sphinxsim/config/update_patch.py"
+  ],
+  "expanded_documentation_directories": ["docs", "tutorials", "tests"],
+  "expanded_root_documentation": true,
+  "expanded_direct_cli_imports": true,
+  "expanded_cli_metadata_files": ["pyproject.toml"],
+  "excluded_directory_names": [".git", "__pycache__", ".venv", "build", "build-integrated", "node_modules"],
+  "excluded_prefixes": {"SPHinXsys": [], "SPHinXsim": ["sphinxsim/sphinxsys"]},
+  "max_source_bytes": 2000000,
+  "default_budget": {"search_operations": 4, "read_operations": 8, "files_explored": 64, "evidence_records": 24, "returned_characters": 16000, "max_section_characters": 4000, "reference_depth": 1}
+}
