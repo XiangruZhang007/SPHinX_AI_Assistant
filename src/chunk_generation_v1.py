@@ -322,7 +322,7 @@ def _raw_source_chunks(source_path: Path, language: str, repo_root: Path,
 
 
 def generate(project_root: Path, output_jsonl: Path, output_summary: Path, *,
-             identity_scheme: str = "legacy") -> dict[str, Any]:
+             identity_scheme: str = "legacy", file_observer=None) -> dict[str, Any]:
     """Generate Prototype V1 chunks from the standalone SPHinXsys source tree."""
     validate_identity_scheme(identity_scheme)
     repo_root = project_root / "repos" / "SPHinXsys"
@@ -333,6 +333,8 @@ def generate(project_root: Path, output_jsonl: Path, output_summary: Path, *,
     semantic_issues: list[dict[str, Any]] = []
 
     for source_path in _source_files(repo_root):
+        first_record = len(records)
+        native_chunks = []
         source_role = _source_role(repo_root, source_path)
         relative = _relative_path(project_root, source_path)
         try:
@@ -340,15 +342,20 @@ def generate(project_root: Path, output_jsonl: Path, output_summary: Path, *,
             if parser.parse(source_bytes).root_node.has_error:
                 parse_errors.append(relative)
             raw_chunks = _raw_source_chunks(source_path, "cpp", repo_root, "SPHinXsys", identity_scheme)
+            native_chunks = raw_chunks
             raw_chunks = recover_delegating_constructors(source_path, raw_chunks,
                 **_identity_options(repo_root, "SPHinXsys", identity_scheme))
         except Exception as error:  # Keep the demo run complete if one source is unsupported.
             skipped_files.append({"source_path": relative, "reason": f"{type(error).__name__}: {error}"})
+            if file_observer is not None:
+                file_observer(source_path, [], native_chunks, [], f"{type(error).__name__}: {error}")
             continue
 
         primary = [raw for raw in raw_chunks if raw["node_type"] in PRIMARY_NODE_TYPES]
         if source_role != "simulation_case":
             records.extend(_record_from_raw(raw, project_root, source_role) for raw in primary)
+            if file_observer is not None:
+                file_observer(source_path, records[first_record:], native_chunks, raw_chunks, None)
             continue
 
         # E1 is primary for commented simulation functions. Functions without valid
@@ -361,6 +368,8 @@ def generate(project_root: Path, output_jsonl: Path, output_summary: Path, *,
                 records.extend(sections)
             else:
                 records.append(_record_from_raw(raw, project_root, source_role))
+        if file_observer is not None:
+            file_observer(source_path, records[first_record:], native_chunks, raw_chunks, None)
 
     output_jsonl.parent.mkdir(parents=True, exist_ok=True)
     with output_jsonl.open("w", encoding="utf-8") as handle:
@@ -450,7 +459,7 @@ def _config_document_record(project_root: Path, source_path: Path, content: str)
 
 
 def generate_sphinxsim(project_root: Path, output_jsonl: Path, output_summary: Path, *,
-                      identity_scheme: str = "legacy") -> dict[str, Any]:
+                      identity_scheme: str = "legacy", file_observer=None) -> dict[str, Any]:
     """Generate SPHinXsim-specific V1 chunks while excluding its embedded subtree."""
     validate_identity_scheme(identity_scheme)
     repo_root = project_root / "repos" / "SPHinXsim"
@@ -460,6 +469,9 @@ def generate_sphinxsim(project_root: Path, output_jsonl: Path, output_summary: P
     parse_warnings: list[dict[str, str]] = []
 
     for source_path in _sphinxsim_files(repo_root):
+        first_record = len(records)
+        native_chunks = []
+        raw_chunks = []
         relative = _relative_path(project_root, source_path)
         suffix = source_path.suffix.lower()
         try:
@@ -469,19 +481,25 @@ def generate_sphinxsim(project_root: Path, output_jsonl: Path, output_summary: P
                 records.append(record)
                 if warning:
                     parse_warnings.append({"source_path": relative, "warning": warning})
-                continue
-
-            language = SIM_SOURCE_LANGUAGES[suffix]
-            if parsers[language].parse(content.encode("utf-8")).root_node.has_error:
-                parse_warnings.append({"source_path": relative, "warning": "Tree-sitter reported a parse error"})
-            raw_chunks = _raw_source_chunks(source_path, language, repo_root, "SPHinXsim", identity_scheme)
-            if language == "cpp":
-                raw_chunks = recover_delegating_constructors(source_path, raw_chunks,
-                    **_identity_options(repo_root, "SPHinXsim", identity_scheme))
+            else:
+                language = SIM_SOURCE_LANGUAGES[suffix]
+                if parsers[language].parse(content.encode("utf-8")).root_node.has_error:
+                    parse_warnings.append({"source_path": relative, "warning": "Tree-sitter reported a parse error"})
+                raw_chunks = _raw_source_chunks(source_path, language, repo_root, "SPHinXsim", identity_scheme)
+                native_chunks = raw_chunks
+                if language == "cpp":
+                    raw_chunks = recover_delegating_constructors(source_path, raw_chunks,
+                        **_identity_options(repo_root, "SPHinXsim", identity_scheme))
         except Exception as error:
             skipped_files.append({"source_path": relative, "reason": f"{type(error).__name__}: {error}"})
+            if file_observer is not None:
+                file_observer(source_path, records[first_record:], native_chunks, [], f"{type(error).__name__}: {error}")
             continue
 
+        if suffix == ".json":
+            if file_observer is not None:
+                file_observer(source_path, records[first_record:], [], [], None)
+            continue
         node_types = PYTHON_PRIMARY_NODE_TYPES if language == "python" else PRIMARY_NODE_TYPES
         role = _sphinxsim_source_role(repo_root, source_path)
         records.extend(
@@ -495,6 +513,8 @@ def generate_sphinxsim(project_root: Path, output_jsonl: Path, output_summary: P
                 for raw in data_definitions(source_path,
                     **_identity_options(repo_root, "SPHinXsim", identity_scheme))
             )
+        if file_observer is not None:
+            file_observer(source_path, records[first_record:], native_chunks, raw_chunks, None)
 
     output_jsonl.parent.mkdir(parents=True, exist_ok=True)
     with output_jsonl.open("w", encoding="utf-8") as handle:

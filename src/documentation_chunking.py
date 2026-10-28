@@ -400,7 +400,7 @@ def validate_records(records: list[dict], sources: dict[tuple[str, str], bytes])
 
 def generate_documentation(project_root: Path, output_jsonl: Path, output_summary: Path,
                            config_path: Path = DEFAULT_CONFIG, *, target_bytes: int = TARGET_BYTES,
-                           oversized_bytes: int = OVERSIZED_BYTES) -> dict:
+                           oversized_bytes: int = OVERSIZED_BYTES, file_observer=None) -> dict:
     """Validate in memory and staging, then publish via exclusive hard links.
 
     Each publication is atomic/no-clobber; the pair is NOT transactionally atomic.
@@ -441,6 +441,8 @@ def generate_documentation(project_root: Path, output_jsonl: Path, output_summar
                                         oversized_bytes=oversized_bytes)
         records.extend(chunks)
         reports.append(report)
+        if file_observer is not None:
+            file_observer(project_root / "repos" / repository / relative, chunks, [], [], None)
     validate_records(records, sources)
     summary = {"chunker_version": CHUNKER_VERSION, "document_count": len(sources),
                "total_chunk_count": len(records), "target_bytes": target_bytes,
