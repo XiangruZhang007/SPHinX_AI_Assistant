@@ -1,0 +1,187 @@
+{
+  "P2": {
+    "compatibility_policy": "exact canonical fingerprint equality; no partial invalidation",
+    "contract_version": 1,
+    "external_chunker_commit": "fb70922076c773d1865176329a03f67ff893fd90",
+    "extraction": {
+      "documentation_oversized_bytes": 4000,
+      "documentation_target_bytes": 3000,
+      "documentation_version": "documentation-v1.2",
+      "python_node_types": [
+        "class_definition",
+        "function_definition"
+      ],
+      "semantic_oversized_bytes": 5000,
+      "source_node_types": [
+        "function_definition",
+        "method_declaration"
+      ]
+    },
+    "identity_scheme": "portable-v1",
+    "implementation_files": {
+      "configs/documentation_scope.json": "34c81f94185111701fb219306fb0d1a8f4d0ae809d51e7a80081c279722ff690",
+      "configs/indexing_scope.json": "8d8578a230e9224ff7fab92aa4c90a2e75c2964ca0f0356b86238ead396e7c75",
+      "scripts/combine_candidate_corpus.py": "2695c489d9d2bc0009fa6ad078d7ab06015dabe469a06d8f80f20db747ea3bb3",
+      "scripts/corpus_snapshot.py": "505c9ddd7e6ef49292b25d221a7afa1df72022524632326beeb9f3853bc24b83",
+      "src/chunk_generation_v1.py": "eaa6c35f58ad368c4a787f3988acbe453221bb8571f766f242e2e3494255c846",
+      "src/chunk_identity.py": "d2b1c2f7c767e88037ce193bbb5a35951964a07a42ebb008521057bf057f95bc",
+      "src/corpus_snapshot.py": "b870c69fa647fb5489313a745712a8c85e9d0c371fe5ef3c1646c253ba6de4b7",
+      "src/corpus_snapshot_build.py": "369f798df9596a07a5028a06c84c8ccba6f8a7ce290d3f23482c84f087b9f81e",
+      "src/cpp_coverage.py": "aba5f27e8e69222ab1c774d22037d8d3d3c019fa5d266aba18e660aa0ddfe010",
+      "src/documentation_chunking.py": "355cddfe4455aa9c45695be21b212dfabc932116200755379013246f0ae66b65",
+      "src/indexing_scope.py": "4b261fc8972f20e9d6b53dc0f07908fad6bbcf91dc9f8481e52be574a56778c9"
+    },
+    "normalization": {
+      "documentation": "strict UTF8 original bytes",
+      "source": "Path.read_text UTF8 universal newlines; unchanged JSON convention"
+    },
+    "ordering": [
+      "sys discovery order/chunk order",
+      "sim discovery order/chunk order",
+      "documentation configuration order/chunk order"
+    ],
+    "record_schema": [
+      "byte_end",
+      "byte_start",
+      "chunk_id",
+      "chunk_type",
+      "content",
+      "end_line",
+      "node_type",
+      "parent_context",
+      "repository",
+      "source_path",
+      "source_role",
+      "start_line",
+      "symbol"
+    ],
+    "runtime": {
+      "packages": {
+        "tree-sitter": "0.25.2",
+        "tree-sitter-c-sharp": "0.23.5",
+        "tree-sitter-embedded-template": "0.25.0",
+        "tree-sitter-language-pack": "0.9.0",
+        "tree-sitter-yaml": "0.7.2",
+        "treesitter-chunker": "4.0.0"
+      },
+      "python": "3.12.3"
+    },
+    "serialization": "JSONL UTF8 ensure_ascii=False sort_keys=True newline=LF; array order preserved",
+    "snapshot_format": "ci-v2-snapshot-v1"
+  },
+  "P3": {
+    "files": {
+      "scripts/build_incremental_corpus.py": "51249f89fe27fd8e22c9e9a639f0f4578443fc9a636866cfeb1bb3428fefadb9",
+      "src/incremental_corpus.py": "d455658c2ad1e01183566bd6cffb74b025f485252f3d079867a4f6c2a2f1d5a6",
+      "tests/test_incremental_corpus.py": "0b14df4a0f7a56d9e4a80ce5fe94b875d082539435e735f0d93e925ad2c29f3b"
+    },
+    "purpose": "P3 research orchestration; separate from P2 compatibility",
+    "version": 1
+  },
+  "P4_1": {
+    "P3_orchestration": {
+      "files": {
+        "scripts/build_incremental_corpus.py": "51249f89fe27fd8e22c9e9a639f0f4578443fc9a636866cfeb1bb3428fefadb9",
+        "src/incremental_corpus.py": "d455658c2ad1e01183566bd6cffb74b025f485252f3d079867a4f6c2a2f1d5a6",
+        "tests/test_incremental_corpus.py": "0b14df4a0f7a56d9e4a80ce5fe94b875d082539435e735f0d93e925ad2c29f3b"
+      },
+      "purpose": "P3 research orchestration; separate from P2 compatibility",
+      "version": 1
+    },
+    "files": {
+      "scripts/research_baseline.py": "544a35fdd733aefdb8c93e473eaadb1ec41c39c03eaca82034ba53aed07be4e4",
+      "src/approval_evidence.py": "bc5063f3a6a1db22f89bc56d7765623a9ebb8e1860c3554d2f0fd91348a7d358",
+      "src/research_baseline.py": "00d7e5d5b8c0034102d14436dd4425e47486bb167c445abba391677f43015e72",
+      "src/research_quality.py": "ceeaaacf0213f7f46ef5f2a1a7adbcc51927a112d10dc11d69bdd2e6f77b0e77",
+      "tests/test_approval_evidence.py": "44717ac6ce825bfbd8c5e94ac612a3b981e42156319dfb36f5fa9d3681faf458",
+      "tests/test_research_baseline.py": "ad24875dc0899c774915d4c7662c65bf992ad32e80fdf9eec3775d0ca88d7d98"
+    },
+    "schema_version": 1
+  },
+  "external_chunker_commit": "fb70922076c773d1865176329a03f67ff893fd90",
+  "quality_policy": {
+    "R2_fingerprint": {
+      "fingerprint": "1b21c01ef077549c60ba17109cc9381d1172b6e483c707c146cb7d80bcaa3f6d",
+      "inputs": {
+        "exclusion_contract": {
+          "R1_defaults_unchanged": true,
+          "b": 0.75,
+          "exclude_exact_paths": [
+            "parent_context.original_function_chunk_id"
+          ],
+          "hash_seed": "0",
+          "invariants": [
+            "11370 corresponding R2 texts/counters/lengths exact",
+            "all R2 corpus statistics exact",
+            "all 11370 per-record diagnostic scores/boosts exact"
+          ],
+          "k1": 1.5,
+          "method": "Shallow independent parent-context view omitting the exact direct key; invoke unchanged R1 searchable text builder on a separate record view; source record is never mutated",
+          "new_factory_default": "r1",
+          "new_factory_versions": [
+            "r1",
+            "r2"
+          ],
+          "preserved": "All other R1 text bytes/JSON serialization, including line/byte context fields, source hex literals and identity-like labels in legitimate content",
+          "ranking_not_identity_neutral": "chunk_id tie-break retained",
+          "retriever_version": "r2-identity-neutral-v1",
+          "reuse": "R1 tokenize, _load_records, _bm25, boosts, SearchResult and search (including tie and dedup) inherited unchanged; R2 owns explicit indexing constructor",
+          "schema_version": 1,
+          "tolerance": null
+        },
+        "filters": "NONE; entire supplied combined corpus",
+        "implementation_files": {
+          "src/retrieval_v1.py": "54dfec072d2170ef1948bbbc2786867d7be002021b77daa9cd6ad40787900ccf",
+          "src/retrieval_v2.py": "e3d04427270744be8b5cc00d567c93ef3b2e231b6652d7226c21e36181fb0409"
+        },
+        "parameters": {
+          "b": 0.75,
+          "k1": 1.5
+        },
+        "ranking": "unchanged R1 search, chunk_id tie-break and evidence deduplication",
+        "runtime": {
+          "dependencies": "stdlib only; no third-party retrieval packages",
+          "hash_seed": "0",
+          "implementation": "CPython",
+          "machine": "aarch64",
+          "python": "3.12.3"
+        },
+        "schema_version": 1,
+        "scoring": "unchanged R1 _bm25, boosts and SearchResult.score",
+        "serialization": "SHA256 canonical UTF8 JSON, sorted keys, compact separators, no trailing newline",
+        "tokenizer": {
+          "CAMEL_FLAGS": 32,
+          "CAMEL_RE": "[A-Z]+(?=[A-Z][a-z]|\\d|$)|[A-Z]?[a-z]+|\\d+",
+          "TOKEN_FLAGS": 32,
+          "TOKEN_RE": "[A-Za-z][A-Za-z0-9_]*|\\d+",
+          "implementation": "unchanged src/retrieval_v1.py tokenize"
+        },
+        "version": "r2-identity-neutral-v1"
+      }
+    },
+    "acceptance": "Historical REVIEW_REQUIRED persists even with equal or improved scores.",
+    "applicability": "Keep frozen results unchanged. Source removal/range changes are separate diagnostics, not automatically ranking regressions.",
+    "automatic_reuse": false,
+    "benchmark_sha256": "bac0b31b74410eaff00246e628187ee07c4aaefb8747ad076f090393b71d1ab7",
+    "evaluation_implementation": {
+      "src/full_retrieval_regression.py": "1c8511219a96b91483e2c6183c8e310c8160f488d8c40a6d4eb37f8c7ed04a00",
+      "src/remediation_evaluation.py": "5a0a3618fa4b66405f19cd4cfc8d94e3f47effccbef35936277649eb0358aab6",
+      "src/retrieval_evaluation_criteria.py": "d9a126dbe4228fb3b9d6740c48d15ded9a086eef4d07161b67229ff08e287364",
+      "src/retrieval_evaluation_io.py": "b38f1da9eb401789cb80e737528b8e41c7b7f726489b82942f688d290a4742d5",
+      "src/retrieval_evaluation_reports.py": "05e0133f1ef0832584fcb5e1c4de0062460dab7e21c4a6173e8188be48a881c2",
+      "src/retrieval_identity_diagnostics.py": "cc8f8f9a40ec589389102eb05dc3bf456584f5943ea8651a5ed3388a83b1f2ac"
+    },
+    "historical_quality": "QUALITY_REVIEW_REQUIRED",
+    "new_losses": "Report every Hit5/Hit10 transition separately; no gain offsets a loss.",
+    "production_promotion": "NOT_AUTHORIZED",
+    "research_reuse": "Explicit candidate+parent+quality-bound authorization may allow isolated REVIEW_REQUIRED chains; never integrity, compatibility or parity bypass.",
+    "schema_version": 1,
+    "unassessed": "Non-designated fixtures remain recorded REVIEW_REQUIRED, never accepted quality."
+  },
+  "schema_version": 1,
+  "starting_checkpoint": "a96c6110ebd982915d9e7d9c86f6b9d7445770a1",
+  "upstreams": {
+    "SPHinXsim": "9cdae783e3ef3f8926c2174a0db89e96846befad",
+    "SPHinXsys": "4e686ee357de1cb798ac47eb760dd79e2fb407ff"
+  }
+}

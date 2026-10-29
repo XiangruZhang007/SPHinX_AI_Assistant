@@ -1,0 +1,6 @@
+{
+  "baselines": {},
+  "note": "No remotely published or approved baseline is configured. Add only separately reviewed immutable references and externally frozen authorization; candidates never update this file.",
+  "schema_version": 1,
+  "status": "BOOTSTRAP_REQUIRED"
+}
