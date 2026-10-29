@@ -310,8 +310,20 @@ def verify_candidate(project, root, expected_fingerprint):
     return report
 
 
+def _read_base(project, base, expected_fingerprint, baseline_format):
+    if baseline_format == 'p2':
+        return (verify_snapshot(base, expected_fingerprint),
+                read_json(base / 'manifest.json')['identity']['upstreams'])
+    if baseline_format == 'research':
+        # This is a strict format reader, not an injectable verification bypass.
+        from .research_baseline import verify_baseline
+        report = verify_baseline(project, base, expected_fingerprint)
+        return report, report['upstreams']
+    raise SnapshotError('Unsupported baseline format')
+
+
 def build_incremental(project, base, source_root, output, *, expected_fingerprint,
-                      research_only=False, expected_snapshot_id=None):
+                      research_only=False, expected_snapshot_id=None, baseline_format='p2'):
     """Build one manual candidate. No internal full rebuild and no cache repair."""
     project, base, source_root, output = map(Path, (project, base, source_root, output))
     if research_only is not True:
@@ -341,10 +353,13 @@ def build_incremental(project, base, source_root, output, *, expected_fingerprin
         actual_contract = current_contract(project)
         if digest(actual_contract) != expected_fingerprint:
             raise SnapshotError('Actual builder incompatible with independently expected fingerprint')
-        base_report = verify_snapshot(base, expected_fingerprint)
+        base_report, upstreams = _read_base(project, base, expected_fingerprint, baseline_format)
         if base_report['build_compatibility'] != 'COMPATIBLE':
             raise SnapshotError('Base snapshot is not COMPATIBLE')
-        if expected_snapshot_id is not None and base_report['snapshot_id'] != expected_snapshot_id:
+        base_id = base_report.get('baseline_id') or base_report.get('snapshot_id')
+        if baseline_format == 'research' and expected_snapshot_id is None:
+            raise SnapshotError('Research base requires independently expected baseline identity')
+        if expected_snapshot_id is not None and base_id != expected_snapshot_id:
             raise SnapshotError('Unexpected base snapshot identity')
         old_selection = read_json(base / 'selection.json')
         old_inventory = read_json(base / 'inventory.json')
@@ -440,8 +455,8 @@ def build_incremental(project, base, source_root, output, *, expected_fingerprin
                                 ('reuse-summary.json', summary), ('extraction-trace.json', events),
                                 ('build-contract.json', actual_contract), ('p3-orchestration-contract.json', p3_contract),
                                 ('base-verification.json', base_report),
-                                ('provenance.json', {'base_snapshot_id': base_report['snapshot_id'],
-                                                     'base_upstream_revisions': read_json(base / 'manifest.json')['identity']['upstreams'],
+                                ('provenance.json', {'base_snapshot_id': base_id,
+                                                     'base_upstream_revisions': upstreams,
                                                      'target_fixture_id': 'sha256-' + digest(selection),
                                                      'target_is_derived_fixture_not_upstream_commit': True,
                                                      'selection_sha256': digest(selection)})]:
@@ -453,7 +468,7 @@ def build_incremental(project, base, source_root, output, *, expected_fingerprin
             if digest(current_contract(project)) != expected_fingerprint or orchestration_contract(project) != p3_contract:
                 raise SnapshotError('Implementation/configuration changed during build')
             # Protect against concurrent changes to the base while it is consumed.
-            if verify_snapshot(base, expected_fingerprint) != base_report:
+            if _read_base(project, base, expected_fingerprint, baseline_format)[0] != base_report:
                 raise SnapshotError('Base snapshot changed during incremental build')
         validation.update({'build_compatibility': 'COMPATIBLE', 'retrieval_quality_status': 'QUALITY_REVIEW_REQUIRED',
                            'automatic_reuse': False, 'production_promotion': 'NOT_AUTHORIZED',
@@ -466,7 +481,7 @@ def build_incremental(project, base, source_root, output, *, expected_fingerprin
                    'timing_groups': 'discovery_hashing_and_comparison is the parent of source_discovery and file_hashing_metadata_and_comparison; finalization excluded from preseal elapsed; returned total includes publication'})
         deterministic = ('corpus.jsonl', 'selection.json', 'inventory.json', 'extraction-graph.json',
                          'change-manifest.json', 'reuse-summary.json', 'extraction-trace.json', 'provenance.json')
-        identity = {'base_snapshot_id': base_report['snapshot_id'], 'build_fingerprint': expected_fingerprint,
+        identity = {'base_snapshot_id': base_id, 'build_fingerprint': expected_fingerprint,
                     'orchestration_fingerprint': digest(p3_contract), 'target_fixture_id': 'sha256-' + digest(selection),
                     'artifacts': {name: _descriptor(target, name) for name in deterministic}}
         manifest = {'kind': 'p3-research-candidate', 'schema_version': 1,
