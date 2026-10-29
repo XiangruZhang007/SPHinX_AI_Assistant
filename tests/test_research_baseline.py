@@ -66,6 +66,16 @@ class ResearchBaselineTests(unittest.TestCase):
             mutate(self.source)
         candidate, full, output = (self.root / (prefix + str(number)) for prefix in ('C', 'F', 'S'))
         base = life.read_parent(P, parent, self.fp, baseline_format=parent_format)
+        # Freeze the external structural-only authorization before building.
+        policy_path = self.root / ('policy-' + str(number) + '.json')
+        if not policy_path.exists():
+            write_json(policy_path, {'schema_version': 1, 'mode': 'STRUCTURAL_ONLY',
+                'scope': {'experiment_id': 'predeclared-unit-fixture',
+                          'parent_baseline_id': base['baseline_id'],
+                          'target_source_state': 'sha256-' + digest(selected_files(P, self.source)),
+                          'build_fingerprint': self.fp, 'quality_policy_sha256': digest(self.policy)},
+                'quality_status': 'QUALITY_REVIEW_REQUIRED', 'automatic_reuse': False,
+                'production_promotion': 'NOT_AUTHORIZED'})
         if parent_format == 'p2':
             built = build_incremental(P, parent, self.source, candidate, expected_fingerprint=self.fp,
                                       research_only=True, expected_snapshot_id=base['baseline_id'])
@@ -81,14 +91,17 @@ class ResearchBaselineTests(unittest.TestCase):
                 'allow_quality_review': True}
         if approve:
             report = life.approve_baseline(P, candidate, parent, full, output,
-                    expected_fingerprint=self.fp, parent_format=parent_format, quality=quality, authorization=auth)
+                    expected_fingerprint=self.fp, parent_format=parent_format, quality=quality, authorization=auth,
+                    approval_policy=policy_path, expected_policy_sha256=file_digest(policy_path))
             return output, report, built
         return candidate, parent, full, output, quality, auth
 
     def reject_approval(self, inputs):
         candidate, parent, full, output, quality, auth = inputs
         return life.approve_baseline(P, candidate, parent, full, output,
-            expected_fingerprint=self.fp, parent_format='p2', quality=quality, authorization=auth)
+            expected_fingerprint=self.fp, parent_format='p2', quality=quality, authorization=auth,
+            approval_policy=self.root / 'policy-1.json',
+            expected_policy_sha256=file_digest(self.root / 'policy-1.json'))
 
     def test_three_generations_and_immediate_parent(self):
         s1, one, _ = self.generation(mutate=lambda r: (r / 'repos/SPHinXsys/src/a.cpp').write_text('int a() { return 7; }\n'))

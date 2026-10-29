@@ -21,7 +21,8 @@ from .incremental_corpus import (current_contract, orchestration_contract,
 KIND = 'p4-research-baseline'
 VERSION = 1
 P4_FILES = ('src/research_baseline.py', 'src/research_quality.py',
-            'scripts/research_baseline.py', 'tests/test_research_baseline.py')
+            'scripts/research_baseline.py', 'tests/test_research_baseline.py',
+            'src/approval_evidence.py', 'tests/test_approval_evidence.py')
 PARITY_FILES = ('corpus.jsonl', 'selection.json', 'inventory.json', 'extraction-graph.json')
 EXECUTION_FILES = {'execution.json', 'base-verification.json', 'validation.json', 'checksums.json'}
 
@@ -122,9 +123,30 @@ def verify_baseline(project, root, expected_fingerprint, expected_id=None):
     auth = read_json(root / 'authorization.json')
     if parity['status'] != 'PARITY_PASS' or parity['candidate_id'] != report['candidate_id']:
         raise SnapshotError('Missing passing parity decision')
+    if (set(parity.get('comparisons', {})) != set(PARITY_FILES) or
+            parity.get('full_reference_independently_built') is not True or
+            any(parity['comparisons'][n] != {'sha256': file_digest(root / n),
+                'exact_bytes_equal': True} for n in PARITY_FILES)):
+        raise SnapshotError('Invalid external parity artifact evidence')
     _check_decisions(auth, quality, report['candidate_id'], identity['parent']['baseline_id'],
                      file_digest(root / 'corpus.jsonl'), expected_fingerprint)
+    p41 = 'P4_1_NOT_VERIFIED'
+    if 'P4_1_evidence_sha256' in identity:
+        from .approval_evidence import verify_bundle
+        evidence = verify_bundle(project, root / 'approval-evidence',
+                                 expected_manifest_sha=identity['P4_1_evidence_sha256'])
+        if (evidence['candidate_id'] != report['candidate_id'] or
+                evidence['parent_baseline_id'] != identity['parent']['baseline_id'] or
+                evidence['source_state'] != identity['target_source_state'] or
+                evidence['candidate_corpus_sha256'] != file_digest(root / 'corpus.jsonl') or
+                read_json(root / 'approval-evidence/quality.json') != quality or
+                read_json(root / 'approval-evidence/authorization.json') != auth):
+            raise SnapshotError('Baseline/P4.1 evidence association mismatch')
+        p41 = evidence['status']
     return {**report, 'kind': KIND, 'baseline_id': metadata['baseline_id'],
+            'candidate_internal_parity': report['incremental_parity'],
+            'external_full_rebuild_parity': 'PARITY_PASS', 'research_baseline_parity': 'PARITY_PASS',
+            'P4_1_verification': p41, 'retrieval_evaluation': quality['assessment'],
             'generation': identity['generation'], 'package_checksum': receipt['package_checksum'],
             'upstreams': identity['upstreams'], 'research_use': 'RESEARCH_BASELINE_APPROVED',
             'ancestry_receipts': [*metadata['ancestry'], receipt]}
@@ -150,7 +172,12 @@ def read_parent(project, root, expected_fingerprint, *, baseline_format):
 def compare_full(project, candidate, full, expected_fingerprint):
     candidate, full = Path(candidate), Path(full)
     verified = verify_candidate(project, candidate, expected_fingerprint)
-    verify_snapshot(full, expected_fingerprint)
+    reference = verify_snapshot(full, expected_fingerprint)
+    if reference['build_compatibility'] != 'COMPATIBLE':
+        raise SnapshotError('Incompatible independent full reference')
+    if (read_json(full / 'manifest.json')['identity']['upstreams'] !=
+            read_json(candidate / 'provenance.json')['base_upstream_revisions']):
+        raise SnapshotError('Independent full reference upstream provenance mismatch')
     equality = {n: (candidate / n).read_bytes() == (full / n).read_bytes() for n in PARITY_FILES}
     if not all(equality.values()):
         raise SnapshotError('Failed full-rebuild parity: ' + str(equality))
@@ -183,7 +210,8 @@ def _check_decisions(auth, quality, candidate_id, parent_id, corpus_sha, fingerp
 
 
 def approve_baseline(project, candidate, parent, full, output, *, expected_fingerprint,
-                     parent_format, quality, authorization):
+                     parent_format, quality, authorization, approval_policy=None,
+                     expected_policy_sha256=None, evidence=None):
     """Explicit local research decision; validates actual immediate parent package."""
     candidate, parent, full, output = map(Path, (candidate, parent, full, output))
     if output.exists() or output.is_symlink() or not output.parent.is_dir():
@@ -211,6 +239,10 @@ def approve_baseline(project, candidate, parent, full, output, *, expected_finge
                 dest = stage / relative
                 dest.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copy2(path, dest)
+        from .approval_evidence import create_evidence
+        create_evidence(project, candidate, parent, full, stage / 'approval-evidence',
+                        quality, authorization, approval_policy, expected_policy_sha256,
+                        parent_report=base, evidence=evidence)
         decision = {'research_use': 'RESEARCH_BASELINE_APPROVED', 'automatic_reuse': False,
                     'production_promotion': 'NOT_AUTHORIZED', 'quality_status': quality['status']}
         for name, value in [('parity.json', parity), ('quality.json', quality),
@@ -225,6 +257,7 @@ def approve_baseline(project, candidate, parent, full, output, *, expected_finge
                     'upstreams': base['upstreams'], 'build_fingerprint': expected_fingerprint,
                     'P3_fingerprint': digest(read_json(stage / 'p3-orchestration-contract.json')),
                     'P4_fingerprint': digest(contract), 'payload_sha256': digest(payload), 'decision': decision}
+        identity['P4_1_evidence_sha256'] = file_digest(stage / 'approval-evidence/checksums.json')
         metadata = {'kind': KIND, 'schema_version': VERSION, 'baseline_id': 'sha256-' + digest(identity),
                     'identity': identity, 'ancestry': base['ancestry_receipts']}
         write_json(stage / 'baseline.json', metadata)
@@ -247,6 +280,43 @@ def build_next(project, base, source_root, output, *, expected_fingerprint, expe
     return build_incremental(project, base, source_root, output,
                              expected_fingerprint=expected_fingerprint, research_only=True,
                              expected_snapshot_id=expected_id, baseline_format='research')
+
+
+def revalidate_legacy(project, baseline, parent, full, output, *, expected_fingerprint,
+                      expected_id, parent_format, quality, authorization, approval_policy,
+                      expected_policy_sha256, evidence=None):
+    """Write a new sidecar; never alter a historical package or its decision."""
+    from .approval_evidence import create_evidence, verify_bundle
+    baseline, parent, output = map(Path, (baseline, parent, output))
+    prior = verify_baseline(project, baseline, expected_fingerprint, expected_id)
+    if prior['P4_1_verification'] != 'P4_1_NOT_VERIFIED':
+        raise SnapshotError('Expected a historical P4 package')
+    base = read_parent(project, parent, expected_fingerprint, baseline_format=parent_format)
+    if read_json(baseline / 'baseline.json')['identity']['parent']['baseline_id'] != base['baseline_id']:
+        raise SnapshotError('Historical revalidation parent mismatch')
+    _check_decisions(authorization, quality, prior['candidate_id'], base['baseline_id'],
+                     file_digest(baseline / 'corpus.jsonl'), expected_fingerprint)
+    compare_full(project, baseline, full, expected_fingerprint)
+    if output.exists() or output.is_symlink() or not output.parent.is_dir():
+        raise SnapshotError('Sidecar destination must be new')
+    for protected in (baseline, parent, Path(full), Path(project)):
+        if output.resolve().is_relative_to(protected.resolve()) or protected.resolve().is_relative_to(output.resolve()):
+            raise SnapshotError('Sidecar overlaps protected input')
+    with tempfile.TemporaryDirectory(prefix='.p41-revalidation-', dir=output.parent) as temporary:
+        stage = Path(temporary) / 'evidence'
+        create_evidence(project, baseline, parent, full, stage, quality, authorization,
+                        approval_policy, expected_policy_sha256, parent_report=base, evidence=evidence,
+                        legacy_subject={k: prior[k] for k in ('baseline_id', 'package_checksum')})
+        result = verify_bundle(project, stage)
+        if verify_baseline(project, baseline, expected_fingerprint, expected_id) != prior:
+            raise SnapshotError('Historical package changed during revalidation')
+        output.mkdir(exist_ok=False)
+        try:
+            os.replace(stage, output)
+        except BaseException:
+            output.rmdir()
+            raise
+    return {**result, 'historical_subject': {k: prior[k] for k in ('baseline_id', 'package_checksum')}}
 
 
 def package_baseline(project, root, archive, expected_fingerprint):
