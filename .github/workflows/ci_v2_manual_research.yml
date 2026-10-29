@@ -4,17 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       baseline_key:
-        description: Reviewed baseline registry key (initial registry is empty)
+        description: Reviewed schema-2 baseline registry key (configuration required)
         required: true
         type: string
-      profile:
-        description: Formal live mode is blocked pending provenance contract evolution
-        required: true
-        default: formal
-        type: choice
-        options:
-          - formal
-          - pinned-research
       sys_revision:
         description: Exact SPHinXsys commit (moving refs are rejected)
         required: true
@@ -39,7 +31,6 @@ jobs:
       GIT_TERMINAL_PROMPT: '0'
       GIT_CONFIG_NOSYSTEM: '1'
       BASELINE_KEY: ${{ inputs.baseline_key }}
-      PROFILE: ${{ inputs.profile }}
       SYS_REVISION: ${{ inputs.sys_revision }}
       SIM_REVISION: ${{ inputs.sim_revision }}
     steps:
@@ -54,8 +45,8 @@ jobs:
           architecture: arm64
       - name: Validate manual scope and trusted bootstrap configuration
         run: >-
-          python -B scripts/ci_v2_manual_research.py plan
-          --key "$BASELINE_KEY" --profile "$PROFILE"
+          python -B scripts/ci_v2_schema2_research.py plan
+          --key "$BASELINE_KEY"
           --sys-revision "$SYS_REVISION" --sim-revision "$SIM_REVISION"
           --output "$RUNNER_TEMP/p5a"
       - name: Prepare pinned extraction runtime
@@ -67,7 +58,7 @@ jobs:
           tools/treesitter-chunker/.venv/bin/python -m pip install -c configs/ci_v2_parser_requirements.txt -e tools/treesitter-chunker
       - name: Restore, build and evaluate research candidate
         run: >-
-          tools/treesitter-chunker/.venv/bin/python -B scripts/ci_v2_manual_research.py execute-plan
+          tools/treesitter-chunker/.venv/bin/python -B scripts/ci_v2_schema2_research.py execute-plan
           --plan "$RUNNER_TEMP/p5a/plan.json"
           --work "$RUNNER_TEMP/p5a-work" --output "$RUNNER_TEMP/p5a/run"
       - name: Upload candidate evidence or explicit failure report

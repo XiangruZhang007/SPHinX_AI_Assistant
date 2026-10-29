@@ -1,0 +1,6 @@
+{
+  "schema_version": 2,
+  "status": "BOOTSTRAP_REQUIRED",
+  "baselines": {},
+  "note": "Remote trust is unconfigured. Add an independently reviewed exact reference and expected_reference_sha256 only after explicit publication/selection authorization. Local P2 qualification is not global research approval."
+}
