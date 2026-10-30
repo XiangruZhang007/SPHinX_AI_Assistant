@@ -19,6 +19,7 @@ REGISTRY = c.ROOT / 'configs/ci_v2_schema2_trusted_baselines.json'
 RELEASE_REPOSITORY = 'XiangruZhang007/SPHinX_AI_Assistant'
 FORMATS = {'p2-snapshot-v1': (1, 'EXPLICIT_P2_BOOTSTRAP'),
            'schema2-research-baseline': (2, 'EXPLICIT_RESEARCH_BASELINE_REUSE')}
+DOWNLOAD_IMPLEMENTATION = 'atomic-no-clobber-v2'
 
 
 def validate_reference(ref, expected_sha, *, remote=False, controlled=False):
@@ -154,6 +155,8 @@ def _request(url, *, binary=False):
 def download(storage, destination, expected_sha):
     """Numeric immutable asset identity + externally pinned bytes, never latest."""
     import json
+    destination = Path(destination)
+    c.need(not destination.exists() and not destination.is_symlink(), 'INVALID_OUTPUT', 'Download destination must be new')
     base = release_locator(storage)
     def metadata(url):
         with _request(url) as stream:
@@ -173,13 +176,19 @@ def download(storage, destination, expected_sha):
         'INVALID_REFERENCE', 'Asset does not belong to pinned release/name')
     if asset.get('digest') is not None:
         c.need(asset['digest'] == 'sha256:' + expected_sha, 'CORRUPT_DOWNLOAD', 'Release digest mismatch')
-    destination = Path(destination)
-    c.need(not destination.exists() and not destination.is_symlink(), 'INVALID_OUTPUT', 'Download destination must be new')
-    with _request(asset_url, binary=True) as source, destination.open('xb') as target:
-        size = 0
-        while data := source.read(1024**2):
-            size += len(data)
-            c.need(size <= asset['size'], 'CORRUPT_DOWNLOAD', 'Oversized asset stream')
-            target.write(data)
-    c.need(size == asset['size'] and file_digest(destination) == expected_sha, 'CORRUPT_DOWNLOAD', 'Asset length/checksum mismatch')
+    # Only a completely verified private file may become the final destination.
+    # A same-filesystem exclusive link publishes it atomically without replacing
+    # a file another process/operator created while the download was in flight.
+    with tempfile.TemporaryDirectory(prefix='.release-download-', dir=destination.parent) as tmp:
+        staged = Path(tmp) / 'payload'
+        with _request(asset_url, binary=True) as source, staged.open('xb') as target:
+            size = 0
+            while data := source.read(1024**2):
+                size += len(data)
+                c.need(size <= asset['size'], 'CORRUPT_DOWNLOAD', 'Oversized asset stream')
+                target.write(data)
+            target.flush()
+            os.fsync(target.fileno())
+        c.need(size == asset['size'] and file_digest(staged) == expected_sha, 'CORRUPT_DOWNLOAD', 'Asset length/checksum mismatch')
+        os.link(staged, destination)
     return {'release_id': release['id'], 'asset_id': asset['id'], 'sha256': expected_sha, 'immutable': True}
