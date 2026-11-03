@@ -111,10 +111,10 @@ class AtomicDownloadTests(unittest.TestCase):
         self.assertEqual((self.root / 'download').read_bytes(), self.data)
         self.assertEqual((stale / 'payload').read_bytes(), b'untrusted stale bytes')
 
-    def test_local_qualification_does_not_activate_registry(self):
-        registry = json.loads(t.REGISTRY.read_text())
-        self.assertEqual(registry['baselines'], {})
-        self.assertEqual(registry['status'], 'BOOTSTRAP_REQUIRED')
+    def test_download_does_not_modify_registry(self):
+        original = t.REGISTRY.read_bytes()
+        self.download()
+        self.assertEqual(t.REGISTRY.read_bytes(), original)
 
 
 if __name__ == '__main__': unittest.main()

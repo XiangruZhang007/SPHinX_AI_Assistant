@@ -10,12 +10,12 @@ on:
       sys_revision:
         description: Exact SPHinXsys commit (moving refs are rejected)
         required: true
-        default: 4e686ee357de1cb798ac47eb760dd79e2fb407ff
+        default: 351368e108f47f8d15f89baac96683ecadaee32c
         type: string
       sim_revision:
         description: Exact SPHinXsim commit (moving refs are rejected)
         required: true
-        default: 9cdae783e3ef3f8926c2174a0db89e96846befad
+        default: dceacd4e509a8592b802cf44bb2885bea7ddfdb3
         type: string
 
 permissions:

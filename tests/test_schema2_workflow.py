@@ -32,12 +32,13 @@ class WorkflowContractTests(unittest.TestCase):
         for step in steps:
             if 'uses' in step: self.assertRegex(step['uses'], r'@[0-9a-f]{40}$')
 
-    def test_remote_registry_remains_unconfigured(self):
-        registry = read_json(t.REGISTRY)
-        self.assertEqual(registry['baselines'], {})
-        with self.assertRaises(c.GateError) as caught:
-            w.plan(P, registry, 'unconfigured', c.read(c.LOCK)['upstreams'])
-        self.assertEqual(caught.exception.status, 'BOOTSTRAP_REQUIRED')
+    def test_empty_registry_and_missing_entry_remain_rejected(self):
+        cases = [({'schema_version': 2, 'baselines': {}}, 'p2-initial-bootstrap'),
+                 (read_json(t.REGISTRY), 'unconfigured')]
+        for registry, key in cases:
+            with self.subTest(key=key), self.assertRaises(c.GateError) as caught:
+                w.plan(P, registry, key, c.read(c.LOCK)['upstreams'])
+            self.assertEqual(caught.exception.status, 'BOOTSTRAP_REQUIRED')
 
     def test_stdlib_only_plan_reports_bootstrap_blocker(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -144,7 +145,8 @@ class GenuineIntegrationTests(unittest.TestCase):
         self.assertFalse(self.result['automatic_research_approval'])
         self.assertEqual(self.result['production_promotion'], 'NOT_AUTHORIZED')
         self.assertFalse((self.root / 'candidate/upstream-baseline.json').exists())
-        self.assertEqual(read_json(t.REGISTRY)['baselines'], {})
+        self.assertEqual(read_json(self.root / 'trusted-reference.json')['storage']['kind'],
+                         'LOCAL_QUALIFICATION_ONLY')
 
     def test_no_change_genuine_transition_reuses_every_file(self):
         unchanged = os.environ.get('SPHINX_P5A2_NOCHANGE_RUN')

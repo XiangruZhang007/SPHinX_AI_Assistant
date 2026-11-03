@@ -1,6 +1,55 @@
 {
+  "baselines": {
+    "p2-initial-bootstrap": {
+      "build_policy_path": "configs/ci_v2_p2_bootstrap_build_policy.json",
+      "build_policy_sha256": "9fc2729a4b2881ebd557e797554f5ec6696f877fffbe9b523f270098e2df4fb5",
+      "expected_reference_sha256": "52c6a32d77ddefec103e5d882655b7ac58756c4bab57edd3ad4b83eec2b0ea48",
+      "reference": {
+        "accepted_package_schema": 1,
+        "authorization": {
+          "automatic_research_approval": false,
+          "experiment_id": "P5A.1-D-both-update",
+          "production_promotion": "NOT_AUTHORIZED",
+          "research_only": true,
+          "scope": "ISOLATED_RESEARCH_PARENT_REUSE",
+          "type": "EXPLICIT_P2_BOOTSTRAP"
+        },
+        "build_fingerprint": "7f66fe80e92d7263d5147d4fea551855184af75829f5b62993eb162acceb0cd8",
+        "corpus_sha256": "80628555baf0be0ed9781a811607f73dabd3676da36a1175ce09142a8729f82a",
+        "manifest_sha256": "f00653c33e856c0daca559e2a13757992fcbab40356a7c80873c66d0daa8f5a0",
+        "node_id": "sha256-798d0d1284c7dbba06d5788a062973bf7290cbbfdef28150037371fa78b7188a",
+        "package_checksum": "902c8afa4ffcfc47936ea021599b895820737de76defa60b970f69e6cbe43b24",
+        "package_format": "p2-snapshot-v1",
+        "parent_rows_sha256": "659af559de9d648a73c2aa0706b0308721bd16f66da2a76012e7767d6b1e323e",
+        "parent_rows_storage": {
+          "asset_id": 691803341,
+          "asset_name": "p2-parent-r2-results.json",
+          "immutable_required": true,
+          "kind": "GITHUB_RELEASE_ASSET",
+          "release_id": 428919662,
+          "repository": "XiangruZhang007/SPHinX_AI_Assistant",
+          "tag": "ci-v2-p2-bootstrap-798d0d12"
+        },
+        "schema_version": 2,
+        "source_state": "sha256-96d84d8f4a25c8a49e77aadca9d6a8accc247153bb7e0645dbf443ce71c6c151",
+        "storage": {
+          "asset_id": 691803006,
+          "asset_name": "p2-bootstrap-798d0d12.tar.gz",
+          "immutable_required": true,
+          "kind": "GITHUB_RELEASE_ASSET",
+          "release_id": 428919662,
+          "repository": "XiangruZhang007/SPHinX_AI_Assistant",
+          "tag": "ci-v2-p2-bootstrap-798d0d12"
+        },
+        "transport_sha256": "56fa2921d0a2a7efb02361e89cdcf40e70d77cc98381f0fdeed634b19598ff0c",
+        "upstreams": {
+          "SPHinXsim": "9cdae783e3ef3f8926c2174a0db89e96846befad",
+          "SPHinXsys": "4e686ee357de1cb798ac47eb760dd79e2fb407ff"
+        }
+      }
+    }
+  },
+  "note": "Explicit P2 bootstrap for the fixed P5A.1-D-both-update parent/target pair; manual retries only. No research-baseline approval, automatic promotion, scheduled updates, or production deployment is authorized.",
   "schema_version": 2,
-  "status": "BOOTSTRAP_REQUIRED",
-  "baselines": {},
-  "note": "Remote trust is unconfigured. Add an independently reviewed exact reference and expected_reference_sha256 only after explicit publication/selection authorization. Local P2 qualification is not global research approval."
+  "status": "P2_BOOTSTRAP_CONFIGURED"
 }
