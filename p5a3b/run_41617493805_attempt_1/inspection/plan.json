@@ -1,0 +1,16 @@
+{
+  "automatic_research_approval": false,
+  "automatic_reuse": false,
+  "key": "p2-initial-bootstrap",
+  "production_promotion": "NOT_AUTHORIZED",
+  "registry_entry_sha256": "934e2743a2fc35c3c24275ca34ebe39cec227ca0736ecf1d1a7be13b3f644f6a",
+  "research_baseline_created": false,
+  "retrieval_quality": "QUALITY_REVIEW_REQUIRED",
+  "scheduled_execution": false,
+  "schema_version": 2,
+  "status": "SCHEMA2_MANUAL_PLAN",
+  "upstreams": {
+    "SPHinXsim": "dceacd4e509a8592b802cf44bb2885bea7ddfdb3",
+    "SPHinXsys": "351368e108f47f8d15f89baac96683ecadaee32c"
+  }
+}

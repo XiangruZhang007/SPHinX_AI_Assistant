@@ -1,0 +1,540 @@
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Access-Control-Allow-Origin: *
+Access-Control-Expose-Headers: x-ms-request-id,Server,x-ms-version,Content-Type,ETag,Last-Modified,x-ms-creation-time,Content-MD5,x-ms-lease-status,x-ms-lease-state,x-ms-blob-type,x-ms-server-encrypted,x-ms-access-tier,x-ms-access-tier-inferred,Accept-Ranges,x-ms-last-access-time,Content-Length,Date,Transfer-Encoding
+Content-Length: 88281
+Content-Md5: 3eRHPFbkK2SBqLB+qiI2KA==
+Content-Type: text/plain
+Date: Wed, 04 Nov 2026 17:15:51 GMT
+Etag: "0x8DF39952A2B6A5C"
+Last-Modified: Tue, 03 Nov 2026 10:28:13 GMT
+Server: Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
+X-Ms-Access-Tier: Hot
+X-Ms-Access-Tier-Inferred: true
+X-Ms-Blob-Type: BlockBlob
+X-Ms-Creation-Time: Tue, 03 Nov 2026 10:28:13 GMT
+X-Ms-Last-Access-Time: Wed, 04 Nov 2026 16:12:41 GMT
+X-Ms-Lease-State: available
+X-Ms-Lease-Status: unlocked
+X-Ms-Request-Id: 7b85705c-e01e-006e-2780-6c4324000000
+X-Ms-Server-Encrypted: true
+X-Ms-Version: 2025-11-05
+
+﻿2026-11-03T10:13:52.7371651Z Current runner version: '2.338.2'
+2026-11-03T10:13:52.7404681Z ##[group]Runner Image Provisioner
+2026-11-03T10:13:52.7405809Z Hosted Compute Agent
+2026-11-03T10:13:52.7406511Z Version: 20261021.618
+2026-11-03T10:13:52.7407254Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-11-03T10:13:52.7408114Z Build Date: 2026-10-21T00:45:21Z
+2026-11-03T10:13:52.7408857Z Worker ID: {64c7ea59-e401-4470-a7dc-5f44c2e50e58}
+2026-11-03T10:13:52.7410039Z Region: northcentralus
+2026-11-03T10:13:52.7410715Z Cloud: Azure
+2026-11-03T10:13:52.7411268Z ##[endgroup]
+2026-11-03T10:13:52.7413711Z ##[group]Operating System
+2026-11-03T10:13:52.7414374Z Ubuntu
+2026-11-03T10:13:52.7415078Z 24.04.5
+2026-11-03T10:13:52.7415711Z LTS
+2026-11-03T10:13:52.7416237Z ##[endgroup]
+2026-11-03T10:13:52.7416898Z ##[group]Runner Image
+2026-11-03T10:13:52.7417600Z Image: ubuntu-24.04-arm
+2026-11-03T10:13:52.7418337Z Version: 20261025.165.1
+2026-11-03T10:13:52.7421578Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24-arm64/20261025.165/images/ubuntu/Ubuntu2404-Arm64-Readme.md
+2026-11-03T10:13:52.7423411Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24-arm64%2F20261025.165
+2026-11-03T10:13:52.7424451Z ##[endgroup]
+2026-11-03T10:13:52.7426348Z ##[group]GITHUB_TOKEN Permissions
+2026-11-03T10:13:52.7430194Z Contents: read
+2026-11-03T10:13:52.7430976Z Metadata: read
+2026-11-03T10:13:52.7431568Z ##[endgroup]
+2026-11-03T10:13:52.7434571Z Secret source: Actions
+2026-11-03T10:13:52.7435789Z Cache mode: write
+2026-11-03T10:13:52.7436846Z Prepare workflow directory
+2026-11-03T10:13:52.8038976Z Prepare all required actions
+2026-11-03T10:13:52.8093308Z Getting action download info
+2026-11-03T10:13:53.0072051Z Download action repository 'actions/checkout@11d5960a326750d5838078e36cf38b85af677262' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-11-03T10:13:53.0978944Z Download action repository 'actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-11-03T10:13:53.2359691Z Download action repository 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-11-03T10:13:53.4412504Z Complete job name: candidate
+2026-11-03T10:13:53.5326319Z ##[group]Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+2026-11-03T10:13:53.5327982Z with:
+2026-11-03T10:13:53.5328765Z   persist-credentials: false
+2026-11-03T10:13:53.5329829Z   repository: XiangruZhang007/SPHinX_AI_Assistant
+2026-11-03T10:13:53.5333711Z   token: ***
+2026-11-03T10:13:53.5334325Z   ssh-strict: true
+2026-11-03T10:13:53.5334895Z   ssh-user: git
+2026-11-03T10:13:53.5335523Z   clean: true
+2026-11-03T10:13:53.5336130Z   sparse-checkout-cone-mode: true
+2026-11-03T10:13:53.5336897Z   fetch-depth: 1
+2026-11-03T10:13:53.5337522Z   fetch-tags: false
+2026-11-03T10:13:53.5338089Z   show-progress: true
+2026-11-03T10:13:53.5338716Z   lfs: false
+2026-11-03T10:13:53.5339515Z   submodules: false
+2026-11-03T10:13:53.5340096Z   set-safe-directory: true
+2026-11-03T10:13:53.5340932Z   allow-unsafe-pr-checkout: false
+2026-11-03T10:13:53.5342131Z env:
+2026-11-03T10:13:53.5342818Z   PYTHONHASHSEED: 0
+2026-11-03T10:13:53.5343438Z   PYTHONDONTWRITEBYTECODE: 1
+2026-11-03T10:13:53.5344301Z   GIT_TERMINAL_PROMPT: 0
+2026-11-03T10:13:53.5344942Z   GIT_CONFIG_NOSYSTEM: 1
+2026-11-03T10:13:53.5345579Z   BASELINE_KEY: p2-initial-bootstrap
+2026-11-03T10:13:53.5346429Z   SYS_REVISION: 351368e108f47f8d15f89baac96683ecadaee32c
+2026-11-03T10:13:53.5347233Z   SIM_REVISION: dceacd4e509a8592b802cf44bb2885bea7ddfdb3
+2026-11-03T10:13:53.5348033Z ##[endgroup]
+2026-11-03T10:13:53.6272072Z Syncing repository: XiangruZhang007/SPHinX_AI_Assistant
+2026-11-03T10:13:53.6274774Z ##[group]Getting Git version info
+2026-11-03T10:13:53.6275865Z Working directory is '/home/runner/work/SPHinX_AI_Assistant/SPHinX_AI_Assistant'
+2026-11-03T10:13:53.6277493Z [command]/usr/bin/git version
+2026-11-03T10:13:53.6362359Z git version 2.56.0
+2026-11-03T10:13:53.6380462Z ##[endgroup]
+2026-11-03T10:13:53.6392667Z Temporarily overriding HOME='/home/runner/work/_temp/0539c904-5a02-45a9-a660-6bb1f534c49e' before making global git config changes
+2026-11-03T10:13:53.6394721Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-03T10:13:53.6397646Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/SPHinX_AI_Assistant/SPHinX_AI_Assistant
+2026-11-03T10:13:53.6451287Z Deleting the contents of '/home/runner/work/SPHinX_AI_Assistant/SPHinX_AI_Assistant'
+2026-11-03T10:13:53.6456220Z ##[group]Initializing the repository
+2026-11-03T10:13:53.6470948Z [command]/usr/bin/git init /home/runner/work/SPHinX_AI_Assistant/SPHinX_AI_Assistant
+2026-11-03T10:13:53.6546343Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-03T10:13:53.6548270Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-03T10:13:53.6551660Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-03T10:13:53.6553452Z hint: call:
+2026-11-03T10:13:53.6554229Z hint:
+2026-11-03T10:13:53.6555005Z hint: 	git config --global init.defaultBranch <name>
+2026-11-03T10:13:53.6556046Z hint:
+2026-11-03T10:13:53.6556807Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-03T10:13:53.6557938Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-03T10:13:53.6558791Z hint:
+2026-11-03T10:13:53.6559622Z hint: 	git branch -m <name>
+2026-11-03T10:13:53.6560331Z hint:
+2026-11-03T10:13:53.6561106Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-03T10:13:53.6562502Z Initialized empty Git repository in /home/runner/work/SPHinX_AI_Assistant/SPHinX_AI_Assistant/.git/
+2026-11-03T10:13:53.6564777Z [command]/usr/bin/git remote add origin https://github.com/XiangruZhang007/SPHinX_AI_Assistant
+2026-11-03T10:13:53.6624903Z ##[endgroup]
+2026-11-03T10:13:53.6626189Z ##[group]Disabling automatic garbage collection
+2026-11-03T10:13:53.6627139Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-03T10:13:53.6654294Z ##[endgroup]
+2026-11-03T10:13:53.6655509Z ##[group]Setting up auth
+2026-11-03T10:13:53.6656941Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-03T10:13:53.6688258Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-03T10:13:53.7022498Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-03T10:13:53.7053902Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-03T10:13:53.7273530Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-03T10:13:53.7304551Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-03T10:13:53.7523617Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-03T10:13:53.7596676Z ##[endgroup]
+2026-11-03T10:13:53.7598436Z ##[group]Fetching the repository
+2026-11-03T10:13:53.7604684Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +53f0d2642e149c40729f5cb24036148fd29a80b0:refs/remotes/origin/ci-upstream-refresh
+2026-11-03T10:13:54.3549780Z From https://github.com/XiangruZhang007/SPHinX_AI_Assistant
+2026-11-03T10:13:54.3551398Z  * [new ref]         53f0d2642e149c40729f5cb24036148fd29a80b0 -> origin/ci-upstream-refresh
+2026-11-03T10:13:54.3554404Z ##[endgroup]
+2026-11-03T10:13:54.3555515Z ##[group]Determining the checkout info
+2026-11-03T10:13:54.3556726Z ##[endgroup]
+2026-11-03T10:13:54.3559474Z [command]/usr/bin/git sparse-checkout disable
+2026-11-03T10:13:54.3603330Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-03T10:13:54.3634252Z ##[group]Checking out the ref
+2026-11-03T10:13:54.3637358Z [command]/usr/bin/git checkout --progress --force -B ci-upstream-refresh refs/remotes/origin/ci-upstream-refresh
+2026-11-03T10:13:54.4270018Z Switched to a new branch 'ci-upstream-refresh'
+2026-11-03T10:13:54.4273337Z branch 'ci-upstream-refresh' set up to track 'origin/ci-upstream-refresh'.
+2026-11-03T10:13:54.4281096Z ##[endgroup]
+2026-11-03T10:13:54.4321165Z [command]/usr/bin/git log -1 --format=%H
+2026-11-03T10:13:54.4345992Z 53f0d2642e149c40729f5cb24036148fd29a80b0
+2026-11-03T10:13:54.4354493Z ##[group]Removing auth
+2026-11-03T10:13:54.4358297Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-03T10:13:54.4390610Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-03T10:13:54.4600792Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-03T10:13:54.4623371Z http.https://github.com/.extraheader
+2026-11-03T10:13:54.4631360Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-03T10:13:54.4665581Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-03T10:13:54.4878822Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-03T10:13:54.4909699Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-03T10:13:54.5123086Z ##[endgroup]
+2026-11-03T10:13:54.5467124Z ##[group]Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+2026-11-03T10:13:54.5468562Z with:
+2026-11-03T10:13:54.5469793Z   python-version: 3.12.3
+2026-11-03T10:13:54.5470843Z   architecture: arm64
+2026-11-03T10:13:54.5471704Z   check-latest: false
+2026-11-03T10:13:54.5477953Z   token: ***
+2026-11-03T10:13:54.5478836Z   update-environment: true
+2026-11-03T10:13:54.5480098Z   allow-prereleases: false
+2026-11-03T10:13:54.5481110Z   freethreaded: false
+2026-11-03T10:13:54.5481896Z env:
+2026-11-03T10:13:54.5482618Z   PYTHONHASHSEED: 0
+2026-11-03T10:13:54.5483565Z   PYTHONDONTWRITEBYTECODE: 1
+2026-11-03T10:13:54.5484504Z   GIT_TERMINAL_PROMPT: 0
+2026-11-03T10:13:54.5485398Z   GIT_CONFIG_NOSYSTEM: 1
+2026-11-03T10:13:54.5486278Z   BASELINE_KEY: p2-initial-bootstrap
+2026-11-03T10:13:54.5487340Z   SYS_REVISION: 351368e108f47f8d15f89baac96683ecadaee32c
+2026-11-03T10:13:54.5488576Z   SIM_REVISION: dceacd4e509a8592b802cf44bb2885bea7ddfdb3
+2026-11-03T10:13:54.5490043Z ##[endgroup]
+2026-11-03T10:13:54.6698044Z ##[group]Installed versions
+2026-11-03T10:13:54.6711728Z Version 3.12.3 was not found in the local cache
+2026-11-03T10:13:54.6841023Z (node:2392) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-03T10:13:54.6843301Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-03T10:13:55.2754523Z Version 3.12.3 is available for downloading
+2026-11-03T10:13:55.2755445Z Download from "https://github.com/actions/python-versions/releases/download/3.12.3-11057844995/python-3.12.3-linux-24.04-arm64.tar.gz"
+2026-11-03T10:13:55.9604349Z Extract downloaded archive
+2026-11-03T10:13:55.9709460Z [command]/usr/bin/tar xz --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/d09aaa3b-c2da-4ad7-9203-e66321aa213f -f /home/runner/work/_temp/6bcbd0db-765e-4367-a9a2-adfac3805f46
+2026-11-03T10:13:57.5549647Z Execute installation script
+2026-11-03T10:13:57.5637425Z Check if Python hostedtoolcache folder exist...
+2026-11-03T10:13:57.5638629Z Create Python 3.12.3 folder
+2026-11-03T10:13:57.5648732Z Copy Python binaries to hostedtoolcache folder
+2026-11-03T10:13:57.8176445Z Create additional symlinks (Required for the UsePythonVersion Azure Pipelines task and the setup-python GitHub Action)
+2026-11-03T10:13:57.8216055Z Upgrading pip...
+2026-11-03T10:14:00.0086950Z Looking in links: /tmp/tmpot785qs0
+2026-11-03T10:14:00.0094705Z Requirement already satisfied: pip in /opt/hostedtoolcache/Python/3.12.3/arm64/lib/python3.12/site-packages (24.0)
+2026-11-03T10:14:01.4385093Z Collecting pip
+2026-11-03T10:14:01.4759173Z Downloading pip-26.3-py3-none-any.whl.metadata (4.6 kB)
+2026-11-03T10:14:01.4833376Z Downloading pip-26.3-py3-none-any.whl (2.0 MB)
+2026-11-03T10:14:01.5186600Z ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 59.6 MB/s eta 0:00:00
+2026-11-03T10:14:01.5187019Z 
+2026-11-03T10:14:01.5336755Z Installing collected packages: pip
+2026-11-03T10:14:01.5338417Z Attempting uninstall: pip
+2026-11-03T10:14:01.5357531Z Found existing installation: pip 24.0
+2026-11-03T10:14:01.5628279Z Uninstalling pip-24.0:
+2026-11-03T10:14:01.5678509Z Successfully uninstalled pip-24.0
+2026-11-03T10:14:02.3559548Z Successfully installed pip-26.3
+2026-11-03T10:14:02.4230263Z Create complete file
+2026-11-03T10:14:02.4267863Z Successfully set up CPython (3.12.3)
+2026-11-03T10:14:02.4268709Z ##[endgroup]
+2026-11-03T10:14:02.4444086Z ##[group]Run python -B scripts/ci_v2_schema2_research.py plan --key "$BASELINE_KEY" --sys-revision "$SYS_REVISION" --sim-revision "$SIM_REVISION" --output "$RUNNER_TEMP/p5a"
+2026-11-03T10:14:02.4445540Z [36;1mpython -B scripts/ci_v2_schema2_research.py plan --key "$BASELINE_KEY" --sys-revision "$SYS_REVISION" --sim-revision "$SIM_REVISION" --output "$RUNNER_TEMP/p5a"[0m
+2026-11-03T10:14:02.4616211Z shell: /usr/bin/bash -e {0}
+2026-11-03T10:14:02.4616881Z env:
+2026-11-03T10:14:02.4617207Z   PYTHONHASHSEED: 0
+2026-11-03T10:14:02.4617494Z   PYTHONDONTWRITEBYTECODE: 1
+2026-11-03T10:14:02.4617851Z   GIT_TERMINAL_PROMPT: 0
+2026-11-03T10:14:02.4618148Z   GIT_CONFIG_NOSYSTEM: 1
+2026-11-03T10:14:02.4618411Z   BASELINE_KEY: p2-initial-bootstrap
+2026-11-03T10:14:02.4618882Z   SYS_REVISION: 351368e108f47f8d15f89baac96683ecadaee32c
+2026-11-03T10:14:02.4619591Z   SIM_REVISION: dceacd4e509a8592b802cf44bb2885bea7ddfdb3
+2026-11-03T10:14:02.4620167Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.3/arm64
+2026-11-03T10:14:02.4620658Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.3/arm64/lib/pkgconfig
+2026-11-03T10:14:02.4621189Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.3/arm64
+2026-11-03T10:14:02.4621633Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.3/arm64
+2026-11-03T10:14:02.4622051Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.3/arm64
+2026-11-03T10:14:02.4622523Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.3/arm64/lib
+2026-11-03T10:14:02.4622891Z ##[endgroup]
+2026-11-03T10:14:02.7542241Z {"automatic_research_approval": false, "automatic_reuse": false, "key": "p2-initial-bootstrap", "production_promotion": "NOT_AUTHORIZED", "registry_entry_sha256": "934e2743a2fc35c3c24275ca34ebe39cec227ca0736ecf1d1a7be13b3f644f6a", "research_baseline_created": false, "retrieval_quality": "QUALITY_REVIEW_REQUIRED", "scheduled_execution": false, "schema_version": 2, "status": "SCHEMA2_MANUAL_PLAN", "upstreams": {"SPHinXsim": "dceacd4e509a8592b802cf44bb2885bea7ddfdb3", "SPHinXsys": "351368e108f47f8d15f89baac96683ecadaee32c"}}
+2026-11-03T10:14:02.7705769Z ##[group]Run git -c credential.helper= clone --no-checkout https://github.com/Consiliency/treesitter-chunker.git tools/treesitter-chunker
+2026-11-03T10:14:02.7706994Z [36;1mgit -c credential.helper= clone --no-checkout https://github.com/Consiliency/treesitter-chunker.git tools/treesitter-chunker[0m
+2026-11-03T10:14:02.7707814Z [36;1mgit -C tools/treesitter-chunker checkout --detach fb70922076c773d1865176329a03f67ff893fd90[0m
+2026-11-03T10:14:02.7708434Z [36;1mpython -m venv tools/treesitter-chunker/.venv[0m
+2026-11-03T10:14:02.7709016Z [36;1mtools/treesitter-chunker/.venv/bin/python -m pip install -r configs/ci_v2_parser_requirements.txt[0m
+2026-11-03T10:14:02.7710087Z [36;1mtools/treesitter-chunker/.venv/bin/python -m pip install -c configs/ci_v2_parser_requirements.txt -e tools/treesitter-chunker[0m
+2026-11-03T10:14:02.7755199Z shell: /usr/bin/bash -e {0}
+2026-11-03T10:14:02.7755649Z env:
+2026-11-03T10:14:02.7755888Z   PYTHONHASHSEED: 0
+2026-11-03T10:14:02.7756280Z   PYTHONDONTWRITEBYTECODE: 1
+2026-11-03T10:14:02.7756632Z   GIT_TERMINAL_PROMPT: 0
+2026-11-03T10:14:02.7756883Z   GIT_CONFIG_NOSYSTEM: 1
+2026-11-03T10:14:02.7757210Z   BASELINE_KEY: p2-initial-bootstrap
+2026-11-03T10:14:02.7757552Z   SYS_REVISION: 351368e108f47f8d15f89baac96683ecadaee32c
+2026-11-03T10:14:02.7757998Z   SIM_REVISION: dceacd4e509a8592b802cf44bb2885bea7ddfdb3
+2026-11-03T10:14:02.7758442Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.3/arm64
+2026-11-03T10:14:02.7758884Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.3/arm64/lib/pkgconfig
+2026-11-03T10:14:02.7759760Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.3/arm64
+2026-11-03T10:14:02.7760191Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.3/arm64
+2026-11-03T10:14:02.7760671Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.3/arm64
+2026-11-03T10:14:02.7761142Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.3/arm64/lib
+2026-11-03T10:14:02.7761517Z ##[endgroup]
+2026-11-03T10:14:02.7847682Z Cloning into 'tools/treesitter-chunker'...
+2026-11-03T10:14:07.4546118Z HEAD is now at fb709220 docs: add reconciled v4.0.0 code review (treesitter-chunker#95)
+2026-11-03T10:14:11.4954927Z Collecting tree-sitter==0.25.2 (from -r configs/ci_v2_parser_requirements.txt (line 2))
+2026-11-03T10:14:11.5300302Z   Downloading tree_sitter-0.25.2-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (10.0 kB)
+2026-11-03T10:14:11.5703270Z Collecting tree-sitter-language-pack==0.9.0 (from -r configs/ci_v2_parser_requirements.txt (line 3))
+2026-11-03T10:14:11.5749214Z   Downloading tree_sitter_language_pack-0.9.0-cp39-abi3-manylinux2014_aarch64.whl.metadata (17 kB)
+2026-11-03T10:14:11.5907356Z Collecting tree-sitter-c-sharp==0.23.5 (from -r configs/ci_v2_parser_requirements.txt (line 4))
+2026-11-03T10:14:11.5943908Z   Downloading tree_sitter_c_sharp-0.23.5-cp310-abi3-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (2.7 kB)
+2026-11-03T10:14:11.6084684Z Collecting tree-sitter-embedded-template==0.25.0 (from -r configs/ci_v2_parser_requirements.txt (line 5))
+2026-11-03T10:14:11.6122703Z   Downloading tree_sitter_embedded_template-0.25.0-cp310-abi3-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (2.3 kB)
+2026-11-03T10:14:11.6245567Z Collecting tree-sitter-yaml==0.7.2 (from -r configs/ci_v2_parser_requirements.txt (line 6))
+2026-11-03T10:14:11.6295626Z   Downloading tree_sitter_yaml-0.7.2-cp310-abi3-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (1.8 kB)
+2026-11-03T10:14:11.6873883Z Collecting unicodedata2==16.0.0 (from -r configs/ci_v2_parser_requirements.txt (line 7))
+2026-11-03T10:14:11.6922176Z   Downloading unicodedata2-16.0.0.tar.gz (672 kB)
+2026-11-03T10:14:11.7111561Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 672.2/672.2 kB 40.5 MB/s eta 0:00:00
+2026-11-03T10:14:11.7333116Z   Installing build dependencies: started
+2026-11-03T10:14:13.3076513Z   Installing build dependencies: finished with status 'done'
+2026-11-03T10:14:13.3083927Z   Getting requirements to build wheel: started
+2026-11-03T10:14:13.7630125Z   Getting requirements to build wheel: finished with status 'done'
+2026-11-03T10:14:13.7638626Z   Preparing metadata (pyproject.toml): started
+2026-11-03T10:14:14.2211034Z   Preparing metadata (pyproject.toml): finished with status 'done'
+2026-11-03T10:14:14.2435519Z Downloading tree_sitter-0.25.2-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (607 kB)
+2026-11-03T10:14:14.2546764Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 607.1/607.1 kB 65.2 MB/s eta 0:00:00
+2026-11-03T10:14:14.2582897Z Downloading tree_sitter_language_pack-0.9.0-cp39-abi3-manylinux2014_aarch64.whl (18.7 MB)
+2026-11-03T10:14:14.4060854Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 18.7/18.7 MB 98.3 MB/s eta 0:00:00
+2026-11-03T10:14:14.4102878Z Downloading tree_sitter_c_sharp-0.23.5-cp310-abi3-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (359 kB)
+2026-11-03T10:14:14.4160740Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 359.4/359.4 kB 87.8 MB/s eta 0:00:00
+2026-11-03T10:14:14.4203319Z Downloading tree_sitter_embedded_template-0.25.0-cp310-abi3-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (19 kB)
+2026-11-03T10:14:14.4264211Z Downloading tree_sitter_yaml-0.7.2-cp310-abi3-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (92 kB)
+2026-11-03T10:14:14.4306030Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 92.4/92.4 kB 32.3 MB/s eta 0:00:00
+2026-11-03T10:14:14.4538660Z Building wheels for collected packages: unicodedata2
+2026-11-03T10:14:14.4547374Z   Building wheel for unicodedata2 (pyproject.toml): started
+2026-11-03T10:14:16.6553363Z   Building wheel for unicodedata2 (pyproject.toml): finished with status 'done'
+2026-11-03T10:14:16.6563976Z   Created wheel for unicodedata2: filename=unicodedata2-16.0.0-cp312-cp312-linux_aarch64.whl size=525734 sha256=7565a2aad684242af9b66333d28b602ba226db7996365745186f24ab428955eb
+2026-11-03T10:14:16.6565139Z   Stored in directory: /home/runner/.cache/pip/wheels/ba/51/a5/7246f9c5419b20c68b0c985cf2d1239bde692754b43a9744f2
+2026-11-03T10:14:16.6583403Z Successfully built unicodedata2
+2026-11-03T10:14:16.6737450Z Installing collected packages: unicodedata2, tree-sitter-yaml, tree-sitter-embedded-template, tree-sitter-c-sharp, tree-sitter, tree-sitter-language-pack
+2026-11-03T10:14:17.1106944Z Successfully installed tree-sitter-0.25.2 tree-sitter-c-sharp-0.23.5 tree-sitter-embedded-template-0.25.0 tree-sitter-language-pack-0.9.0 tree-sitter-yaml-0.7.2 unicodedata2-16.0.0
+2026-11-03T10:14:17.1274411Z 
+2026-11-03T10:14:17.1275418Z [notice] A new release of pip is available: 24.0 -> 26.3
+2026-11-03T10:14:17.1275901Z [notice] To update, run: python -m pip install --upgrade pip
+2026-11-03T10:14:17.9339775Z Obtaining file:///home/runner/work/SPHinX_AI_Assistant/SPHinX_AI_Assistant/tools/treesitter-chunker
+2026-11-03T10:14:17.9377285Z   Installing build dependencies: started
+2026-11-03T10:14:19.6450390Z   Installing build dependencies: finished with status 'done'
+2026-11-03T10:14:19.6456704Z   Checking if build backend supports build_editable: started
+2026-11-03T10:14:20.0807517Z   Checking if build backend supports build_editable: finished with status 'done'
+2026-11-03T10:14:20.0815430Z   Getting requirements to build editable: started
+2026-11-03T10:14:20.6032912Z   Getting requirements to build editable: finished with status 'done'
+2026-11-03T10:14:20.6039997Z   Preparing editable metadata (pyproject.toml): started
+2026-11-03T10:14:21.1295081Z   Preparing editable metadata (pyproject.toml): finished with status 'done'
+2026-11-03T10:14:21.1718979Z Requirement already satisfied: tree_sitter<0.26,>=0.25 in ./tools/treesitter-chunker/.venv/lib/python3.12/site-packages (from treesitter-chunker==4.0.0) (0.25.2)
+2026-11-03T10:14:21.1731118Z Requirement already satisfied: tree-sitter-language-pack<0.10,>=0.9 in ./tools/treesitter-chunker/.venv/lib/python3.12/site-packages (from treesitter-chunker==4.0.0) (0.9.0)
+2026-11-03T10:14:21.2692938Z Collecting rich>=13.0.0 (from treesitter-chunker==4.0.0)
+2026-11-03T10:14:21.3025027Z   Downloading rich-15.0.0-py3-none-any.whl.metadata (18 kB)
+2026-11-03T10:14:21.3334637Z Collecting typer>=0.9.0 (from treesitter-chunker==4.0.0)
+2026-11-03T10:14:21.3370049Z   Downloading typer-0.27.3-py3-none-any.whl.metadata (16 kB)
+2026-11-03T10:14:21.4213420Z Collecting pyarrow>=15.0.0 (from treesitter-chunker==4.0.0)
+2026-11-03T10:14:21.4246997Z   Downloading pyarrow-26.0.0-cp312-cp312-manylinux_2_28_aarch64.whl.metadata (3.0 kB)
+2026-11-03T10:14:21.4590516Z Collecting pyyaml>=6.0 (from treesitter-chunker==4.0.0)
+2026-11-03T10:14:21.4623690Z   Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (2.4 kB)
+2026-11-03T10:14:21.4855136Z Collecting pygments>=2.15.0 (from treesitter-chunker==4.0.0)
+2026-11-03T10:14:21.4885675Z   Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+2026-11-03T10:14:21.5260409Z Collecting chardet>=5.0.0 (from treesitter-chunker==4.0.0)
+2026-11-03T10:14:21.5293314Z   Downloading chardet-7.7.0-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (10 kB)
+2026-11-03T10:14:21.5470659Z Collecting python-dateutil>=2.9.0 (from treesitter-chunker==4.0.0)
+2026-11-03T10:14:21.5501415Z   Downloading python_dateutil-4.0.0-py3-none-any.whl.metadata (7.3 kB)
+2026-11-03T10:14:21.5811794Z Collecting gitpython>=3.1.40 (from treesitter-chunker==4.0.0)
+2026-11-03T10:14:21.5843497Z   Downloading gitpython-3.2.1-py3-none-any.whl.metadata (13 kB)
+2026-11-03T10:14:21.6010199Z Collecting pathspec>=0.11.0 (from treesitter-chunker==4.0.0)
+2026-11-03T10:14:21.6045390Z   Downloading pathspec-1.1.1-py3-none-any.whl.metadata (14 kB)
+2026-11-03T10:14:21.6484347Z Collecting tqdm>=4.66.0 (from treesitter-chunker==4.0.0)
+2026-11-03T10:14:21.6515590Z   Downloading tqdm-4.70.1-py3-none-any.whl.metadata (57 kB)
+2026-11-03T10:14:21.6561956Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 57.4/57.4 kB 19.9 MB/s eta 0:00:00
+2026-11-03T10:14:21.6965719Z Collecting tiktoken>=0.7.0 (from treesitter-chunker==4.0.0)
+2026-11-03T10:14:21.7013809Z   Downloading tiktoken-0.14.0-cp312-cp312-manylinux_2_28_aarch64.whl.metadata (6.7 kB)
+2026-11-03T10:14:21.7149117Z Collecting tomli-w>=1.0.0 (from treesitter-chunker==4.0.0)
+2026-11-03T10:14:21.7179460Z   Downloading tomli_w-1.2.0-py3-none-any.whl.metadata (5.7 kB)
+2026-11-03T10:14:21.7440559Z Collecting networkx>=3.0 (from treesitter-chunker==4.0.0)
+2026-11-03T10:14:21.7472923Z   Downloading networkx-3.7-py3-none-any.whl.metadata (6.7 kB)
+2026-11-03T10:14:21.7791890Z Collecting leidenalg>=0.10.0 (from treesitter-chunker==4.0.0)
+2026-11-03T10:14:21.7837616Z   Downloading leidenalg-0.12.0-cp38-abi3-manylinux_2_26_aarch64.manylinux_2_28_aarch64.whl.metadata (10 kB)
+2026-11-03T10:14:21.8332863Z Collecting igraph>=0.11.0 (from treesitter-chunker==4.0.0)
+2026-11-03T10:14:21.8391462Z   Downloading igraph-1.0.0-cp39-abi3-manylinux_2_28_aarch64.whl.metadata (4.4 kB)
+2026-11-03T10:14:21.8434952Z Requirement already satisfied: unicodedata2==16.0.0 in ./tools/treesitter-chunker/.venv/lib/python3.12/site-packages (from treesitter-chunker==4.0.0) (16.0.0)
+2026-11-03T10:14:21.8663973Z Collecting gitdb<5,>=4.0.1 (from gitpython>=3.1.40->treesitter-chunker==4.0.0)
+2026-11-03T10:14:21.8694541Z   Downloading gitdb-4.0.12-py3-none-any.whl.metadata (1.2 kB)
+2026-11-03T10:14:21.9147047Z Collecting texttable>=1.6.2 (from igraph>=0.11.0->treesitter-chunker==4.0.0)
+2026-11-03T10:14:21.9178182Z   Downloading texttable-1.7.2-py2.py3-none-any.whl.metadata (10 kB)
+2026-11-03T10:14:21.9652277Z Collecting tzdata (from python-dateutil>=2.9.0->treesitter-chunker==4.0.0)
+2026-11-03T10:14:21.9684880Z   Downloading tzdata-2026.6-py2.py3-none-any.whl.metadata (1.4 kB)
+2026-11-03T10:14:21.9926108Z Collecting markdown-it-py>=2.2.0 (from rich>=13.0.0->treesitter-chunker==4.0.0)
+2026-11-03T10:14:21.9958381Z   Downloading markdown_it_py-4.2.0-py3-none-any.whl.metadata (7.4 kB)
+2026-11-03T10:14:22.3594249Z Collecting regex (from tiktoken>=0.7.0->treesitter-chunker==4.0.0)
+2026-11-03T10:14:22.3630128Z   Downloading regex-2026.9.29-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (40 kB)
+2026-11-03T10:14:22.3666964Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 40.6/40.6 kB 14.5 MB/s eta 0:00:00
+2026-11-03T10:14:22.3965672Z Collecting requests (from tiktoken>=0.7.0->treesitter-chunker==4.0.0)
+2026-11-03T10:14:22.3998956Z   Downloading requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+2026-11-03T10:14:22.4468198Z Requirement already satisfied: tree-sitter-c-sharp>=0.23.1 in ./tools/treesitter-chunker/.venv/lib/python3.12/site-packages (from tree-sitter-language-pack<0.10,>=0.9->treesitter-chunker==4.0.0) (0.23.5)
+2026-11-03T10:14:22.4476955Z Requirement already satisfied: tree-sitter-embedded-template>=0.23.2 in ./tools/treesitter-chunker/.venv/lib/python3.12/site-packages (from tree-sitter-language-pack<0.10,>=0.9->treesitter-chunker==4.0.0) (0.25.0)
+2026-11-03T10:14:22.4485074Z Requirement already satisfied: tree-sitter-yaml>=0.7.0 in ./tools/treesitter-chunker/.venv/lib/python3.12/site-packages (from tree-sitter-language-pack<0.10,>=0.9->treesitter-chunker==4.0.0) (0.7.2)
+2026-11-03T10:14:22.4680071Z Collecting shellingham>=1.3.0 (from typer>=0.9.0->treesitter-chunker==4.0.0)
+2026-11-03T10:14:22.4711995Z   Downloading shellingham-1.5.4-py2.py3-none-any.whl.metadata (3.5 kB)
+2026-11-03T10:14:22.4923118Z Collecting annotated-doc>=0.0.2 (from typer>=0.9.0->treesitter-chunker==4.0.0)
+2026-11-03T10:14:22.4953500Z   Downloading annotated_doc-0.0.5-py3-none-any.whl.metadata (6.5 kB)
+2026-11-03T10:14:22.5144715Z Collecting smmap<6,>=3.0.1 (from gitdb<5,>=4.0.1->gitpython>=3.1.40->treesitter-chunker==4.0.0)
+2026-11-03T10:14:22.5174226Z   Downloading smmap-5.0.3-py3-none-any.whl.metadata (4.6 kB)
+2026-11-03T10:14:22.5444246Z Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich>=13.0.0->treesitter-chunker==4.0.0)
+2026-11-03T10:14:22.5476228Z   Downloading mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+2026-11-03T10:14:22.6894589Z Collecting charset_normalizer<4,>=2 (from requests->tiktoken>=0.7.0->treesitter-chunker==4.0.0)
+2026-11-03T10:14:22.6928319Z   Downloading charset_normalizer-3.5.2-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (46 kB)
+2026-11-03T10:14:22.6969046Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 46.4/46.4 kB 15.8 MB/s eta 0:00:00
+2026-11-03T10:14:22.7164638Z Collecting idna<4,>=2.5 (from requests->tiktoken>=0.7.0->treesitter-chunker==4.0.0)
+2026-11-03T10:14:22.7195251Z   Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+2026-11-03T10:14:22.7554200Z Collecting urllib3<3,>=1.26 (from requests->tiktoken>=0.7.0->treesitter-chunker==4.0.0)
+2026-11-03T10:14:22.7586394Z   Downloading urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+2026-11-03T10:14:22.7810826Z Collecting certifi>=2023.5.7 (from requests->tiktoken>=0.7.0->treesitter-chunker==4.0.0)
+2026-11-03T10:14:22.7842648Z   Downloading certifi-2026.10.23-py3-none-any.whl.metadata (2.5 kB)
+2026-11-03T10:14:22.8223289Z Downloading chardet-7.7.0-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (1.6 MB)
+2026-11-03T10:14:22.8347014Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 151.7 MB/s eta 0:00:00
+2026-11-03T10:14:22.8377958Z Downloading gitpython-3.2.1-py3-none-any.whl (231 kB)
+2026-11-03T10:14:22.8419547Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 231.5/231.5 kB 88.7 MB/s eta 0:00:00
+2026-11-03T10:14:22.8471300Z Downloading igraph-1.0.0-cp39-abi3-manylinux_2_28_aarch64.whl (5.3 MB)
+2026-11-03T10:14:22.8771781Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.3/5.3 MB 188.7 MB/s eta 0:00:00
+2026-11-03T10:14:22.8814727Z Downloading leidenalg-0.12.0-cp38-abi3-manylinux_2_26_aarch64.manylinux_2_28_aarch64.whl (2.5 MB)
+2026-11-03T10:14:22.8952568Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.5/2.5 MB 207.6 MB/s eta 0:00:00
+2026-11-03T10:14:22.8985646Z Downloading networkx-3.7-py3-none-any.whl (2.1 MB)
+2026-11-03T10:14:22.9111172Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 207.4 MB/s eta 0:00:00
+2026-11-03T10:14:22.9141744Z Downloading pathspec-1.1.1-py3-none-any.whl (57 kB)
+2026-11-03T10:14:22.9175702Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 57.3/57.3 kB 25.9 MB/s eta 0:00:00
+2026-11-03T10:14:22.9205638Z Downloading pyarrow-26.0.0-cp312-cp312-manylinux_2_28_aarch64.whl (50.9 MB)
+2026-11-03T10:14:23.2782253Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 50.9/50.9 MB 48.1 MB/s eta 0:00:00
+2026-11-03T10:14:23.2815486Z Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+2026-11-03T10:14:23.2902026Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 177.0 MB/s eta 0:00:00
+2026-11-03T10:14:23.2932353Z Downloading python_dateutil-4.0.0-py3-none-any.whl (92 kB)
+2026-11-03T10:14:23.2975200Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 92.9/92.9 kB 31.9 MB/s eta 0:00:00
+2026-11-03T10:14:23.3011237Z Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (775 kB)
+2026-11-03T10:14:23.3075634Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 775.1/775.1 kB 163.4 MB/s eta 0:00:00
+2026-11-03T10:14:23.3109739Z Downloading rich-15.0.0-py3-none-any.whl (310 kB)
+2026-11-03T10:14:23.3156618Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 310.7/310.7 kB 99.8 MB/s eta 0:00:00
+2026-11-03T10:14:23.3188691Z Downloading tiktoken-0.14.0-cp312-cp312-manylinux_2_28_aarch64.whl (1.2 MB)
+2026-11-03T10:14:23.3270944Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 185.9 MB/s eta 0:00:00
+2026-11-03T10:14:23.3300897Z Downloading tomli_w-1.2.0-py3-none-any.whl (6.7 kB)
+2026-11-03T10:14:23.3349468Z Downloading tqdm-4.70.1-py3-none-any.whl (80 kB)
+2026-11-03T10:14:23.3385821Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 80.2/80.2 kB 34.6 MB/s eta 0:00:00
+2026-11-03T10:14:23.3415031Z Downloading typer-0.27.3-py3-none-any.whl (123 kB)
+2026-11-03T10:14:23.3454674Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 123.3/123.3 kB 48.1 MB/s eta 0:00:00
+2026-11-03T10:14:23.3484654Z Downloading annotated_doc-0.0.5-py3-none-any.whl (5.3 kB)
+2026-11-03T10:14:23.3532209Z Downloading gitdb-4.0.12-py3-none-any.whl (62 kB)
+2026-11-03T10:14:23.3565357Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.8/62.8 kB 29.0 MB/s eta 0:00:00
+2026-11-03T10:14:23.3594884Z Downloading markdown_it_py-4.2.0-py3-none-any.whl (91 kB)
+2026-11-03T10:14:23.3633815Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 91.7/91.7 kB 34.7 MB/s eta 0:00:00
+2026-11-03T10:14:23.3662081Z Downloading shellingham-1.5.4-py2.py3-none-any.whl (9.8 kB)
+2026-11-03T10:14:23.3708453Z Downloading texttable-1.7.2-py2.py3-none-any.whl (10 kB)
+2026-11-03T10:14:23.3755360Z Downloading regex-2026.9.29-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (805 kB)
+2026-11-03T10:14:23.3827043Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 805.9/805.9 kB 150.8 MB/s eta 0:00:00
+2026-11-03T10:14:23.3856542Z Downloading requests-2.34.2-py3-none-any.whl (73 kB)
+2026-11-03T10:14:23.3892250Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 73.1/73.1 kB 31.4 MB/s eta 0:00:00
+2026-11-03T10:14:23.3923923Z Downloading tzdata-2026.6-py2.py3-none-any.whl (348 kB)
+2026-11-03T10:14:23.3972484Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 348.2/348.2 kB 105.9 MB/s eta 0:00:00
+2026-11-03T10:14:23.4001942Z Downloading certifi-2026.10.23-py3-none-any.whl (135 kB)
+2026-11-03T10:14:23.4038958Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 135.1/135.1 kB 59.6 MB/s eta 0:00:00
+2026-11-03T10:14:23.4070103Z Downloading charset_normalizer-3.5.2-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (246 kB)
+2026-11-03T10:14:23.4113240Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 246.7/246.7 kB 85.5 MB/s eta 0:00:00
+2026-11-03T10:14:23.4143727Z Downloading idna-3.20-py3-none-any.whl (69 kB)
+2026-11-03T10:14:23.4180282Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 69.6/69.6 kB 29.1 MB/s eta 0:00:00
+2026-11-03T10:14:23.4209603Z Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+2026-11-03T10:14:23.4257512Z Downloading smmap-5.0.3-py3-none-any.whl (24 kB)
+2026-11-03T10:14:23.4306121Z Downloading urllib3-2.8.0-py3-none-any.whl (135 kB)
+2026-11-03T10:14:23.4344906Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 135.7/135.7 kB 59.8 MB/s eta 0:00:00
+2026-11-03T10:14:23.5158559Z Building wheels for collected packages: treesitter-chunker
+2026-11-03T10:14:23.5166747Z   Building editable for treesitter-chunker (pyproject.toml): started
+2026-11-03T10:14:24.1140306Z   Building editable for treesitter-chunker (pyproject.toml): finished with status 'done'
+2026-11-03T10:14:24.1144504Z   Created wheel for treesitter-chunker: filename=treesitter_chunker-4.0.0-0.editable-py3-none-any.whl size=19835 sha256=2acaec32228cb3d65b0c7d17ee9a3397df5d796d8834fe459947db614a2f0b06
+2026-11-03T10:14:24.1145870Z   Stored in directory: /tmp/pip-ephem-wheel-cache-znkj9n_t/wheels/7d/81/55/d546dcfd229959fa613bbed7c5d34d9d4e2f931b12fd81aebb
+2026-11-03T10:14:24.1186254Z Successfully built treesitter-chunker
+2026-11-03T10:14:24.2594016Z Installing collected packages: texttable, urllib3, tzdata, tqdm, tomli-w, smmap, shellingham, regex, pyyaml, pygments, pyarrow, pathspec, networkx, mdurl, igraph, idna, charset_normalizer, chardet, certifi, annotated-doc, requests, python-dateutil, markdown-it-py, leidenalg, gitdb, tiktoken, rich, gitpython, typer, treesitter-chunker
+2026-11-03T10:14:28.3729716Z Successfully installed annotated-doc-0.0.5 certifi-2026.10.23 chardet-7.7.0 charset_normalizer-3.5.2 gitdb-4.0.12 gitpython-3.2.1 idna-3.20 igraph-1.0.0 leidenalg-0.12.0 markdown-it-py-4.2.0 mdurl-0.1.2 networkx-3.7 pathspec-1.1.1 pyarrow-26.0.0 pygments-2.21.0 python-dateutil-4.0.0 pyyaml-6.0.3 regex-2026.9.29 requests-2.34.2 rich-15.0.0 shellingham-1.5.4 smmap-5.0.3 texttable-1.7.2 tiktoken-0.14.0 tomli-w-1.2.0 tqdm-4.70.1 treesitter-chunker-4.0.0 typer-0.27.3 tzdata-2026.6 urllib3-2.8.0
+2026-11-03T10:14:28.4007597Z 
+2026-11-03T10:14:28.4008825Z [notice] A new release of pip is available: 24.0 -> 26.3
+2026-11-03T10:14:28.4009467Z [notice] To update, run: python -m pip install --upgrade pip
+2026-11-03T10:14:28.6433007Z ##[group]Run tools/treesitter-chunker/.venv/bin/python -B scripts/ci_v2_schema2_research.py execute-plan --plan "$RUNNER_TEMP/p5a/plan.json" --work "$RUNNER_TEMP/p5a-work" --output "$RUNNER_TEMP/p5a/run"
+2026-11-03T10:14:28.6434577Z [36;1mtools/treesitter-chunker/.venv/bin/python -B scripts/ci_v2_schema2_research.py execute-plan --plan "$RUNNER_TEMP/p5a/plan.json" --work "$RUNNER_TEMP/p5a-work" --output "$RUNNER_TEMP/p5a/run"[0m
+2026-11-03T10:14:28.6469935Z shell: /usr/bin/bash -e {0}
+2026-11-03T10:14:28.6470250Z env:
+2026-11-03T10:14:28.6470496Z   PYTHONHASHSEED: 0
+2026-11-03T10:14:28.6470819Z   PYTHONDONTWRITEBYTECODE: 1
+2026-11-03T10:14:28.6471148Z   GIT_TERMINAL_PROMPT: 0
+2026-11-03T10:14:28.6471439Z   GIT_CONFIG_NOSYSTEM: 1
+2026-11-03T10:14:28.6471718Z   BASELINE_KEY: p2-initial-bootstrap
+2026-11-03T10:14:28.6472283Z   SYS_REVISION: 351368e108f47f8d15f89baac96683ecadaee32c
+2026-11-03T10:14:28.6472728Z   SIM_REVISION: dceacd4e509a8592b802cf44bb2885bea7ddfdb3
+2026-11-03T10:14:28.6473252Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.3/arm64
+2026-11-03T10:14:28.6473757Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.3/arm64/lib/pkgconfig
+2026-11-03T10:14:28.6474214Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.3/arm64
+2026-11-03T10:14:28.6474677Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.3/arm64
+2026-11-03T10:14:28.6475141Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.3/arm64
+2026-11-03T10:14:28.6475561Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.3/arm64/lib
+2026-11-03T10:14:28.6476053Z ##[endgroup]
+2026-11-03T10:14:31.4669759Z Cloning into '/home/runner/work/_temp/p5a-work/base-source/repos/SPHinXsys'...
+2026-11-03T10:14:38.9450195Z HEAD is now at 4e686ee35 Merge pull request #1118 from lililii124/feat/hjc-concrete
+2026-11-03T10:14:38.9496942Z Cloning into '/home/runner/work/_temp/p5a-work/base-source/repos/SPHinXsim'...
+2026-11-03T10:14:41.6126903Z HEAD is now at 9cdae783 Merge pull request #191 from Xiangyu-Hu/fxi/use_arm64_osx_for_macos
+2026-11-03T10:14:41.6172012Z Cloning into '/home/runner/work/_temp/p5a-work/target-source/repos/SPHinXsys'...
+2026-11-03T10:14:48.8392603Z HEAD is now at 351368e10 Merge branch 'use_bitmask_for_part_by_cell' into xiangyu/revise_discrete_variable_array
+2026-11-03T10:14:48.8434751Z Cloning into '/home/runner/work/_temp/p5a-work/target-source/repos/SPHinXsim'...
+2026-11-03T10:14:51.8236063Z HEAD is now at dceacd4e add long path issue solution
+2026-11-03T10:28:01.9540783Z {"Q1": {"status": "Q1_NOT_QUALIFIED_FOR_VERSION_PAIR"}, "RESEARCH_BASELINE_APPROVED": false, "RETRIEVAL_QUALITY_ACCEPTED": false, "STRUCTURAL_PARITY": "PASS", "attribution_report_id": "sha256-b490738496272e15ab8ba4c87ae3592f278101c2853ae12bfebf34b0aae3cc51", "automatic_research_approval": false, "automatic_reuse": false, "baseline_id": "sha256-798d0d1284c7dbba06d5788a062973bf7290cbbfdef28150037371fa78b7188a", "bindings": {"P4_1_original_evidence": "VERIFIED_LAYERS_A_B_C", "base_corpus_sha256": "80628555baf0be0ed9781a811607f73dabd3676da36a1175ce09142a8729f82a", "base_rows_sha256": "659af559de9d648a73c2aa0706b0308721bd16f66da2a76012e7767d6b1e323e", "base_source_state": "sha256-96d84d8f4a25c8a49e77aadca9d6a8accc247153bb7e0645dbf443ce71c6c151", "base_upstreams": {"SPHinXsim": "9cdae783e3ef3f8926c2174a0db89e96846befad", "SPHinXsys": "4e686ee357de1cb798ac47eb760dd79e2fb407ff"}, "benchmark_sha256": "bac0b31b74410eaff00246e628187ee07c4aaefb8747ad076f090393b71d1ab7", "build_fingerprint": "7f66fe80e92d7263d5147d4fea551855184af75829f5b62993eb162acceb0cd8", "candidate_id": "sha256-d7c95bbf42703d209a5a20f60540cf04b7134736ead650d8c95d66adaee724b8", "four_artifact_parity": {"candidate_id": "sha256-d7c95bbf42703d209a5a20f60540cf04b7134736ead650d8c95d66adaee724b8", "comparisons": {"corpus.jsonl": {"exact_bytes_equal": true, "sha256": "224fd0723fd0d77a3f8ad7cd300ecd31856fd689b0fc5e6c942b8d691ef63f8d"}, "extraction-graph.json": {"exact_bytes_equal": true, "sha256": "39152560a9b30d64e9d5a14d6b33fed6ee4091f37b298a4bc90586d08fbc0775"}, "inventory.json": {"exact_bytes_equal": true, "sha256": "9858e9d91971e1551be8e7af99f8f55597ca98b619e1e8f3836d1a0eec10a096"}, "selection.json": {"exact_bytes_equal": true, "sha256": "c883582facbce2dfb14a09dedab185532a448dddf4f2dc431a4927ea5d0b48bb"}}, "full_reference_independently_built": true, "status": "PARITY_PASS"}, "parent_id": "sha256-798d0d1284c7dbba06d5788a062973bf7290cbbfdef28150037371fa78b7188a", "target_corpus_sha256": "224fd0723fd0d77a3f8ad7cd300ecd31856fd689b0fc5e6c942b8d691ef63f8d", "target_rows_sha256": "372569fe9ca539a0dcfb0cd19ffa863b61e7a8d6b4ff345ce4c168afdaf40f37", "target_source_state": "sha256-f69af955d057a23cf32586d024a24c0f2d38becfdfa5249625688d2e51e3b082", "target_upstreams": {"SPHinXsim": "dceacd4e509a8592b802cf44bb2885bea7ddfdb3", "SPHinXsys": "351368e108f47f8d15f89baac96683ecadaee32c"}}, "candidate_evaluation_combinations": 128, "candidate_id": "sha256-d7c95bbf42703d209a5a20f60540cf04b7134736ead650d8c95d66adaee724b8", "full_evaluation_combinations": 128, "hosted_validation": "PENDING_HOSTED_REVIEW", "implementation": {"configs/ci_v2_schema2_trusted_baselines.json": "5422ff1c54f0349de5a951a55982a13387ea81492d79bd6e8bdba00b877915b5", "docs/ci_v2_p5a_2_design.md": "a6bf3407c0a328a762f05d0c8ea5cebe653e560ef2c52743bd1a37e812df2578", "scripts/ci_v2_schema2_research.py": "b9bd9b33a7b1152907fea279c9d651c41a8016de0efb475cbaed8e0b893a0a9b", "src/regression_attribution.py": "4499469a9a5607c1041790cf7e14319edd04a9889281cba6e4612d3a44441829", "src/schema2_workflow.py": "ceef480db5a868801d3e4524a6a155f72f1f02791ecb3f4a7f413103b8f6e824", "src/trusted_snapshot.py": "6b2c634eade6e3684a559ab206d1e6c2eef879c59a4968078925a1fb0c9e6719"}, "independent_full_snapshot_id": "sha256-4db584359a28c9c215ace0b23fa9c62c3dd57fd1f9e87e65b601b8776386e4fb", "independent_replay_combinations": 256, "local_integration": "LOCAL_VALIDATED", "parent_metrics": {"category": {"A:documentation": {"Hit_at_10": 0.95, "Hit_at_5": 0.9, "availability_conditioned_hit10": 0.9743589743589743, "availability_conditioned_hit5": 0.9230769230769231, "complete_multi_coverage_at_10": 0.0, "complete_multi_coverage_at_5": 0.0, "complete_multi_hits_at_10": 0, "complete_multi_hits_at_5": 0, "coverage_gap_questions": 0, "exact_evidence_available_questions": 39, "mean_partial_evidence_coverage_at_10": 0.9625, "mean_partial_evidence_coverage_at_5": 0.9125, "multi_n": 1, "n": 40, "ranking_failures_at_5_with_available_evidence": 3, "single_MRR_at_5": 0.7508547008547009, "single_hits_at_5": 36, "single_n": 39, "strict_hits_at_10": 38, "strict_hits_at_5": 36, "structural_fragmentation_questions": 1}, "B:cli": {"Hit_at_10": 0.2, "Hit_at_5": 0.2, "availability_conditioned_hit10": 0.2, "availability_conditioned_hit5": 0.2, "complete_multi_coverage_at_10": null, "complete_multi_coverage_at_5": null, "complete_multi_hits_at_10": 0, "complete_multi_hits_at_5": 0, "coverage_gap_questions": 0, "exact_evidence_available_questions": 5, "mean_partial_evidence_coverage_at_10": 0.2, "mean_partial_evidence_coverage_at_5": 0.2, "multi_n": 0, "n": 5, "ranking_failures_at_5_with_available_evidence": 4, "single_MRR_at_5": 0.06666666666666667, "single_hits_at_5": 1, "single_n": 5, "strict_hits_at_10": 1, "strict_hits_at_5": 1, "structural_fragmentation_questions": 0}, "B:cpp_class": {"Hit_at_10": 1.0, "Hit_at_5": 0.0, "availability_conditioned_hit10": 1.0, "availability_conditioned_hit5": 0.0, "complete_multi_coverage_at_10": null, "complete_multi_coverage_at_5": null, "complete_multi_hits_at_10": 0, "complete_multi_hits_at_5": 0, "coverage_gap_questions": 0, "exact_evidence_available_questions": 1, "mean_partial_evidence_coverage_at_10": 1.0, "mean_partial_evidence_coverage_at_5": 0.0, "multi_n": 0, "n": 1, "ranking_failures_at_5_with_available_evidence": 1, "single_MRR_at_5": 0, "single_hits_at_5": 0, "single_n": 1, "strict_hits_at_10": 1, "strict_hits_at_5": 0, "structural_fragmentation_questions": 0}, "B:cpp_interface": {"Hit_at_10": 0.0, "Hit_at_5": 0.0, "availability_conditioned_hit10": 0.0, "availability_conditioned_hit5": 0.0, "complete_multi_coverage_at_10": null, "complete_multi_coverage_at_5": null, "complete_multi_hits_at_10": 0, "complete_multi_hits_at_5": 0, "coverage_gap_questions": 0, "exact_evidence_available_questions": 1, "mean_partial_evidence_coverage_at_10": 0.0, "mean_partial_evidence_coverage_at_5": 0.0, "multi_n": 0, "n": 1, "ranking_failures_at_5_with_available_evidence": 1, "single_MRR_at_5": 0, "single_hits_at_5": 0, "single_n": 1, "strict_hits_at_10": 0, "strict_hits_at_5": 0, "structural_fragmentation_questions": 0}, "B:cpp_method": {"Hit_at_10": 1.0, "Hit_at_5": 1.0, "availability_conditioned_hit10": 1.0, "availability_conditioned_hit5": 1.0, "complete_multi_coverage_at_10": null, "complete_multi_coverage_at_5": null, "complete_multi_hits_at_10": 0, "complete_multi_hits_at_5": 0, "coverage_gap_questions": 0, "exact_evidence_available_questions": 1, "mean_partial_evidence_coverage_at_10": 1.0, "mean_partial_evidence_coverage_at_5": 1.0, "multi_n": 0, "n": 1, "ranking_failures_at_5_with_available_evidence": 0, "single_MRR_at_5": 0.5, "single_hits_at_5": 1, "single_n": 1, "strict_hits_at_10": 1, "strict_hits_at_5": 1, "structural_fragmentation_questions": 0}, "B:json_configuration": {"Hit_at_10": 0.0, "Hit_at_5": 0.0, "availability_conditioned_hit10": 0.0, "availability_conditioned_hit5": 0.0, "complete_multi_coverage_at_10": 0.0, "complete_multi_coverage_at_5": 0.0, "complete_multi_hits_at_10": 0, "complete_multi_hits_at_5": 0, "coverage_gap_questions": 0, "exact_evidence_available_questions": 1, "mean_partial_evidence_coverage_at_10": 0.0, "mean_partial_evidence_coverage_at_5": 0.0, "multi_n": 1, "n": 1, "ranking_failures_at_5_with_available_evidence": 1, "single_MRR_at_5": null, "single_hits_at_5": 0, "single_n": 0, "strict_hits_at_10": 0, "strict_hits_at_5": 0, "structural_fragmentation_questions": 0}, "B:schema": {"Hit_at_10": 0.5, "Hit_at_5": 0.5, "availability_conditioned_hit10": 0.5, "availability_conditioned_hit5": 0.5, "complete_multi_coverage_at_10": null, "complete_multi_coverage_at_5": null, "complete_multi_hits_at_10": 0, "complete_multi_hits_at_5": 0, "coverage_gap_questions": 0, "exact_evidence_available_questions": 2, "mean_partial_evidence_coverage_at_10": 0.5, "mean_partial_evidence_coverage_at_5": 0.5, "multi_n": 0, "n": 2, "ranking_failures_at_5_with_available_evidence": 1, "single_MRR_at_5": 0.5, "single_hits_at_5": 1, "single_n": 2, "strict_hits_at_10": 1, "strict_hits_at_5": 1, "structural_fragmentation_questions": 0}, "B:simulation_case": {"Hit_at_10": 0.3333333333333333, "Hit_at_5": 0.3333333333333333, "availability_conditioned_hit10": 0.3333333333333333, "availability_conditioned_hit5": 0.3333333333333333, "complete_multi_coverage_at_10": null, "complete_multi_coverage_at_5": null, "complete_multi_hits_at_10": 0, "complete_multi_hits_at_5": 0, "coverage_gap_questions": 0, "exact_evidence_available_questions": 3, "mean_partial_evidence_coverage_at_10": 0.3333333333333333, "mean_partial_evidence_coverage_at_5": 0.3333333333333333, "multi_n": 0, "n": 3, "ranking_failures_at_5_with_available_evidence": 2, "single_MRR_at_5": 0.08333333333333333, "single_hits_at_5": 1, "single_n": 3, "strict_hits_at_10": 1, "strict_hits_at_5": 1, "structural_fragmentation_questions": 0}, "C:capability_boundary": {"Hit_at_10": 0.0, "Hit_at_5": 0.0, "availability_conditioned_hit10": 0.0, "availability_conditioned_hit5": 0.0, "complete_multi_coverage_at_10": 0.0, "complete_multi_coverage_at_5": 0.0, "complete_multi_hits_at_10": 0, "complete_multi_hits_at_5": 0, "coverage_gap_questions": 0, "exact_evidence_available_questions": 3, "mean_partial_evidence_coverage_at_10": 0.16666666666666666, "mean_partial_evidence_coverage_at_5": 0.16666666666666666, "multi_n": 3, "n": 3, "ranking_failures_at_5_with_available_evidence": 3, "single_MRR_at_5": null, "single_hits_at_5": 0, "single_n": 0, "strict_hits_at_10": 0, "strict_hits_at_5": 0, "structural_fragmentation_questions": 0}, "C:cli": {"Hit_at_10": 0.6666666666666666, "Hit_at_5": 0.6666666666666666, "availability_conditioned_hit10": 0.6666666666666666, "availability_conditioned_hit5": 0.6666666666666666, "complete_multi_coverage_at_10": null, "complete_multi_coverage_at_5": null, "complete_multi_hits_at_10": 0, "complete_multi_hits_at_5": 0, "coverage_gap_questions": 0, "exact_evidence_available_questions": 3, "mean_partial_evidence_coverage_at_10": 0.6666666666666666, "mean_partial_evidence_coverage_at_5": 0.6666666666666666, "multi_n": 0, "n": 3, "ranking_failures_at_5_with_available_evidence": 1, "single_MRR_at_5": 0.6666666666666666, "single_hits_at_5": 2, "single_n": 3, "strict_hits_at_10": 2, "strict_hits_at_5": 2, "structural_fragmentation_questions": 0}, "C:cpp_algorithm": {"Hit_at_10": 0.75, "Hit_at_5": 0.75, "availability_conditioned_hit10": 0.75, "availability_conditioned_hit5": 0.75, "complete_multi_coverage_at_10": null, "complete_multi_coverage_at_5": null, "complete_multi_hits_at_10": 0, "complete_multi_hits_at_5": 0, "coverage_gap_questions": 0, "exact_evidence_available_questions": 4, "mean_partial_evidence_coverage_at_10": 0.75, "mean_partial_evidence_coverage_at_5": 0.75, "multi_n": 0, "n": 4, "ranking_failures_at_5_with_available_evidence": 1, "single_MRR_at_5": 0.3833333333333333, "single_hits_at_5": 3, "single_n": 4, "strict_hits_at_10": 3, "strict_hits_at_5": 3, "structural_fragmentation_questions": 0}, "C:cross_repository": {"Hit_at_10": 0.25, "Hit_at_5": 0.25, "availability_conditioned_hit10": 0.25, "availability_conditioned_hit5": 0.25, "complete_multi_coverage_at_10": 0.25, "complete_multi_coverage_at_5": 0.25, "complete_multi_hits_at_10": 1, "complete_multi_hits_at_5": 1, "coverage_gap_questions": 0, "exact_evidence_available_questions": 4, "mean_partial_evidence_coverage_at_10": 0.5, "mean_partial_evidence_coverage_at_5": 0.5, "multi_n": 4, "n": 4, "ranking_failures_at_5_with_available_evidence": 3, "single_MRR_at_5": null, "single_hits_at_5": 0, "single_n": 0, "strict_hits_at_10": 1, "strict_hits_at_5": 1, "structural_fragmentation_questions": 0}, "C:documentation_to_source": {"Hit_at_10": 0.3333333333333333, "Hit_at_5": 0.3333333333333333, "availability_conditioned_hit10": 0.3333333333333333, "availability_conditioned_hit5": 0.3333333333333333, "complete_multi_coverage_at_10": 0.3333333333333333, "complete_multi_coverage_at_5": 0.3333333333333333, "complete_multi_hits_at_10": 1, "complete_multi_hits_at_5": 1, "coverage_gap_questions": 0, "exact_evidence_available_questions": 3, "mean_partial_evidence_coverage_at_10": 0.6666666666666666, "mean_partial_evidence_coverage_at_5": 0.5, "multi_n": 3, "n": 3, "ranking_failures_at_5_with_available_evidence": 2, "single_MRR_at_5": null, "single_hits_at_5": 0, "single_n": 0, "strict_hits_at_10": 1, "strict_hits_at_5": 1, "structural_fragmentation_questions": 0}, "C:json_configuration": {"Hit_at_10": 1.0, "Hit_at_5": 1.0, "availability_conditioned_hit10": 1.0, "availability_conditioned_hit5": 1.0, "complete_multi_coverage_at_10": 1.0, "complete_multi_coverage_at_5": 1.0, "complete_multi_hits_at_10": 2, "complete_multi_hits_at_5": 2, "coverage_gap_questions": 0, "exact_evidence_available_questions": 3, "mean_partial_evidence_coverage_at_10": 1.0, "mean_partial_evidence_coverage_at_5": 1.0, "multi_n": 2, "n": 3, "ranking_failures_at_5_with_available_evidence": 0, "single_MRR_at_5": 1.0, "single_hits_at_5": 1, "single_n": 1, "strict_hits_at_10": 3, "strict_hits_at_5": 3, "structural_fragmentation_questions": 0}, "C:python": {"Hit_at_10": 1.0, "Hit_at_5": 1.0, "availability_conditioned_hit10": 1.0, "availability_conditioned_hit5": 1.0, "complete_multi_coverage_at_10": null, "complete_multi_coverage_at_5": null, "complete_multi_hits_at_10": 0, "complete_multi_hits_at_5": 0, "coverage_gap_questions": 0, "exact_evidence_available_questions": 3, "mean_partial_evidence_coverage_at_10": 1.0, "mean_partial_evidence_coverage_at_5": 1.0, "multi_n": 0, "n": 3, "ranking_failures_at_5_with_available_evidence": 0, "single_MRR_at_5": 0.8333333333333334, "single_hits_at_5": 3, "single_n": 3, "strict_hits_at_10": 3, "strict_hits_at_5": 3, "structural_fragmentation_questions": 0}, "C:schema": {"Hit_at_10": 1.0, "Hit_at_5": 1.0, "availability_conditioned_hit10": 1.0, "availability_conditioned_hit5": 1.0, "complete_multi_coverage_at_10": null, "complete_multi_coverage_at_5": null, "complete_multi_hits_at_10": 0, "complete_multi_hits_at_5": 0, "coverage_gap_questions": 0, "exact_evidence_available_questions": 4, "mean_partial_evidence_coverage_at_10": 1.0, "mean_partial_evidence_coverage_at_5": 1.0, "multi_n": 0, "n": 4, "ranking_failures_at_5_with_available_evidence": 0, "single_MRR_at_5": 1.0, "single_hits_at_5": 4, "single_n": 4, "strict_hits_at_10": 4, "strict_hits_at_5": 4, "structural_fragmentation_questions": 0}, "C:simulation_case": {"Hit_at_10": 1.0, "Hit_at_5": 0.6666666666666666, "availability_conditioned_hit10": 1.0, "availability_conditioned_hit5": 0.6666666666666666, "complete_multi_coverage_at_10": null, "complete_multi_coverage_at_5": null, "complete_multi_hits_at_10": 0, "complete_multi_hits_at_5": 0, "coverage_gap_questions": 0, "exact_evidence_available_questions": 3, "mean_partial_evidence_coverage_at_10": 1.0, "mean_partial_evidence_coverage_at_5": 0.6666666666666666, "multi_n": 0, "n": 3, "ranking_failures_at_5_with_available_evidence": 1, "single_MRR_at_5": 0.23333333333333334, "single_hits_at_5": 2, "single_n": 3, "strict_hits_at_10": 3, "strict_hits_at_5": 2, "structural_fragmentation_questions": 0}}, "combined_primary_all": {"Hit_at_10": 0.75, "Hit_at_5": 0.7023809523809523, "availability_conditioned_hit10": 0.7590361445783133, "availability_conditioned_hit5": 0.7108433734939759, "complete_multi_coverage_at_10": 0.2857142857142857, "complete_multi_coverage_at_5": 0.2857142857142857, "complete_multi_hits_at_10": 4, "complete_multi_hits_at_5": 4, "coverage_gap_questions": 0, "exact_evidence_available_questions": 83, "mean_partial_evidence_coverage_at_10": 0.7857142857142857, "mean_partial_evidence_coverage_at_5": 0.7321428571428571, "multi_n": 14, "n": 84, "ranking_failures_at_5_with_available_evidence": 24, "single_MRR_at_5": 0.6157142857142857, "single_hits_at_5": 55, "single_n": 70, "strict_hits_at_10": 63, "strict_hits_at_5": 59, "structural_fragmentation_questions": 1}, "group": {"combined:A": {"Hit_at_10": 0.95, "Hit_at_5": 0.9, "availability_conditioned_hit10": 0.9743589743589743, "availability_conditioned_hit5": 0.9230769230769231, "complete_multi_coverage_at_10": 0.0, "complete_multi_coverage_at_5": 0.0, "complete_multi_hits_at_10": 0, "complete_multi_hits_at_5": 0, "coverage_gap_questions": 0, "exact_evidence_available_questions": 39, "mean_partial_evidence_coverage_at_10": 0.9625, "mean_partial_evidence_coverage_at_5": 0.9125, "multi_n": 1, "n": 40, "ranking_failures_at_5_with_available_evidence": 3, "single_MRR_at_5": 0.7508547008547009, "single_hits_at_5": 36, "single_n": 39, "strict_hits_at_10": 38, "strict_hits_at_5": 36, "structural_fragmentation_questions": 1}, "combined:B": {"Hit_at_10": 0.35714285714285715, "Hit_at_5": 0.2857142857142857, "availability_conditioned_hit10": 0.35714285714285715, "availability_conditioned_hit5": 0.2857142857142857, "complete_multi_coverage_at_10": 0.0, "complete_multi_coverage_at_5": 0.0, "complete_multi_hits_at_10": 0, "complete_multi_hits_at_5": 0, "coverage_gap_questions": 0, "exact_evidence_available_questions": 14, "mean_partial_evidence_coverage_at_10": 0.35714285714285715, "mean_partial_evidence_coverage_at_5": 0.2857142857142857, "multi_n": 1, "n": 14, "ranking_failures_at_5_with_available_evidence": 10, "single_MRR_at_5": 0.16025641025641024, "single_hits_at_5": 4, "single_n": 13, "strict_hits_at_10": 5, "strict_hits_at_5": 4, "structural_fragmentation_questions": 0}, "combined:C": {"Hit_at_10": 0.6666666666666666, "Hit_at_5": 0.6333333333333333, "availability_conditioned_hit10": 0.6666666666666666, "availability_conditioned_hit5": 0.6333333333333333, "complete_multi_coverage_at_10": 0.3333333333333333, "complete_multi_coverage_at_5": 0.3333333333333333, "complete_multi_hits_at_10": 4, "complete_multi_hits_at_5": 4, "coverage_gap_questions": 0, "exact_evidence_available_questions": 30, "mean_partial_evidence_coverage_at_10": 0.75, "mean_partial_evidence_coverage_at_5": 0.7, "multi_n": 12, "n": 30, "ranking_failures_at_5_with_available_evidence": 11, "single_MRR_at_5": 0.6518518518518519, "single_hits_at_5": 15, "single_n": 18, "strict_hits_at_10": 20, "strict_hits_at_5": 19, "structural_fragmentation_questions": 0}, "documentation_only:A": {"Hit_at_10": 0.95, "Hit_at_5": 0.95, "availability_conditioned_hit10": 0.9743589743589743, "availability_conditioned_hit5": 0.9743589743589743, "complete_multi_coverage_at_10": 0.0, "complete_multi_coverage_at_5": 0.0, "complete_multi_hits_at_10": 0, "complete_multi_hits_at_5": 0, "coverage_gap_questions": 0, "exact_evidence_available_questions": 39, "mean_partial_evidence_coverage_at_10": 0.9625, "mean_partial_evidence_coverage_at_5": 0.9625, "multi_n": 1, "n": 40, "ranking_failures_at_5_with_available_evidence": 1, "single_MRR_at_5": 0.8376068376068376, "single_hits_at_5": 38, "single_n": 39, "strict_hits_at_10": 38, "strict_hits_at_5": 38, "structural_fragmentation_questions": 1}}, "notes": {"A_denominator": "All40 strict questions including fragmentedQ30; availability-conditioned39 additionally reported", "B": "14 unchanged legacy query texts. CLI5 keep original symbol expectations; other9 use newly frozen source passage bindings, not an original historical gold set.", "primary": "A/B/C exact frozen target metrics; D excluded", "semantic": "Supplementary fixed-anchor sufficiency diagnostics; no independent free-form answer/LLM adjudication", "stale_oracles": "None identified against current source; broad legacy targets have specificity limitations, reported separately, not retrospectively relabeled stale."}, "post_run_semantic_uniqueness_uncertain_count": 4, "post_run_semantic_uniqueness_uncertain_ids": ["B-05", "B-06", "B-07", "B-09"], "stale_oracle_count": 0, "unverified_oracle_count": 0}, "production_promotion": "NOT_AUTHORIZED", "quality_metrics": {"category": {"A:documentation": {"Hit_at_10": 0.925, "Hit_at_5": 0.875, "availability_conditioned_hit10": 0.9736842105263158, "availability_conditioned_hit5": 0.9210526315789473, "complete_multi_coverage_at_10": 0.0, "complete_multi_coverage_at_5": 0.0, "complete_multi_hits_at_10": 0, "complete_multi_hits_at_5": 0, "coverage_gap_questions": 1, "exact_evidence_available_questions": 38, "mean_partial_evidence_coverage_at_10": 0.9375, "mean_partial_evidence_coverage_at_5": 0.8875, "multi_n": 1, "n": 40, "ranking_failures_at_5_with_available_evidence": 3, "single_MRR_at_5": 0.7239316239316239, "single_hits_at_5": 35, "single_n": 39, "strict_hits_at_10": 37, "strict_hits_at_5": 35, "structural_fragmentation_questions": 1}, "B:cli": {"Hit_at_10": 0.2, "Hit_at_5": 0.2, "availability_conditioned_hit10": 0.2, "availability_conditioned_hit5": 0.2, "complete_multi_coverage_at_10": null, "complete_multi_coverage_at_5": null, "complete_multi_hits_at_10": 0, "complete_multi_hits_at_5": 0, "coverage_gap_questions": 0, "exact_evidence_available_questions": 5, "mean_partial_evidence_coverage_at_10": 0.2, "mean_partial_evidence_coverage_at_5": 0.2, "multi_n": 0, "n": 5, "ranking_failures_at_5_with_available_evidence": 4, "single_MRR_at_5": 0.06666666666666667, "single_hits_at_5": 1, "single_n": 5, "strict_hits_at_10": 1, "strict_hits_at_5": 1, "structural_fragmentation_questions": 0}, "B:cpp_class": {"Hit_at_10": 1.0, "Hit_at_5": 0.0, "availability_conditioned_hit10": 1.0, "availability_conditioned_hit5": 0.0, "complete_multi_coverage_at_10": null, "complete_multi_coverage_at_5": null, "complete_multi_hits_at_10": 0, "complete_multi_hits_at_5": 0, "coverage_gap_questions": 0, "exact_evidence_available_questions": 1, "mean_partial_evidence_coverage_at_10": 1.0, "mean_partial_evidence_coverage_at_5": 0.0, "multi_n": 0, "n": 1, "ranking_failures_at_5_with_available_evidence": 1, "single_MRR_at_5": 0, "single_hits_at_5": 0, "single_n": 1, "strict_hits_at_10": 1, "strict_hits_at_5": 0, "structural_fragmentation_questions": 0}, "B:cpp_interface": {"Hit_at_10": 0.0, "Hit_at_5": 0.0, "availability_conditioned_hit10": 0.0, "availability_conditioned_hit5": 0.0, "complete_multi_coverage_at_10": null, "complete_multi_coverage_at_5": null, "complete_multi_hits_at_10": 0, "complete_multi_hits_at_5": 0, "coverage_gap_questions": 0, "exact_evidence_available_questions": 1, "mean_partial_evidence_coverage_at_10": 0.0, "mean_partial_evidence_coverage_at_5": 0.0, "multi_n": 0, "n": 1, "ranking_failures_at_5_with_available_evidence": 1, "single_MRR_at_5": 0, "single_hits_at_5": 0, "single_n": 1, "strict_hits_at_10": 0, "strict_hits_at_5": 0, "structural_fragmentation_questions": 0}, "B:cpp_method": {"Hit_at_10": 1.0, "Hit_at_5": 1.0, "availability_conditioned_hit10": 1.0, "availability_conditioned_hit5": 1.0, "complete_multi_coverage_at_10": null, "complete_multi_coverage_at_5": null, "complete_multi_hits_at_10": 0, "complete_multi_hits_at_5": 0, "coverage_gap_questions": 0, "exact_evidence_available_questions": 1, "mean_partial_evidence_coverage_at_10": 1.0, "mean_partial_evidence_coverage_at_5": 1.0, "multi_n": 0, "n": 1, "ranking_failures_at_5_with_available_evidence": 0, "single_MRR_at_5": 0.5, "single_hits_at_5": 1, "single_n": 1, "strict_hits_at_10": 1, "strict_hits_at_5": 1, "structural_fragmentation_questions": 0}, "B:json_configuration": {"Hit_at_10": 0.0, "Hit_at_5": 0.0, "availability_conditioned_hit10": 0.0, "availability_conditioned_hit5": 0.0, "complete_multi_coverage_at_10": 0.0, "complete_multi_coverage_at_5": 0.0, "complete_multi_hits_at_10": 0, "complete_multi_hits_at_5": 0, "coverage_gap_questions": 0, "exact_evidence_available_questions": 1, "mean_partial_evidence_coverage_at_10": 0.0, "mean_partial_evidence_coverage_at_5": 0.0, "multi_n": 1, "n": 1, "ranking_failures_at_5_with_available_evidence": 1, "single_MRR_at_5": null, "single_hits_at_5": 0, "single_n": 0, "strict_hits_at_10": 0, "strict_hits_at_5": 0, "structural_fragmentation_questions": 0}, "B:schema": {"Hit_at_10": 0.5, "Hit_at_5": 0.5, "availability_conditioned_hit10": 0.5, "availability_conditioned_hit5": 0.5, "complete_multi_coverage_at_10": null, "complete_multi_coverage_at_5": null, "complete_multi_hits_at_10": 0, "complete_multi_hits_at_5": 0, "coverage_gap_questions": 0, "exact_evidence_available_questions": 2, "mean_partial_evidence_coverage_at_10": 0.5, "mean_partial_evidence_coverage_at_5": 0.5, "multi_n": 0, "n": 2, "ranking_failures_at_5_with_available_evidence": 1, "single_MRR_at_5": 0.5, "single_hits_at_5": 1, "single_n": 2, "strict_hits_at_10": 1, "strict_hits_at_5": 1, "structural_fragmentation_questions": 0}, "B:simulation_case": {"Hit_at_10": 0.3333333333333333, "Hit_at_5": 0.3333333333333333, "availability_conditioned_hit10": 0.3333333333333333, "availability_conditioned_hit5": 0.3333333333333333, "complete_multi_coverage_at_10": null, "complete_multi_coverage_at_5": null, "complete_multi_hits_at_10": 0, "complete_multi_hits_at_5": 0, "coverage_gap_questions": 0, "exact_evidence_available_questions": 3, "mean_partial_evidence_coverage_at_10": 0.3333333333333333, "mean_partial_evidence_coverage_at_5": 0.3333333333333333, "multi_n": 0, "n": 3, "ranking_failures_at_5_with_available_evidence": 2, "single_MRR_at_5": 0.08333333333333333, "single_hits_at_5": 1, "single_n": 3, "strict_hits_at_10": 1, "strict_hits_at_5": 1, "structural_fragmentation_questions": 0}, "C:capability_boundary": {"Hit_at_10": 0.0, "Hit_at_5": 0.0, "availability_conditioned_hit10": 0.0, "availability_conditioned_hit5": 0.0, "complete_multi_coverage_at_10": 0.0, "complete_multi_coverage_at_5": 0.0, "complete_multi_hits_at_10": 0, "complete_multi_hits_at_5": 0, "coverage_gap_questions": 0, "exact_evidence_available_questions": 3, "mean_partial_evidence_coverage_at_10": 0.16666666666666666, "mean_partial_evidence_coverage_at_5": 0.16666666666666666, "multi_n": 3, "n": 3, "ranking_failures_at_5_with_available_evidence": 3, "single_MRR_at_5": null, "single_hits_at_5": 0, "single_n": 0, "strict_hits_at_10": 0, "strict_hits_at_5": 0, "structural_fragmentation_questions": 0}, "C:cli": {"Hit_at_10": 0.6666666666666666, "Hit_at_5": 0.6666666666666666, "availability_conditioned_hit10": 0.6666666666666666, "availability_conditioned_hit5": 0.6666666666666666, "complete_multi_coverage_at_10": null, "complete_multi_coverage_at_5": null, "complete_multi_hits_at_10": 0, "complete_multi_hits_at_5": 0, "coverage_gap_questions": 0, "exact_evidence_available_questions": 3, "mean_partial_evidence_coverage_at_10": 0.6666666666666666, "mean_partial_evidence_coverage_at_5": 0.6666666666666666, "multi_n": 0, "n": 3, "ranking_failures_at_5_with_available_evidence": 1, "single_MRR_at_5": 0.6666666666666666, "single_hits_at_5": 2, "single_n": 3, "strict_hits_at_10": 2, "strict_hits_at_5": 2, "structural_fragmentation_questions": 0}, "C:cpp_algorithm": {"Hit_at_10": 0.75, "Hit_at_5": 0.75, "availability_conditioned_hit10": 0.75, "availability_conditioned_hit5": 0.75, "complete_multi_coverage_at_10": null, "complete_multi_coverage_at_5": null, "complete_multi_hits_at_10": 0, "complete_multi_hits_at_5": 0, "coverage_gap_questions": 0, "exact_evidence_available_questions": 4, "mean_partial_evidence_coverage_at_10": 0.75, "mean_partial_evidence_coverage_at_5": 0.75, "multi_n": 0, "n": 4, "ranking_failures_at_5_with_available_evidence": 1, "single_MRR_at_5": 0.3833333333333333, "single_hits_at_5": 3, "single_n": 4, "strict_hits_at_10": 3, "strict_hits_at_5": 3, "structural_fragmentation_questions": 0}, "C:cross_repository": {"Hit_at_10": 0.25, "Hit_at_5": 0.25, "availability_conditioned_hit10": 0.25, "availability_conditioned_hit5": 0.25, "complete_multi_coverage_at_10": 0.25, "complete_multi_coverage_at_5": 0.25, "complete_multi_hits_at_10": 1, "complete_multi_hits_at_5": 1, "coverage_gap_questions": 0, "exact_evidence_available_questions": 4, "mean_partial_evidence_coverage_at_10": 0.5, "mean_partial_evidence_coverage_at_5": 0.5, "multi_n": 4, "n": 4, "ranking_failures_at_5_with_available_evidence": 3, "single_MRR_at_5": null, "single_hits_at_5": 0, "single_n": 0, "strict_hits_at_10": 1, "strict_hits_at_5": 1, "structural_fragmentation_questions": 0}, "C:documentation_to_source": {"Hit_at_10": 0.3333333333333333, "Hit_at_5": 0.3333333333333333, "availability_conditioned_hit10": 0.3333333333333333, "availability_conditioned_hit5": 0.3333333333333333, "complete_multi_coverage_at_10": 0.3333333333333333, "complete_multi_coverage_at_5": 0.3333333333333333, "complete_multi_hits_at_10": 1, "complete_multi_hits_at_5": 1, "coverage_gap_questions": 0, "exact_evidence_available_questions": 3, "mean_partial_evidence_coverage_at_10": 0.6666666666666666, "mean_partial_evidence_coverage_at_5": 0.5, "multi_n": 3, "n": 3, "ranking_failures_at_5_with_available_evidence": 2, "single_MRR_at_5": null, "single_hits_at_5": 0, "single_n": 0, "strict_hits_at_10": 1, "strict_hits_at_5": 1, "structural_fragmentation_questions": 0}, "C:json_configuration": {"Hit_at_10": 1.0, "Hit_at_5": 1.0, "availability_conditioned_hit10": 1.0, "availability_conditioned_hit5": 1.0, "complete_multi_coverage_at_10": 1.0, "complete_multi_coverage_at_5": 1.0, "complete_multi_hits_at_10": 2, "complete_multi_hits_at_5": 2, "coverage_gap_questions": 0, "exact_evidence_available_questions": 3, "mean_partial_evidence_coverage_at_10": 1.0, "mean_partial_evidence_coverage_at_5": 1.0, "multi_n": 2, "n": 3, "ranking_failures_at_5_with_available_evidence": 0, "single_MRR_at_5": 1.0, "single_hits_at_5": 1, "single_n": 1, "strict_hits_at_10": 3, "strict_hits_at_5": 3, "structural_fragmentation_questions": 0}, "C:python": {"Hit_at_10": 1.0, "Hit_at_5": 1.0, "availability_conditioned_hit10": 1.0, "availability_conditioned_hit5": 1.0, "complete_multi_coverage_at_10": null, "complete_multi_coverage_at_5": null, "complete_multi_hits_at_10": 0, "complete_multi_hits_at_5": 0, "coverage_gap_questions": 0, "exact_evidence_available_questions": 3, "mean_partial_evidence_coverage_at_10": 1.0, "mean_partial_evidence_coverage_at_5": 1.0, "multi_n": 0, "n": 3, "ranking_failures_at_5_with_available_evidence": 0, "single_MRR_at_5": 0.8333333333333334, "single_hits_at_5": 3, "single_n": 3, "strict_hits_at_10": 3, "strict_hits_at_5": 3, "structural_fragmentation_questions": 0}, "C:schema": {"Hit_at_10": 1.0, "Hit_at_5": 1.0, "availability_conditioned_hit10": 1.0, "availability_conditioned_hit5": 1.0, "complete_multi_coverage_at_10": null, "complete_multi_coverage_at_5": null, "complete_multi_hits_at_10": 0, "complete_multi_hits_at_5": 0, "coverage_gap_questions": 0, "exact_evidence_available_questions": 4, "mean_partial_evidence_coverage_at_10": 1.0, "mean_partial_evidence_coverage_at_5": 1.0, "multi_n": 0, "n": 4, "ranking_failures_at_5_with_available_evidence": 0, "single_MRR_at_5": 1.0, "single_hits_at_5": 4, "single_n": 4, "strict_hits_at_10": 4, "strict_hits_at_5": 4, "structural_fragmentation_questions": 0}, "C:simulation_case": {"Hit_at_10": 1.0, "Hit_at_5": 0.6666666666666666, "availability_conditioned_hit10": 1.0, "availability_conditioned_hit5": 0.6666666666666666, "complete_multi_coverage_at_10": null, "complete_multi_coverage_at_5": null, "complete_multi_hits_at_10": 0, "complete_multi_hits_at_5": 0, "coverage_gap_questions": 0, "exact_evidence_available_questions": 3, "mean_partial_evidence_coverage_at_10": 1.0, "mean_partial_evidence_coverage_at_5": 0.6666666666666666, "multi_n": 0, "n": 3, "ranking_failures_at_5_with_available_evidence": 1, "single_MRR_at_5": 0.23333333333333334, "single_hits_at_5": 2, "single_n": 3, "strict_hits_at_10": 3, "strict_hits_at_5": 2, "structural_fragmentation_questions": 0}}, "combined_primary_all": {"Hit_at_10": 0.7380952380952381, "Hit_at_5": 0.6904761904761905, "availability_conditioned_hit10": 0.7560975609756098, "availability_conditioned_hit5": 0.7073170731707317, "complete_multi_coverage_at_10": 0.2857142857142857, "complete_multi_coverage_at_5": 0.2857142857142857, "complete_multi_hits_at_10": 4, "complete_multi_hits_at_5": 4, "coverage_gap_questions": 1, "exact_evidence_available_questions": 82, "mean_partial_evidence_coverage_at_10": 0.7738095238095238, "mean_partial_evidence_coverage_at_5": 0.7202380952380952, "multi_n": 14, "n": 84, "ranking_failures_at_5_with_available_evidence": 24, "single_MRR_at_5": 0.6007142857142858, "single_hits_at_5": 54, "single_n": 70, "strict_hits_at_10": 62, "strict_hits_at_5": 58, "structural_fragmentation_questions": 1}, "group": {"combined:A": {"Hit_at_10": 0.925, "Hit_at_5": 0.875, "availability_conditioned_hit10": 0.9736842105263158, "availability_conditioned_hit5": 0.9210526315789473, "complete_multi_coverage_at_10": 0.0, "complete_multi_coverage_at_5": 0.0, "complete_multi_hits_at_10": 0, "complete_multi_hits_at_5": 0, "coverage_gap_questions": 1, "exact_evidence_available_questions": 38, "mean_partial_evidence_coverage_at_10": 0.9375, "mean_partial_evidence_coverage_at_5": 0.8875, "multi_n": 1, "n": 40, "ranking_failures_at_5_with_available_evidence": 3, "single_MRR_at_5": 0.7239316239316239, "single_hits_at_5": 35, "single_n": 39, "strict_hits_at_10": 37, "strict_hits_at_5": 35, "structural_fragmentation_questions": 1}, "combined:B": {"Hit_at_10": 0.35714285714285715, "Hit_at_5": 0.2857142857142857, "availability_conditioned_hit10": 0.35714285714285715, "availability_conditioned_hit5": 0.2857142857142857, "complete_multi_coverage_at_10": 0.0, "complete_multi_coverage_at_5": 0.0, "complete_multi_hits_at_10": 0, "complete_multi_hits_at_5": 0, "coverage_gap_questions": 0, "exact_evidence_available_questions": 14, "mean_partial_evidence_coverage_at_10": 0.35714285714285715, "mean_partial_evidence_coverage_at_5": 0.2857142857142857, "multi_n": 1, "n": 14, "ranking_failures_at_5_with_available_evidence": 10, "single_MRR_at_5": 0.16025641025641024, "single_hits_at_5": 4, "single_n": 13, "strict_hits_at_10": 5, "strict_hits_at_5": 4, "structural_fragmentation_questions": 0}, "combined:C": {"Hit_at_10": 0.6666666666666666, "Hit_at_5": 0.6333333333333333, "availability_conditioned_hit10": 0.6666666666666666, "availability_conditioned_hit5": 0.6333333333333333, "complete_multi_coverage_at_10": 0.3333333333333333, "complete_multi_coverage_at_5": 0.3333333333333333, "complete_multi_hits_at_10": 4, "complete_multi_hits_at_5": 4, "coverage_gap_questions": 0, "exact_evidence_available_questions": 30, "mean_partial_evidence_coverage_at_10": 0.75, "mean_partial_evidence_coverage_at_5": 0.7, "multi_n": 12, "n": 30, "ranking_failures_at_5_with_available_evidence": 11, "single_MRR_at_5": 0.6518518518518519, "single_hits_at_5": 15, "single_n": 18, "strict_hits_at_10": 20, "strict_hits_at_5": 19, "structural_fragmentation_questions": 0}, "documentation_only:A": {"Hit_at_10": 0.925, "Hit_at_5": 0.925, "availability_conditioned_hit10": 0.9736842105263158, "availability_conditioned_hit5": 0.9736842105263158, "complete_multi_coverage_at_10": 0.0, "complete_multi_coverage_at_5": 0.0, "complete_multi_hits_at_10": 0, "complete_multi_hits_at_5": 0, "coverage_gap_questions": 1, "exact_evidence_available_questions": 38, "mean_partial_evidence_coverage_at_10": 0.9375, "mean_partial_evidence_coverage_at_5": 0.9375, "multi_n": 1, "n": 40, "ranking_failures_at_5_with_available_evidence": 1, "single_MRR_at_5": 0.811965811965812, "single_hits_at_5": 37, "single_n": 39, "strict_hits_at_10": 37, "strict_hits_at_5": 37, "structural_fragmentation_questions": 1}}, "notes": {"A_denominator": "All40 strict questions including fragmentedQ30; availability-conditioned39 additionally reported", "B": "14 unchanged legacy query texts. CLI5 keep original symbol expectations; other9 use newly frozen source passage bindings, not an original historical gold set.", "primary": "A/B/C exact frozen target metrics; D excluded", "semantic": "Supplementary fixed-anchor sufficiency diagnostics; no independent free-form answer/LLM adjudication", "stale_oracles": "None identified against current source; broad legacy targets have specificity limitations, reported separately, not retrospectively relabeled stale."}, "post_run_semantic_uniqueness_uncertain_count": 4, "post_run_semantic_uniqueness_uncertain_ids": ["B-05", "B-06", "B-07", "B-09"], "stale_oracle_count": 0, "unverified_oracle_count": 0}, "remote_baseline_selection": "PINNED_REFERENCE_VERIFIED", "research_baseline_created": false, "retrieval_quality": "QUALITY_REVIEW_REQUIRED", "reuse": {"actual_extraction_invocations": 6, "added_files": 0, "deleted_files": 0, "modified_files": 6, "reused_chunks": 11213, "reused_files": 995, "reused_zero_chunk_files": 62, "selected_files": 1001, "unchanged_files": 995}, "runtime": {"P2_fingerprint": "7f66fe80e92d7263d5147d4fea551855184af75829f5b62993eb162acceb0cd8", "R2_fingerprint": "1b21c01ef077549c60ba17109cc9381d1172b6e483c707c146cb7d80bcaa3f6d", "hosted_validation": "PENDING_HOSTED_EVIDENCE", "local_runtime": "VERIFIED", "machine": "aarch64", "python": "3.12.3"}, "scheduled_execution": false, "schema_version": 2, "target_source_state": "sha256-f69af955d057a23cf32586d024a24c0f2d38becfdfa5249625688d2e51e3b082"}
+2026-11-03T10:28:02.0290000Z ##[group]Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+2026-11-03T10:28:02.0290555Z with:
+2026-11-03T10:28:02.0290797Z   name: ci-v2-research-41617493805-1
+2026-11-03T10:28:02.0291515Z   path: /home/runner/work/_temp/p5a/*.json
+/home/runner/work/_temp/p5a/run
+/home/runner/work/_temp/p5a/candidate.tar.gz
+
+2026-11-03T10:28:02.0292070Z   if-no-files-found: error
+2026-11-03T10:28:02.0292401Z   retention-days: 30
+2026-11-03T10:28:02.0292662Z   compression-level: 6
+2026-11-03T10:28:02.0292904Z   overwrite: false
+2026-11-03T10:28:02.0293314Z   include-hidden-files: false
+2026-11-03T10:28:02.0293576Z env:
+2026-11-03T10:28:02.0293809Z   PYTHONHASHSEED: 0
+2026-11-03T10:28:02.0294069Z   PYTHONDONTWRITEBYTECODE: 1
+2026-11-03T10:28:02.0294339Z   GIT_TERMINAL_PROMPT: 0
+2026-11-03T10:28:02.0295134Z   GIT_CONFIG_NOSYSTEM: 1
+2026-11-03T10:28:02.0295415Z   BASELINE_KEY: p2-initial-bootstrap
+2026-11-03T10:28:02.0295778Z   SYS_REVISION: 351368e108f47f8d15f89baac96683ecadaee32c
+2026-11-03T10:28:02.0296255Z   SIM_REVISION: dceacd4e509a8592b802cf44bb2885bea7ddfdb3
+2026-11-03T10:28:02.0296725Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.3/arm64
+2026-11-03T10:28:02.0297191Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.3/arm64/lib/pkgconfig
+2026-11-03T10:28:02.0297646Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.3/arm64
+2026-11-03T10:28:02.0298103Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.3/arm64
+2026-11-03T10:28:02.0298532Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.3/arm64
+2026-11-03T10:28:02.0299036Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.3/arm64/lib
+2026-11-03T10:28:02.0299638Z ##[endgroup]
+2026-11-03T10:28:02.1782353Z (node:7087) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-03T10:28:02.1783094Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-03T10:28:02.7459890Z With the provided path, there will be 3134 files uploaded
+2026-11-03T10:28:02.7465273Z Artifact name is valid!
+2026-11-03T10:28:02.7466228Z Root directory input is valid!
+2026-11-03T10:28:03.0197556Z Beginning upload of artifact content to blob storage
+2026-11-03T10:28:03.2699735Z (node:7087) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-03T10:28:03.6545636Z Uploaded bytes 8388608
+2026-11-03T10:28:03.8416961Z Uploaded bytes 16777216
+2026-11-03T10:28:03.8932469Z Uploaded bytes 25165824
+2026-11-03T10:28:04.0752764Z Uploaded bytes 33554432
+2026-11-03T10:28:04.3225459Z Uploaded bytes 41943040
+2026-11-03T10:28:04.4098949Z Uploaded bytes 50331648
+2026-11-03T10:28:05.1355692Z Uploaded bytes 58720256
+2026-11-03T10:28:06.2180557Z Uploaded bytes 67108864
+2026-11-03T10:28:06.8344753Z Uploaded bytes 75497472
+2026-11-03T10:28:07.8048170Z Uploaded bytes 83886080
+2026-11-03T10:28:08.4528195Z Uploaded bytes 92274688
+2026-11-03T10:28:09.2845248Z Uploaded bytes 100663296
+2026-11-03T10:28:09.9123481Z Uploaded bytes 105700225
+2026-11-03T10:28:09.9457977Z Finished uploading artifact content to blob storage!
+2026-11-03T10:28:09.9458811Z SHA256 digest of uploaded artifact zip is c7b68d90feb620d020f58d6ac52ce2becf14ab03943e5bd8b5f3fcbf08613cfc
+2026-11-03T10:28:09.9460014Z Finalizing artifact upload
+2026-11-03T10:28:10.5168875Z Artifact ci-v2-research-41617493805-1.zip successfully finalized. Artifact ID 13223351750
+2026-11-03T10:28:10.5169829Z Artifact ci-v2-research-41617493805-1 has been successfully uploaded! Final size is 105700225 bytes. Artifact ID is 13223351750
+2026-11-03T10:28:10.5177867Z Artifact download URL: https://github.com/XiangruZhang007/SPHinX_AI_Assistant/actions/runs/41617493805/artifacts/13223351750
+2026-11-03T10:28:10.5495648Z ##[group]Run python - <<'PY'
+2026-11-03T10:28:10.5495967Z [36;1mpython - <<'PY'[0m
+2026-11-03T10:28:10.5496285Z [36;1mimport os[0m
+2026-11-03T10:28:10.5496489Z [36;1mfrom pathlib import Path[0m
+2026-11-03T10:28:10.5496784Z [36;1mPath(os.environ['GITHUB_STEP_SUMMARY']).write_text([0m
+2026-11-03T10:28:10.5497315Z [36;1m    'Research candidate only; automatic approval/reuse=false; production promotion=NOT_AUTHORIZED.\n'[0m
+2026-11-03T10:28:10.5497838Z [36;1m    + 'Artifact ID: ' + os.environ['ARTIFACT_ID'] + '\n'[0m
+2026-11-03T10:28:10.5498225Z [36;1m    + 'Transport digest: ' + os.environ['ARTIFACT_DIGEST'] + '\n')[0m
+2026-11-03T10:28:10.5498573Z [36;1mPY[0m
+2026-11-03T10:28:10.5532120Z shell: /usr/bin/bash -e {0}
+2026-11-03T10:28:10.5532355Z env:
+2026-11-03T10:28:10.5532526Z   PYTHONHASHSEED: 0
+2026-11-03T10:28:10.5532728Z   PYTHONDONTWRITEBYTECODE: 1
+2026-11-03T10:28:10.5532964Z   GIT_TERMINAL_PROMPT: 0
+2026-11-03T10:28:10.5533170Z   GIT_CONFIG_NOSYSTEM: 1
+2026-11-03T10:28:10.5533430Z   BASELINE_KEY: p2-initial-bootstrap
+2026-11-03T10:28:10.5533721Z   SYS_REVISION: 351368e108f47f8d15f89baac96683ecadaee32c
+2026-11-03T10:28:10.5534054Z   SIM_REVISION: dceacd4e509a8592b802cf44bb2885bea7ddfdb3
+2026-11-03T10:28:10.5534410Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.3/arm64
+2026-11-03T10:28:10.5534812Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.3/arm64/lib/pkgconfig
+2026-11-03T10:28:10.5535214Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.3/arm64
+2026-11-03T10:28:10.5535575Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.3/arm64
+2026-11-03T10:28:10.5535960Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.3/arm64
+2026-11-03T10:28:10.5536326Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.3/arm64/lib
+2026-11-03T10:28:10.5536636Z   ARTIFACT_ID: 13223351750
+2026-11-03T10:28:10.5536986Z   ARTIFACT_DIGEST: c7b68d90feb620d020f58d6ac52ce2becf14ab03943e5bd8b5f3fcbf08613cfc
+2026-11-03T10:28:10.5537382Z ##[endgroup]
+2026-11-03T10:28:10.6530312Z Post job cleanup.
+2026-11-03T10:28:10.7618502Z (node:7105) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-03T10:28:10.7619466Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-03T10:28:10.7788798Z Post job cleanup.
+2026-11-03T10:28:10.8646304Z [command]/usr/bin/git version
+2026-11-03T10:28:10.8720417Z git version 2.56.0
+2026-11-03T10:28:10.8763073Z Temporarily overriding HOME='/home/runner/work/_temp/9e6d4629-1121-4ec4-8b48-a1d9d861222c' before making global git config changes
+2026-11-03T10:28:10.8764113Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-03T10:28:10.8764763Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/SPHinX_AI_Assistant/SPHinX_AI_Assistant
+2026-11-03T10:28:10.8801898Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-03T10:28:10.8839872Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-03T10:28:10.9112238Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-03T10:28:10.9162049Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-03T10:28:10.9410967Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-03T10:28:10.9444637Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-03T10:28:10.9843737Z Cleaning up orphan processes
+2026-11-03T10:28:11.0337413Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@11d5960a326750d5838078e36cf38b85af677262, actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065, actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

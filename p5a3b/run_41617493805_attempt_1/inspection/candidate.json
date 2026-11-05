@@ -1,0 +1,70 @@
+{
+  "candidate_id": "sha256-d7c95bbf42703d209a5a20f60540cf04b7134736ead650d8c95d66adaee724b8",
+  "identity": {
+    "artifacts": {
+      "base-selection.json": "da8f6a64cfcbf1c9384a1493b140e99442d913a2b4a5890e16a9440d1fc714c3",
+      "change-manifest.json": "724df2ec04e9b695f198a2367a060f436c5fc77b8417f5fdcdee40a919e1df3e",
+      "corpus.jsonl": "224fd0723fd0d77a3f8ad7cd300ecd31856fd689b0fc5e6c942b8d691ef63f8d",
+      "extraction-graph.json": "39152560a9b30d64e9d5a14d6b33fed6ee4091f37b298a4bc90586d08fbc0775",
+      "extraction-trace.json": "e53735c69e2b20782e3590eb29a5054be7497d4e65a20460d219f346cd9cfd70",
+      "git-proofs.json": "950a5f8a1c22622e1141adfb7c5d070bb457db52585d3891cf6d0bdc740a4d1a",
+      "inventory.json": "9858e9d91971e1551be8e7af99f8f55597ca98b619e1e8f3836d1a0eec10a096",
+      "orchestration-contract.json": "1d7990e326510238028586c4cc8bad32a2685f9e15b059009b074798672fb998",
+      "research-policy-original.json": "9fc2729a4b2881ebd557e797554f5ec6696f877fffbe9b523f270098e2df4fb5",
+      "reuse-summary.json": "48ab643a2823014c0590bf643b252d9485b8befb75ba916d69ca8a55ea3f22cd",
+      "selection.json": "c883582facbce2dfb14a09dedab185532a448dddf4f2dc431a4927ea5d0b48bb"
+    },
+    "automatic_research_approval": false,
+    "automatic_reuse": false,
+    "base_snapshot_id": "sha256-798d0d1284c7dbba06d5788a062973bf7290cbbfdef28150037371fa78b7188a",
+    "base_source_state": "sha256-96d84d8f4a25c8a49e77aadca9d6a8accc247153bb7e0645dbf443ce71c6c151",
+    "base_upstreams": {
+      "SPHinXsim": "9cdae783e3ef3f8926c2174a0db89e96846befad",
+      "SPHinXsys": "4e686ee357de1cb798ac47eb760dd79e2fb407ff"
+    },
+    "build_fingerprint": "7f66fe80e92d7263d5147d4fea551855184af75829f5b62993eb162acceb0cd8",
+    "generation": 1,
+    "orchestration_fingerprint": "b0b43411aef4d716a15a2f0a794071523fbb3c260dc4cb3fc9b2736eed9e1ac1",
+    "parent": {
+      "kind": "P2_ANCHOR",
+      "node_id": "sha256-798d0d1284c7dbba06d5788a062973bf7290cbbfdef28150037371fa78b7188a",
+      "package_checksum": "902c8afa4ffcfc47936ea021599b895820737de76defa60b970f69e6cbe43b24"
+    },
+    "policy_sha256": "9fc2729a4b2881ebd557e797554f5ec6696f877fffbe9b523f270098e2df4fb5",
+    "production_promotion": "NOT_AUTHORIZED",
+    "provenance_type": "GENUINE_UPSTREAM",
+    "relationships": {
+      "SPHinXsim": {
+        "commits": {
+          "296f5c83a8b0decbe46f548e78f8ad7b234d498a": "dHJlZSBkOTU0YzJhMGJlZmQ1YWVmYzc2ZmIzNmJkYmI3ZTA5ZWE1ODY3NDM3CnBhcmVudCA5Y2RhZTc4M2UzZWYzZjg5MjZjMjE3NGEwZGI4OWU5Njg0NmJlZmFkCmF1dGhvciBYaWFuZ3l1IEh1IDx4aWFuZ3l1Lmh1QHR1bS5kZT4gMTc5MTU2OTg3OSArMDAwMApjb21taXR0ZXIgWGlhbmd5dSBIdSA8eGlhbmd5dS5odUB0dW0uZGU+IDE3OTE1Njk4NzkgKzAwMDAKCnVzZSB2aXN1YWwgc3R1ZGlvIGNvbXBpbGluZyBzeXN0ZW0K",
+          "dceacd4e509a8592b802cf44bb2885bea7ddfdb3": "dHJlZSAwY2Y0MGI5NjUzYjM1MjVlN2MwNjU4MTk3ODA1MmRlMjEyOTc3MDBkCnBhcmVudCAyOTZmNWM4M2E4YjBkZWNiZTQ2ZjU0OGU3OGY4YWQ3YjIzNGQ0OThhCmF1dGhvciBYaWFuZ3l1IEh1IDx4aWFuZ3l1Lmh1QHR1bS5kZT4gMTc5MTU3NTAwMiArMDAwMApjb21taXR0ZXIgWGlhbmd5dSBIdSA8eGlhbmd5dS5odUB0dW0uZGU+IDE3OTE1NzUwMDIgKzAwMDAKCmFkZCBsb25nIHBhdGggaXNzdWUgc29sdXRpb24K"
+        },
+        "type": "FAST_FORWARD"
+      },
+      "SPHinXsys": {
+        "commits": {
+          "351368e108f47f8d15f89baac96683ecadaee32c": "dHJlZSBiYjY3YmEyNThkZjNhODdmMzM1MjA0MmU4OTk1MjZiNDRiMmRlZmQxCnBhcmVudCA0ZTY4NmVlMzU3ZGUxY2I3OThhYzQ3ZWI3NjBkZDc5ZTJmYjQwN2ZmCnBhcmVudCA2YzNiZjg1ODU3YWQ1MGZhODI4YmEzNTllMmIwMjc0YWQ5YjNkNDYxCmF1dGhvciBYaWFuZ3l1IEh1IDx4aWFuZ3l1Lmh1QHR1bS5kZT4gMTc5MTQ3MzkwNSArMDAwMApjb21taXR0ZXIgWGlhbmd5dSBIdSA8eGlhbmd5dS5odUB0dW0uZGU+IDE3OTE0NzM5MDUgKzAwMDAKCk1lcmdlIGJyYW5jaCAndXNlX2JpdG1hc2tfZm9yX3BhcnRfYnlfY2VsbCcgaW50byB4aWFuZ3l1L3JldmlzZV9kaXNjcmV0ZV92YXJpYWJsZV9hcnJheQo="
+        },
+        "type": "FAST_FORWARD"
+      }
+    },
+    "repositories": {
+      "SPHinXsim": "https://github.com/Xiangyu-Hu/SPHinXsim.git",
+      "SPHinXsys": "https://github.com/Xiangyu-Hu/SPHinXsys.git"
+    },
+    "schema_version": 2,
+    "source_selection_contract": {
+      "configs/documentation_scope.json": "34c81f94185111701fb219306fb0d1a8f4d0ae809d51e7a80081c279722ff690",
+      "configs/indexing_scope.json": "8d8578a230e9224ff7fab92aa4c90a2e75c2964ca0f0356b86238ead396e7c75",
+      "src/indexing_scope.py": "4b261fc8972f20e9d6b53dc0f07908fad6bbcf91dc9f8481e52be574a56778c9"
+    },
+    "target_fixture_id": "sha256-f69af955d057a23cf32586d024a24c0f2d38becfdfa5249625688d2e51e3b082",
+    "target_source_state": "sha256-f69af955d057a23cf32586d024a24c0f2d38becfdfa5249625688d2e51e3b082",
+    "upstreams": {
+      "SPHinXsim": "dceacd4e509a8592b802cf44bb2885bea7ddfdb3",
+      "SPHinXsys": "351368e108f47f8d15f89baac96683ecadaee32c"
+    }
+  },
+  "kind": "upstream-research-candidate",
+  "schema_version": 2
+}

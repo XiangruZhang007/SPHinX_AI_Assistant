@@ -1,0 +1,23 @@
+{
+  "candidate_id": "sha256-d7c95bbf42703d209a5a20f60540cf04b7134736ead650d8c95d66adaee724b8",
+  "comparisons": {
+    "corpus.jsonl": {
+      "exact_bytes_equal": true,
+      "sha256": "224fd0723fd0d77a3f8ad7cd300ecd31856fd689b0fc5e6c942b8d691ef63f8d"
+    },
+    "extraction-graph.json": {
+      "exact_bytes_equal": true,
+      "sha256": "39152560a9b30d64e9d5a14d6b33fed6ee4091f37b298a4bc90586d08fbc0775"
+    },
+    "inventory.json": {
+      "exact_bytes_equal": true,
+      "sha256": "9858e9d91971e1551be8e7af99f8f55597ca98b619e1e8f3836d1a0eec10a096"
+    },
+    "selection.json": {
+      "exact_bytes_equal": true,
+      "sha256": "c883582facbce2dfb14a09dedab185532a448dddf4f2dc431a4927ea5d0b48bb"
+    }
+  },
+  "full_reference_independently_built": true,
+  "status": "PARITY_PASS"
+}

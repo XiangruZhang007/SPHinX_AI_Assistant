@@ -1,0 +1,1888 @@
+[
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "section_title",
+      "path": "repos/SPHinXsim/docs/cli-usage.md",
+      "role": "documentation",
+      "value": "Generate"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q01",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "section_title",
+      "path": "repos/SPHinXsim/docs/cli-usage.md",
+      "role": "documentation",
+      "value": "Validate"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q01",
+    "previous_available": true,
+    "requirement_index": 1,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "section_title",
+      "path": "repos/SPHinXsim/docs/index.md",
+      "role": "documentation",
+      "value": "High-level architecture"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q02",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "section_title",
+      "path": "repos/SPHinXsim/docs/theoretical-background-sph-methods.md",
+      "role": "documentation",
+      "value": "Gradient Approximation"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q03",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "passage",
+      "path": "repos/SPHinXsys/tutorials/sphinx/examples/example1_2D_dambreak.rst",
+      "role": "documentation",
+      "value": "dual-criteria time-stepping"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q04",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "passage",
+      "path": "repos/SPHinXsys/tutorials/sphinx/examples/example8_2D_hydrostatic_fsi.rst",
+      "role": "documentation",
+      "value": "FluidPressureForceOnSolid"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q05",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "line_range",
+      "path": "repos/SPHinXsim/docs/theoretical-background-physical-models.md",
+      "range": [
+        20,
+        25
+      ],
+      "role": "documentation"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q06",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "line_range",
+      "path": "repos/SPHinXsim/docs/visualization.md",
+      "range": [
+        250,
+        257
+      ],
+      "role": "documentation"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q07",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "line_range",
+      "path": "repos/SPHinXsim/docs/installation-linux.md",
+      "range": [
+        67,
+        71
+      ],
+      "role": "documentation"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q08",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "line_range",
+      "path": "repos/SPHinXsys/tutorials/sphinx/SPHinXsysArch.rst",
+      "range": [
+        43,
+        49
+      ],
+      "role": "documentation"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q09",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "line_range",
+      "path": "repos/SPHinXsys/tutorials/sphinx/examples/example2_elasticGate.rst",
+      "range": [
+        198,
+        204
+      ],
+      "role": "documentation"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q10",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "line_range",
+      "path": "repos/SPHinXsys/tutorials/sphinx/examples/example3_3D_multiResolutionParticleDistribution.rst",
+      "range": [
+        15,
+        18
+      ],
+      "role": "documentation"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q11",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "line_range",
+      "path": "repos/SPHinXsys/tutorials/sphinx/examples/example6_2D_heat_transfer.rst",
+      "range": [
+        400,
+        401
+      ],
+      "role": "documentation"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q12",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "line_range",
+      "path": "repos/SPHinXsys/tutorials/sphinx/examples/example7_2D_diffusion.rst",
+      "range": [
+        238,
+        240
+      ],
+      "role": "documentation"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q13",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "line_range",
+      "path": "repos/SPHinXsys/tutorials/sphinx/examples/example13_2D_oscillating_beam.rst",
+      "range": [
+        233,
+        242
+      ],
+      "role": "documentation"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q14",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "line_range",
+      "path": "repos/SPHinXsys/tutorials/sphinx/examples/example5_2D_tayloygreen.rst",
+      "range": [
+        216,
+        219
+      ],
+      "role": "documentation"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q15",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "line_range",
+      "path": "repos/SPHinXsys/tutorials/sphinx/examples/example9_2D_staticConfinement.rst",
+      "range": [
+        17,
+        19
+      ],
+      "role": "documentation"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q16",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "line_range",
+      "path": "repos/SPHinXsys/tutorials/sphinx/examples/example10_2D_thinPlate.rst",
+      "range": [
+        1,
+        5
+      ],
+      "role": "documentation"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q17",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "line_range",
+      "path": "repos/SPHinXsys/tutorials/sphinx/examples/example12_2D_flowaroundcylinder.rst",
+      "range": [
+        17,
+        18
+      ],
+      "role": "documentation"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q18",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "line_range",
+      "path": "repos/SPHinXsys/tutorials/sphinx/examples/example15_2D_aortic_valve.rst",
+      "range": [
+        1269,
+        1274
+      ],
+      "role": "documentation"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q19",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "line_range",
+      "path": "repos/SPHinXsys/tutorials/sphinx/examples/example17_2D_throat.rst",
+      "range": [
+        205,
+        208
+      ],
+      "role": "documentation"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q20",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "line_range",
+      "path": "repos/SPHinXsys/tutorials/sphinx/examples/example18_2D_wetting.rst",
+      "range": [
+        8,
+        9
+      ],
+      "role": "documentation"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q21",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "line_range",
+      "path": "repos/SPHinXsys/tutorials/markdown/smoothing_kernel/first_order_consistancy.md",
+      "range": [
+        26,
+        31
+      ],
+      "role": "documentation"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q22",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "line_range",
+      "path": "repos/SPHinXsys/tutorials/markdown/multi_resolution_solid/multi_resolution_solid.md",
+      "range": [
+        4,
+        9
+      ],
+      "role": "documentation"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q23",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "line_range",
+      "path": "repos/SPHinXsys/tutorials/markdown/multiphase_mixture_model.md",
+      "range": [
+        172,
+        182
+      ],
+      "role": "documentation"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q24",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "line_range",
+      "path": "repos/SPHinXsys/tests/3d_examples/test_3d_solid_to_shell_coupling/doc/README.md",
+      "range": [
+        4,
+        5
+      ],
+      "role": "documentation"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q25",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "line_range",
+      "path": "repos/SPHinXsys/tests/3d_examples/test_3d_taylor_bar_hjc/README.md",
+      "range": [
+        149,
+        155
+      ],
+      "role": "documentation"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q26",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "RANGE_CHANGED_OR_ORACLE_STALE_REVIEW",
+    "criterion": {
+      "kind": "line_range",
+      "path": "repos/SPHinXsim/docs/installation-windows.md",
+      "range": [
+        101,
+        104
+      ],
+      "role": "documentation"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q27",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": true,
+    "target_available": false
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "line_range",
+      "path": "repos/SPHinXsim/docs/installation-macos.md",
+      "range": [
+        60,
+        64
+      ],
+      "role": "documentation"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q28",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "line_range",
+      "path": "repos/SPHinXsys/README.md",
+      "range": [
+        53,
+        61
+      ],
+      "role": "documentation"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q29",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "PREEXISTING_UNAVAILABLE_OR_SINGLE_CHUNK_LIMITATION",
+    "criterion": {
+      "kind": "line_range",
+      "path": "repos/SPHinXsys/shell_model.md",
+      "range": [
+        51,
+        55
+      ],
+      "role": "documentation"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q30",
+    "previous_available": false,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": false
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "line_range",
+      "path": "repos/SPHinXsys/tutorials/markdown/fluid_shell_interaction/one-side-fluid-shell-interaction.md",
+      "range": [
+        5,
+        13
+      ],
+      "role": "documentation"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q31",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "line_range",
+      "path": "repos/SPHinXsys/tutorials/markdown/smoothing_kernel/aisotropic_kernel.md",
+      "range": [
+        5,
+        11
+      ],
+      "role": "documentation"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q32",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "line_range",
+      "path": "repos/SPHinXsys/tutorials/sphinx/examples/example4_2D_multiResolutionParticleDistribution.rst",
+      "range": [
+        120,
+        123
+      ],
+      "role": "documentation"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q33",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "line_range",
+      "path": "repos/SPHinXsys/tutorials/sphinx/examples/example11_3D_arch.rst",
+      "range": [
+        60,
+        61
+      ],
+      "role": "documentation"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q34",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "line_range",
+      "path": "repos/SPHinXsim/docs/llm-testing.md",
+      "range": [
+        9,
+        11
+      ],
+      "role": "documentation"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q35",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "line_range",
+      "path": "repos/SPHinXsys/docs/_posts/2024-09-20-tensile-instability-p1.md",
+      "range": [
+        32,
+        43
+      ],
+      "role": "documentation"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q36",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "line_range",
+      "path": "repos/SPHinXsys/docs/_posts/2024-09-20-tensile-instability-p2.md",
+      "range": [
+        33,
+        44
+      ],
+      "role": "documentation"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q37",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "line_range",
+      "path": "repos/SPHinXsys/docs/_posts/2025-01-31-heterogeneous-parallelism-p2.md",
+      "range": [
+        76,
+        82
+      ],
+      "role": "documentation"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q38",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "line_range",
+      "path": "repos/SPHinXsys/docs/_posts/2025-12-15-sparse-grid-heterogeneous-p2.md",
+      "range": [
+        75,
+        82
+      ],
+      "role": "documentation"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q39",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "line_range",
+      "path": "repos/SPHinXsys/docs/_posts/2026-01-08-sparse-grid-heterogeneous-p3.md",
+      "range": [
+        36,
+        49
+      ],
+      "role": "documentation"
+    },
+    "frozen_criterion_modified": false,
+    "id": "DOC-Q40",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "initializeSystemCellLinkedLists",
+        "constant_gravity.exec"
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsys/tests/2d_examples/test_2d_dambreak/Dambreak.cpp",
+      "range": [
+        124,
+        127
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "B-01",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "pressure_relaxation",
+        "density_relaxation"
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsys/tests/2d_examples/test_2d_dambreak/Dambreak.cpp",
+      "range": [
+        98,
+        104
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "B-02",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "p0_ * (rho / rho0_ - 1.0)"
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsys/src/shared/materials/weakly_compressible_fluid.cpp",
+      "range": [
+        17,
+        20
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "B-03",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "p0_ * (rho / rho0_ - 1.0)"
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsys/src/shared/materials/weakly_compressible_fluid.cpp",
+      "range": [
+        17,
+        20
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "B-04",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "get_thermal_time_step",
+        "thermal_relaxation_complex"
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsys/tests/2d_examples/test_2d_heat_transfer/heat_transfer.cpp",
+      "range": [
+        247,
+        248
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "B-05",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "\"simulation_type\""
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsim/tests/test_simulation/test_2d_simulation/data/dambreak.json",
+      "range": [
+        19,
+        19
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "B-06",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "\"lower_bound\": [0.0, 0.0]"
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsim/tests/test_simulation/test_2d_simulation/data/dambreak.json",
+      "range": [
+        28,
+        28
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "B-06",
+    "previous_available": true,
+    "requirement_index": 1,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "FluidSimulationBuilder"
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsim/sphinxsim/sph_simulation/sph_simulation.cpp",
+      "range": [
+        125,
+        129
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "B-07",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "simulation_type",
+        "particle_generation"
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsim/sphinxsim/config/schemas.py",
+      "range": [
+        995,
+        1000
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "B-08",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "simulation_type",
+        "particle_generation"
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsim/sphinxsim/config/schemas.py",
+      "range": [
+        995,
+        1000
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "B-09",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "symbol",
+      "path": "repos/SPHinXsim/sphinxsim/cli.py",
+      "symbol": "cmd_run"
+    },
+    "frozen_criterion_modified": false,
+    "id": "B-10",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "symbol",
+      "path": "repos/SPHinXsim/sphinxsim/cli.py",
+      "symbol": "cmd_validate"
+    },
+    "frozen_criterion_modified": false,
+    "id": "B-11",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "symbol",
+      "path": "repos/SPHinXsim/sphinxsim/cli.py",
+      "symbol": "cmd_generate"
+    },
+    "frozen_criterion_modified": false,
+    "id": "B-12",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "symbol",
+      "path": "repos/SPHinXsim/sphinxsim/cli.py",
+      "symbol": "cmd_shell"
+    },
+    "frozen_criterion_modified": false,
+    "id": "B-13",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "symbol",
+      "path": "repos/SPHinXsim/sphinxsim/cli.py",
+      "symbol": "_build_parser"
+    },
+    "frozen_criterion_modified": false,
+    "id": "B-14",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "rho_sum_",
+        "Vol_"
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsys/src/shared/particle_dynamics/fluid_dynamics/density_summation.cpp",
+      "range": [
+        30,
+        34
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-01",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "p0_"
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsys/src/shared/materials/weakly_compressible_fluid.cpp",
+      "range": [
+        17,
+        20
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-02",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "f > TinyReal",
+        "return r * shear_stress"
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsys/src/shared/materials/general_continuum.cpp",
+      "range": [
+        150,
+        158
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-03",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [],
+      "kind": "source_range",
+      "path": "repos/SPHinXsys/src/shared/particle_dynamics/solid_dynamics/thin_structure_dynamics.cpp",
+      "range": [
+        42,
+        54
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-04",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "WeaklyCompressibleFluid",
+        "generateParticles"
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsys/tests/2d_examples/test_2d_dambreak/Dambreak.cpp",
+      "range": [
+        62,
+        65
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-05",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "GetDiffusionTimeStepSize",
+        "ThermalRelaxationComplex"
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsys/tests/2d_examples/test_2d_heat_transfer/heat_transfer.cpp",
+      "range": [
+        247,
+        248
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-06",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "initializeSystemConfigurations",
+        "constant_gravity.exec"
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsys/tests/2d_examples/test_2d_dambreak/Dambreak.cpp",
+      "range": [
+        124,
+        127
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-07",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "ndim not in (2, 3)",
+        "importlib.import_module"
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsim/sphinxsim/bindings/loader.py",
+      "range": [
+        65,
+        98
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-08",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "exclude_defaults=is_all_plastic_continuum_config"
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsim/sphinxsim/llm/common.py",
+      "range": [
+        197,
+        205
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-09",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [],
+      "kind": "source_range",
+      "path": "repos/SPHinXsim/examples/test_simulation_2d.py",
+      "range": [
+        31,
+        85
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-10",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "dimensionality must match",
+        "upper_bound must be greater"
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsim/sphinxsim/config/schemas.py",
+      "range": [
+        119,
+        125
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-11",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "fluid_dynamics",
+        "continuum_dynamics"
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsim/sphinxsim/config/schemas.py",
+      "range": [
+        17,
+        19
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-12",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "j2_plasticity",
+        "weakly_compressible_multi_phase"
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsim/sphinxsim/config/schemas.py",
+      "range": [
+        85,
+        94
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-13",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "default=0.6",
+        "default=0.25",
+        "kernel_correction"
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsim/sphinxsim/config/schemas.py",
+      "range": [
+        933,
+        941
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-14",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "\"simulation_type\""
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsim/tests/test_simulation/test_2d_simulation/data/dambreak.json",
+      "range": [
+        19,
+        19
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-15",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "\"global_resolution\""
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsim/tests/test_simulation/test_2d_simulation/data/dambreak.json",
+      "range": [
+        21,
+        23
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-15",
+    "previous_available": true,
+    "requirement_index": 1,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "\"thermal_conductivity\""
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsim/tests/test_simulation/test_2d_simulation/data/heat_transfer.json",
+      "range": [
+        114,
+        114
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-16",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "\"thermal_boundary\""
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsim/tests/test_simulation/test_2d_simulation/data/heat_transfer.json",
+      "range": [
+        128,
+        128
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-16",
+    "previous_available": true,
+    "requirement_index": 1,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "\"type\": \"j2_plasticity\""
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsim/tests/test_simulation/test_2d_simulation/data/milling.json",
+      "range": [
+        107,
+        107
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-17",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "_load_config",
+        "if rc != 0"
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsim/sphinxsim/cli.py",
+      "range": [
+        481,
+        486
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-18",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "_config_spatial_dim",
+        "load_sphinxsys_core_nd"
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsim/sphinxsim/cli.py",
+      "range": [
+        531,
+        543
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-19",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "symbol",
+      "path": "repos/SPHinXsim/sphinxsim/cli.py",
+      "symbol": "cmd_generate"
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-20",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "section_title",
+      "path": "repos/SPHinXsim/docs/cli-usage.md",
+      "role": "documentation",
+      "value": "Validate"
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-21",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "_load_config"
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsim/sphinxsim/cli.py",
+      "range": [
+        481,
+        486
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-21",
+    "previous_available": true,
+    "requirement_index": 1,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "passage",
+      "path": "repos/SPHinXsys/tutorials/sphinx/examples/example1_2D_dambreak.rst",
+      "role": "documentation",
+      "value": "dual-criteria time-stepping"
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-22",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "AdvectionTimeStep",
+        "AcousticTimeStep"
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsys/tests/2d_examples/test_2d_dambreak/Dambreak.cpp",
+      "range": [
+        105,
+        106
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-22",
+    "previous_available": true,
+    "requirement_index": 1,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "cmake --install"
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsim/docs/installation-linux.md",
+      "range": [
+        67,
+        71
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-23",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "importlib.import_module"
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsim/sphinxsim/bindings/loader.py",
+      "range": [
+        65,
+        98
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-23",
+    "previous_available": true,
+    "requirement_index": 1,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "defineMatterMaterial<WeaklyCompressibleFluid>"
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsim/sphinxsim/sph_simulation/common_builder/material_builder.cpp",
+      "range": [
+        46,
+        52
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-24",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [],
+      "kind": "source_range",
+      "path": "repos/SPHinXsys/src/shared/materials/weakly_compressible_fluid.cpp",
+      "range": [
+        8,
+        12
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-24",
+    "previous_available": true,
+    "requirement_index": 1,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "defineMatterMaterial<J2Plasticity>"
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsim/sphinxsim/sph_simulation/common_builder/material_builder.cpp",
+      "range": [
+        139,
+        141
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-25",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [],
+      "kind": "source_range",
+      "path": "repos/SPHinXsys/src/shared/materials/general_continuum.cpp",
+      "range": [
+        150,
+        158
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-25",
+    "previous_available": true,
+    "requirement_index": 1,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "DiffusionRelaxationCK, RungeKutta1stStage, IsotropicDiffusion"
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsim/sphinxsim/sph_simulation/dynamics_builder/thermal_dynamics/thermal_dynamics_builder.cpp",
+      "range": [
+        33,
+        34
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-26",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [],
+      "kind": "source_range",
+      "path": "repos/SPHinXsys/src/shared/materials/diffusion_reaction.cpp",
+      "range": [
+        21,
+        25
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-26",
+    "previous_available": true,
+    "requirement_index": 1,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "runRelaxation"
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsim/sphinxsim/sph_simulation/sph_simulation.cpp",
+      "range": [
+        85,
+        90
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-27",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "residual_[index_i]"
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsys/src/shared/particle_dynamics/relax_dynamics/relax_stepping.cpp",
+      "range": [
+        22,
+        32
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-27",
+    "previous_available": true,
+    "requirement_index": 1,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [],
+      "kind": "source_range",
+      "path": "repos/SPHinXsim/sphinxsim/config/schemas.py",
+      "range": [
+        17,
+        19
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-28",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [],
+      "kind": "source_range",
+      "path": "repos/SPHinXsim/sphinxsim/sph_simulation/sph_simulation.cpp",
+      "range": [
+        125,
+        137
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-28",
+    "previous_available": true,
+    "requirement_index": 1,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [],
+      "kind": "source_range",
+      "path": "repos/SPHinXsys/src/shared/particle_dynamics/electro_physiology/electro_physiology.cpp",
+      "range": [
+        30,
+        34
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-29",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [],
+      "kind": "source_range",
+      "path": "repos/SPHinXsim/sphinxsim/config/schemas.py",
+      "range": [
+        17,
+        19
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-29",
+    "previous_available": true,
+    "requirement_index": 1,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "kind": "symbol",
+      "path": "repos/SPHinXsim/sphinxsim/cli.py",
+      "symbol": "cmd_shell"
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-30",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [],
+      "kind": "source_range",
+      "path": "repos/SPHinXsys/src/shared/particle_dynamics/solid_dynamics/thin_structure_dynamics.cpp",
+      "range": [
+        42,
+        54
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "C-30",
+    "previous_available": true,
+    "requirement_index": 1,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "PREEXISTING_UNAVAILABLE_OR_SINGLE_CHUNK_LIMITATION",
+    "criterion": {
+      "contains_all": [
+        "class RawFloat",
+        "parse_float=RawFloat"
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsim/sphinxsim/json_format.py",
+      "range": [
+        13,
+        25
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "D-01",
+    "previous_available": false,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": false
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "acoustic_cfl_{0.6}"
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsim/sphinxsim/sph_simulation/dynamics_builder/fluid_dynamics/fluid_dynamics_builder.h",
+      "range": [
+        50,
+        61
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "D-02",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  },
+  {
+    "classification": "PREEXISTING_UNAVAILABLE_OR_SINGLE_CHUNK_LIMITATION",
+    "criterion": {
+      "contains_all": [],
+      "kind": "source_range",
+      "path": "repos/SPHinXsim/sphinxsim/sph_simulation/simulation_builder/base_simulation_builder.h",
+      "range": [
+        38,
+        69
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "D-03",
+    "previous_available": false,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": false
+  },
+  {
+    "classification": "STRICT_EVIDENCE_AVAILABLE",
+    "criterion": {
+      "contains_all": [
+        "ConstructArgs"
+      ],
+      "kind": "source_range",
+      "path": "repos/SPHinXsys/src/shared/materials/elastic_solid.cpp",
+      "range": [
+        269,
+        272
+      ]
+    },
+    "frozen_criterion_modified": false,
+    "id": "D-04",
+    "previous_available": true,
+    "requirement_index": 0,
+    "source_bytes_changed": false,
+    "target_available": true
+  }
+]

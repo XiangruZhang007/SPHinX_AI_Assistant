@@ -1,0 +1,296 @@
+{
+  "automatic_research_approval": false,
+  "blocking": false,
+  "diagnostic_only": true,
+  "failures": [
+    {
+      "human_decision": "PENDING",
+      "id": "B-02",
+      "mode": "combined",
+      "recommendations": [
+        "MANUAL_REVIEW_REQUIRED",
+        "NO_NEW_REGRESSION_IDENTIFIED"
+      ]
+    },
+    {
+      "human_decision": "PENDING",
+      "id": "B-03",
+      "mode": "combined",
+      "recommendations": [
+        "MANUAL_REVIEW_REQUIRED",
+        "NO_NEW_REGRESSION_IDENTIFIED"
+      ]
+    },
+    {
+      "human_decision": "PENDING",
+      "id": "B-05",
+      "mode": "combined",
+      "recommendations": [
+        "MANUAL_REVIEW_REQUIRED",
+        "NO_NEW_REGRESSION_IDENTIFIED"
+      ]
+    },
+    {
+      "human_decision": "PENDING",
+      "id": "B-06",
+      "mode": "combined",
+      "recommendations": [
+        "MANUAL_REVIEW_REQUIRED",
+        "NO_NEW_REGRESSION_IDENTIFIED"
+      ]
+    },
+    {
+      "human_decision": "PENDING",
+      "id": "B-07",
+      "mode": "combined",
+      "recommendations": [
+        "MANUAL_REVIEW_REQUIRED",
+        "NO_NEW_REGRESSION_IDENTIFIED"
+      ]
+    },
+    {
+      "human_decision": "PENDING",
+      "id": "B-09",
+      "mode": "combined",
+      "recommendations": [
+        "MANUAL_REVIEW_REQUIRED",
+        "NO_NEW_REGRESSION_IDENTIFIED"
+      ]
+    },
+    {
+      "human_decision": "PENDING",
+      "id": "B-10",
+      "mode": "combined",
+      "recommendations": [
+        "MANUAL_REVIEW_REQUIRED",
+        "NO_NEW_REGRESSION_IDENTIFIED"
+      ]
+    },
+    {
+      "human_decision": "PENDING",
+      "id": "B-11",
+      "mode": "combined",
+      "recommendations": [
+        "MANUAL_REVIEW_REQUIRED",
+        "NO_NEW_REGRESSION_IDENTIFIED"
+      ]
+    },
+    {
+      "human_decision": "PENDING",
+      "id": "B-12",
+      "mode": "combined",
+      "recommendations": [
+        "MANUAL_REVIEW_REQUIRED",
+        "NO_NEW_REGRESSION_IDENTIFIED"
+      ]
+    },
+    {
+      "human_decision": "PENDING",
+      "id": "B-13",
+      "mode": "combined",
+      "recommendations": [
+        "MANUAL_REVIEW_REQUIRED",
+        "NO_NEW_REGRESSION_IDENTIFIED"
+      ]
+    },
+    {
+      "human_decision": "PENDING",
+      "id": "C-01",
+      "mode": "combined",
+      "recommendations": [
+        "MANUAL_REVIEW_REQUIRED",
+        "NO_NEW_REGRESSION_IDENTIFIED"
+      ]
+    },
+    {
+      "human_decision": "PENDING",
+      "id": "C-06",
+      "mode": "combined",
+      "recommendations": [
+        "MANUAL_REVIEW_REQUIRED",
+        "NO_NEW_REGRESSION_IDENTIFIED"
+      ]
+    },
+    {
+      "human_decision": "PENDING",
+      "id": "C-20",
+      "mode": "combined",
+      "recommendations": [
+        "MANUAL_REVIEW_REQUIRED",
+        "NO_NEW_REGRESSION_IDENTIFIED"
+      ]
+    },
+    {
+      "human_decision": "PENDING",
+      "id": "C-21",
+      "mode": "combined",
+      "recommendations": [
+        "MANUAL_REVIEW_REQUIRED",
+        "NO_NEW_REGRESSION_IDENTIFIED"
+      ]
+    },
+    {
+      "human_decision": "PENDING",
+      "id": "C-22",
+      "mode": "combined",
+      "recommendations": [
+        "MANUAL_REVIEW_REQUIRED",
+        "NO_NEW_REGRESSION_IDENTIFIED"
+      ]
+    },
+    {
+      "human_decision": "PENDING",
+      "id": "C-24",
+      "mode": "combined",
+      "recommendations": [
+        "MANUAL_REVIEW_REQUIRED",
+        "NO_NEW_REGRESSION_IDENTIFIED"
+      ]
+    },
+    {
+      "human_decision": "PENDING",
+      "id": "C-25",
+      "mode": "combined",
+      "recommendations": [
+        "MANUAL_REVIEW_REQUIRED",
+        "NO_NEW_REGRESSION_IDENTIFIED"
+      ]
+    },
+    {
+      "human_decision": "PENDING",
+      "id": "C-27",
+      "mode": "combined",
+      "recommendations": [
+        "MANUAL_REVIEW_REQUIRED",
+        "NO_NEW_REGRESSION_IDENTIFIED"
+      ]
+    },
+    {
+      "human_decision": "PENDING",
+      "id": "C-28",
+      "mode": "combined",
+      "recommendations": [
+        "MANUAL_REVIEW_REQUIRED",
+        "NO_NEW_REGRESSION_IDENTIFIED"
+      ]
+    },
+    {
+      "human_decision": "PENDING",
+      "id": "C-29",
+      "mode": "combined",
+      "recommendations": [
+        "MANUAL_REVIEW_REQUIRED",
+        "NO_NEW_REGRESSION_IDENTIFIED"
+      ]
+    },
+    {
+      "human_decision": "PENDING",
+      "id": "C-30",
+      "mode": "combined",
+      "recommendations": [
+        "MANUAL_REVIEW_REQUIRED",
+        "NO_NEW_REGRESSION_IDENTIFIED"
+      ]
+    },
+    {
+      "human_decision": "PENDING",
+      "id": "D-01",
+      "mode": "combined",
+      "recommendations": [
+        "MANUAL_REVIEW_REQUIRED",
+        "NO_NEW_REGRESSION_IDENTIFIED"
+      ]
+    },
+    {
+      "human_decision": "PENDING",
+      "id": "D-03",
+      "mode": "combined",
+      "recommendations": [
+        "MANUAL_REVIEW_REQUIRED",
+        "NO_NEW_REGRESSION_IDENTIFIED"
+      ]
+    },
+    {
+      "human_decision": "PENDING",
+      "id": "DOC-Q01",
+      "mode": "combined",
+      "recommendations": [
+        "MANUAL_REVIEW_REQUIRED",
+        "NO_NEW_REGRESSION_IDENTIFIED"
+      ]
+    },
+    {
+      "human_decision": "PENDING",
+      "id": "DOC-Q27",
+      "mode": "combined",
+      "recommendations": [
+        "MANUAL_REVIEW_REQUIRED"
+      ]
+    },
+    {
+      "human_decision": "PENDING",
+      "id": "DOC-Q30",
+      "mode": "combined",
+      "recommendations": [
+        "MANUAL_REVIEW_REQUIRED",
+        "NO_NEW_REGRESSION_IDENTIFIED"
+      ]
+    },
+    {
+      "human_decision": "PENDING",
+      "id": "DOC-Q32",
+      "mode": "combined",
+      "recommendations": [
+        "MANUAL_REVIEW_REQUIRED",
+        "NO_NEW_REGRESSION_IDENTIFIED"
+      ]
+    },
+    {
+      "human_decision": "PENDING",
+      "id": "DOC-Q35",
+      "mode": "combined",
+      "recommendations": [
+        "MANUAL_REVIEW_REQUIRED",
+        "NO_NEW_REGRESSION_IDENTIFIED"
+      ]
+    },
+    {
+      "human_decision": "PENDING",
+      "id": "DOC-Q01",
+      "mode": "documentation_only",
+      "recommendations": [
+        "MANUAL_REVIEW_REQUIRED",
+        "NO_NEW_REGRESSION_IDENTIFIED"
+      ]
+    },
+    {
+      "human_decision": "PENDING",
+      "id": "DOC-Q27",
+      "mode": "documentation_only",
+      "recommendations": [
+        "MANUAL_REVIEW_REQUIRED"
+      ]
+    },
+    {
+      "human_decision": "PENDING",
+      "id": "DOC-Q30",
+      "mode": "documentation_only",
+      "recommendations": [
+        "MANUAL_REVIEW_REQUIRED",
+        "NO_NEW_REGRESSION_IDENTIFIED"
+      ]
+    }
+  ],
+  "human_decision": "PENDING",
+  "label_counts": {
+    "ATTRIBUTION_UNCERTAIN": 31
+  },
+  "official_score_adjustment": false,
+  "production_promotion": "NOT_AUTHORIZED",
+  "report_id": "sha256-b490738496272e15ab8ba4c87ae3592f278101c2853ae12bfebf34b0aae3cc51",
+  "research_baseline_created": false,
+  "review_counts": {
+    "MANUAL_REVIEW_REQUIRED": 31,
+    "NO_NEW_REGRESSION_IDENTIFIED": 29
+  }
+}
